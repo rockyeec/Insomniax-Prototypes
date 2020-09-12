@@ -44,7 +44,7 @@ public class Deployable : MonoBehaviour
         SetColliders(false);
     }
 
-    private void FixedUpdate()
+    protected virtual void Update()
     {
         if (IsDeployed)
             return;
