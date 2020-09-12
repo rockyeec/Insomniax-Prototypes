@@ -11,6 +11,8 @@ public class Camera3rdPerson : MonoBehaviour
 
     private float pitch = 0.0f;
     private float yaw = 0.0f;
+    private float pitchVel = 0.0f;
+    private float yawVel = 0.0f;
 
     private void Awake()
     {
@@ -26,15 +28,15 @@ public class Camera3rdPerson : MonoBehaviour
     }
 
 
-    public void Tick(float pitchInput, float yawInput, Transform target)
+    public void LookAround(float pitchInput, float yawInput, Vector3 target)
     {
         FollowTarget(target);
         LookAround(pitchInput, yawInput);
     }
 
-    private void FollowTarget(Transform target)
+    private void FollowTarget(Vector3 target)
     {
-        transform.position = target.position;
+        transform.position = target;
     }
 
     private void LookAround(float pitchInput, float yawInput)

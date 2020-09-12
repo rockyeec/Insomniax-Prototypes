@@ -5,13 +5,8 @@ using UnityEngine;
 
 public class InputParent : MonoBehaviour
 {
-    private CharacterController controller = null;
+    protected CharacterController controller { get; private set; }
     private AnimatorHook animatorHook = null;
-
-    protected CharacterController.CustomInputs GetInputs()
-    {
-        return controller.inputs;
-    }
 
     private void Awake()
     {

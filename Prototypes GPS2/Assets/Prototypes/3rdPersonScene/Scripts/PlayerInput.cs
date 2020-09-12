@@ -14,20 +14,23 @@ public class PlayerInput : InputParent
     {
         base.Init();
         jumpButton.onClick.AddListener(Jump);
+
+        controller.AddFixedTickBehavior(new CheckGroundBehavior());
+        controller.AddFixedTickBehavior(new LocomotionBehavior());
+        controller.AddFixedTickBehavior(new JumpBehavior());
     }
 
     protected override void Tick(float delta)
     {
         base.Tick(delta);
 
-        cam.Tick(rightJoy.GetVerticalDelta(), rightJoy.GetHorizontalDelta(), transform);
+        cam.LookAround(rightJoy.GetVerticalDelta(), rightJoy.GetHorizontalDelta(), transform.position);
+
 
         float hor = leftJoy.GetHorizontal();
         float ver = leftJoy.GetVertical();
 
-        GetInputs().SmoothMoveInput(cam.GetRotation() * new Vector3(hor, 0.0f, ver), delta);
-
-        
+        controller.inputs.SmoothMoveInput(cam.GetRotation() * new Vector3(hor, 0.0f, ver), delta);        
     }
 
     protected override void FixedTick(float delta)
@@ -43,6 +46,6 @@ public class PlayerInput : InputParent
 
     private void Jump()
     {
-        GetInputs().jump = true;
+        controller.inputs.jump = true;
     }
 }

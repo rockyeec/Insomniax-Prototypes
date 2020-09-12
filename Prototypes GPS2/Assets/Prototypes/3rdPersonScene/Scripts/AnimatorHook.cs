@@ -47,7 +47,7 @@ public class AnimatorHook : MonoBehaviour
     {
         yield return new WaitForFixedUpdate();
 
-        controller.rb.AddForce(Vector3.up * 12.0f, ForceMode.Impulse);
+        controller.rb.AddForce(Vector3.up * 8.8f, ForceMode.Impulse);
         hasJumped = false;
         controller.outputs.jump = false;
     }

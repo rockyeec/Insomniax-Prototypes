@@ -10,7 +10,7 @@ public class CheckGroundBehavior : FixedTickBehavior
         CharacterController.CustomOutputs outputs = controller.outputs;
 
         Ray ray = new Ray(transform.position + 1.0f * Vector3.up, Vector3.down);
-        if (Physics.Raycast(ray, out RaycastHit hit, 1.2f))
+        if (Physics.Raycast(ray, out RaycastHit hit, 1.05f))
         {
             transform.position = hit.point;
             outputs.onGround = true;

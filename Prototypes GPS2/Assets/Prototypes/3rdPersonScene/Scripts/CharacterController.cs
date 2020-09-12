@@ -33,6 +33,14 @@ public class CharacterController
 
     private List<FixedTickBehavior> fixedTicks = new List<FixedTickBehavior>();
     private List<RegularTickBehavior> regularTicks = new List<RegularTickBehavior>();
+    public void AddFixedTickBehavior(FixedTickBehavior behavior)
+    {
+        fixedTicks.Add(behavior);
+    }
+    public void AddRegularTickBehavior(RegularTickBehavior behavior)
+    {
+        regularTicks.Add(behavior);
+    }
 
 
     public CharacterController(Rigidbody rb)
@@ -40,10 +48,6 @@ public class CharacterController
         rb.constraints = RigidbodyConstraints.FreezeRotation;
         this.rb = rb;
         transform = rb.transform;
-
-        fixedTicks.Add(new CheckGroundBehavior());
-        fixedTicks.Add(new LocomotionBehavior());
-        fixedTicks.Add(new JumpBehavior());
     }
 
     public void Tick(float delta)
