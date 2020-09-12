@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class TowerScript : MonoBehaviour
+public class TowerScript : Deployable
 {
+    [Header("Tower Attributes")]
     [SerializeField] private GameObject bullet = null;
     [SerializeField] private Transform gun = null;
     [SerializeField] private Transform turret = null;
@@ -12,8 +13,8 @@ public class TowerScript : MonoBehaviour
     FireVariables fireVariables = new FireVariables();
     class FireVariables
     {
-        float interval = 0.3f;
-        float time = 0.0f;
+        private float interval = 0.3f;
+        private float time = 0.0f;
 
         public bool IsNextInterval()
         {
@@ -24,10 +25,13 @@ public class TowerScript : MonoBehaviour
             }
             return false;
         }
-    }   
+    }    
 
     private void Update()
     {
+        if (!IsDeployed)
+            return;
+
         float delta = Time.deltaTime;
         LookAt(delta);
     }
