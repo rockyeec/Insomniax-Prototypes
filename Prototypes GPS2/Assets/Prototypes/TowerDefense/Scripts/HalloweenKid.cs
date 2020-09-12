@@ -21,6 +21,9 @@ public class HalloweenKid : MonoBehaviour
             this.route.Enqueue(item.position);
         }
         curPoint = this.route.Dequeue();
+
+        Transform caps = GetComponentInChildren<MeshRenderer>().transform;
+        caps.position += Vector3.up * UnityEngine.Random.Range(0.0f, 6.9f) + Vector3.right * UnityEngine.Random.Range(-1.337f, 1.337f);
     }
 
     void Update()
@@ -29,6 +32,8 @@ public class HalloweenKid : MonoBehaviour
         {
             if (route.Count != 0)
                 curPoint = route.Dequeue();
+            else
+                Destroy(gameObject);
         }
         else
         {
