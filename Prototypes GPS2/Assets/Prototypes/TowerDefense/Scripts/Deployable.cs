@@ -11,6 +11,8 @@ public class Deployable : MonoBehaviour
     private Camera cam;
 
     private MeshRenderer[] renderers;
+    private MeshCollider[] colliders;
+
     public enum RendererIndex
     {
         normal = 0,
@@ -25,12 +27,21 @@ public class Deployable : MonoBehaviour
             item.material = materials[(int)index];
         }
     }
+    void SetColliders(bool b)
+    {
+        foreach (var item in colliders)
+        {
+            item.enabled = b;
+        }
+    }
 
     private void Start()
     {
         cam = Camera.main;
         renderers = GetComponentsInChildren<MeshRenderer>();
+        colliders = GetComponentsInChildren<MeshCollider>();
         IsDeployed = false;
+        SetColliders(false);
     }
 
     private void FixedUpdate()
@@ -69,5 +80,6 @@ public class Deployable : MonoBehaviour
     {
         ChangeMaterial(RendererIndex.normal);
         IsDeployed = true;
+        SetColliders(true);
     }
 }
