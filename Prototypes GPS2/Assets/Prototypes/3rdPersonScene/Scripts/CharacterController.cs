@@ -27,8 +27,8 @@ public class CharacterController
         public bool jump = false;
     }
 
-    public Transform transform { get; set; }
-    public Rigidbody rb { get; set; }
+    public Transform transform { get; private set; }
+    public Rigidbody rb { get; private set; }
     public bool hold { get; set; }
 
     private List<FixedTickBehavior> fixedTicks = new List<FixedTickBehavior>();
