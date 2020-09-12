@@ -63,6 +63,6 @@ public class CharacterController
     }
 
     public void LateTick(float delta)
-    { 
+    {
     }
 }
