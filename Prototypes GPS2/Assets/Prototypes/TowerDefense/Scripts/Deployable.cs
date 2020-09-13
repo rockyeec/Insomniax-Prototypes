@@ -49,7 +49,7 @@ public class Deployable : MonoBehaviour
         if (IsDeployed)
             return;
 
-        if (Physics.Raycast(cam.ScreenPointToRay(Input.mousePosition), out RaycastHit hit))
+        if (Physics.Raycast(cam.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, float.PositiveInfinity, ~(1 << 10)))
         {
             bool isDeployable = hit.collider.gameObject.layer == 31;
             
