@@ -21,6 +21,12 @@ public class AnimatorHook : MonoBehaviour
             controller.outputs.animateJump = false;
             animator.CrossFade("Jump", 0.15f);
         }
+
+        if (controller.outputs.animateClimb)
+        {
+            controller.outputs.animateClimb = false;
+            animator.CrossFade("Ledge Up", 0.15f);
+        }
     }
 
     public void FixedTick(float delta)

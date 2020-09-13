@@ -16,6 +16,7 @@ public class PlayerInput : InputParent
         Controller.AddFixedTickBehavior(new CheckGroundBehavior());
         Controller.AddFixedTickBehavior(new LocomotionBehavior());
         Controller.AddFixedTickBehavior(new JumpBehavior());
+        Controller.AddRegularTickBehavior(new ClimbBehavior());
     }
 
     protected override void Tick(float delta)
@@ -26,7 +27,7 @@ public class PlayerInput : InputParent
         cam.LookAround(
             rightJoy.GetVerticalDelta(), 
             rightJoy.GetHorizontalDelta(), 
-            transform.position, 
+            transform.position,
             delta);
 
         // locomotion

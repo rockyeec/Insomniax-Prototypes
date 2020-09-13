@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CheckGroundBehavior : FixedTickBehavior
 {
-    public override void Execute(CharacterController controller, float delta)
+    public override void Execute(CharacterController controller, in float delta)
     {
         Transform transform = controller.CharTransform;
         CharacterController.CustomOutputs outputs = controller.outputs;

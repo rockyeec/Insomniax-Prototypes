@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 157976089020687186}
-  - component: {fileID: 157976089020687188}
   - component: {fileID: 7286585591094095292}
+  - component: {fileID: 2794384847564914059}
   m_Layer: 20
   m_Name: Enemy
   m_TagString: Untagged
@@ -33,19 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &157976089020687188
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 157976089020687191}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &7286585591094095292
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58,6 +45,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9338660378b2a6648bb9eb18ce4e680f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!135 &2794384847564914059
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 157976089020687191}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1001 &157976088710172727
 PrefabInstance:
   m_ObjectHideFlags: 0

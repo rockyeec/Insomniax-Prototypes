@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class JumpBehavior : FixedTickBehavior
 {
-    public override void Execute(CharacterController controller, float delta)
+    public override void Execute(CharacterController controller, in float delta)
     {
         if (controller.inputs.jumpRelease)
         {

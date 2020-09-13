@@ -26,6 +26,7 @@ public class CharacterController
         public float horizontal = 0.0f;
         public float deltaRot = 0.0f;
         public bool animateJump = false;
+        public bool animateClimb = false;
     }
 
     public Transform CharTransform { get; private set; }
@@ -55,7 +56,7 @@ public class CharacterController
     {
         foreach (var item in regularTicks)
         {
-            item.Execute(this, delta);
+            item.Execute(this, in delta);
         }
     }
 
@@ -63,7 +64,7 @@ public class CharacterController
     {
         foreach (var item in fixedTicks)
         {
-            item.Execute(this, delta);
+            item.Execute(this, in delta);
         }
     }
 

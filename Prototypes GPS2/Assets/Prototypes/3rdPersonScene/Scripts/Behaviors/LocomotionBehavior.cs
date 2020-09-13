@@ -8,7 +8,7 @@ public class LocomotionBehavior : FixedTickBehavior
     readonly float speed = 369.0f;
     readonly float slerpRate = 6.9f;
 
-    public override void Execute(CharacterController controller, float delta)
+    public override void Execute(CharacterController controller, in float delta)
     {
         if (controller.Hold)
         {

@@ -58,14 +58,14 @@ public class Camera3rdPerson : MonoBehaviour
     }
 
     // Camera Update function
-    public void LookAround(float pitchInput, float yawInput, Vector3 target, float delta)
+    public void LookAround(float pitchInput, float yawInput, in Vector3 target, float delta)
     {
-        FollowTarget(target);
+        FollowTarget(in target);
         LookAround(pitchInput, yawInput);
         ReactToWall(delta);
     }
 
-    private void FollowTarget(Vector3 target)
+    private void FollowTarget(in Vector3 target)
     {
         transform.position = target;
     }

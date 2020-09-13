@@ -145,7 +145,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4834901216101704759}
   - component: {fileID: 4834901216101704758}
-  - component: {fileID: 4834901216101704756}
+  - component: {fileID: 2053329864}
   m_Layer: 20
   m_Name: Player
   m_TagString: Untagged
@@ -184,8 +184,8 @@ MonoBehaviour:
   leftJoy: {fileID: 4834901215900816365}
   rightJoy: {fileID: 8029590581215845013}
   cam: {fileID: 8415789906703068119}
---- !u!65 &4834901216101704756
-BoxCollider:
+--- !u!135 &2053329864
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -195,7 +195,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Radius: 0.5
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &4834901217262337863
 GameObject:
