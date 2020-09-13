@@ -52,7 +52,7 @@ public class CharacterController
         CharTransform = rb.transform;
     }
 
-    public void Tick(float delta)
+    public void Tick(in float delta)
     {
         foreach (var item in regularTicks)
         {
@@ -60,7 +60,7 @@ public class CharacterController
         }
     }
 
-    public void FixedTick(float delta)
+    public void FixedTick(in float delta)
     {
         foreach (var item in fixedTicks)
         {
@@ -68,7 +68,7 @@ public class CharacterController
         }
     }
 
-    /*public void LateTick(float delta)
+    /*public void LateTick(in float delta)
     {
     }*/
 }

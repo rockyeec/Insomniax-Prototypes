@@ -29,9 +29,10 @@ public class EnemyInput : InputParent
         Controller.AddFixedTickBehavior(new CheckGroundBehavior());
         Controller.AddFixedTickBehavior(new LocomotionBehavior());
         //Controller.AddFixedTickBehavior(new JumpBehavior());
+        Controller.AddRegularTickBehavior(new ClimbBehavior());
     }
 
-    protected override void Tick(float delta)
+    protected override void Tick(in float delta)
     {
         base.Tick(delta);
 
@@ -52,12 +53,12 @@ public class EnemyInput : InputParent
         }*/
     }
 
-    protected override void FixedTick(float delta)
+    protected override void FixedTick(in float delta)
     {
         base.FixedTick(delta);
     }
 
-    protected override void LateTick(float delta)
+    protected override void LateTick(in float delta)
     {
         base.LateTick(delta);
     }

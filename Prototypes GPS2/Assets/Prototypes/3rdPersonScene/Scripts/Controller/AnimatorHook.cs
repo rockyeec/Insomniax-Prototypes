@@ -7,14 +7,13 @@ public class AnimatorHook : MonoBehaviour
     private Animator animator;
     private CharacterController controller;
 
-
     public void Init(Animator a, CharacterController c)
     {
         animator = a;
         controller = c;
     }
 
-    public void Tick(/*float delta*/)
+    public void Tick(/*in float delta*/)
     {
         if (controller.outputs.animateJump)
         {
@@ -29,7 +28,7 @@ public class AnimatorHook : MonoBehaviour
         }
     }
 
-    public void FixedTick(float delta)
+    public void FixedTick(in float delta)
     {
         animator.SetFloat("vertical", controller.outputs.vertical, 0.08f, delta);
 
@@ -42,7 +41,7 @@ public class AnimatorHook : MonoBehaviour
         animator.SetBool("falling", controller.Rb.velocity.y < -0.1f);
     }
 
-    public void SetHold(bool b)
+    public void SetHold(in bool b)
     {
         controller.Hold = b;
     }

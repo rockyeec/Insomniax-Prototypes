@@ -19,7 +19,7 @@ public class PlayerInput : InputParent
         Controller.AddRegularTickBehavior(new ClimbBehavior());
     }
 
-    protected override void Tick(float delta)
+    protected override void Tick(in float delta)
     {
         base.Tick(delta);
 
@@ -47,12 +47,12 @@ public class PlayerInput : InputParent
         }
     }
 
-    protected override void FixedTick(float delta)
+    protected override void FixedTick(in float delta)
     {
         base.FixedTick(delta);
     }
 
-    protected override void LateTick(float delta)
+    protected override void LateTick(in float delta)
     {
         base.LateTick(delta);
     }

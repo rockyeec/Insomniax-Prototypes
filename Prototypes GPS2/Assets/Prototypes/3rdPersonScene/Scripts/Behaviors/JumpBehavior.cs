@@ -9,6 +9,10 @@ public class JumpBehavior : FixedTickBehavior
         if (controller.inputs.jumpRelease)
         {
             controller.inputs.jumpRelease = false;
+
+            if (controller.Hold)
+                return;
+
             if (controller.Rb.velocity.y >= 0.02f)
             {
                 Vector3 rbVel = controller.Rb.velocity;
@@ -21,6 +25,9 @@ public class JumpBehavior : FixedTickBehavior
             return;
 
         controller.inputs.jump = false;
+
+        if (controller.Hold)
+            return;
 
         if (!controller.outputs.onGround)
             return;

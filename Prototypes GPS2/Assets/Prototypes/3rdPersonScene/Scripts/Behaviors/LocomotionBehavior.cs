@@ -39,6 +39,9 @@ public class LocomotionBehavior : FixedTickBehavior
         }
 
         // movement
+        if (Physics.Raycast(transform.position + Vector3.up, inputs.MoveDir, 0.69f, 1 << 0))
+            zeroPitchMoveDir = Vector3.zero;
+        
         zeroPitchMoveDir *= delta * speed * outputs.vertical;
         if (!outputs.onGround)
         {

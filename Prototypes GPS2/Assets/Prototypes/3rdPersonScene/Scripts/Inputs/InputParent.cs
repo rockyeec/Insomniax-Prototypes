@@ -21,25 +21,25 @@ public class InputParent : MonoBehaviour
     {
         float delta = Time.deltaTime;
         Tick(delta);
-        Controller.Tick(delta);
-        animatorHook.Tick(/*delta*/);
+        Controller.Tick(in delta);
+        animatorHook.Tick(/*in delta*/);
     }
     private void FixedUpdate()
     {
         float delta = Time.fixedDeltaTime;
-        FixedTick(delta);
-        Controller.FixedTick(delta);
-        animatorHook.FixedTick(delta);
+        FixedTick(in delta);
+        Controller.FixedTick(in delta);
+        animatorHook.FixedTick(in delta);
     }
     private void LateUpdate()
     {
         float delta = Time.deltaTime;
-        LateTick(delta);
+        LateTick(in delta);
         //controller.LateTick(delta);
     }
 
     protected virtual void Init() { }
-    protected virtual void Tick(float delta) { }
-    protected virtual void FixedTick(float delta) { }
-    protected virtual void LateTick(float delta) { }
+    protected virtual void Tick(in float delta) { }
+    protected virtual void FixedTick(in float delta) { }
+    protected virtual void LateTick(in float delta) { }
 }
