@@ -1,17 +1,56 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TowerDefenseGameMaanager : MonoBehaviour
 {
     [SerializeField] private Transform routeParent;
     [SerializeField] private GameObject kid = null;
-    [SerializeField] private ButtonScript tower1Button = null;
-    [SerializeField] private GameObject tower = null;
+
+
+    [SerializeField] private GameObject buttonPrefab = null;
+    [SerializeField] private Transform buttonsParent = null;
     [SerializeField] private Transform towersParent = null;
 
+    //------------------------------------------------------------
     // temp
     public KidsRoute route = new KidsRoute();
+
+    [SerializeField] private ButtonScript AddTowersTestButton = null;
+    //------------------------------------------------------------
+
+    [System.Serializable]
+    public class AvailableTower
+    {
+        [SerializeField] private GameObject tower = null;
+        [SerializeField] private Sprite sprite = null;
+        private ButtonScript button = null;
+        private Transform towersParent;
+
+        public void AddToAvailable(GameObject buttonPrefab, Transform buttonParent, Transform towersParent)
+        {
+            this.towersParent = towersParent;
+            button = Instantiate(buttonPrefab, buttonParent).GetComponent<ButtonScript>();
+            button.GetComponent<Image>().sprite = sprite;
+            button.GetComponentInChildren<Text>().text = tower.name;
+        }
+        public void Tick()
+        {
+            if (button.IsDown)
+            {
+                Instantiate(tower, towersParent);
+            }
+        }
+    }
+
+    // add from to-be-available list as player unlocks new towers
+    readonly private List<AvailableTower> availableTowers = new List<AvailableTower>();
+
+    // ALL towers ever in this game, assigned in the inspector
+    [SerializeField] private List<AvailableTower> toBeAvailableList = new List<AvailableTower>();
+
+
 
     private void Awake()
     {        
@@ -26,16 +65,18 @@ public class TowerDefenseGameMaanager : MonoBehaviour
         route.points = pointList.ToArray();
     }
 
-    void CreateTower1()
-    {
-        Instantiate(tower, towersParent);
-    }
-
     readonly float interval = 0.69f;
     float time = 0.0f;
 
     private void Update()
     {
+        foreach (var item in availableTowers)
+        {
+            item.Tick();
+        }
+
+
+        // temp---------------------------------------------
         if (Time.time >= time)
         {
             time = Time.time + interval;
@@ -47,9 +88,15 @@ public class TowerDefenseGameMaanager : MonoBehaviour
             }
         }
 
-        if (tower1Button.IsDown)
+        if (AddTowersTestButton.IsDown)
         {
-            CreateTower1();
+            if (toBeAvailableList.Count != 0)
+            {
+                availableTowers.Add(toBeAvailableList[0]);
+                toBeAvailableList[0].AddToAvailable(buttonPrefab, buttonsParent, towersParent);
+                toBeAvailableList.RemoveAt(0);
+            }
         }
+        //----------------------------------------------------
     }
 }

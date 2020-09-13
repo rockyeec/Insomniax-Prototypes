@@ -6,6 +6,7 @@ public class Deployable : MonoBehaviour
 {
     [Header("Deploy Attributes")]
     [SerializeField] private Material[] materials = null;
+    [SerializeField] private int canDeployOnLayer = 31;
 
     protected bool IsDeployed { get; private set; }
     private Camera cam;
@@ -51,7 +52,7 @@ public class Deployable : MonoBehaviour
 
         if (Physics.Raycast(cam.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, float.PositiveInfinity, ~(1 << 10)))
         {
-            bool isDeployable = hit.collider.gameObject.layer == 31;
+            bool isDeployable = hit.collider.gameObject.layer == canDeployOnLayer;
             
             transform.position = hit.point;            
 
