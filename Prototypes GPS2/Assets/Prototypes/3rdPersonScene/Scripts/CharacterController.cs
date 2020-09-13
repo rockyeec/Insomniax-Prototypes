@@ -47,7 +47,7 @@ public class CharacterController
     public CharacterController(Rigidbody rb)
     {
         rb.constraints = RigidbodyConstraints.FreezeRotation;
-        this.Rb = rb;
+        Rb = rb;
         CharTransform = rb.transform;
     }
 

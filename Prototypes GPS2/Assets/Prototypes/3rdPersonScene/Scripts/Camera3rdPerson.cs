@@ -87,7 +87,7 @@ public class Camera3rdPerson : MonoBehaviour
         {
             Vector3 point = railRef.rotation * item + railRef.position;
 
-            Debug.DrawLine(pivot.transform.position, point);
+            //Debug.DrawLine(pivot.transform.position, point);
             
             if (Physics.Linecast(pivot.transform.position, point, out RaycastHit hit, 1 << 0))
             {
