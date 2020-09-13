@@ -42,6 +42,7 @@ public class LocomotionBehavior : FixedTickBehavior
         zeroPitchMoveDir *= delta * speed * outputs.vertical;
         if (!outputs.onGround)
         {
+            // fall
             zeroPitchMoveDir.y = rb.velocity.y - 0.420f;
         }
         rb.velocity = zeroPitchMoveDir;

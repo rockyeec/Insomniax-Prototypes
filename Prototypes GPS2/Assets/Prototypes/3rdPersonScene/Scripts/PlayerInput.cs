@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerInput : InputParent
 {
@@ -24,7 +23,11 @@ public class PlayerInput : InputParent
         base.Tick(delta);
 
         // camera
-        cam.LookAround(rightJoy.GetVerticalDelta(), rightJoy.GetHorizontalDelta(), transform.position);
+        cam.LookAround(
+            rightJoy.GetVerticalDelta(), 
+            rightJoy.GetHorizontalDelta(), 
+            transform.position, 
+            delta);
 
         // locomotion
         float hor = leftJoy.GetHorizontal();
