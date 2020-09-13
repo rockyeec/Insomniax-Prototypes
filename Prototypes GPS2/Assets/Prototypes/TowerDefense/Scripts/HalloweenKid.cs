@@ -23,7 +23,7 @@ public class HalloweenKid : MonoBehaviour
         curPoint = this.route.Dequeue();
 
         Transform caps = GetComponentInChildren<MeshRenderer>().transform;
-        caps.position += Vector3.up * UnityEngine.Random.Range(0.0f, 6.9f) + Vector3.right * UnityEngine.Random.Range(-1.337f, 1.337f);
+        caps.position += Vector3.up * UnityEngine.Random.Range(0.0f, 4.20f) + Vector3.right * UnityEngine.Random.Range(-1.337f, 1.337f);
     }
 
     void Update()
@@ -37,7 +37,7 @@ public class HalloweenKid : MonoBehaviour
         }
         else
         {
-            Vector3 pos = Vector3.MoveTowards(transform.position, curPoint, 6.9f * Time.deltaTime);
+            Vector3 pos = Vector3.MoveTowards(transform.position, curPoint, 4.20f * Time.deltaTime);
             transform.position = pos;
         }
     }

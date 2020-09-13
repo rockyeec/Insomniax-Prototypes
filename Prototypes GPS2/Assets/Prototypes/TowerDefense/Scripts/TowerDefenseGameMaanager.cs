@@ -65,7 +65,7 @@ public class TowerDefenseGameMaanager : MonoBehaviour
         route.points = pointList.ToArray();
     }
 
-    readonly float interval = 0.69f;
+    float interval = 1.337f;
     float time = 0.0f;
 
     private void Update()
@@ -79,6 +79,10 @@ public class TowerDefenseGameMaanager : MonoBehaviour
         // temp---------------------------------------------
         if (Time.time >= time)
         {
+            if (interval > 0.1337f)
+                interval *= 0.5f;
+            else
+                interval = 6.9f;
             time = Time.time + interval;
 
             HalloweenKid localKid = Instantiate(kid, route.points[0].position, Quaternion.identity).GetComponent<HalloweenKid>();
