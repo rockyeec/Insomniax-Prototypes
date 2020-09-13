@@ -11,8 +11,6 @@ public class Camera3rdPerson : MonoBehaviour
 
     private float pitch = 0.0f;
     private float yaw = 0.0f;
-    private float pitchVel = 0.0f;
-    private float yawVel = 0.0f;
 
     private void Awake()
     {

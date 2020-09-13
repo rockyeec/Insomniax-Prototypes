@@ -7,14 +7,15 @@ public class CharacterController
     public CustomInputs inputs = new CustomInputs();
     public class CustomInputs
     {
-        public Vector3 moveDir { get; private set; }
+        public Vector3 MoveDir { get; private set; }
 
         public void SmoothMoveInput(Vector3 value, float delta)
         {
-            moveDir = Vector3.MoveTowards(moveDir, value, delta * 6.9f);
+            MoveDir = Vector3.MoveTowards(MoveDir, value, delta * 6.9f);
         }
 
         public bool jump = false;
+        public bool jumpRelease = false;
     }
 
     public CustomOutputs outputs = new CustomOutputs();
@@ -24,15 +25,15 @@ public class CharacterController
         public float vertical = 0.0f;
         public float horizontal = 0.0f;
         public float deltaRot = 0.0f;
-        public bool jump = false;
+        public bool animateJump = false;
     }
 
-    public Transform transform { get; private set; }
-    public Rigidbody rb { get; private set; }
-    public bool hold { get; set; }
+    public Transform CharTransform { get; private set; }
+    public Rigidbody Rb { get; private set; }
+    public bool Hold { get; set; }
 
-    private List<FixedTickBehavior> fixedTicks = new List<FixedTickBehavior>();
-    private List<RegularTickBehavior> regularTicks = new List<RegularTickBehavior>();
+    readonly private List<FixedTickBehavior> fixedTicks = new List<FixedTickBehavior>();
+    readonly private List<RegularTickBehavior> regularTicks = new List<RegularTickBehavior>();
     public void AddFixedTickBehavior(FixedTickBehavior behavior)
     {
         fixedTicks.Add(behavior);
@@ -46,8 +47,8 @@ public class CharacterController
     public CharacterController(Rigidbody rb)
     {
         rb.constraints = RigidbodyConstraints.FreezeRotation;
-        this.rb = rb;
-        transform = rb.transform;
+        this.Rb = rb;
+        CharTransform = rb.transform;
     }
 
     public void Tick(float delta)
@@ -66,7 +67,7 @@ public class CharacterController
         }
     }
 
-    public void LateTick(float delta)
+    /*public void LateTick(float delta)
     {
-    }
+    }*/
 }

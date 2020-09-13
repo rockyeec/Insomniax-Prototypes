@@ -5,29 +5,28 @@ using UnityEngine;
 public class LocomotionBehavior : FixedTickBehavior
 {
     // temp
-    float speed = 369.0f;
-    float slerpRate = 6.9f;
+    readonly float speed = 369.0f;
+    readonly float slerpRate = 6.9f;
 
     public override void Execute(CharacterController controller, float delta)
     {
-        if (controller.hold)
+        if (controller.Hold)
         {
-            controller.rb.velocity = Vector3.zero;
+            controller.Rb.velocity = Vector3.zero;
             return;
         }
 
         CharacterController.CustomInputs inputs = controller.inputs;
         CharacterController.CustomOutputs outputs = controller.outputs;
-        Transform transform = controller.transform;
-        Rigidbody rb = controller.rb;
+        Transform transform = controller.CharTransform;
+        Rigidbody rb = controller.Rb;
 
-
-        Vector3 zeroPitchMoveDir = inputs.moveDir;
+        Vector3 zeroPitchMoveDir = inputs.MoveDir;
         zeroPitchMoveDir.y = 0.0f;
         zeroPitchMoveDir.Normalize();
 
         // for animator hook
-        outputs.vertical = inputs.moveDir.sqrMagnitude;
+        outputs.vertical = inputs.MoveDir.sqrMagnitude;
         outputs.horizontal = Vector3.Dot(transform.right, zeroPitchMoveDir);
         outputs.deltaRot = Vector3.Dot(transform.forward, zeroPitchMoveDir);
 

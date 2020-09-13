@@ -6,7 +6,7 @@ public class CheckGroundBehavior : FixedTickBehavior
 {
     public override void Execute(CharacterController controller, float delta)
     {
-        Transform transform = controller.transform;
+        Transform transform = controller.CharTransform;
         CharacterController.CustomOutputs outputs = controller.outputs;
 
         Ray ray = new Ray(transform.position + 1.0f * Vector3.up, Vector3.down);

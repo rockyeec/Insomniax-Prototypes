@@ -37,7 +37,7 @@ public class TowerDefenseGameMaanager : MonoBehaviour
         Instantiate(tower, towersParent);
     }
 
-    float interval = 0.69f;
+    readonly float interval = 0.69f;
     float time = 0.0f;
 
     private void Update()

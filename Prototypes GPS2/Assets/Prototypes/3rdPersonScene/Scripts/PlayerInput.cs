@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerInput : InputParent
 {
-    [SerializeField] private Button jumpButton = null;
+    [SerializeField] private ButtonScript jumpButton = null;
     [SerializeField] private JoystickScript leftJoy = null;
     [SerializeField] private JoystickScript rightJoy = null;
     [SerializeField] private Camera3rdPerson cam = null;
@@ -13,24 +13,34 @@ public class PlayerInput : InputParent
     protected override void Init()
     {
         base.Init();
-        jumpButton.onClick.AddListener(Jump);
 
-        controller.AddFixedTickBehavior(new CheckGroundBehavior());
-        controller.AddFixedTickBehavior(new LocomotionBehavior());
-        controller.AddFixedTickBehavior(new JumpBehavior());
+        Controller.AddFixedTickBehavior(new CheckGroundBehavior());
+        Controller.AddFixedTickBehavior(new LocomotionBehavior());
+        Controller.AddFixedTickBehavior(new JumpBehavior());
     }
 
     protected override void Tick(float delta)
     {
         base.Tick(delta);
 
+        // camera
         cam.LookAround(rightJoy.GetVerticalDelta(), rightJoy.GetHorizontalDelta(), transform.position);
 
-
+        // locomotion
         float hor = leftJoy.GetHorizontal();
         float ver = leftJoy.GetVertical();
+        Controller.inputs.SmoothMoveInput(cam.GetRotation() * new Vector3(hor, 0.0f, ver), delta);
+        
+        // jump
+        if (jumpButton.IsDown)
+        {
+            Controller.inputs.jump = true;
+        }
 
-        controller.inputs.SmoothMoveInput(cam.GetRotation() * new Vector3(hor, 0.0f, ver), delta);        
+        if (jumpButton.IsUp)
+        {
+            Controller.inputs.jumpRelease = true;
+        }
     }
 
     protected override void FixedTick(float delta)
@@ -41,11 +51,5 @@ public class PlayerInput : InputParent
     protected override void LateTick(float delta)
     {
         base.LateTick(delta);
-    }
-
-
-    private void Jump()
-    {
-        controller.inputs.jump = true;
     }
 }

@@ -5,15 +5,15 @@ using UnityEngine;
 
 public class InputParent : MonoBehaviour
 {
-    protected CharacterController controller { get; private set; }
+    protected CharacterController Controller { get; private set; }
     private AnimatorHook animatorHook = null;
 
     private void Awake()
     {
-        controller = new CharacterController(gameObject.AddComponent<Rigidbody>());
+        Controller = new CharacterController(gameObject.AddComponent<Rigidbody>());
         Animator anim = transform.GetComponentInChildren<Animator>();
         animatorHook = anim.gameObject.AddComponent<AnimatorHook>();
-        animatorHook.Init(anim, controller);
+        animatorHook.Init(anim, Controller);
         Init();
     }
 
@@ -21,21 +21,21 @@ public class InputParent : MonoBehaviour
     {
         float delta = Time.deltaTime;
         Tick(delta);
-        controller.Tick(delta);
-        animatorHook.Tick(delta);
+        Controller.Tick(delta);
+        animatorHook.Tick(/*delta*/);
     }
     private void FixedUpdate()
     {
         float delta = Time.fixedDeltaTime;
         FixedTick(delta);
-        controller.FixedTick(delta);
+        Controller.FixedTick(delta);
         animatorHook.FixedTick(delta);
     }
     private void LateUpdate()
     {
         float delta = Time.deltaTime;
         LateTick(delta);
-        controller.LateTick(delta);
+        //controller.LateTick(delta);
     }
 
     protected virtual void Init() { }

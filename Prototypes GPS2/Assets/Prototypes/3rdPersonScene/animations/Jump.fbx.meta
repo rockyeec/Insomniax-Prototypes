@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 8e191c3c7001dcd48aa8f8d8029b377c
 ModelImporter:
-  serializedVersion: 20101
+  serializedVersion: 19300
   internalIDToNameTable:
   - first:
       74: -203655887218126122
@@ -38,7 +38,7 @@ ModelImporter:
       name: Jump
       takeName: mixamo.com
       internalID: 0
-      firstFrame: 0
+      firstFrame: 3.7
       lastFrame: 18.3
       wrapMode: 0
       orientationOffsetY: 0
@@ -58,14 +58,7 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events:
-      - time: 0.1490005
-        functionName: Jump
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
+      events: []
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -82,13 +75,11 @@ ModelImporter:
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
-    fileIdsGeneration: 2
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1
-    bakeAxisConversion: 0
     preserveHierarchy: 0
     skinWeightsMode: 0
     maxBonesPerVertex: 4
@@ -98,9 +89,6 @@ ModelImporter:
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
-    secondaryUVMarginMethod: 1
-    secondaryUVMinLightmapResolution: 40
-    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
