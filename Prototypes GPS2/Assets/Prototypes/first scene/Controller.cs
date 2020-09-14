@@ -88,7 +88,7 @@ public class Controller : MonoBehaviour
         Instantiate(bullet, firePoint.position, bulletRot);
         firePoint.parent.localRotation = Quaternion.Euler(-36.9f, 0.0f, 0.0f);
         audS.PlayOneShot(fireClip);
-        Vibrator.Vibrate();
+        //Vibrator.Vibrate();
     }
 
     void RecoilRecover()

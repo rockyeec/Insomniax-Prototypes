@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class Vibrator
 {
-#if UNITY_ANDROID && !UNITY_EDITOR
+/*#if UNITY_ANDROID && !UNITY_EDITOR
     public static AndroidJavaClass unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
     public static AndroidJAvaObject currentActivity = unitiyPlayer.GetStatic<AndroidJavaObject>("currentActivity");
     public static AndroidJavaObject vibrator = currentActivity.Call<AndroidJavaObject>("getSystemService", "vibrator");
@@ -38,5 +38,5 @@ public static class Vibrator
 #else
         return false;
 #endif
-    }
+    }*/
 }

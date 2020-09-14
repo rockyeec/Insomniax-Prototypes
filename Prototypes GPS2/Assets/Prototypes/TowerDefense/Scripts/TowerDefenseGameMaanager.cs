@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class TowerDefenseGameMaanager : MonoBehaviour
 {
-    [SerializeField] private Transform routeParent;
+    [SerializeField] private Transform routeParent = null;
     [SerializeField] private GameObject kid = null;
 
 
