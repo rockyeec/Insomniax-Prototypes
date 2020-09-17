@@ -1,8 +1,6 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.PlayerLoop;
 
 public class ButtonScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
