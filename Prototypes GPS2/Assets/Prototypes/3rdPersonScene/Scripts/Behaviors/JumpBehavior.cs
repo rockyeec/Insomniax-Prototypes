@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JumpBehavior : FixedTickBehavior
+public class JumpBehavior : Behavior
 {
     public override void Execute(CharacterController controller, in float delta)
     {

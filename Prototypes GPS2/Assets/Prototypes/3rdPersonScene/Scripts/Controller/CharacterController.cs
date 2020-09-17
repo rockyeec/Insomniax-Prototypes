@@ -33,13 +33,13 @@ public class CharacterController
     public Rigidbody Rb { get; private set; }
     public bool Hold { get; set; }
 
-    readonly private List<FixedTickBehavior> fixedTicks = new List<FixedTickBehavior>();
-    readonly private List<RegularTickBehavior> regularTicks = new List<RegularTickBehavior>();
-    public void AddFixedTickBehavior(FixedTickBehavior behavior)
+    readonly private List<Behavior> fixedTicks = new List<Behavior>();
+    readonly private List<Behavior> regularTicks = new List<Behavior>();
+    public void AddFixedTickBehavior(Behavior behavior)
     {
         fixedTicks.Add(behavior);
     }
-    public void AddRegularTickBehavior(RegularTickBehavior behavior)
+    public void AddRegularTickBehavior(Behavior behavior)
     {
         regularTicks.Add(behavior);
     }

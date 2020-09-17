@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CheckGroundBehavior : FixedTickBehavior
+public class CheckGroundBehavior : Behavior
 {
     public override void Execute(CharacterController controller, in float delta)
     {

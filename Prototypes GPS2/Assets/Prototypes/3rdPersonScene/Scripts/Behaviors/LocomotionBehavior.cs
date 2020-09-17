@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LocomotionBehavior : FixedTickBehavior
+public class LocomotionBehavior : Behavior
 {
     // temp
     readonly float speed = 369.0f;

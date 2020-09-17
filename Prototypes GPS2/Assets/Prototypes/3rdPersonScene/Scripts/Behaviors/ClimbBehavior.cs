@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ClimbBehavior : RegularTickBehavior
+public class ClimbBehavior : Behavior
 {
     private readonly Vector3 rayOri = new Vector3(0.0f, 2.0f, 0.69f);
     private readonly float rayLength = 1.337f;
