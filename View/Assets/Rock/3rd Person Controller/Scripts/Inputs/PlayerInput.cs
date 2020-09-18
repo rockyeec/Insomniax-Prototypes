@@ -45,13 +45,29 @@ public class PlayerInput : InputParent
         }
     }
 
-    protected override void FixedTick(in float delta)
+    //protected override void FixedTick(in float delta)
+    //{
+    //    base.FixedTick(delta);
+    //}
+    //
+    //protected override void LateTick(in float delta)
+    //{
+    //    base.LateTick(delta);
+    //}
+
+    protected override void OnGamePause()
     {
-        base.FixedTick(delta);
+        base.OnGamePause();
+        jumpButton.gameObject.SetActive(false);
+        leftJoy.gameObject.SetActive(false);
+        rightJoy.gameObject.SetActive(false);
     }
 
-    protected override void LateTick(in float delta)
+    protected override void OnGameUnpause()
     {
-        base.LateTick(delta);
+        base.OnGameUnpause();
+        jumpButton.gameObject.SetActive(true);
+        leftJoy.gameObject.SetActive(true);
+        rightJoy.gameObject.SetActive(true);
     }
 }

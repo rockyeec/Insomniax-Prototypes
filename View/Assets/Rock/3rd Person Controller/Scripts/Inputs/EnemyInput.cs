@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class EnemyInput : InputParent
 {
@@ -28,7 +26,6 @@ public class EnemyInput : InputParent
 
         Controller.AddFixedTickBehavior(new CheckGroundBehavior());
         Controller.AddFixedTickBehavior(new LocomotionBehavior());
-        //Controller.AddFixedTickBehavior(new JumpBehavior());
         Controller.AddRegularTickBehavior(new ClimbBehavior());
     }
 
@@ -40,26 +37,15 @@ public class EnemyInput : InputParent
 
         // locomotion
         Controller.inputs.SmoothMoveInput(direction, delta);
-
-        // jump
-        /*if (jumpButton.IsDown)
-        {
-            Controller.inputs.jump = true;
-        }
-
-        if (jumpButton.IsUp)
-        {
-            Controller.inputs.jumpRelease = true;
-        }*/
     }
 
-    protected override void FixedTick(in float delta)
-    {
-        base.FixedTick(delta);
-    }
-
-    protected override void LateTick(in float delta)
-    {
-        base.LateTick(delta);
-    }
+    //protected override void FixedTick(in float delta)
+    //{
+    //    base.FixedTick(delta);
+    //}
+    //
+    //protected override void LateTick(in float delta)
+    //{
+    //    base.LateTick(delta);
+    //}
 }
