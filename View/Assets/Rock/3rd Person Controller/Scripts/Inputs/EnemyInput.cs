@@ -39,6 +39,16 @@ public class EnemyInput : InputParent
         Controller.inputs.SmoothMoveInput(direction, delta);
     }
 
+    protected override void OnGlassesOn()
+    {
+        
+    }
+
+    protected override void OnGlassesOff()
+    {
+        
+    }
+
     //protected override void FixedTick(in float delta)
     //{
     //    base.FixedTick(delta);
