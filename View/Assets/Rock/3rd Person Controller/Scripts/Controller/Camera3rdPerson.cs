@@ -27,6 +27,11 @@ public class Camera3rdPerson : MonoBehaviour
     {
         cam = Camera.main;
         cam.transform.SetParent(vibrator);
+
+        pitch = cam.transform.eulerAngles.x;
+        yaw = cam.transform.eulerAngles.y;
+
+
         cam.transform.localPosition = Vector3.zero;
         cam.transform.localRotation = Quaternion.identity;
     }

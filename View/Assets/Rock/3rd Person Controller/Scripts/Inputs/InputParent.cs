@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class InputParent : ViewEntity
+public abstract class InputParent : ViewEntity
 {
     protected CharacterController Controller { get; private set; }
     private AnimatorHook animatorHook = null;

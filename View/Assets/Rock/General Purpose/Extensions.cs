@@ -13,4 +13,11 @@ public static class Extensions
     {
         return items[Random.Range(0, items.Count)];
     }
+
+    public static bool IsCloseTo(this Vector3 lhs, in Vector3 rhs, in float minDistance)
+    {
+        return Mathf.Abs(lhs.x - rhs.x) < minDistance
+            && Mathf.Abs(lhs.y - rhs.y) < minDistance
+            && Mathf.Abs(lhs.z - rhs.z) < minDistance;
+    }
 }
