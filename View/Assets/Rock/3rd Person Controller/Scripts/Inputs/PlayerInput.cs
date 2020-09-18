@@ -45,13 +45,13 @@ public class PlayerInput : InputParent
         }
     }
 
-    protected override void FixedTick(in float delta)
-    {
-        base.FixedTick(delta);
-    }
-
-    protected override void LateTick(in float delta)
-    {
-        base.LateTick(delta);
-    }
+    //protected override void FixedTick(in float delta)
+    //{
+    //    base.FixedTick(delta);
+    //}
+    //
+    //protected override void LateTick(in float delta)
+    //{
+    //    base.LateTick(delta);
+    //}
 }
