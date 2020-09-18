@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class GameScript : MonoBehaviour
@@ -10,12 +11,16 @@ public class GameScript : MonoBehaviour
     [SerializeField] private Button unpauseButton = null;
     [SerializeField] private Button glassesButton = null;
 
+    private CameraSpecialEffects cam;
+
     private void Awake()
     {
         menuButton.onClick.AddListener(Pause);
         unpauseButton.onClick.AddListener(Unpause);
 
         SetButtonVisibilityIfPauseIs(false);
+
+        cam = Camera.main.gameObject.AddComponent<CameraSpecialEffects>();
     }
 
     private void Pause()
@@ -23,6 +28,8 @@ public class GameScript : MonoBehaviour
         OnPause();
         Time.timeScale = 0.0f;
         SetButtonVisibilityIfPauseIs(true);
+
+        cam.ZoomOut();
     }
 
     private void Unpause()
@@ -30,6 +37,8 @@ public class GameScript : MonoBehaviour
         OnUnpause();
         Time.timeScale = 1.0f;
         SetButtonVisibilityIfPauseIs(false);
+
+        cam.ZoomIn();
     }
 
     private void SetButtonVisibilityIfPauseIs(bool isPause)
@@ -38,4 +47,5 @@ public class GameScript : MonoBehaviour
         glassesButton.gameObject.SetActive(!isPause);
         unpauseButton.gameObject.SetActive(isPause);
     }
+
 }
