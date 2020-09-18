@@ -108,7 +108,7 @@ public class PlayerInput : InputParent
 
         transform.position = Vector3.Lerp(transform.position, originalPos, delta * lerpRate);
         transform.rotation = Quaternion.Slerp(transform.rotation, originalRot, delta * lerpRate);
-        if (transform.position.IsCloseTo(originalPos, 3.0f))
+        if (transform.position.IsCloseTo(originalPos, 2.5f))
         {
             transform.position = originalPos;
             transform.rotation = originalRot;
