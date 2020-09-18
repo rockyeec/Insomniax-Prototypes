@@ -54,4 +54,20 @@ public class PlayerInput : InputParent
     //{
     //    base.LateTick(delta);
     //}
+
+    protected override void OnGamePause()
+    {
+        base.OnGamePause();
+        jumpButton.gameObject.SetActive(false);
+        leftJoy.gameObject.SetActive(false);
+        rightJoy.gameObject.SetActive(false);
+    }
+
+    protected override void OnGameUnpause()
+    {
+        base.OnGameUnpause();
+        jumpButton.gameObject.SetActive(true);
+        leftJoy.gameObject.SetActive(true);
+        rightJoy.gameObject.SetActive(true);
+    }
 }
