@@ -14,21 +14,21 @@ public class InputParent : ViewEntity
         Init();
     }
 
-    protected override void ViewUpdate()
+    protected override void UpdateEntity()
     {
         float delta = Time.deltaTime;
         Tick(delta);
         Controller.Tick(in delta);
         animatorHook.Tick(/*in delta*/);
     }
-    protected override void ViewFixedUpdate()
+    protected override void FixedUpdateEntity()
     {
         float delta = Time.fixedDeltaTime;
         FixedTick(in delta);
         Controller.FixedTick(in delta);
         animatorHook.FixedTick(in delta);
     }
-    protected override void ViewLateUpdate()
+    protected override void LateUpdateEntity()
     {
         float delta = Time.deltaTime;
         LateTick(in delta);

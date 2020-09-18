@@ -1,14 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public abstract class ViewEntity : MonoBehaviour
 {
     private bool isPause;
 
-    private void Awake()
+    private void Start()
     {
         GameScript.OnPause += GameScript_OnPause;
+        GameScript.OnUnpause += GameScript_OnUnpause;
     }
 
     private void OnDestroy()
@@ -16,28 +15,38 @@ public abstract class ViewEntity : MonoBehaviour
         GameScript.OnPause -= GameScript_OnPause;
     }
 
-    private void GameScript_OnPause(bool value)
+    private void GameScript_OnPause()
     {
-        isPause = value;
+        isPause = true;
+        OnGamePause();
+    }
+
+    private void GameScript_OnUnpause()
+    {
+        isPause = false;
+        OnGameUnpause();
     }
 
     private void Update()
     {
         if (isPause) return;
-        ViewUpdate();
+        UpdateEntity();
     }
     private void FixedUpdate()
     {
         if (isPause) return;
-        ViewFixedUpdate();
+        FixedUpdateEntity();
     }
     private void LateUpdate()
     {
         if (isPause) return;
-        ViewLateUpdate();
+        LateUpdateEntity();
     }
 
-    protected abstract void ViewUpdate();
-    protected abstract void ViewFixedUpdate();
-    protected abstract void ViewLateUpdate();
+    protected abstract void UpdateEntity();
+    protected abstract void FixedUpdateEntity();
+    protected abstract void LateUpdateEntity();
+
+    protected virtual void OnGamePause() { }
+    protected virtual void OnGameUnpause() { }
 }

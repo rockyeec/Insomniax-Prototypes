@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Camera3rdPerson : MonoBehaviour
 {
@@ -16,19 +14,21 @@ public class Camera3rdPerson : MonoBehaviour
     private Vector3[] clipPoints;
     private readonly float railDefaultDistance = 2.69f;
 
-    private void Awake()
+    private void Start()
+    {
+        SetUpCamera();
+
+        InitializeClipPoints();
+
+        rail.localPosition = railRef.localPosition = Vector3.back * railDefaultDistance;
+    }
+
+    private void SetUpCamera()
     {
         cam = Camera.main;
         cam.transform.SetParent(vibrator);
         cam.transform.localPosition = Vector3.zero;
         cam.transform.localRotation = Quaternion.identity;
-    }
-
-    private void Start()
-    {
-        InitializeClipPoints();
-
-        rail.localPosition = railRef.localPosition = Vector3.back * railDefaultDistance;
     }
 
     private void InitializeClipPoints()
