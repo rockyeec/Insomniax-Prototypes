@@ -32,7 +32,7 @@ public class ClimbBehavior : Behavior
         Debug.DrawRay(transform.rotation * rayOri + transform.position, Vector3.down * rayLength);
         Ray ray = new Ray(transform.rotation * rayOri + transform.position, Vector3.down);
 
-        if (Physics.Raycast(ray, out RaycastHit hit, rayLength, 1 << 0))
+        if (Physics.Raycast(ray, out RaycastHit hit, rayLength, ~(1 << 20)))
         {
             controller.outputs.animateClimb = true;
             targetPos = hit.point;

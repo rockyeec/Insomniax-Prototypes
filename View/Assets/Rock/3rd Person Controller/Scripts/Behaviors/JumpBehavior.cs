@@ -33,6 +33,6 @@ public class JumpBehavior : Behavior
             return;
 
         controller.outputs.animateJump = true;
-        controller.Rb.AddForce(Vector3.up * 16.9f, ForceMode.Impulse);
+        controller.Rb.AddForce(Vector3.up * 21.337f, ForceMode.Impulse);
     }
 }

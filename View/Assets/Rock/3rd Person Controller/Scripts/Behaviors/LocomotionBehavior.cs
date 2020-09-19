@@ -34,7 +34,10 @@ public class LocomotionBehavior : Behavior
         }
 
         // wall
-        if (Physics.Raycast(transform.position + Vector3.up, inputs.MoveDir, 0.69f, 1 << 0))
+        if (isMoving 
+            && Physics.OverlapSphere(
+                transform.position + Vector3.up + transform.forward * 0.51f, 0.25f)
+            .Length > 0)
             moveDir = Vector3.zero;
         
         // movement
@@ -45,7 +48,7 @@ public class LocomotionBehavior : Behavior
             moveDir *= 0.69f;
 
             // fall
-            moveDir.y = rb.velocity.y - 0.420f;
+            moveDir.y = rb.velocity.y - 1.337f;
         }
         rb.velocity = moveDir;
     }

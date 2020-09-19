@@ -38,8 +38,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -54}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -140, y: 41}
+  m_SizeDelta: {x: 250, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1301266689
 CanvasRenderer:
@@ -158,8 +158,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b461679ecd2721c4d973efefa3aa7311, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outwardsDirection: {x: 0, y: -0.69, z: 0}
+  outwardsDirection: {x: -0.69, y: 0.69, z: 0}
   isSlideInWhenPaused: 1
+  percentageOvershoot: 0.25
 --- !u!1 &1673214317
 GameObject:
   m_ObjectHideFlags: 0
@@ -284,8 +285,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b461679ecd2721c4d973efefa3aa7311, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outwardsDirection: {x: 1, y: 0, z: 0}
+  outwardsDirection: {x: 0.69, y: 0, z: 0}
   isSlideInWhenPaused: 0
+  percentageOvershoot: 0.69
 --- !u!1 &1232935826572323246
 GameObject:
   m_ObjectHideFlags: 0
@@ -321,7 +323,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 79}
+  m_AnchoredPosition: {x: -213.00002, y: 102}
   m_SizeDelta: {x: 1337, y: 420}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5112023130122626010
@@ -348,14 +350,14 @@ MonoBehaviour:
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 32
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 3
     m_MaxSize: 40
@@ -378,8 +380,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b461679ecd2721c4d973efefa3aa7311, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outwardsDirection: {x: 0, y: 0.5, z: 0}
+  outwardsDirection: {x: -0.69, y: 0.69, z: 0}
   isSlideInWhenPaused: 1
+  percentageOvershoot: 0.1337
 --- !u!1 &3761455923566777301
 GameObject:
   m_ObjectHideFlags: 0
@@ -458,8 +461,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b461679ecd2721c4d973efefa3aa7311, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outwardsDirection: {x: -1, y: 0, z: 0}
+  outwardsDirection: {x: -0.69, y: 0, z: 0}
   isSlideInWhenPaused: 0
+  percentageOvershoot: 0.69
 --- !u!1 &4834901215959844512
 GameObject:
   m_ObjectHideFlags: 0
@@ -623,7 +627,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.25
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &4834901217262337863
 GameObject:
@@ -1459,6 +1463,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4834901215959844508}
     m_Modifications:
+    - target: {fileID: 3505660528837701536, guid: f5f48d3137d1a2347891c730b7527a6a,
+        type: 3}
+      propertyPath: outwardsDirection.x
+      value: 0.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 3505660528837701536, guid: f5f48d3137d1a2347891c730b7527a6a,
+        type: 3}
+      propertyPath: percentageOvershoot
+      value: 0.69
+      objectReference: {fileID: 0}
     - target: {fileID: 5120802264027234203, guid: f5f48d3137d1a2347891c730b7527a6a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1513,6 +1527,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5246881620398503220, guid: f5f48d3137d1a2347891c730b7527a6a,
+        type: 3}
+      propertyPath: outwardsDirection.x
+      value: 0.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 5246881620398503220, guid: f5f48d3137d1a2347891c730b7527a6a,
+        type: 3}
+      propertyPath: percentageOvershoot
+      value: 0.69
       objectReference: {fileID: 0}
     - target: {fileID: 8533476126078341175, guid: f5f48d3137d1a2347891c730b7527a6a,
         type: 3}

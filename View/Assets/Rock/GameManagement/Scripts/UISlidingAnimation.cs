@@ -3,14 +3,15 @@ using UnityEngine;
 
 public class UISlidingAnimation : MonoBehaviour
 {
-    [SerializeField] private Vector3 outwardsDirection;
+    [SerializeField] private Vector3 outwardsDirection = Vector3.zero;
     [SerializeField] private bool isSlideInWhenPaused = false;
+    [SerializeField] private float percentageOvershoot = 0.5f;
 
+    readonly private float duration = 0.69f;
     private Vector3 originalPos;
     private Vector3 offScreenPos;
     private Vector3 overshootPos;
 
-    private readonly float duration = 0.69f;
 
     private void Start()
     {
@@ -38,12 +39,12 @@ public class UISlidingAnimation : MonoBehaviour
     private void GameScript_OnPause()
     {
         StopAllCoroutines();
-        StartCoroutine(Slide(offScreenPos/*, 0.1337f*/));
+        StartCoroutine(Slide(offScreenPos, 1 - percentageOvershoot));
     }
     private void GameScript_OnUnpause()
     {
         StopAllCoroutines();
-        StartCoroutine(Slide(originalPos/*, 0.69f*/));
+        StartCoroutine(Slide(originalPos, percentageOvershoot));
     }
 
     private IEnumerator Slide(Vector3 target, float phase1Duration = 0.5f)
