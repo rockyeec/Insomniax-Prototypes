@@ -22,8 +22,6 @@ public class GameScript : MonoBehaviour
         unpauseButton.onClick.AddListener(Unpause);
         glassesButton.onClick.AddListener(PutOnGlasses);
 
-        SetButtonVisibilityIfPauseIs(false);
-
         cam = Camera.main.gameObject.AddComponent<CameraSpecialEffects>();
 
         StartCoroutine(WaitForTheRestToSetUp());
@@ -40,7 +38,6 @@ public class GameScript : MonoBehaviour
     {
         OnPause();
         Time.timeScale = 0.0f;
-        SetButtonVisibilityIfPauseIs(true);
 
         cam.ZoomOut();
     }
@@ -49,7 +46,6 @@ public class GameScript : MonoBehaviour
     {
         OnUnpause();
         Time.timeScale = 1.0f;
-        SetButtonVisibilityIfPauseIs(false);
 
         cam.ZoomIn();
     }
@@ -65,13 +61,6 @@ public class GameScript : MonoBehaviour
         {
             OnGlassesOff();
         }
-    }
-
-    private void SetButtonVisibilityIfPauseIs(bool isPause)
-    {
-        //menuButton.gameObject.SetActive(!isPause);
-        //glassesButton.gameObject.SetActive(!isPause);
-        //unpauseButton.gameObject.SetActive(isPause);
     }
 
 }
