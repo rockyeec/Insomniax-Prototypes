@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 374405090}
   - component: {fileID: 374405089}
   - component: {fileID: 374405088}
+  - component: {fileID: 5246881620398503220}
   m_Layer: 0
   m_Name: Unpause Button
   m_TagString: Untagged
@@ -32,7 +33,7 @@ RectTransform:
   m_Children:
   - {fileID: 1191510775}
   m_Father: {fileID: 5120802264027234203}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -120,6 +121,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &5246881620398503220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 374405086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b461679ecd2721c4d973efefa3aa7311, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outwardsDirection: {x: 1, y: 0, z: 0}
+  isSlideInWhenPaused: 1
 --- !u!1 &387780321
 GameObject:
   m_ObjectHideFlags: 0
@@ -151,8 +166,8 @@ RectTransform:
   m_LocalScale: {x: 3.2, y: 3.2, z: 3.2}
   m_Children:
   - {fileID: 850928993}
-  m_Father: {fileID: 5120802264027234203}
-  m_RootOrder: 0
+  m_Father: {fileID: 302437315249838695}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -626,8 +641,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5858221375876173791}
+  - {fileID: 387780325}
   m_Father: {fileID: 5120802264027234203}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3505660528837701536
 MonoBehaviour:
@@ -642,6 +658,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outwardsDirection: {x: 1, y: 0, z: 0}
+  isSlideInWhenPaused: 0
 --- !u!1 &8533476126078341175
 GameObject:
   m_ObjectHideFlags: 0
@@ -653,7 +670,7 @@ GameObject:
   - component: {fileID: 5120802264027234203}
   - component: {fileID: 4169220155568687104}
   m_Layer: 0
-  m_Name: Game Manager
+  m_Name: Game Management
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -670,7 +687,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.3125, y: 0.3125, z: 0.3125}
   m_Children:
-  - {fileID: 387780325}
   - {fileID: 374405087}
   - {fileID: 302437315249838695}
   m_Father: {fileID: 0}

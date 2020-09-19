@@ -69,9 +69,9 @@ public class GameScript : MonoBehaviour
 
     private void SetButtonVisibilityIfPauseIs(bool isPause)
     {
-        menuButton.gameObject.SetActive(!isPause);
+        //menuButton.gameObject.SetActive(!isPause);
         //glassesButton.gameObject.SetActive(!isPause);
-        unpauseButton.gameObject.SetActive(isPause);
+        //unpauseButton.gameObject.SetActive(isPause);
     }
 
 }
