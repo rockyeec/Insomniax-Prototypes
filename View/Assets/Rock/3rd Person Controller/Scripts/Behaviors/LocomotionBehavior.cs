@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class LocomotionBehavior : Behavior
 {
@@ -20,34 +18,35 @@ public class LocomotionBehavior : Behavior
         CharacterController.CustomOutputs outputs = controller.outputs;
         Transform transform = controller.CharTransform;
         Rigidbody rb = controller.Rb;
-
-        Vector3 zeroPitchMoveDir = inputs.MoveDir;
-        zeroPitchMoveDir.y = 0.0f;
-        zeroPitchMoveDir.Normalize();
+        Vector3 moveDir = inputs.MoveDir;
 
         // for animator hook
-        outputs.vertical = inputs.MoveDir.sqrMagnitude;
-        outputs.horizontal = Vector3.Dot(transform.right, zeroPitchMoveDir);
-        outputs.deltaRot = Vector3.Dot(transform.forward, zeroPitchMoveDir);
+        outputs.vertical = moveDir.sqrMagnitude;
+        outputs.horizontal = Vector3.Dot(transform.right, moveDir);
+        outputs.deltaRot = Vector3.Dot(transform.forward, moveDir);
 
         // rotation
         bool isMoving = outputs.vertical != 0.0f;
         if (isMoving)
         {
-            Quaternion rot = Quaternion.LookRotation(zeroPitchMoveDir);
+            Quaternion rot = Quaternion.LookRotation(moveDir);
             transform.rotation = Quaternion.Slerp(transform.rotation, rot, delta * slerpRate);
         }
 
-        // movement
+        // wall
         if (Physics.Raycast(transform.position + Vector3.up, inputs.MoveDir, 0.69f, 1 << 0))
-            zeroPitchMoveDir = Vector3.zero;
+            moveDir = Vector3.zero;
         
-        zeroPitchMoveDir *= delta * speed * outputs.vertical;
+        // movement
+        moveDir *= delta * speed * outputs.vertical;
         if (!outputs.onGround)
         {
+            // move slower
+            moveDir *= 0.69f;
+
             // fall
-            zeroPitchMoveDir.y = rb.velocity.y - 0.420f;
+            moveDir.y = rb.velocity.y - 0.420f;
         }
-        rb.velocity = zeroPitchMoveDir;
+        rb.velocity = moveDir;
     }
 }

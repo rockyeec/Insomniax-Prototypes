@@ -2,7 +2,6 @@
 
 public class PlayerInput : InputParent
 {
-    [Header ("Assigned by Programmers")]
     [SerializeField] private ButtonScript jumpButton = null;
     [SerializeField] private JoystickScript leftJoy = null;
     [SerializeField] private JoystickScript rightJoy = null;
@@ -42,7 +41,7 @@ public class PlayerInput : InputParent
 
         // locomotion
         Controller.inputs.SmoothMoveInput(
-            cam.GetRotation() 
+            cam.transform.rotation 
             * new Vector3(
                 leftJoy.GetHorizontal(),
                 0.0f,
@@ -62,41 +61,20 @@ public class PlayerInput : InputParent
         }
     }
 
-    protected override void OnGamePause()
-    {
-        base.OnGamePause();
-        jumpButton.gameObject.SetActive(false);
-        leftJoy.gameObject.SetActive(false);
-        rightJoy.gameObject.SetActive(false);
-    }
-
-    protected override void OnGameUnpause()
-    {
-        base.OnGameUnpause();
-        jumpButton.gameObject.SetActive(true);
-        leftJoy.gameObject.SetActive(true);
-        rightJoy.gameObject.SetActive(true);
-    }
-
-    protected override void OnGlassesOn()
-    {
-        // do absolutely nothing!
-    }
-
     protected override void OnGlassesOff()
     {
-        ResetController();
+        DisableController();
         isLerpingToOrigin = true;
     }
 
-    private void ResetController()
+    private void DisableController()
     {
         Controller.Hold = true;
         Controller.outputs.vertical = 0.0f;
         Controller.outputs.horizontal = 0.0f;
         Controller.Rb.useGravity = false;
     }
-    private void OnReachDestination()
+    private void EnableController()
     {
         Controller.Hold = false;
         Controller.Rb.useGravity = true;
@@ -112,7 +90,7 @@ public class PlayerInput : InputParent
         {
             transform.position = originalPos;
             transform.rotation = originalRot;
-            OnReachDestination();
+            EnableController();
             isLerpingToOrigin = false;
         }
     }

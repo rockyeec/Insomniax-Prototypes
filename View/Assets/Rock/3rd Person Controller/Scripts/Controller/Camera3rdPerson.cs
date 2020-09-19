@@ -57,11 +57,11 @@ public class Camera3rdPerson : MonoBehaviour
             };
     }
 
-    public Quaternion GetRotation()
+    /*public Quaternion GetRotation()
     {
         return cam.transform.rotation;
-    }
-
+    }*/
+    
     // Camera Update function
     public void LookAround(float pitchInput, float yawInput, in Vector3 target, float delta)
     {
