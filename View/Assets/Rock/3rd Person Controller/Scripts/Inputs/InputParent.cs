@@ -20,7 +20,7 @@ public abstract class InputParent : MonoBehaviour
         GameScript.OnPause += GameScript_OnPause;
         GameScript.OnUnpause += GameScript_OnUnpause;
 
-        gameObject.AddComponent<BackToOriginal>();
+        gameObject.AddComponent<BackToOriginalForCharacter>();
     }
     private void OnDestroy()
     {

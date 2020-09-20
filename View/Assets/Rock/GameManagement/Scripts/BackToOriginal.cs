@@ -5,14 +5,12 @@ public class BackToOriginal : MonoBehaviour
 {
     Vector3 targetPos;
     Quaternion targetRot;
-    InputParent inputParent;
     readonly float duration = 0.69f;
 
-    private void Start()
+    virtual protected void Start()
     {
         targetPos = transform.position;
         targetRot = transform.rotation;
-        inputParent = GetComponent<InputParent>();
         GameScript.OnGlassesOff += GameScript_OnGlassesOff;
     }
     private void OnDestroy()
@@ -25,13 +23,12 @@ public class BackToOriginal : MonoBehaviour
         StartCoroutine(LerpBack());
     }
 
+    virtual protected void OnStartLerp() { }
+    virtual protected void OnEndLerp() { }
+
     private IEnumerator LerpBack()
     {
-        if (inputParent != null)
-        {
-            inputParent.DisableController();
-        }
-
+        OnStartLerp();
 
         float elapsed = 0.0f;
         Vector3 oriPos = transform.position;
@@ -49,11 +46,6 @@ public class BackToOriginal : MonoBehaviour
         }
         transform.position = targetPos;
         transform.rotation = targetRot;
-
-
-        if (inputParent != null)
-        {
-            inputParent.EnableController();
-        }
+        OnEndLerp();
     }
 }
