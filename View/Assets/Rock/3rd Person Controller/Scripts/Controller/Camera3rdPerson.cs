@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class Camera3rdPerson : MonoBehaviour
 {
@@ -92,5 +93,6 @@ public class Camera3rdPerson : MonoBehaviour
         }
         rail.localPosition = Vector3.Lerp(rail.localPosition, Vector3.back * distance, delta * 13.37f);
     }
+
 
 }

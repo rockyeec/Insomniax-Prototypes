@@ -12,7 +12,7 @@ public class CameraSpecialEffects : MonoBehaviour
     private Quaternion downRot;
     private Quaternion forwardRot;
 
-    readonly private Vector3 upPos = new Vector3(0.0f, 6.9f);
+    readonly private Vector3 upPos = new Vector3(-26.9f, 13.37f);
     readonly private Vector3 normPos = new Vector3(0.0f, 0.0f);
 
 
@@ -41,7 +41,8 @@ public class CameraSpecialEffects : MonoBehaviour
         float elapsed = 0.0f;
         float startFov = cam.fieldOfView;
         Quaternion startRot = cam.transform.rotation;
-        Vector3 startPos = cam.transform.localPosition;
+        Vector3 startPos = cam.transform.position;
+        Vector3 targetPos = cam.transform.position + upPos;
         while (elapsed < duration)
         {
             elapsed += Time.unscaledDeltaTime;
@@ -49,16 +50,14 @@ public class CameraSpecialEffects : MonoBehaviour
             float t = elapsed / duration;
 
             cam.fieldOfView = Mathf.Lerp(startFov, zoomedOutFov, t);
-
             cam.transform.rotation = Quaternion.Slerp(startRot, downRot, t);
-
-            cam.transform.localPosition = Vector3.Lerp(startPos, upPos, t);
+            cam.transform.position = Vector3.Lerp(startPos, targetPos, t);
 
             yield return null;
         }
         cam.fieldOfView = zoomedOutFov;
         cam.transform.rotation = downRot;
-        cam.transform.localPosition = upPos;
+        cam.transform.position = targetPos;
     }
     private IEnumerator CameraGoDownNZoomIn()
     {
@@ -73,9 +72,7 @@ public class CameraSpecialEffects : MonoBehaviour
             float t = elapsed / duration;
 
             cam.fieldOfView = Mathf.Lerp(startFov, defaultCameraFov, t);
-
             cam.transform.localRotation = Quaternion.Slerp(startRot, forwardRot, t);
-
             cam.transform.localPosition = Vector3.Lerp(startPos, normPos, t);
 
             yield return null;
