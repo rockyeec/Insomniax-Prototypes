@@ -8,33 +8,13 @@ public class FallingTile : MonoBehaviour
 
     public bool isFake = false;
 
-    Collider col;
-
-    void Start()
-    {
-        col = GetComponent<Collider>();    
-    }
-
-    void Update()
-    {
-        DestroyGameObject();
-    }
-
     void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.name == "GroundCheck" && isFake)
         {
             Rigidbody cubeRigidbody = cube.GetComponent<Rigidbody>();
             cubeRigidbody.isKinematic = false;
-        }
-    }
-
-    void DestroyGameObject()
-    {
-        if (transform.position.y < -10)
-        {
-            col.enabled = !col.enabled;
-            Destroy(gameObject);
+            cubeRigidbody.AddForce(0, -25, 0, ForceMode.Impulse);
         }
     }
 }
