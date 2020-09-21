@@ -54,6 +54,14 @@ public class TempMenuHandler : MonoBehaviour
         public void Init()
         {
             animatedChildren = menuPageParent.GetComponentsInChildren<UISlidingAnimation>();
+
+            float range = 0.2f;
+            int length = animatedChildren.Length;
+            for (int i = 0; i < length; i++)
+            {
+                animatedChildren[i].PercentageOvershoot
+                    = 0.8f - (i * range / length);
+            }
         }
         public void SlideIn()
         {

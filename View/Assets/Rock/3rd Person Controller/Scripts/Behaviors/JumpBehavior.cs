@@ -34,5 +34,6 @@ public class JumpBehavior : Behavior
 
         controller.outputs.animateJump = true;
         controller.Rb.AddForce(Vector3.up * 21.337f, ForceMode.Impulse);
+        AudioManager.instance.Play("Shoot", "SFX");
     }
 }

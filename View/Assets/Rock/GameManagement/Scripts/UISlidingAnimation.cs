@@ -6,6 +6,12 @@ public class UISlidingAnimation : MonoBehaviour
     [SerializeField] private Vector3 outwardsDirection = Vector3.zero;
     [SerializeField] private float percentageOvershoot = 0.5f;
 
+    public float PercentageOvershoot 
+    { 
+        get { return percentageOvershoot; } 
+        set { percentageOvershoot = value; } 
+    }
+
     readonly private float duration = 0.69f;
     private Vector3 originalPos;
     private Vector3 offScreenPos;
