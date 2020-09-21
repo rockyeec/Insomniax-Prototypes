@@ -66,7 +66,6 @@ public class UISlidingAnimation : MonoBehaviour
                 isPhase1
                 ? elapsed / phase1
                 : (elapsed - phase1) / phase2;
-            t *= t;
 
             transform.position =
                 isPhase1
