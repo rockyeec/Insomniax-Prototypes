@@ -38,16 +38,18 @@ public class UISlidingAnimation : MonoBehaviour
 
     private void GameScript_OnPause()
     {
+        gameObject.SetActive(true);
         StopAllCoroutines();
-        StartCoroutine(Slide(offScreenPos, 1 - percentageOvershoot));
+        StartCoroutine(Slide(offScreenPos, isSlideInWhenPaused, 1 - percentageOvershoot));
     }
     private void GameScript_OnUnpause()
     {
+        gameObject.SetActive(true);
         StopAllCoroutines();
-        StartCoroutine(Slide(originalPos, percentageOvershoot));
+        StartCoroutine(Slide(originalPos, !isSlideInWhenPaused, percentageOvershoot));
     }
 
-    private IEnumerator Slide(Vector3 target, float phase1Duration = 0.5f)
+    private IEnumerator Slide(Vector3 target, bool isActive, float phase1Duration = 0.5f)
     {
         float elapsed = 0.0f;
 
@@ -75,5 +77,6 @@ public class UISlidingAnimation : MonoBehaviour
             yield return null;
         }
         transform.position = target;
+        gameObject.SetActive(isActive);
     }
 }
