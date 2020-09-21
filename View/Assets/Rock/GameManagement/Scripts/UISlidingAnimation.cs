@@ -4,7 +4,6 @@ using UnityEngine;
 public class UISlidingAnimation : MonoBehaviour
 {
     [SerializeField] private Vector3 outwardsDirection = Vector3.zero;
-    [SerializeField] private bool isSlideInWhenPaused = false;
     [SerializeField] private float percentageOvershoot = 0.5f;
 
     readonly private float duration = 0.69f;
@@ -12,41 +11,34 @@ public class UISlidingAnimation : MonoBehaviour
     private Vector3 offScreenPos;
     private Vector3 overshootPos;
 
-
-    private void Start()
+    protected virtual void Start()
     {
-        GameScript.OnPause += GameScript_OnPause;
-        GameScript.OnUnpause += GameScript_OnUnpause;
-
         originalPos = transform.position;
         offScreenPos = originalPos + outwardsDirection * 1337.0f;
         overshootPos = originalPos - outwardsDirection * 133.7f;
-
-        if (isSlideInWhenPaused)
-        {
-            Vector3 swap = originalPos;
-            originalPos = offScreenPos;
-            offScreenPos = swap;
-        }
     }
 
-    private void OnDestroy()
-    {
-        GameScript.OnPause -= GameScript_OnPause;
-        GameScript.OnUnpause -= GameScript_OnUnpause;
-    }
-
-    private void GameScript_OnPause()
+    public void SlideIn()
     {
         gameObject.SetActive(true);
         StopAllCoroutines();
-        StartCoroutine(Slide(offScreenPos, isSlideInWhenPaused, 1 - percentageOvershoot));
+        StartCoroutine(Slide(originalPos, true, percentageOvershoot));
     }
-    private void GameScript_OnUnpause()
+    public void SlideOut()
     {
         gameObject.SetActive(true);
         StopAllCoroutines();
-        StartCoroutine(Slide(originalPos, !isSlideInWhenPaused, percentageOvershoot));
+        StartCoroutine(Slide(offScreenPos, false, 1 - percentageOvershoot));
+    }
+
+    public void SnapOut()
+    {
+        transform.position = offScreenPos;
+        gameObject.SetActive(false);
+    }
+    public void SnapIn()
+    {
+        transform.position = originalPos;
     }
 
     private IEnumerator Slide(Vector3 target, bool isActive, float phase1Duration = 0.5f)

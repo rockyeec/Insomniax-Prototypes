@@ -4,23 +4,24 @@ using UnityEngine.UI;
 
 public class GameScript : MonoBehaviour
 {
+    public static GameScript instance;
     public static event System.Action OnPause = delegate { };
     public static event System.Action OnUnpause = delegate { };
     public static event System.Action OnGlassesOn = delegate { };
     public static event System.Action OnGlassesOff = delegate { };
 
-    [SerializeField] private Button menuButton = null;
-    [SerializeField] private Button unpauseButton = null;
     [SerializeField] private Button glassesButton = null;
+    [SerializeField] private Button menuButton = null;
 
     private CameraSpecialEffects cam;
     private bool isGlassesOn = false;
 
     private void Awake()
     {
-        menuButton.onClick.AddListener(Pause);
-        unpauseButton.onClick.AddListener(Unpause);
+        instance = this;
+
         glassesButton.onClick.AddListener(PutOnGlasses);
+        menuButton.onClick.AddListener(Pause);
 
         cam = Camera.main.gameObject.AddComponent<CameraSpecialEffects>();
 
@@ -34,20 +35,20 @@ public class GameScript : MonoBehaviour
         Pause();
     }
 
-    private void Pause()
+    public static void Pause()
     {
         OnPause();
         Time.timeScale = 0.0f;
 
-        cam.ZoomOut();
+        instance.cam.ZoomOut();
     }
 
-    private void Unpause()
+    public static void Unpause()
     {
         OnUnpause();
         Time.timeScale = 1.0f;
 
-        cam.ZoomIn();
+        instance.cam.ZoomIn();
     }
 
     private void PutOnGlasses()
