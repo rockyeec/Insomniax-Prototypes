@@ -39,6 +39,7 @@ public class BackToOriginal : MonoBehaviour
             elapsed += Time.deltaTime;
 
             float t = elapsed / duration;
+            t *= t;
             transform.position = Vector3.Lerp(oriPos, targetPos, t);
             transform.rotation = Quaternion.Slerp(oriRot, targetRot, t);
 

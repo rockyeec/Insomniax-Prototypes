@@ -34,12 +34,15 @@ public class LocomotionBehavior : Behavior
         }
 
         // wall
-        if (isMoving 
+        if (isMoving
             && Physics.OverlapSphere(
                 transform.position + Vector3.up + transform.forward * 0.51f, 0.25f,
                 ~(1 << 31))
             .Length > 0)
+        {
             moveDir = Vector3.zero;
+            outputs.vertical = 0.0f;
+        }
         
         // movement
         moveDir *= delta * speed * outputs.vertical;

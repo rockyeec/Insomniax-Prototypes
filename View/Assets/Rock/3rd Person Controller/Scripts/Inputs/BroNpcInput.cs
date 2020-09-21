@@ -1,6 +1,8 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-public class EnemyInput : InputParent
+public class BroNpcInput : InputParent
 {
     float duration = 0.69f;
     float time = 0.0f;
@@ -32,6 +34,8 @@ public class EnemyInput : InputParent
     protected override void Tick(in float delta)
     {
         base.Tick(delta);
+        if (IsDisabled)
+            return;
 
         HandleNextAction();
 

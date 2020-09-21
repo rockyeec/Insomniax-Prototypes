@@ -60,10 +60,18 @@ public class UISlidingAnimation : MonoBehaviour
         {
             elapsed += Time.unscaledDeltaTime;
 
+            bool isPhase1 = elapsed < phase1;
+
+            float t = 
+                isPhase1
+                ? elapsed / phase1
+                : (elapsed - phase1) / phase2;
+            t *= t;
+
             transform.position =
-                elapsed < phase1
-                ? Vector3.Lerp(ori, overshootPos, elapsed / phase1)
-                : Vector3.Lerp(overshootPos, target, (elapsed - phase1) / phase2);
+                isPhase1
+                ? Vector3.Lerp(ori, overshootPos, t)
+                : Vector3.Lerp(overshootPos, target, t);
 
             yield return null;
         }

@@ -5,8 +5,8 @@ using UnityEngine;
 public class FanScript : MonoBehaviour
 {
     readonly private float fanSpeed = 420.0f;
-    private void Update()
+    private void FixedUpdate()
     {
-        transform.Rotate(transform.up, Time.deltaTime * fanSpeed);
+        transform.Rotate(transform.up, Time.fixedDeltaTime * fanSpeed);
     }
 }

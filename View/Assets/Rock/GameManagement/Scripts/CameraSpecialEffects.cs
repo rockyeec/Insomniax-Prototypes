@@ -48,6 +48,7 @@ public class CameraSpecialEffects : MonoBehaviour
             elapsed += Time.unscaledDeltaTime;
 
             float t = elapsed / duration;
+            t *= t;
 
             cam.fieldOfView = Mathf.Lerp(startFov, zoomedOutFov, t);
             cam.transform.rotation = Quaternion.Slerp(startRot, downRot, t);
