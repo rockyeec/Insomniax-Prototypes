@@ -7,6 +7,7 @@ public class PlayerInput : InputParent
     [SerializeField] private JoystickScript rightJoy = null;
     [SerializeField] private Camera3rdPerson cam = null;
 
+    [SerializeField] private bool isCanClimb = true;
 
     protected override void Init()
     {
@@ -15,7 +16,9 @@ public class PlayerInput : InputParent
         Controller.AddFixedTickBehavior(new CheckGroundBehavior());
         Controller.AddFixedTickBehavior(new LocomotionBehavior());
         Controller.AddFixedTickBehavior(new JumpBehavior());
-        Controller.AddRegularTickBehavior(new ClimbBehavior());
+
+        if (isCanClimb)
+            Controller.AddRegularTickBehavior(new ClimbBehavior());
     }
 
     protected override void Tick(in float delta)
