@@ -36,6 +36,12 @@ public abstract class InputParent : MonoBehaviour
     private void GameScript_OnPause()
     {
         isPause = true;
+        OnGamePause();
+    }
+
+    protected virtual void OnGamePause()
+    {
+
     }
 
     private void Update()

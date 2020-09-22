@@ -87,9 +87,14 @@ public class JoystickScript : MonoBehaviour, IPointerDownHandler, IDragHandler, 
     }
     public void OnPointerUp(PointerEventData eventData)
     {
+        Release();
+    }
+
+    public void Release()
+    {
         stickCanvasGroup.alpha = 1.0f;
         stickCanvasGroup.blocksRaycasts = true;
-        stick.anchoredPosition 
+        stick.anchoredPosition
             = dragDelta
             = Vector2.zero;
     }

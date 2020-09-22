@@ -9,5 +9,6 @@ public class AudioManagerInstantiator : MonoBehaviour
         {
             Instantiate(audioManagerPrefab);
         }
+        Destroy(gameObject);
     }
 }

@@ -30,11 +30,15 @@ public class TempMenuHandler : MonoBehaviour
     }
     public void OnSettingsPress()
     {
+        if (Input.touchCount > 1)
+            return;
         pauseMenu.SlideOut();
         settings.SlideIn();
     }
     public void OnReturnPress()
     {
+        if (Input.touchCount > 1)
+            return;
         pauseMenu.SlideIn();
         settings.SlideOut();
     }

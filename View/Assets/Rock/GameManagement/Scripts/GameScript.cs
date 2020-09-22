@@ -1,14 +1,15 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class GameScript : MonoBehaviour
 {
-    public static GameScript instance;
-    public static event System.Action OnPause = delegate { };
-    public static event System.Action OnUnpause = delegate { };
-    public static event System.Action OnGlassesOn = delegate { };
-    public static event System.Action OnGlassesOff = delegate { };
+    private static GameScript instance;
+    public static event Action OnPause = delegate { };
+    public static event Action OnUnpause = delegate { };
+    public static event Action OnGlassesOn = delegate { };
+    public static event Action OnGlassesOff = delegate { };
 
     [SerializeField] private Button glassesButton = null;
     [SerializeField] private Button menuButton = null;
@@ -26,6 +27,7 @@ public class GameScript : MonoBehaviour
         cam = Camera.main.gameObject.AddComponent<CameraSpecialEffects>();
 
         StartCoroutine(WaitForTheRestToSetUp());
+        
     }
 
     IEnumerator WaitForTheRestToSetUp()
@@ -37,6 +39,9 @@ public class GameScript : MonoBehaviour
 
     public static void Pause()
     {
+        if (Input.touchCount > 1)
+            return;
+
         OnPause();
         Time.timeScale = 0.0f;
 
@@ -45,6 +50,9 @@ public class GameScript : MonoBehaviour
 
     public static void Unpause()
     {
+        if (Input.touchCount > 1)
+            return;
+
         OnUnpause();
         Time.timeScale = 1.0f;
 

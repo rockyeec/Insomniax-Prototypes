@@ -57,4 +57,12 @@ public class PlayerInput : InputParent
             transform.position,
             delta);
     }
+
+    protected override void OnGamePause()
+    {
+        base.OnGamePause();
+        leftJoy.Release();
+        rightJoy.Release();
+        jumpButton.Release();
+    }
 }

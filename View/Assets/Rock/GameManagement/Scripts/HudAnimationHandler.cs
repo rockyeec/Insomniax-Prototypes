@@ -1,4 +1,6 @@
-﻿public class HudAnimationHandler : UISlidingAnimation
+﻿using System.Collections.Generic;
+
+public class HudAnimationHandler : UISlidingAnimation
 {
     protected override void Start()
     {
