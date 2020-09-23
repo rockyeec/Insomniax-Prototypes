@@ -1,17 +1,23 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class BackToOriginal : MonoBehaviour
 {
+    Vector3 oriPos;
+    Quaternion oriRot;
     Vector3 targetPos;
     Quaternion targetRot;
     readonly float duration = 0.69f;
+
+    float elapsed = 0.69f;
 
     virtual protected void Start()
     {
         targetPos = transform.position;
         targetRot = transform.rotation;
         GameScript.OnGlassesOff += GameScript_OnGlassesOff;
+        enabled = false;
     }
     private void OnDestroy()
     {
@@ -20,32 +26,36 @@ public class BackToOriginal : MonoBehaviour
 
     private void GameScript_OnGlassesOff()
     {
-        StartCoroutine(LerpBack());
+        OnStartLerp();        
     }
 
-    virtual protected void OnStartLerp() { }
-    virtual protected void OnEndLerp() { }
-
-    private IEnumerator LerpBack()
+    virtual protected void OnStartLerp() 
     {
-        OnStartLerp();
+        elapsed = 0.0f;
+        oriPos = transform.position;
+        oriRot = transform.rotation;
+        enabled = true;
+    }
+    virtual protected void OnEndLerp() 
+    {
+        transform.position = targetPos;
+        transform.rotation = targetRot;
+        enabled = false;
+    }
 
-        float elapsed = 0.0f;
-        Vector3 oriPos = transform.position;
-        Quaternion oriRot = transform.rotation;
-
-        while (elapsed < duration)
+    private void FixedUpdate()
+    {
+        if (elapsed < duration)
         {
-            elapsed += Time.deltaTime;
+            elapsed += Time.fixedDeltaTime;
 
             float t = elapsed / duration;
             transform.position = Vector3.Lerp(oriPos, targetPos, t);
             transform.rotation = Quaternion.Slerp(oriRot, targetRot, t);
-
-            yield return null;
         }
-        transform.position = targetPos;
-        transform.rotation = targetRot;
-        OnEndLerp();
+        else
+        {
+            OnEndLerp();
+        }
     }
 }

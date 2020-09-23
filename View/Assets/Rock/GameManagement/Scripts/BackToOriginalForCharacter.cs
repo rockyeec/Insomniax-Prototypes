@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class BackToOriginalForCharacter : BackToOriginal
+﻿public class BackToOriginalForCharacter : BackToOriginal
 {
     InputParent inputParent;
     override protected void Start()

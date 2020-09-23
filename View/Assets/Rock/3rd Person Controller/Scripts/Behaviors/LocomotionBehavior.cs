@@ -52,7 +52,7 @@ public class LocomotionBehavior : Behavior
             moveDir *= 0.69f;
 
             // fall
-            moveDir.y = rb.velocity.y - 1.337f;
+            moveDir.y = rb.velocity.y - 0.1337f;
         }
         rb.velocity = moveDir;
     }

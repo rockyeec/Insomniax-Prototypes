@@ -12,6 +12,9 @@ public class TempMenuHandler : MonoBehaviour
 
         GameScript.OnPause += GameScript_OnPause;
         GameScript.OnUnpause += GameScript_OnUnpause;
+
+        pauseMenu.SnapOut();
+        settings.SnapOut();
     }
     private void OnDestroy()
     {
@@ -22,11 +25,11 @@ public class TempMenuHandler : MonoBehaviour
     private void GameScript_OnPause()
     {
         pauseMenu.SlideIn();
-        settings.SnapOut();
     }
     private void GameScript_OnUnpause()
     {
         pauseMenu.SlideOut();
+        settings.SnapOut();
     }
     public void OnSettingsPress()
     {

@@ -50,9 +50,9 @@ public class PlayerInput : InputParent
         }
     }
 
-    protected override void LateTick(in float delta)
+    protected override void FixedTick(in float delta)
     {
-        base.LateTick(delta);
+        base.FixedTick(delta);
         // camera
         cam.Tick(
             rightJoy.GetVerticalDelta(),

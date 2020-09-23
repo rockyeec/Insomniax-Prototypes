@@ -56,13 +56,14 @@ public class Camera3rdPerson : MonoBehaviour
     
     public void Tick(float pitchInput, float yawInput, in Vector3 target, float delta)
     {
-        FollowTarget(in target);
+        FollowTarget(target, in delta);
         LookAround(pitchInput, yawInput);
         ReactToWall(delta);
     }
 
-    private void FollowTarget(in Vector3 target)
+    private void FollowTarget(Vector3 target, in float delta)
     {
+        target.y = Mathf.Lerp(transform.position.y, target.y, delta * 6.9f);
         transform.position = target;
     }
 

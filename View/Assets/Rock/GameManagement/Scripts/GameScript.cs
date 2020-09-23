@@ -6,6 +6,7 @@ using System;
 public class GameScript : MonoBehaviour
 {
     private static GameScript instance;
+    private static bool isStartGame = true;
     public static event Action OnPause = delegate { };
     public static event Action OnUnpause = delegate { };
     public static event Action OnGlassesOn = delegate { };
@@ -26,11 +27,15 @@ public class GameScript : MonoBehaviour
 
         cam = Camera.main.gameObject.AddComponent<CameraSpecialEffects>();
 
-        StartCoroutine(WaitForTheRestToSetUp());
+        if (isStartGame)
+        {
+            isStartGame = false;
+            StartCoroutine(WaitAndPause());
+        }
         
     }
 
-    IEnumerator WaitForTheRestToSetUp()
+    IEnumerator WaitAndPause()
     {
         yield return new WaitForEndOfFrame();
 

@@ -898,6 +898,7 @@ MonoBehaviour:
   leftJoy: {fileID: 4834901215900816365}
   rightJoy: {fileID: 2625061626748988964}
   cam: {fileID: 8415789906703068119}
+  isCanClimb: 1
 --- !u!135 &2053329864
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -909,7 +910,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.25
+  m_Radius: 0.01
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &4834901217262337863
 GameObject:
