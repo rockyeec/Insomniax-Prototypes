@@ -1,5 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,22 +8,22 @@ public class VolumeAdjust : MonoBehaviour
     public Slider BGMSlider;
     public Slider SFXSlider;
 
-    //float BGMValue = 0.5f, SFXValue = 0.5f;
     // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        AudioManager.instance.AdjustTypeVolume(BGMSlider.value, "BGM");
-        AudioManager.instance.AdjustTypeVolume(SFXSlider.value, "SFX");
+        BGMSlider.value = AudioManager.instance.BGM.First().volume;
+        SFXSlider.value = AudioManager.instance.SFX.First().volume;
     }
 
     public void SetBGMVolume(float amount)
     {
         BGMSlider.value = amount;
-        //BGMValue = amount;
+        AudioManager.instance.AdjustTypeVolume(BGMSlider.value, "BGM");
     }
 
     public void SetSFXVolume(float amount)
     {
         SFXSlider.value = amount;
+        AudioManager.instance.AdjustTypeVolume(SFXSlider.value, "SFX");
     }
 }

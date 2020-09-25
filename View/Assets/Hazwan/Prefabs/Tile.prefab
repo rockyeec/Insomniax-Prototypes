@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2523352350797608925}
   - component: {fileID: 2523352350797608924}
   - component: {fileID: 2523352350797608931}
+  - component: {fileID: 4011215059503176}
   m_Layer: 8
   m_Name: Tile
   m_TagString: Untagged
@@ -30,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 2523352350797608930}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.714, y: 3.59, z: 5.17}
-  m_LocalScale: {x: 1.7, y: 0.2390262, z: 1.7}
+  m_LocalScale: {x: 2.5, y: 0.2390262, z: 2.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -127,3 +128,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cube: {fileID: 2523352350797608930}
   isFake: 0
+  materialList:
+  - {fileID: 2100000, guid: b1446c15a8a8ca940a5e78db0ee43d4a, type: 2}
+  - {fileID: 2100000, guid: 742baf01ec50b0b42b0a32baae1f5ee5, type: 2}
+--- !u!114 &4011215059503176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2523352350797608930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 274e81762d5b8e940add8c49c9bd1d08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -7,10 +7,7 @@ public class PlayerInput : InputParent
     [SerializeField] private JoystickScript rightJoy = null;
     [SerializeField] private Camera3rdPerson cam = null;
 
-    private bool isLerpingToOrigin = false;
-    private Quaternion originalRot;
-    private Vector3 originalPos;
-
+    [SerializeField] private bool isCanClimb = true;
 
     protected override void Init()
     {
@@ -19,25 +16,17 @@ public class PlayerInput : InputParent
         Controller.AddFixedTickBehavior(new CheckGroundBehavior());
         Controller.AddFixedTickBehavior(new LocomotionBehavior());
         Controller.AddFixedTickBehavior(new JumpBehavior());
-        Controller.AddRegularTickBehavior(new ClimbBehavior());
 
-        originalPos = transform.position;
-        originalRot = transform.rotation;
+        if (isCanClimb)
+            Controller.AddRegularTickBehavior(new ClimbBehavior());
     }
 
     protected override void Tick(in float delta)
     {
         base.Tick(delta);        
 
-        // camera
-        cam.LookAround(
-            rightJoy.GetVerticalDelta(),
-            rightJoy.GetHorizontalDelta(),
-            transform.position,
-            delta);
-
-        // glasses reset effect
-        HandleLerping(in delta);
+        if (IsDisabled)
+            return;
 
         // locomotion
         Controller.inputs.SmoothMoveInput(
@@ -61,37 +50,22 @@ public class PlayerInput : InputParent
         }
     }
 
-    protected override void OnGlassesOff()
+    protected override void FixedTick(in float delta)
     {
-        DisableController();
-        isLerpingToOrigin = true;
+        base.FixedTick(delta);
+        // camera
+        cam.Tick(
+            rightJoy.GetVerticalDelta(),
+            rightJoy.GetHorizontalDelta(),
+            transform.position,
+            delta);
     }
 
-    private void DisableController()
+    protected override void OnGamePause()
     {
-        Controller.Hold = true;
-        Controller.outputs.vertical = 0.0f;
-        Controller.outputs.horizontal = 0.0f;
-        Controller.Rb.useGravity = false;
-    }
-    private void EnableController()
-    {
-        Controller.Hold = false;
-        Controller.Rb.useGravity = true;
-    }
-    private void HandleLerping(in float delta)
-    {
-        if (!isLerpingToOrigin)
-            return;
-
-        transform.position = Vector3.Lerp(transform.position, originalPos, delta * lerpRate);
-        transform.rotation = Quaternion.Slerp(transform.rotation, originalRot, delta * lerpRate);
-        if (transform.position.IsCloseTo(originalPos, 2.5f))
-        {
-            transform.position = originalPos;
-            transform.rotation = originalRot;
-            EnableController();
-            isLerpingToOrigin = false;
-        }
+        base.OnGamePause();
+        leftJoy.Release();
+        rightJoy.Release();
+        jumpButton.Release();
     }
 }

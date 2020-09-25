@@ -24,6 +24,10 @@ public class ButtonScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
 
     public void OnPointerUp(PointerEventData eventData)
     {
+        Release();
+    }
+    public void Release()
+    {
         IsHeld = false;
         StartCoroutine(ResetIsUp());
         canvasGroup.alpha = 1.0f;

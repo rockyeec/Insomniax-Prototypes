@@ -8,33 +8,33 @@ public class FallingTile : MonoBehaviour
 
     public bool isFake = false;
 
-    Collider col;
+    [SerializeField] private Material[] materialList = null;
 
-    void Start()
-    {
-        col = GetComponent<Collider>();    
-    }
-
-    void Update()
-    {
-        DestroyGameObject();
-    }
+    MeshRenderer ren = null;
+    Rigidbody rb = null;
 
     void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.name == "GroundCheck" && isFake)
         {
-            Rigidbody cubeRigidbody = cube.GetComponent<Rigidbody>();
-            cubeRigidbody.isKinematic = false;
+            if (rb == null)
+            {
+                rb = cube.GetComponent<Rigidbody>();
+            }
+            rb.isKinematic = false;
+            rb.AddForce(0, -25, 0, ForceMode.Impulse);
         }
     }
 
-    void DestroyGameObject()
+    public void Become(bool isFake)
     {
-        if (transform.position.y < -10)
+        if (ren == null)
         {
-            col.enabled = !col.enabled;
-            Destroy(gameObject);
+            ren = cube.GetComponent<MeshRenderer>();
         }
+
+        this.isFake = isFake;
+
+        ren.material = isFake ? materialList[0] : materialList[1];
     }
 }

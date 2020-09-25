@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class Camera3rdPerson : MonoBehaviour
 {
@@ -17,9 +18,7 @@ public class Camera3rdPerson : MonoBehaviour
     private void Start()
     {
         SetUpCamera();
-
         InitializeClipPoints();
-
         rail.localPosition = railRef.localPosition = Vector3.back * railDefaultDistance;
     }
 
@@ -31,7 +30,6 @@ public class Camera3rdPerson : MonoBehaviour
         pitch = cam.transform.eulerAngles.x;
         yaw = cam.transform.eulerAngles.y;
 
-
         cam.transform.localPosition = Vector3.zero;
         cam.transform.localRotation = Quaternion.identity;
     }
@@ -41,7 +39,6 @@ public class Camera3rdPerson : MonoBehaviour
         float z = cam.nearClipPlane;
         float y = z * Mathf.Tan(cam.fieldOfView / 2 * Mathf.Deg2Rad);
         float x = y * cam.aspect;
-
         clipPoints = new Vector3[5]
             {
                 // center
@@ -56,22 +53,17 @@ public class Camera3rdPerson : MonoBehaviour
                 new Vector3(x, -y, z),
             };
     }
-
-    /*public Quaternion GetRotation()
-    {
-        return cam.transform.rotation;
-    }*/
     
-    // Camera Update function
-    public void LookAround(float pitchInput, float yawInput, in Vector3 target, float delta)
+    public void Tick(float pitchInput, float yawInput, in Vector3 target, float delta)
     {
-        FollowTarget(in target);
+        FollowTarget(target, in delta);
         LookAround(pitchInput, yawInput);
         ReactToWall(delta);
     }
 
-    private void FollowTarget(in Vector3 target)
+    private void FollowTarget(Vector3 target, in float delta)
     {
+        target.y = Mathf.Lerp(transform.position.y, target.y, delta * 6.9f);
         transform.position = target;
     }
 
@@ -91,9 +83,7 @@ public class Camera3rdPerson : MonoBehaviour
         foreach (var item in clipPoints)
         {
             Vector3 point = railRef.rotation * item + railRef.position;
-
-            //Debug.DrawLine(pivot.transform.position, point);
-            
+            //Debug.DrawLine(pivot.transform.position, point);            
             if (Physics.Linecast(pivot.transform.position, point, out RaycastHit hit, 1 << 0))
             {
                 if (hit.distance < distance)
@@ -102,7 +92,8 @@ public class Camera3rdPerson : MonoBehaviour
                 }
             }
         }
-
         rail.localPosition = Vector3.Lerp(rail.localPosition, Vector3.back * distance, delta * 13.37f);
     }
+
+
 }

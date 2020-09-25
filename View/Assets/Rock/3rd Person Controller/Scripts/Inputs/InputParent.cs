@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 
-public abstract class InputParent : ViewEntity
+public abstract class InputParent : MonoBehaviour
 {
     protected CharacterController Controller { get; private set; }
     private AnimatorHook animatorHook = null;
+    private bool isPause;
+    protected bool IsDisabled { get; private set; }
 
     private void Awake()
     {
@@ -13,23 +15,60 @@ public abstract class InputParent : ViewEntity
         animatorHook.Init(anim, Controller);
         Init();
     }
-
-    protected override void UpdateEntity()
+    private void Start()
     {
+        GameScript.OnPause += GameScript_OnPause;
+        GameScript.OnUnpause += GameScript_OnUnpause;
+
+        gameObject.AddComponent<BackToOriginalForCharacter>();
+    }
+    private void OnDestroy()
+    {
+        GameScript.OnPause -= GameScript_OnPause;
+        GameScript.OnUnpause -= GameScript_OnUnpause;
+    }
+
+    private void GameScript_OnUnpause()
+    {
+        isPause = false;
+    }
+
+    private void GameScript_OnPause()
+    {
+        isPause = true;
+        OnGamePause();
+    }
+
+    protected virtual void OnGamePause()
+    {
+
+    }
+
+    private void Update()
+    {
+        if (isPause)
+            return;
+
         float delta = Time.deltaTime;
         Tick(delta);
         Controller.Tick(in delta);
         animatorHook.Tick(/*in delta*/);
     }
-    protected override void FixedUpdateEntity()
+    private void FixedUpdate()
     {
+        if (isPause)
+            return;
+
         float delta = Time.fixedDeltaTime;
         FixedTick(in delta);
         Controller.FixedTick(in delta);
         animatorHook.FixedTick(in delta);
     }
-    protected override void LateUpdateEntity()
+    private void LateUpdate()
     {
+        if (isPause)
+            return;
+
         float delta = Time.deltaTime;
         LateTick(in delta);
         //controller.LateTick(delta);
@@ -39,4 +78,18 @@ public abstract class InputParent : ViewEntity
     protected virtual void Tick(in float delta) { }
     protected virtual void FixedTick(in float delta) { }
     protected virtual void LateTick(in float delta) { }
+
+
+    public void DisableController()
+    {
+        IsDisabled = true;
+        Controller.Rb.isKinematic = true;
+        Controller.outputs.vertical = 0.0f;
+        Controller.outputs.horizontal = 0.0f;
+    }
+    public void EnableController()
+    {
+        IsDisabled = false;
+        Controller.Rb.isKinematic = false;
+    }
 }
