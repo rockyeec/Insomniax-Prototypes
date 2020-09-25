@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ClimbBehavior : Behavior
 {
     private readonly Vector3 rayOri = new Vector3(0.0f, 2.0f, 0.69f);
-    private readonly float rayLength = 1.337f;
+    private readonly float rayLength = 0.69f;
     private Vector3 targetPos;
     private bool isFirstFrame = true;
 
@@ -28,8 +26,10 @@ public class ClimbBehavior : Behavior
             return;
         }
 
+        if (controller.outputs.onGround)
+            return;
         
-        Debug.DrawRay(transform.rotation * rayOri + transform.position, Vector3.down * rayLength);
+        //Debug.DrawRay(transform.rotation * rayOri + transform.position, Vector3.down * rayLength);
         Ray ray = new Ray(transform.rotation * rayOri + transform.position, Vector3.down);
 
         if (Physics.Raycast(ray, out RaycastHit hit, rayLength, ~(1 << 20)))
