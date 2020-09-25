@@ -12,7 +12,7 @@ public class CameraSpecialEffects : MonoBehaviour
     private Quaternion downRot;
     private Quaternion forwardRot;
 
-    readonly private Vector3 upPos = new Vector3(-26.9f, 13.37f);
+    readonly private Vector3 upPos = new Vector3(20.9f, 13.37f);
     readonly private Vector3 normPos = new Vector3(0.0f, 0.0f);
 
 
