@@ -26,10 +26,11 @@ public class ClimbBehavior : Behavior
             return;
         }
 
+        Debug.DrawRay(transform.rotation * rayOri + transform.position, Vector3.down * rayLength);
+
         if (controller.outputs.onGround)
             return;
         
-        //Debug.DrawRay(transform.rotation * rayOri + transform.position, Vector3.down * rayLength);
         Ray ray = new Ray(transform.rotation * rayOri + transform.position, Vector3.down);
 
         if (Physics.Raycast(ray, out RaycastHit hit, rayLength, ~(1 << 20)))

@@ -36,7 +36,7 @@ public class LocomotionBehavior : Behavior
         // wall
         if (isMoving
             && Physics.OverlapSphere(
-                transform.position + Vector3.up + transform.forward * 0.51f, 0.25f,
+                transform.position + Vector3.up + transform.forward * 0.26f, 0.24f,
                 ~(1 << 31))
             .Length > 0)
         {
