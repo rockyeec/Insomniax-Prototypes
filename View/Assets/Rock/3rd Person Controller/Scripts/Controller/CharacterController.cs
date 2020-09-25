@@ -15,6 +15,7 @@ public class CharacterController
 
         public bool jump = false;
         public bool jumpRelease = false;
+        public bool canJump = true;
     }
 
     public CustomOutputs outputs = new CustomOutputs();

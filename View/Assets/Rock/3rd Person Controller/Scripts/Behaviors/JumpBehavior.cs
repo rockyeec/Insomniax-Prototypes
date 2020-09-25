@@ -1,9 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class JumpBehavior : Behavior
 {
+    private float hasJumpedTime = 0.0f;
+    private readonly float canJumpAgainDuration = 0.35f;
+
     public override void Execute(CharacterController controller, in float delta)
     {
         if (controller.inputs.jumpRelease)
@@ -23,17 +24,25 @@ public class JumpBehavior : Behavior
 
         if (!controller.inputs.jump)
             return;
-
         controller.inputs.jump = false;
 
         if (controller.Hold)
             return;
 
-        if (!controller.outputs.onGround)
+        if (!controller.inputs.canJump)
             return;
 
+        if (Time.time < hasJumpedTime)
+            return;
+        hasJumpedTime = Time.time + canJumpAgainDuration;
+
+        Rigidbody rb = controller.Rb;
+        Vector3 zeroGravityVel = rb.velocity;
+        zeroGravityVel.y = 0.0f;
+        rb.velocity = zeroGravityVel;
+        rb.AddForce(Vector3.up * 6.9f, ForceMode.Impulse);
+        
         controller.outputs.animateJump = true;
-        controller.Rb.AddForce(Vector3.up * 6.9f, ForceMode.Impulse);
         AudioManager.instance.Play("Shoot", "SFX");
     }
 }

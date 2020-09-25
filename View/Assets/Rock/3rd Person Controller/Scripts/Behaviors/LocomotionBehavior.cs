@@ -49,10 +49,10 @@ public class LocomotionBehavior : Behavior
         if (!outputs.onGround)
         {
             // move slower
-            moveDir *= 0.69f;
+            moveDir *= 0.420f;
 
             // fall
-            moveDir.y = rb.velocity.y - 0.1337f;
+            moveDir.y = rb.velocity.y;
         }
         rb.velocity = moveDir;
     }
