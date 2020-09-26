@@ -41,9 +41,14 @@ public class CheckGroundBehavior : Behavior
 
     private void HandleOnGround(ref CharacterController controller, in RaycastHit hit)
     {
-        controller.CharTransform.position = hit.point;
+        Transform transform = controller.CharTransform;
+
+        transform.position = hit.point;
         controller.outputs.onGround = true;
         controller.inputs.canJump = true;
+
+        transform.SetParent(hit.collider.transform);
+        transform.eulerAngles = new Vector3(0.0f, transform.eulerAngles.y, 0.0f);
     }
 
     private void HandleNotOnGround(ref CharacterController controller, in bool prevOnGround)
@@ -53,6 +58,8 @@ public class CheckGroundBehavior : Behavior
             timeOffGround = Time.time + durationCanJump;
             controller.outputs.onGround = false;
             controller.inputs.canJump = true;
+
+            controller.CharTransform.SetParent(null);
         }
         else if (Time.time >= timeOffGround)
         {
