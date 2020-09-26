@@ -3,7 +3,7 @@
 public class JumpBehavior : Behavior
 {
     private float hasJumpedTime = 0.0f;
-    private readonly float canJumpAgainDuration = 0.35f;
+    private readonly float canJumpAgainDuration = 0.4f;
 
     public override void Execute(CharacterController controller, in float delta)
     {
