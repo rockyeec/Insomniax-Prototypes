@@ -17,15 +17,16 @@ public class CheckGroundBehavior : Behavior
 
         if (Physics.Raycast(ray, out RaycastHit hit, 1.69f))
         {
-            bool isFeetOnGround = hit.distance <= 1.0f;
+            controller.outputs.inclination = Vector3.Dot(transform.forward, hit.normal);
 
+            bool isFeetOnGround = hit.distance <= 1.0f;
             if (isFeetOnGround)
             {
                 HandleOnGround(ref controller, in hit);
                 return;
             }
 
-            bool isDecline = Vector3.Dot(transform.forward, hit.normal) > 0.0f;
+            bool isDecline = controller.outputs.inclination > 0.0f;
             bool isMoving = controller.inputs.MoveDir != Vector3.zero;
             bool isJumping = controller.Rb.velocity.y >= 0.0f;
 

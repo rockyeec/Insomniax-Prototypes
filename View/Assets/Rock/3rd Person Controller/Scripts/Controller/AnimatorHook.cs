@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class AnimatorHook : MonoBehaviour
 {
@@ -33,6 +31,8 @@ public class AnimatorHook : MonoBehaviour
         animator.SetFloat("vertical", controller.outputs.vertical, 0.08f, delta);
 
         animator.SetFloat("horizontal", controller.outputs.horizontal, 0.08f, delta);
+
+        animator.SetFloat("incline", controller.outputs.inclination, 0.08f, delta);
 
         animator.SetFloat("rotationDelta", controller.outputs.deltaRot);
 

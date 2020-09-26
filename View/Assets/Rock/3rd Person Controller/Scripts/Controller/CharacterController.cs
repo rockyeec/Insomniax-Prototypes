@@ -25,6 +25,7 @@ public class CharacterController
         public float vertical = 0.0f;
         public float horizontal = 0.0f;
         public float deltaRot = 0.0f;
+        public float inclination = 0.0f;
         public bool animateJump = false;
         public bool animateClimb = false;
     }
