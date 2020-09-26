@@ -13,7 +13,7 @@ public class UISlidingAnimation : MonoBehaviour
         set { percentageOvershoot = value; } 
     }
 
-    readonly private float duration = 0.69f;
+    private float duration = 0.69f;
     private Vector3 originalPos;
     private Vector3 offScreenPos;
     private Vector3 overshootPos;
@@ -25,6 +25,7 @@ public class UISlidingAnimation : MonoBehaviour
         overshootPos = originalPos - outwardsDirection * 133.7f;
 
         curve = CurveManager.Curve;
+        duration = CurveManager.AnimationDuration;
     }
 
     public void SlideIn()

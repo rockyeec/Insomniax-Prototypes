@@ -278,7 +278,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1806429650}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4623817268488411094}
+        m_TargetAssemblyTypeName: TempMenuHandler, Assembly-CSharp
+        m_MethodName: OnExitPress
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1806429648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -576,7 +588,7 @@ GameObject:
   - component: {fileID: 3990811655414571378}
   - component: {fileID: 4623817268488411094}
   m_Layer: 0
-  m_Name: Temp Menu Manager
+  m_Name: Menu Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1493,6 +1505,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  animationDuration: 0.69
 --- !u!1 &9068892027921865577
 GameObject:
   m_ObjectHideFlags: 0

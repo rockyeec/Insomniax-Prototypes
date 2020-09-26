@@ -5,7 +5,7 @@ public class CameraSpecialEffects : MonoBehaviour
 {
     private Camera cam = null;
     private AnimationCurve curve = null;
-    readonly private float duration = 0.69f;
+    private float duration = 0.69f;
 
     readonly private float defaultCameraFov = 60.0f;
     readonly private float zoomedOutFov = 133.7f;
@@ -28,6 +28,7 @@ public class CameraSpecialEffects : MonoBehaviour
     private void Start()
     {
         curve = CurveManager.Curve;
+        duration = CurveManager.AnimationDuration;
     }
 
     public void ZoomOut()

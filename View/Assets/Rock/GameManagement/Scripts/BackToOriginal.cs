@@ -9,13 +9,14 @@ public class BackToOriginal : MonoBehaviour
     private Quaternion oriRot;
     private Vector3 targetPos;
     private Quaternion targetRot;
-    private readonly float duration = 0.69f;
+    private float duration = 0.69f;
 
-    private float elapsed = 0.69f;
+    private float elapsed = float.MaxValue;
 
     virtual protected void Start()
     {
         curve = CurveManager.Curve;
+        duration = CurveManager.AnimationDuration;
 
         targetPos = transform.position;
         targetRot = transform.rotation;
