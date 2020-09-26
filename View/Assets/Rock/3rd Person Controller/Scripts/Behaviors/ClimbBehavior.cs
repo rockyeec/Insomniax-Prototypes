@@ -8,18 +8,11 @@ public class ClimbBehavior : Behavior
     private Quaternion targetRot;
     private bool isFirstFrame = true;
     private bool isClimbing = false;
-    private Transform transform;
 
     private void Init(CharacterController controller)
     {
         isFirstFrame = false;
         targetPos = controller.CharTransform.position;
-        transform = controller.CharTransform;
-    }
-
-    private bool IsFinishedClimbing()
-    {
-        return transform.position == targetPos;
     }
 
     public override void Execute(CharacterController controller, in float delta)
@@ -27,12 +20,15 @@ public class ClimbBehavior : Behavior
         if (isFirstFrame)
             Init(controller);
 
+        Transform transform = controller.CharTransform;
+
         if (isClimbing)
         {
             transform.position = Vector3.MoveTowards(transform.position, targetPos, 6.9f * delta);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, 20.0f * delta);
-                        
-            if (IsFinishedClimbing())
+
+            bool isFinishedClimbing = transform.position == targetPos;
+            if (isFinishedClimbing || !controller.Hold)
             {
                 controller.Rb.isKinematic = false;
                 isClimbing = false;
@@ -41,7 +37,6 @@ public class ClimbBehavior : Behavior
             return;
         }
 
-
         if (controller.outputs.onGround)
         {
             return;
@@ -49,15 +44,22 @@ public class ClimbBehavior : Behavior
         
         //Debug.DrawRay(transform.rotation * rayOri + transform.position, Vector3.down * rayLength);
         Ray verticalRay = new Ray(transform.rotation * rayOri + transform.position, Vector3.down);
-        if (Physics.Raycast(verticalRay, out RaycastHit hit0, rayLength, ~(1 << 20)))
+        if (Physics.Raycast(verticalRay, out RaycastHit hit0, rayLength, ~(1 << 20 | 1 << 9)))
         {
             Vector3 horizontalRayOri = transform.position;
             horizontalRayOri.y = hit0.point.y - 0.01f;
 
-            //Debug.DrawRay(horizontalRayOri,transform.forward);
+            //if (Vector3.Dot(hit0.normal, Vector3.up) != 1.0f)
+            //    return;
 
-            if (Physics.Raycast(horizontalRayOri, transform.forward, out RaycastHit hit1, 1.0f, ~(1 << 20)))
+
+            //Debug.DrawRay(horizontalRayOri,transform.forward);
+            //Debug.LogError("hit");
+            if (Physics.Raycast(horizontalRayOri, transform.forward, out RaycastHit hit1, 1.0f, ~(1 << 20 | 1 << 9)))
             {
+                if (Mathf.Abs(Vector3.Dot(hit1.normal, Vector3.up)) >= 0.01f)
+                    return;
+
                 isClimbing = true;
                 controller.outputs.animateClimb = true;
                 controller.Rb.isKinematic = true;

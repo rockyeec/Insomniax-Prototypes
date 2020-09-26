@@ -63,7 +63,7 @@ public class Camera3rdPerson : MonoBehaviour
 
     private void FollowTarget(Vector3 target, in float delta)
     {
-        target.y = Mathf.Lerp(transform.position.y, target.y, delta * 6.9f);
+        target.y = Mathf.Lerp(transform.position.y, target.y, delta * 13.37f);
         transform.position = target;
     }
 

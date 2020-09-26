@@ -38,7 +38,7 @@ public class LocomotionBehavior : Behavior
         if (isMoving
             && Physics.OverlapSphere(
                 transform.position + Vector3.up + transform.forward * 0.26f, 0.24f,
-                ~(1 << 31))
+                ~(1 << 31 | 1 << 9))
             .Length > 0)
         {
             moveDir = Vector3.zero;
@@ -50,7 +50,7 @@ public class LocomotionBehavior : Behavior
         if (!outputs.onGround)
         {
             // move slower
-            moveDir *= 0.420f;
+            moveDir *= 0.69f;
 
             // fall
             moveDir.y = rb.velocity.y;

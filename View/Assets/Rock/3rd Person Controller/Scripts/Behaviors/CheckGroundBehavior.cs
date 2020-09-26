@@ -15,7 +15,7 @@ public class CheckGroundBehavior : Behavior
             transform.position + 1.0f * Vector3.up,
             Vector3.down);
 
-        if (Physics.Raycast(ray, out RaycastHit hit, 1.69f))
+        if (Physics.Raycast(ray, out RaycastHit hit, 1.69f, ~(1 << 9)))
         {
             controller.outputs.inclination = Vector3.Dot(transform.forward, hit.normal);
 
