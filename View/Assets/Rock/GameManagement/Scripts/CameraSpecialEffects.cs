@@ -4,8 +4,6 @@ using UnityEngine;
 public class CameraSpecialEffects : MonoBehaviour
 {
     private Camera cam = null;
-    private AnimationCurve curve = null;
-    private float duration = 0.69f;
 
     readonly private float defaultCameraFov = 60.0f;
     readonly private float zoomedOutFov = 133.7f;
@@ -25,12 +23,6 @@ public class CameraSpecialEffects : MonoBehaviour
         forwardRot = Quaternion.LookRotation(Vector3.forward);
     }
 
-    private void Start()
-    {
-        curve = CurveManager.Curve;
-        duration = CurveManager.AnimationDuration;
-    }
-
     public void ZoomOut()
     {
         StopAllCoroutines();
@@ -46,6 +38,7 @@ public class CameraSpecialEffects : MonoBehaviour
     private IEnumerator CameraGoUpNZoomOut()
     {
         float elapsed = 0.0f;
+        float duration = CurveManager.AnimationDuration;
         float startFov = cam.fieldOfView;
         Quaternion startRot = cam.transform.rotation;
         Vector3 startPos = cam.transform.position;
@@ -55,6 +48,7 @@ public class CameraSpecialEffects : MonoBehaviour
             elapsed += Time.unscaledDeltaTime;
 
             float t = elapsed / duration;
+            t = CurveManager.Curve.Evaluate(t);
 
             cam.fieldOfView = Mathf.Lerp(startFov, zoomedOutFov, t);
             cam.transform.rotation = Quaternion.Slerp(startRot, downRot, t);
@@ -69,6 +63,7 @@ public class CameraSpecialEffects : MonoBehaviour
     private IEnumerator CameraGoDownNZoomIn()
     {
         float elapsed = 0.0f;
+        float duration = CurveManager.AnimationDuration;
         float startFov = cam.fieldOfView;
         Quaternion startRot = cam.transform.localRotation;
         Vector3 startPos = cam.transform.localPosition;
@@ -77,7 +72,7 @@ public class CameraSpecialEffects : MonoBehaviour
             elapsed += Time.unscaledDeltaTime;
 
             float t = elapsed / duration;
-            t = curve.Evaluate(t);
+            t = CurveManager.Curve.Evaluate(t);
 
             cam.fieldOfView = Mathf.Lerp(startFov, defaultCameraFov, t);
             cam.transform.localRotation = Quaternion.Slerp(startRot, forwardRot, t);

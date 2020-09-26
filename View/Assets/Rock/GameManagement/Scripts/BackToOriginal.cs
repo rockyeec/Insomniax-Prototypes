@@ -2,20 +2,15 @@
 
 public class BackToOriginal : MonoBehaviour
 {
-    private AnimationCurve curve = null;
     private Vector3 oriPos;
     private Quaternion oriRot;
     private Vector3 targetPos;
     private Quaternion targetRot;
-    private float duration = 0.69f;
 
     private float elapsed = float.MaxValue;
 
     virtual protected void Start()
     {
-        curve = CurveManager.Curve;
-        duration = CurveManager.AnimationDuration;
-
         targetPos = transform.position;
         targetRot = transform.rotation;
         GameScript.OnGlassesOff += GameScript_OnGlassesOff;
@@ -47,12 +42,12 @@ public class BackToOriginal : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (elapsed < duration)
+        if (elapsed < CurveManager.AnimationDuration)
         {
             elapsed += Time.fixedDeltaTime;
 
-            float t = elapsed / duration;
-            t = curve.Evaluate(t);
+            float t = elapsed / CurveManager.AnimationDuration;
+            t = CurveManager.Curve.Evaluate(t);
 
             transform.position = Vector3.Lerp(oriPos, targetPos, t);
             transform.rotation = Quaternion.Slerp(oriRot, targetRot, t);

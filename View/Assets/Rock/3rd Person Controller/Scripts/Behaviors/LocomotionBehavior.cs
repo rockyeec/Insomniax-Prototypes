@@ -14,6 +14,7 @@ public class LocomotionBehavior : Behavior
             return;
         }
 
+        // usings
         CharacterController.CustomInputs inputs = controller.inputs;
         CharacterController.CustomOutputs outputs = controller.outputs;
         Transform transform = controller.CharTransform;
