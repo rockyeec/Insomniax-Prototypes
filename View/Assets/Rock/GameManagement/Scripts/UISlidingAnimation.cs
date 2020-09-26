@@ -5,6 +5,7 @@ public class UISlidingAnimation : MonoBehaviour
 {
     [SerializeField] private Vector3 outwardsDirection = Vector3.zero;
     [SerializeField] private float percentageOvershoot = 0.5f;
+    private AnimationCurve curve = null;
 
     public float PercentageOvershoot 
     { 
@@ -22,6 +23,8 @@ public class UISlidingAnimation : MonoBehaviour
         originalPos = transform.position;
         offScreenPos = originalPos + outwardsDirection * 1337.0f;
         overshootPos = originalPos - outwardsDirection * 133.7f;
+
+        curve = CurveManager.Curve;
     }
 
     public void SlideIn()
@@ -66,6 +69,8 @@ public class UISlidingAnimation : MonoBehaviour
                 isPhase1
                 ? elapsed / phase1
                 : (elapsed - phase1) / phase2;
+
+            t = curve.Evaluate(t);
 
             transform.position =
                 isPhase1

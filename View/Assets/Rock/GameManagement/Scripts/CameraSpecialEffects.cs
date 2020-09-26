@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class CameraSpecialEffects : MonoBehaviour
 {
-    Camera cam;
+    private Camera cam = null;
+    private AnimationCurve curve = null;
     readonly private float duration = 0.69f;
 
     readonly private float defaultCameraFov = 60.0f;
@@ -22,6 +23,11 @@ public class CameraSpecialEffects : MonoBehaviour
 
         downRot = Quaternion.LookRotation(Vector3.down);
         forwardRot = Quaternion.LookRotation(Vector3.forward);
+    }
+
+    private void Start()
+    {
+        curve = CurveManager.Curve;
     }
 
     public void ZoomOut()
@@ -70,6 +76,7 @@ public class CameraSpecialEffects : MonoBehaviour
             elapsed += Time.unscaledDeltaTime;
 
             float t = elapsed / duration;
+            t = curve.Evaluate(t);
 
             cam.fieldOfView = Mathf.Lerp(startFov, defaultCameraFov, t);
             cam.transform.localRotation = Quaternion.Slerp(startRot, forwardRot, t);

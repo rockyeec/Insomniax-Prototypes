@@ -4,16 +4,19 @@ using UnityEngine.PlayerLoop;
 
 public class BackToOriginal : MonoBehaviour
 {
-    Vector3 oriPos;
-    Quaternion oriRot;
-    Vector3 targetPos;
-    Quaternion targetRot;
-    readonly float duration = 0.69f;
+    private AnimationCurve curve = null;
+    private Vector3 oriPos;
+    private Quaternion oriRot;
+    private Vector3 targetPos;
+    private Quaternion targetRot;
+    private readonly float duration = 0.69f;
 
-    float elapsed = 0.69f;
+    private float elapsed = 0.69f;
 
     virtual protected void Start()
     {
+        curve = CurveManager.Curve;
+
         targetPos = transform.position;
         targetRot = transform.rotation;
         GameScript.OnGlassesOff += GameScript_OnGlassesOff;
@@ -50,6 +53,8 @@ public class BackToOriginal : MonoBehaviour
             elapsed += Time.fixedDeltaTime;
 
             float t = elapsed / duration;
+            t = curve.Evaluate(t);
+
             transform.position = Vector3.Lerp(oriPos, targetPos, t);
             transform.rotation = Quaternion.Slerp(oriRot, targetRot, t);
         }
