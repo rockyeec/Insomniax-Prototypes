@@ -9,6 +9,7 @@ public class PlayerInput : InputParent
 
     [SerializeField] private bool isCanClimb = true;
     [SerializeField] private bool isLevelHasMovingPlatforms = false;
+    [SerializeField] private bool isLevelHasSlopes = false;
 
     private Transform hips;
 
@@ -28,8 +29,10 @@ public class PlayerInput : InputParent
         Controller.AddFixedTickBehavior(new JumpBehavior());
 
         Animator anim = GetComponentInChildren<Animator>();
-        anim.gameObject.AddComponent<IKHandler>();
         hips = anim.GetBoneTransform(HumanBodyBones.Hips);
+
+        if (isLevelHasSlopes)
+            anim.gameObject.AddComponent<IKHandler>();
     }
 
     protected override void Tick(in float delta)
