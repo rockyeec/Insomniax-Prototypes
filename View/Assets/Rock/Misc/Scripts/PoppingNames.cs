@@ -42,7 +42,7 @@ public class PoppingNames : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         tmp.ForceMeshUpdate();
         Vector3[] vertices = tmp.mesh.vertices;
