@@ -18,7 +18,7 @@ public class PlayerInput : InputParent
         Controller.AddFixedTickBehavior(new JumpBehavior());
 
         if (isCanClimb)
-            Controller.AddRegularTickBehavior(new ClimbBehavior());
+            Controller.AddFixedTickBehavior(new ClimbBehavior());
     }
 
     protected override void Tick(in float delta)

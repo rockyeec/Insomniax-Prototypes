@@ -14,6 +14,7 @@ public class LocomotionBehavior : Behavior
             return;
         }
 
+        // usings
         CharacterController.CustomInputs inputs = controller.inputs;
         CharacterController.CustomOutputs outputs = controller.outputs;
         Transform transform = controller.CharTransform;
@@ -36,8 +37,8 @@ public class LocomotionBehavior : Behavior
         // wall
         if (isMoving
             && Physics.OverlapSphere(
-                transform.position + Vector3.up + transform.forward * 0.51f, 0.25f,
-                ~(1 << 31))
+                transform.position + Vector3.up + transform.forward * 0.26f, 0.24f,
+                ~(1 << 31 | 1 << 9))
             .Length > 0)
         {
             moveDir = Vector3.zero;
@@ -52,7 +53,7 @@ public class LocomotionBehavior : Behavior
             moveDir *= 0.69f;
 
             // fall
-            moveDir.y = rb.velocity.y - 0.1337f;
+            moveDir.y = rb.velocity.y;
         }
         rb.velocity = moveDir;
     }

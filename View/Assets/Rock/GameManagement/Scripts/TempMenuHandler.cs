@@ -46,6 +46,13 @@ public class TempMenuHandler : MonoBehaviour
         settings.SlideOut();
     }
 
+    public void OnExitPress()
+    {
+        if (Input.touchCount > 1)
+            return;
+        Application.Quit();
+    }
+
     [System.Serializable]
     public class MenuPage
     {

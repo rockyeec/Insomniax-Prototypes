@@ -12,7 +12,6 @@ public class UISlidingAnimation : MonoBehaviour
         set { percentageOvershoot = value; } 
     }
 
-    readonly private float duration = 0.69f;
     private Vector3 originalPos;
     private Vector3 offScreenPos;
     private Vector3 overshootPos;
@@ -51,6 +50,7 @@ public class UISlidingAnimation : MonoBehaviour
     {
         float elapsed = 0.0f;
 
+        float duration = CurveManager.AnimationDuration;
         float phase1 = duration * phase1Duration;
         float phase2 = duration - phase1;
 
@@ -66,6 +66,8 @@ public class UISlidingAnimation : MonoBehaviour
                 isPhase1
                 ? elapsed / phase1
                 : (elapsed - phase1) / phase2;
+
+            t = CurveManager.Curve.Evaluate(t);
 
             transform.position =
                 isPhase1

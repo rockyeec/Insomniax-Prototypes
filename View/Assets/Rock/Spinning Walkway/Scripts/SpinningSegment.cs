@@ -9,6 +9,7 @@ public class SpinningSegment : MonoBehaviour
     {
         GameScript.OnGlassesOn += GameScript_OnGlassesOn;
         GameScript.OnGlassesOff += GameScript_OnGlassesOff;
+        enabled = false;
     }
     private void OnDestroy()
     {
@@ -18,21 +19,28 @@ public class SpinningSegment : MonoBehaviour
 
     private void GameScript_OnGlassesOn()
     {
-        StopAllCoroutines();
-        StartCoroutine(Spin());
+        /*StopAllCoroutines();
+        StartCoroutine(Spin());*/
+        enabled = true;
     }
     private void GameScript_OnGlassesOff()
     {
-        StopAllCoroutines();   
+        //StopAllCoroutines();
+        enabled = false;
     }
 
 
-    private IEnumerator Spin()
+    /*private IEnumerator Spin()
     {
         while (true)
         {
             transform.Rotate(transform.forward, Time.deltaTime * spinSpeed);
             yield return null;
         }
+    }*/
+
+    private void FixedUpdate()
+    {
+        transform.Rotate(transform.forward, Time.fixedDeltaTime * spinSpeed);
     }
 }
