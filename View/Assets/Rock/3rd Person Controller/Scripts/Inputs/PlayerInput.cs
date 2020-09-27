@@ -16,6 +16,9 @@ public class PlayerInput : InputParent
     {
         base.Init();
 
+        if (isCanClimb)
+            Controller.AddFixedTickBehavior(new ClimbBehavior());
+
         if (isLevelHasMovingPlatforms)
             Controller.AddFixedTickBehavior(new CheckGroundBehavior());
         else
@@ -24,10 +27,9 @@ public class PlayerInput : InputParent
         Controller.AddFixedTickBehavior(new LocomotionBehavior());
         Controller.AddFixedTickBehavior(new JumpBehavior());
 
-        if (isCanClimb)
-            Controller.AddFixedTickBehavior(new ClimbBehavior());
-
-        hips = GetComponentInChildren<Animator>().GetBoneTransform(HumanBodyBones.Hips);
+        Animator anim = GetComponentInChildren<Animator>();
+        anim.gameObject.AddComponent<IKHandler>();
+        hips = anim.GetBoneTransform(HumanBodyBones.Hips);
     }
 
     protected override void Tick(in float delta)

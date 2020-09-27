@@ -9,6 +9,8 @@ public class AnimatorHook : MonoBehaviour
     {
         animator = a;
         controller = c;
+
+
     }
 
     public void Tick(/*in float delta*/)
