@@ -12,7 +12,7 @@ public class DialogueManager : MonoBehaviour
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI dialogueText;
 
-    private Queue<Dialogue.infomation> sentences;
+    private Queue<Dialogue.infomation> sentences = new Queue<Dialogue.infomation>();
 
     // Start is called before the first frame update
     void Awake()
@@ -28,15 +28,13 @@ public class DialogueManager : MonoBehaviour
         DialogueElement.SetActive(false);   
     }
 
-    public void StartDialogue(Dialogue d)
+    public void StartDialogue(Dialogue d) //Call start dialogue
     {
         DialogueElement.SetActive(true);
         Debug.Log("Start Dialogue");
 
-        if(sentences != null)
-        {
-            sentences.Clear();
-        }
+        sentences.Clear();
+
         Debug.Log("Cleared previous dialogue");
         foreach(Dialogue.infomation i in d.dialogueInfo)
         {
@@ -48,18 +46,30 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence()
     {
-        if (sentences.Count == 0)
+        if (sentences.Count <= 0)
         {
-            EndDialogue();
+            EndDialogue(); //end dialogue if no more dialogues
             return;
         }
 
         Dialogue.infomation info = sentences.Dequeue();
-        nameText.text = info.nameText;
+        nameText.text = info.nameText; //Display name
+        StartCoroutine(Wordbyword(info.DialogueText)); //Animation display
+        //dialogueText.text = info.DialogueText; //This is for normal display
+    }
+
+    IEnumerator Wordbyword (string sentence) //Animation show words one by one for dialogue text
+    {
+        dialogueText.text = "";
+        foreach(char letter in sentence.ToCharArray())
+        {
+            dialogueText.text += letter;
+            yield return null;
+        }
     }
 
     public void EndDialogue()
     {
-        //DialogueElement.SetActive(false);
+        DialogueElement.SetActive(false);
     }
 }
