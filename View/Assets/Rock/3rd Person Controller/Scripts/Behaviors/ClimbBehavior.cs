@@ -4,7 +4,7 @@ public class ClimbBehavior : Behavior
 {
     private readonly Vector3 rayOri = new Vector3(0.0f, 2.0f, 0.69f);
     private readonly float rayLength = 0.69f;
-    private Vector3 targetPos;
+    private Transform charModelTrans = null;
     private Quaternion targetRot;
     private bool isFirstFrame = true;
     private bool isClimbing = false;
@@ -12,7 +12,7 @@ public class ClimbBehavior : Behavior
     private void Init(CharacterController controller)
     {
         isFirstFrame = false;
-        targetPos = controller.CharTransform.position;
+        charModelTrans = controller.CharTransform.GetComponentInChildren<Animator>().transform;
     }
 
     public override void Execute(CharacterController controller, in float delta)
@@ -24,11 +24,14 @@ public class ClimbBehavior : Behavior
 
         if (isClimbing)
         {
-            transform.position = Vector3.MoveTowards(transform.position, targetPos, 6.9f * delta);
+            charModelTrans.localPosition = Vector3.MoveTowards(charModelTrans.localPosition, Vector3.zero, 6.9f * delta);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, 20.0f * delta);
 
-            bool isFinishedClimbing = transform.position == targetPos;
-            if (isFinishedClimbing || !controller.Hold)
+            bool isFinishedClimbing =
+                charModelTrans.localPosition == Vector3.zero
+                 || !controller.Hold;
+
+            if (isFinishedClimbing)
             {
                 controller.Rb.isKinematic = false;
                 isClimbing = false;
@@ -65,9 +68,12 @@ public class ClimbBehavior : Behavior
                 controller.Rb.isKinematic = true;
                 
                 targetRot = Quaternion.LookRotation(-hit1.normal);
-                
-                targetPos = hit1.point - hit1.normal * 0.01f;
+
+                Vector3 prevPos = transform.position;
+                Vector3 targetPos = hit1.point - hit1.normal * 0.01f;
                 targetPos.y = hit0.point.y;
+                transform.position = targetPos;
+                charModelTrans.position = prevPos;
             }
         }
     }
