@@ -10,7 +10,7 @@ public class DogNpcInput : InputParent
     {
         base.Init();
 
-        Controller.AddFixedTickBehavior(new CheckGroundBehavior());
+        Controller.AddFixedTickBehavior(new CheckGroundWithNoMovingPlatformBehavior());
         Controller.AddFixedTickBehavior(new LocomotionBehavior());
         Controller.AddFixedTickBehavior(new JumpBehavior());
 

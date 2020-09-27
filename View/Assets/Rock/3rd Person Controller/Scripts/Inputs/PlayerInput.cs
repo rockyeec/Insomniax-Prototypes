@@ -8,17 +8,31 @@ public class PlayerInput : InputParent
     [SerializeField] private Camera3rdPerson cam = null;
 
     [SerializeField] private bool isCanClimb = true;
+    [SerializeField] private bool isLevelHasMovingPlatforms = false;
+    [SerializeField] private bool isLevelHasSlopes = false;
+
+    private Transform hips;
 
     protected override void Init()
     {
         base.Init();
 
-        Controller.AddFixedTickBehavior(new CheckGroundBehavior());
+        if (isCanClimb)
+            Controller.AddFixedTickBehavior(new ClimbBehavior());
+
+        if (isLevelHasMovingPlatforms)
+            Controller.AddFixedTickBehavior(new CheckGroundBehavior());
+        else
+            Controller.AddFixedTickBehavior(new CheckGroundWithNoMovingPlatformBehavior());
+
         Controller.AddFixedTickBehavior(new LocomotionBehavior());
         Controller.AddFixedTickBehavior(new JumpBehavior());
 
-        if (isCanClimb)
-            Controller.AddFixedTickBehavior(new ClimbBehavior());
+        Animator anim = GetComponentInChildren<Animator>();
+        hips = anim.GetBoneTransform(HumanBodyBones.Hips);
+
+        if (isLevelHasSlopes)
+            anim.gameObject.AddComponent<IKHandler>();
     }
 
     protected override void Tick(in float delta)
@@ -57,7 +71,8 @@ public class PlayerInput : InputParent
         cam.Tick(
             rightJoy.GetVerticalDelta(),
             rightJoy.GetHorizontalDelta(),
-            transform.position,
+            hips.position,
+            //transform.position,
             delta);
     }
 
