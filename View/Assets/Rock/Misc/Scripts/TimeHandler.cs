@@ -8,9 +8,15 @@ public class TimeHandler : MonoBehaviour
     public static float SinTime { get { return instance.sinTime; } }
     public static float CosTime { get { return instance.cosTime; } }
 
+    public static void Enable()
+    {
+        instance.enabled = true;
+    }
+
     private void Awake()
     {
         instance = this;
+        enabled = false;
     }
 
     private void Update()

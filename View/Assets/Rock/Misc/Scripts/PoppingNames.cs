@@ -15,6 +15,7 @@ public class PoppingNames : MonoBehaviour
     {
         text = tmp.text;
         tmp.text = string.Empty;
+        TimeHandler.Enable();
     }
 
     public void TriggerTypeText()

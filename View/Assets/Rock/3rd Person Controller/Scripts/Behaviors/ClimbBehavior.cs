@@ -33,6 +33,7 @@ public class ClimbBehavior : Behavior
 
             if (isFinishedClimbing)
             {
+                charModelTrans.localPosition = Vector3.zero;
                 controller.Rb.isKinematic = false;
                 isClimbing = false;
             }
