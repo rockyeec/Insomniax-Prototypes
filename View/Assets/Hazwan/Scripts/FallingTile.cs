@@ -7,15 +7,16 @@ public class FallingTile : MonoBehaviour
     public GameObject cube;
 
     public bool isFake = false;
+    public bool isAbleToFall = false;
 
     [SerializeField] private Material[] materialList = null;
 
-    MeshRenderer ren = null;
+    MeshRenderer meshRenderer = null;
     Rigidbody rb = null;
 
     void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.name == "GroundCheck" && isFake)
+        if (collision.gameObject.name == "GroundCheck" && isAbleToFall)
         {
             if (rb == null)
             {
@@ -26,15 +27,16 @@ public class FallingTile : MonoBehaviour
         }
     }
 
-    public void Become(bool isFake)
+    public void FakeTile(bool isFake)
     {
-        if (ren == null)
+        if (meshRenderer == null)
         {
-            ren = cube.GetComponent<MeshRenderer>();
+            meshRenderer = cube.GetComponent<MeshRenderer>();
         }
 
-        this.isFake = isFake;
+        //this.isFake = isFake;
+        isAbleToFall = isFake;
 
-        ren.material = isFake ? materialList[0] : materialList[1];
+        meshRenderer.material = isFake ? materialList[0] : materialList[1];
     }
 }

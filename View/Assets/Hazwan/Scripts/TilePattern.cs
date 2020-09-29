@@ -21,16 +21,16 @@ public class TilePattern : MonoBehaviour
                 fallingTiles[x, y] = Instantiate(tile, pos, Quaternion.identity).GetComponent<FallingTile>();
                 if ((y == 0 && x == 2) || (y == 1 && x == 3) || (y == 2 && x == 2) || (y == 3 && x == 1) || (y == 4 && x == 0))
                 {
-                    fallingTiles[x, y].Become(false);
+                    fallingTiles[x, y].FakeTile(false);
                 }
                 else
                 {
-                    fallingTiles[x, y].Become(true);
+                    fallingTiles[x, y].FakeTile(true);
                 }
             }
         }
 
-        GameScript.OnGlassesOff += GameScript_OnGlassesOff;
+        //GameScript.OnGlassesOff += GameScript_OnGlassesOff;
     }
 
     private void GameScript_OnGlassesOff()
@@ -39,7 +39,7 @@ public class TilePattern : MonoBehaviour
         {
             for (int x = 0; x < gridX; x++)
             {
-                fallingTiles[x, y].Become(Random.Range(0, 4) == 1);
+                fallingTiles[x, y].FakeTile(Random.Range(0, 4) == 1);
             }
         }
     }
