@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SpinningSegment : MonoBehaviour
 {
@@ -19,25 +18,12 @@ public class SpinningSegment : MonoBehaviour
 
     private void GameScript_OnGlassesOn()
     {
-        /*StopAllCoroutines();
-        StartCoroutine(Spin());*/
         enabled = true;
     }
     private void GameScript_OnGlassesOff()
     {
-        //StopAllCoroutines();
         enabled = false;
     }
-
-
-    /*private IEnumerator Spin()
-    {
-        while (true)
-        {
-            transform.Rotate(transform.forward, Time.deltaTime * spinSpeed);
-            yield return null;
-        }
-    }*/
 
     private void FixedUpdate()
     {

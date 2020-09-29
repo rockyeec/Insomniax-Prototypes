@@ -1251,7 +1251,7 @@ PrefabInstance:
     - target: {fileID: 3761455923566777301, guid: 5c7a2e51d97eb9c4d9051ba36e244a40,
         type: 3}
       propertyPath: m_Name
-      value: 3rd Person Player Package
+      value: Super Prefab
       objectReference: {fileID: 0}
     - target: {fileID: 3795393758274076911, guid: 5c7a2e51d97eb9c4d9051ba36e244a40,
         type: 3}
@@ -1283,6 +1283,16 @@ PrefabInstance:
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4834901216101704758, guid: 5c7a2e51d97eb9c4d9051ba36e244a40,
+        type: 3}
+      propertyPath: isLevelHasMovingPlatforms
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834901216101704758, guid: 5c7a2e51d97eb9c4d9051ba36e244a40,
+        type: 3}
+      propertyPath: isLevelHasSlopes
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6035413510186844714, guid: 5c7a2e51d97eb9c4d9051ba36e244a40,
         type: 3}
       propertyPath: m_Color.r
@@ -1297,6 +1307,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.b
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6863223719137142889, guid: 5c7a2e51d97eb9c4d9051ba36e244a40,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 7007764729932356703, guid: 5c7a2e51d97eb9c4d9051ba36e244a40,
         type: 3}
