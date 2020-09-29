@@ -4,14 +4,14 @@ using UnityEngine;
 public class WallLerper : MonoBehaviour
 {
     private MeshRenderer ren = null;
-    private MeshCollider col = null;
+    private Collider col = null;
 
     private void Start()
     {
         GameScript.OnGlassesOn += GameScript_OnGlassesOn;
         GameScript.OnGlassesOff += GameScript_OnGlassesOff;
 
-        col = GetComponent<MeshCollider>();
+        col = GetComponent<Collider>();
         ren = GetComponent<MeshRenderer>();
         ren.materials = new Material[0];
         ren.material = MaterialManager.WallMaterial;
