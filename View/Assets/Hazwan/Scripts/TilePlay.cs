@@ -20,8 +20,16 @@ public class TilePlay : TilePattern
 
     int lowestArea = -25;
 
+    MeshRenderer rend;
+
     void Start()
     {
+        
+        rend = GetComponent<MeshRenderer>();
+        Color c = rend.material.color;
+        c.a = 0f;
+        rend.material.color = c;
+
         for (int i = 0; i < TileBehaviour.Instance.tile.Count; i++)
         {
             CallTile.Add(TileBehaviour.Instance.tile[i]);
@@ -34,6 +42,8 @@ public class TilePlay : TilePattern
         SetTileIndex();
     }
 
+    
+
     void Update()
     {
 
@@ -41,6 +51,7 @@ public class TilePlay : TilePattern
 
     private void OnTriggerEnter(Collider collision)
     {
+        startFadingIn();
         print(CallTile[indexRef]);
 
         for (int i = 1; i < TileBehaviour.Instance.leftTile.Count - 1; i++)
@@ -67,6 +78,7 @@ public class TilePlay : TilePattern
 
         for (int i = 0; i < TileBehaviour.Instance.startingTile.Count; i++)
         {
+            
             int x = TileBehaviour.Instance.startingTile[i];
 
             if (gameObject == CallTile[x])
@@ -122,6 +134,11 @@ public class TilePlay : TilePattern
             StartEdgeRightPattern(x);
         }
 
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        startFadingOut();
     }
 
     void StartingPattern(int tileRef)
@@ -325,5 +342,37 @@ public class TilePlay : TilePattern
                 indexRef = i;
             }
         }
+    }
+
+    IEnumerator FadeIn()
+    {
+        for (float f = 0; f <= 1; f += 0.05f)
+        {
+            Color c = rend.material.color;
+            c.a = f;
+            rend.material.color = c;
+            yield return new WaitForSeconds(0.05f);
+        }
+    }
+
+    IEnumerator FadeOut()
+    {
+        for (float f = 1f; f >= -0.05f; f -= 0.05f)
+        {
+            Color c = rend.material.color;
+            c.a = f;
+            rend.material.color = c;
+            yield return new WaitForSeconds(0.05f);
+        }
+    }
+
+    public void startFadingIn()
+    {
+        StartCoroutine(FadeIn());
+    }
+
+    public void startFadingOut()
+    {
+        StartCoroutine(FadeOut());
     }
 }
