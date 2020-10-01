@@ -18,9 +18,7 @@ public class TilePlay : TilePattern
     int testing2 = 6;
     int testing3 = 3;
 
-    //public bool isMiddle = true;
-
-    //public static int totalOfLeftTiles = 0;
+    int lowestArea = -25;
 
     void Start()
     {
@@ -34,43 +32,18 @@ public class TilePlay : TilePattern
         CallTile[testing3].transform.position = new Vector3(CallTile[testing3].transform.position.x, 0, CallTile[testing3].transform.position.z);
 
         SetTileIndex();
-
-        //TileBehaviour.Instance.RightTilesIndex();
-
-        
     }
 
     void Update()
     {
-        /*for (int i = 0; i < TileBehaviour.Instance.leftTile.Count; i++)
-        {
-            int x = TileBehaviour.Instance.leftTile[i];
 
-            if (gameObject == CallTile[x])
-            {
-                isMiddle = false;
-                break;
-            }
-        }
-
-        for (int i = 0; i < TileBehaviour.Instance.rightTile.Count; i++)
-        {
-            int x = TileBehaviour.Instance.rightTile[i];
-
-            if (gameObject == CallTile[x])
-            {
-                isMiddle = false;
-                break;
-            }
-        }*/
     }
 
     private void OnTriggerEnter(Collider collision)
     {
-
         print(CallTile[indexRef]);
 
-        for (int i = 0; i < TileBehaviour.Instance.leftTile.Count; i++)
+        for (int i = 1; i < TileBehaviour.Instance.leftTile.Count - 1; i++)
         {
             int x = TileBehaviour.Instance.leftTile[i];
 
@@ -81,7 +54,7 @@ public class TilePlay : TilePattern
             }
         }
 
-        for (int i = 0; i < TileBehaviour.Instance.rightTile.Count; i++)
+        for (int i = 1; i < TileBehaviour.Instance.rightTile.Count - 1; i++)
         {
             int x = TileBehaviour.Instance.rightTile[i];
 
@@ -114,6 +87,41 @@ public class TilePlay : TilePattern
             }
         }
 
+        for (int i = 0; i < grid_X - 2; i++)
+        {
+            int x = TileBehaviour.Instance.endTile[i];
+            if (gameObject == CallTile[x])
+            {
+                print("Touched");
+                EndPattern(x);
+                break;
+            }
+        }
+
+        if (gameObject == CallTile[TileBehaviour.Instance.endEdgeTile[1]])
+        {
+            int x = TileBehaviour.Instance.endEdgeTile[1];
+            EndEdgeLeftPattern(x);
+        }
+
+        if (gameObject == CallTile[TileBehaviour.Instance.endEdgeTile[0]])
+        {
+            int x = TileBehaviour.Instance.endEdgeTile[0];
+            EndEdgeRightPattern(x);
+        }
+
+        if (gameObject == CallTile[TileBehaviour.Instance.startEdgeTile[0]])
+        {
+            int x = TileBehaviour.Instance.startEdgeTile[0];
+            StartEdgeLeftPattern(x);
+        }
+
+        if (gameObject == CallTile[TileBehaviour.Instance.startEdgeTile[1]])
+        {
+            int x = TileBehaviour.Instance.startEdgeTile[1];
+            StartEdgeRightPattern(x);
+        }
+
     }
 
     void StartingPattern(int tileRef)
@@ -128,18 +136,11 @@ public class TilePlay : TilePattern
         tempTile[3] = tileRef;
         tempTile[4] = tileRef + grid_Y;
 
-        print(tempTile[0]);
-        print(tempTile[1]);
-        print(tempTile[2]);
-        print(tempTile[3]);
-        print(tempTile[4]);
-
         for (int i = 0; i < CallTile.Count; i++)
         {
             if (i != tempTile[0] && i != tempTile[1] && i != tempTile[2] && i != tempTile[3] && i != tempTile[4])
             {
-                CallTile[i].transform.position = new Vector3(CallTile[i].transform.position.x, -5, CallTile[i].transform.position.z);
-                print(CallTile[i]);
+                CallTile[i].transform.position = new Vector3(CallTile[i].transform.position.x, lowestArea, CallTile[i].transform.position.z);
             }
         }
     }
@@ -150,7 +151,20 @@ public class TilePlay : TilePattern
         CallTile[tileRef - 1].transform.position = new Vector3(CallTile[tileRef - 1].transform.position.x, 0, CallTile[tileRef - 1].transform.position.z);
         CallTile[tileRef - grid_Y].transform.position = new Vector3(CallTile[tileRef - grid_Y].transform.position.x, 0, CallTile[tileRef - grid_Y].transform.position.z);
 
+        tempTile[0] = tileRef + 1;
+        tempTile[1] = tileRef - 1;
+        tempTile[2] = tileRef - grid_Y;
+        tempTile[3] = tileRef - grid_Y;
+        tempTile[4] = tileRef;
 
+        for (int i = 0; i < CallTile.Count; i++)
+        {
+            if (i != tempTile[0] && i != tempTile[1] && i != tempTile[2] && i != tempTile[3] && i != tempTile[4])
+            {
+                CallTile[i].transform.position = new Vector3(CallTile[i].transform.position.x, lowestArea, CallTile[i].transform.position.z);
+                print(CallTile[i]);
+            }
+        }
     }
 
     void MiddlePattern(int tileRef)
@@ -166,24 +180,101 @@ public class TilePlay : TilePattern
         tempTile[3] = tileRef - grid_Y;
         tempTile[4] = tileRef;
 
-        print(tempTile[0]);
-        print(tempTile[1]);
-        print(tempTile[2]);
-        print(tempTile[3]);
-        print(tempTile[4]);
-
         for (int i = 0; i < CallTile.Count; i++)
         {
             if (i != tempTile[0] && i != tempTile[1] && i != tempTile[2] && i != tempTile[3] && i != tempTile[4])
             {
-                CallTile[i].transform.position = new Vector3(CallTile[i].transform.position.x, -5, CallTile[i].transform.position.z);
-                print(CallTile[i]);
+                CallTile[i].transform.position = new Vector3(CallTile[i].transform.position.x, lowestArea, CallTile[i].transform.position.z);
             }
         }
 
     }
 
     void LeftEdgePattern(int tileRef)
+    {
+        CallTile[tileRef + 1].transform.position = new Vector3(CallTile[tileRef + 1].transform.position.x, 0, CallTile[tileRef + 1].transform.position.z);
+        CallTile[tileRef + grid_Y].transform.position = new Vector3(CallTile[tileRef + grid_Y].transform.position.x, 0, CallTile[tileRef + grid_Y].transform.position.z);
+        CallTile[tileRef - grid_Y].transform.position = new Vector3(CallTile[tileRef - grid_Y].transform.position.x, 0, CallTile[tileRef - grid_Y].transform.position.z);
+
+        tempTile[0] = tileRef + 1;
+        tempTile[1] = tileRef + 1;
+        tempTile[2] = tileRef + grid_Y;
+        tempTile[3] = tileRef - grid_Y;
+        tempTile[4] = tileRef;
+
+        for (int i = 0; i < CallTile.Count; i++)
+        {
+            if (i != tempTile[0] && i != tempTile[1] && i != tempTile[2] && i != tempTile[3] && i != tempTile[4])
+            {
+                CallTile[i].transform.position = new Vector3(CallTile[i].transform.position.x, lowestArea, CallTile[i].transform.position.z);
+            }
+        }
+    }
+
+    void RightEdgePattern(int tileRef)
+    {
+        CallTile[tileRef - 1].transform.position = new Vector3(CallTile[tileRef - 1].transform.position.x, 0, CallTile[tileRef - 1].transform.position.z);
+        CallTile[tileRef + grid_Y].transform.position = new Vector3(CallTile[tileRef + grid_Y].transform.position.x, 0, CallTile[tileRef + grid_Y].transform.position.z);
+        CallTile[tileRef - grid_Y].transform.position = new Vector3(CallTile[tileRef - grid_Y].transform.position.x, 0, CallTile[tileRef - grid_Y].transform.position.z);
+
+        tempTile[0] = tileRef - 1;
+        tempTile[1] = tileRef - 1;
+        tempTile[2] = tileRef + grid_Y;
+        tempTile[3] = tileRef - grid_Y;
+        tempTile[4] = tileRef;
+
+        for (int i = 0; i < CallTile.Count; i++)
+        {
+            if (i != tempTile[0] && i != tempTile[1] && i != tempTile[2] && i != tempTile[3] && i != tempTile[4])
+            {
+                CallTile[i].transform.position = new Vector3(CallTile[i].transform.position.x, lowestArea, CallTile[i].transform.position.z);
+                print(CallTile[i]);
+            }
+        }
+    }
+
+    void EndEdgeLeftPattern(int tileRef)
+    {
+        CallTile[tileRef + 1].transform.position = new Vector3(CallTile[tileRef + 1].transform.position.x, 0, CallTile[tileRef + 1].transform.position.z);
+        CallTile[tileRef - grid_Y].transform.position = new Vector3(CallTile[tileRef - grid_Y].transform.position.x, 0, CallTile[tileRef - grid_Y].transform.position.z);
+
+        tempTile[0] = tileRef + 1;
+        tempTile[1] = tileRef + 1;
+        tempTile[2] = tileRef - grid_Y;
+        tempTile[3] = tileRef - grid_Y;
+        tempTile[4] = tileRef;
+
+        for (int i = 0; i < CallTile.Count; i++)
+        {
+            if (i != tempTile[0] && i != tempTile[1] && i != tempTile[2] && i != tempTile[3] && i != tempTile[4])
+            {
+                CallTile[i].transform.position = new Vector3(CallTile[i].transform.position.x, lowestArea, CallTile[i].transform.position.z);
+            }
+        }
+    }
+
+    void EndEdgeRightPattern(int tileRef)
+    {
+        CallTile[tileRef - 1].transform.position = new Vector3(CallTile[tileRef - 1].transform.position.x, 0, CallTile[tileRef - 1].transform.position.z);
+        CallTile[tileRef - grid_Y].transform.position = new Vector3(CallTile[tileRef - grid_Y].transform.position.x, 0, CallTile[tileRef - grid_Y].transform.position.z);
+
+        tempTile[0] = tileRef - 1;
+        tempTile[1] = tileRef - 1;
+        tempTile[2] = tileRef - grid_Y;
+        tempTile[3] = tileRef - grid_Y;
+        tempTile[4] = tileRef;
+
+        for (int i = 0; i < CallTile.Count; i++)
+        {
+            if (i != tempTile[0] && i != tempTile[1] && i != tempTile[2] && i != tempTile[3] && i != tempTile[4])
+            {
+                CallTile[i].transform.position = new Vector3(CallTile[i].transform.position.x, lowestArea, CallTile[i].transform.position.z);
+                print(CallTile[i]);
+            }
+        }
+    }
+
+    void StartEdgeLeftPattern(int tileRef)
     {
         CallTile[tileRef + 1].transform.position = new Vector3(CallTile[tileRef + 1].transform.position.x, 0, CallTile[tileRef + 1].transform.position.z);
         CallTile[tileRef + grid_Y].transform.position = new Vector3(CallTile[tileRef + grid_Y].transform.position.x, 0, CallTile[tileRef + grid_Y].transform.position.z);
@@ -198,13 +289,13 @@ public class TilePlay : TilePattern
         {
             if (i != tempTile[0] && i != tempTile[1] && i != tempTile[2] && i != tempTile[3] && i != tempTile[4])
             {
-                CallTile[i].transform.position = new Vector3(CallTile[i].transform.position.x, -5, CallTile[i].transform.position.z);
+                CallTile[i].transform.position = new Vector3(CallTile[i].transform.position.x, lowestArea, CallTile[i].transform.position.z);
                 print(CallTile[i]);
             }
         }
     }
 
-    void RightEdgePattern(int tileRef)
+    void StartEdgeRightPattern(int tileRef)
     {
         CallTile[tileRef - 1].transform.position = new Vector3(CallTile[tileRef - 1].transform.position.x, 0, CallTile[tileRef - 1].transform.position.z);
         CallTile[tileRef + grid_Y].transform.position = new Vector3(CallTile[tileRef + grid_Y].transform.position.x, 0, CallTile[tileRef + grid_Y].transform.position.z);
@@ -219,7 +310,7 @@ public class TilePlay : TilePattern
         {
             if (i != tempTile[0] && i != tempTile[1] && i != tempTile[2] && i != tempTile[3] && i != tempTile[4])
             {
-                CallTile[i].transform.position = new Vector3(CallTile[i].transform.position.x, -5, CallTile[i].transform.position.z);
+                CallTile[i].transform.position = new Vector3(CallTile[i].transform.position.x, lowestArea, CallTile[i].transform.position.z);
                 print(CallTile[i]);
             }
         }
@@ -234,7 +325,5 @@ public class TilePlay : TilePattern
                 indexRef = i;
             }
         }
-
     }
-
 }

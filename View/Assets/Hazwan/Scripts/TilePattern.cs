@@ -46,7 +46,7 @@ public class TilePattern : MonoBehaviour
         {
             for (int x = 0; x < gridX; x++)
             {
-                Vector3 pos = new Vector3(x, -5, y) * spacing;
+                Vector3 pos = new Vector3(x, -10, y) * spacing;
                 tile = Instantiate(tilePrefab, pos, Quaternion.identity);
                 tile.name = string.Format("Tile-{0}", tileCounter);
                 tileCounter++;
@@ -61,7 +61,7 @@ public class TilePattern : MonoBehaviour
     {
         //tileList[2].transform.position = new Vector3(tileList[2].transform.position.x, 0, tileList[2].transform.position.z);
         TileBehaviour.totalOfGridX = gridX;
-        TilePlay.grid_X = gridX;
+        TilePlay.grid_X = TileBehaviour.totalOfGridX;
         TileBehaviour.totalOfGridY = gridY;
         TilePlay.grid_Y = gridY;
     }

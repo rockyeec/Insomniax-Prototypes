@@ -35,11 +35,15 @@ public class TileBehaviour : MonoBehaviour
     public List<int> startingTile = new List<int>();    // First row
     public List<int> middleTile = new List<int>();
     public List<int> endTile = new List<int>();
+    public List<int> endEdgeTile = new List<int>();
+    public List<int> startEdgeTile = new List<int>();
 
     int leftTileIndex = 0;
     int rightTileIndex = - 1;
     int startingTileIndex = 1;
     int endTileIndex = 1;
+    int endEdgeTileIndex = 0;
+    int startEdgeTileIndex = 0;
 
     bool stop = false;
     bool isPlayed = false;
@@ -62,6 +66,9 @@ public class TileBehaviour : MonoBehaviour
             StartingTilesIndex();
             RightTilesIndex();
             LeftTilesIndex();
+            EndTilesIndex();
+            EndEdgesTileIndex();
+            StartingEdgesTileIndex();
             MiddleTilesIndex();
             isPlayed = true;
         }
@@ -75,15 +82,18 @@ public class TileBehaviour : MonoBehaviour
             StartingTilesIndex();
             RightTilesIndex();
             LeftTilesIndex();
+            EndTilesIndex();
+            EndEdgesTileIndex();
+            StartingEdgesTileIndex();
             MiddleTilesIndex();
+            
             stop = true;
         }
 
         if (Input.GetKey("down") && !stop)
         {
             EndTilesIndex();
-            //MiddleTilesIndex();
-            //Test();
+            MiddleTilesIndex();
             stop = true;
         }
     }
@@ -123,9 +133,27 @@ public class TileBehaviour : MonoBehaviour
         {
             endTileIndex = i - 2;
             endTile.Add(endTileIndex);
-            print(endTileIndex);
-            //print(i);
         }
+    }
+
+    public void EndEdgesTileIndex()
+    {
+        endEdgeTileIndex = tile.Count - 1;
+        endEdgeTile.Add(endEdgeTileIndex);
+
+        endEdgeTileIndex = tile.Count - totalOfGridX;
+        endEdgeTile.Add(endEdgeTileIndex);
+
+    }
+
+    public void StartingEdgesTileIndex()
+    {
+        startEdgeTileIndex = 0;
+        startEdgeTile.Add(startEdgeTileIndex);
+
+        startEdgeTileIndex = totalOfGridX - 1;
+        startEdgeTile.Add(startEdgeTileIndex);
+
     }
 
     public void MiddleTilesIndex()
@@ -148,9 +176,18 @@ public class TileBehaviour : MonoBehaviour
                     break;
                 }
             }
+
+            for (int a = 0; a < endTile.Count; a++)
+            {
+                if(i == endTile[a])
+                {
+                    copyThis = false;
+                    break;
+                }
+            }
+
             if (copyThis)
             {
-                print(i);
                 middleTile.Add(i);
             }
 
@@ -165,24 +202,4 @@ public class TileBehaviour : MonoBehaviour
         Debug.Log(b);
         print(b);
     }
-   
-
-    /*public void MiddleTilesIndex()
-    {
-        for (int i = rightTile[0] + 2; i < tile.Count; i++)
-        {
-            if (tile[i].GetComponent<TilePlay>().isMiddle == true)
-            {
-                //print(tile[i] + " " + tile[i].GetComponent<TilePlay>().isMiddle);
-
-                middleTileIndex = i;
-                middleTile.Add(middleTileIndex);
-            }
-        }
-
-        for (int i = 0; i < middleTile.Count; i++)
-        {
-            //print(middleTile[i]);
-        }
-    }*/
 }
