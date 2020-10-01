@@ -38,7 +38,7 @@ public class CameraSpecialEffects : MonoBehaviour
     private IEnumerator CameraGoUpNZoomOut()
     {
         float elapsed = 0.0f;
-        float duration = CurveManager.AnimationDuration;
+        float duration = CurveManager.AnimationDuration * 2.0f;
         float startFov = cam.fieldOfView;
         Quaternion startRot = cam.transform.rotation;
         Vector3 startPos = cam.transform.position;
@@ -63,7 +63,7 @@ public class CameraSpecialEffects : MonoBehaviour
     private IEnumerator CameraGoDownNZoomIn()
     {
         float elapsed = 0.0f;
-        float duration = CurveManager.AnimationDuration;
+        float duration = CurveManager.AnimationDuration * 2.0f;
         float startFov = cam.fieldOfView;
         Quaternion startRot = cam.transform.localRotation;
         Vector3 startPos = cam.transform.localPosition;
