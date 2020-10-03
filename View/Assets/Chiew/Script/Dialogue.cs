@@ -17,8 +17,14 @@ public class Dialogue : ScriptableObject
         public bool isEndedSentence = false;
         public bool isPlayed = false;
         public bool isQuestion = false;
-        public string[] answerString;
+        public MCQInfo[] newMCQ; //Line 25
     }
     public List<infomation> dialogueInfo;
 }
 
+[System.Serializable]
+public class MCQInfo //MCQ Information Class
+{
+    public string answerString;
+    public Dialogue nxtDialogue;
+}
