@@ -8,7 +8,7 @@ public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager instance;
     public GameObject DialogueElement;
-    public RawImage characterIcon;
+    public Image characterIcon;
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI dialogueText;
 

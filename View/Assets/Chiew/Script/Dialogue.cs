@@ -10,12 +10,14 @@ public class Dialogue : ScriptableObject
     [System.Serializable]
     public class infomation
     {
-        public RawImage characImage;
+        public Image characImage;
         public string nameText;
         [TextArea(3, 10)]
         public string DialogueText;
         public bool isEndedSentence = false;
         public bool isPlayed = false;
+        public bool isQuestion = false;
+        public string[] answerString;
     }
     public List<infomation> dialogueInfo;
 }
