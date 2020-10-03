@@ -6,12 +6,23 @@ using TMPro;
 
 public class DialogueManager : MonoBehaviour
 {
+    //Public Variable Here Please
     public static DialogueManager instance;
+
+    [Header("Elements")]
     public GameObject DialogueElement;
     public Image characterIcon;
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI dialogueText;
 
+    [Header("Buttons For Answer")]
+    public GameObject answerButtonParent;
+    public Button[] answerButtons = new Button[3];
+
+    [HideInInspector]
+    private bool isDialogueDone = true;
+
+    //Private Variable Below Please
     private Queue<Dialogue.infomation> sentences = new Queue<Dialogue.infomation>();
 
     // Start is called before the first frame update
@@ -32,7 +43,7 @@ public class DialogueManager : MonoBehaviour
     {
         DialogueElement.SetActive(true);
         Debug.Log("Start Dialogue");
-
+        isDialogueDone = false;
         sentences.Clear();
 
         Debug.Log("Cleared previous dialogue");
@@ -53,6 +64,7 @@ public class DialogueManager : MonoBehaviour
         }
 
         Dialogue.infomation info = sentences.Dequeue();
+        characterIcon.sprite = info.characImage;
         nameText.text = info.nameText; //Display name
         StartCoroutine(Wordbyword(info.DialogueText)); //Animation display
         //dialogueText.text = info.DialogueText; //This is for normal display
@@ -68,8 +80,9 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void EndDialogue()
+    public void EndDialogue() //End Dialogues
     {
         DialogueElement.SetActive(false);
+        isDialogueDone = true;
     }
 }
