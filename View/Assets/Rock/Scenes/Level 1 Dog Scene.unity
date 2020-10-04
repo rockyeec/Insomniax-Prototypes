@@ -1683,6 +1683,12 @@ Transform:
   m_Father: {fileID: 1211397735}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1794468125 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4834901216101704761, guid: 5c7a2e51d97eb9c4d9051ba36e244a40,
+    type: 3}
+  m_PrefabInstance: {fileID: 1055739455}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1802818203
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1750,6 +1756,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dog
       objectReference: {fileID: 0}
+    - target: {fileID: 7286585591094095292, guid: 88b32c98e74b95f41a42d3cdd45dc30f,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1794468125}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88b32c98e74b95f41a42d3cdd45dc30f, type: 3}
 --- !u!1 &1904392917
