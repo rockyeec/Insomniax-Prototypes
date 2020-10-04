@@ -3,8 +3,7 @@ using UnityEngine;
 
 public class CameraSpecialEffects : MonoBehaviour
 {
-    Camera cam;
-    readonly private float duration = 0.69f;
+    private Camera cam = null;
 
     readonly private float defaultCameraFov = 60.0f;
     readonly private float zoomedOutFov = 133.7f;
@@ -39,6 +38,7 @@ public class CameraSpecialEffects : MonoBehaviour
     private IEnumerator CameraGoUpNZoomOut()
     {
         float elapsed = 0.0f;
+        float duration = CurveManager.AnimationDuration * 2.0f;
         float startFov = cam.fieldOfView;
         Quaternion startRot = cam.transform.rotation;
         Vector3 startPos = cam.transform.position;
@@ -48,6 +48,7 @@ public class CameraSpecialEffects : MonoBehaviour
             elapsed += Time.unscaledDeltaTime;
 
             float t = elapsed / duration;
+            t = CurveManager.Curve.Evaluate(t);
 
             cam.fieldOfView = Mathf.Lerp(startFov, zoomedOutFov, t);
             cam.transform.rotation = Quaternion.Slerp(startRot, downRot, t);
@@ -62,6 +63,7 @@ public class CameraSpecialEffects : MonoBehaviour
     private IEnumerator CameraGoDownNZoomIn()
     {
         float elapsed = 0.0f;
+        float duration = CurveManager.AnimationDuration * 2.0f;
         float startFov = cam.fieldOfView;
         Quaternion startRot = cam.transform.localRotation;
         Vector3 startPos = cam.transform.localPosition;
@@ -70,6 +72,7 @@ public class CameraSpecialEffects : MonoBehaviour
             elapsed += Time.unscaledDeltaTime;
 
             float t = elapsed / duration;
+            t = CurveManager.Curve.Evaluate(t);
 
             cam.fieldOfView = Mathf.Lerp(startFov, defaultCameraFov, t);
             cam.transform.localRotation = Quaternion.Slerp(startRot, forwardRot, t);

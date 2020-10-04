@@ -2,7 +2,7 @@
 
 public class DogNpcInput : InputParent
 {
-
+    public GameObject player;
     float time = 0.0f;
     Vector3 direction = Vector3.forward;
 
@@ -10,7 +10,7 @@ public class DogNpcInput : InputParent
     {
         base.Init();
 
-        Controller.AddFixedTickBehavior(new CheckGroundBehavior());
+        Controller.AddFixedTickBehavior(new CheckGroundWithNoMovingPlatformBehavior());
         Controller.AddFixedTickBehavior(new LocomotionBehavior());
         Controller.AddFixedTickBehavior(new JumpBehavior());
 
@@ -27,11 +27,31 @@ public class DogNpcInput : InputParent
         float dur = 0.5f;
         if (Time.time >= time)
         {
-            time = Time.time + dur;
-            direction = new Vector3(Random.Range(-0.2f, 0.2f), 0.0f, 0.5f);
-            direction.Normalize();
-        } 
-        
+            if (CalDist())
+            {
+                time = Time.time + dur;
+                direction = new Vector3(Random.Range(-0.2f, 0.2f), 0.0f, 0.5f);
+                direction.Normalize();
+            }
+            else
+            {
+                direction = new Vector3(0.0f, 0.0f, 0.0f);
+            }
+        }
+
         Controller.inputs.SmoothMoveInput(direction, delta);
+
+    }
+    public bool CalDist()
+    {
+        float distance = Vector3.Distance(player.transform.position, this.gameObject.transform.position);
+        if (distance <= 8)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

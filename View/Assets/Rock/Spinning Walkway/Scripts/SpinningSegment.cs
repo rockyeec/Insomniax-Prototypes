@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SpinningSegment : MonoBehaviour
 {
@@ -9,6 +8,7 @@ public class SpinningSegment : MonoBehaviour
     {
         GameScript.OnGlassesOn += GameScript_OnGlassesOn;
         GameScript.OnGlassesOff += GameScript_OnGlassesOff;
+        enabled = false;
     }
     private void OnDestroy()
     {
@@ -18,21 +18,15 @@ public class SpinningSegment : MonoBehaviour
 
     private void GameScript_OnGlassesOn()
     {
-        StopAllCoroutines();
-        StartCoroutine(Spin());
+        enabled = true;
     }
     private void GameScript_OnGlassesOff()
     {
-        StopAllCoroutines();   
+        enabled = false;
     }
 
-
-    private IEnumerator Spin()
+    private void FixedUpdate()
     {
-        while (true)
-        {
-            transform.Rotate(transform.forward, Time.deltaTime * spinSpeed);
-            yield return null;
-        }
+        transform.Rotate(transform.forward, Time.fixedDeltaTime * spinSpeed);
     }
 }

@@ -39,10 +39,7 @@ public abstract class InputParent : MonoBehaviour
         OnGamePause();
     }
 
-    protected virtual void OnGamePause()
-    {
-
-    }
+    protected virtual void OnGamePause() { }
 
     private void Update()
     {
@@ -56,9 +53,6 @@ public abstract class InputParent : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (isPause)
-            return;
-
         float delta = Time.fixedDeltaTime;
         FixedTick(in delta);
         Controller.FixedTick(in delta);

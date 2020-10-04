@@ -17,6 +17,8 @@ public class MenuManager : MonoBehaviour
     public GameObject BackButton;
     public GameObject MenuParents;
 
+    public Dialogue tempdia;
+
     void Start()
     {
         BacktoMainMenu();
@@ -69,6 +71,7 @@ public class MenuManager : MonoBehaviour
 
     public void CloseMainMenu()
     {
+        DialogueManager.instance.StartDialogue(tempdia);
         MenuParents.SetActive(false);
     }
 

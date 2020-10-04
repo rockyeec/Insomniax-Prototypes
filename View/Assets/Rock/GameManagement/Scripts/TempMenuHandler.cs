@@ -1,9 +1,12 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class TempMenuHandler : MonoBehaviour
 {
     [SerializeField] private MenuPage pauseMenu = null;
     [SerializeField] private MenuPage settings = null;
+
+    static bool isFirstLevel = true;
 
     private void Start()
     {
@@ -13,9 +16,24 @@ public class TempMenuHandler : MonoBehaviour
         GameScript.OnPause += GameScript_OnPause;
         GameScript.OnUnpause += GameScript_OnUnpause;
 
-        pauseMenu.SnapOut();
+        StartCoroutine(SnapToPosition());
+    }
+
+    IEnumerator SnapToPosition()
+    {
+        yield return new WaitForEndOfFrame();
+        if (isFirstLevel)
+        {
+            isFirstLevel = false;
+            pauseMenu.SnapIn();
+        }
+        else
+        {
+            pauseMenu.SnapOut();
+        }
         settings.SnapOut();
     }
+
     private void OnDestroy()
     {
         GameScript.OnPause -= GameScript_OnPause;
@@ -44,6 +62,13 @@ public class TempMenuHandler : MonoBehaviour
             return;
         pauseMenu.SlideIn();
         settings.SlideOut();
+    }
+
+    public void OnExitPress()
+    {
+        if (Input.touchCount > 1)
+            return;
+        Application.Quit();
     }
 
     [System.Serializable]
