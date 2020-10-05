@@ -13,11 +13,14 @@ public class PlayerInput : InputParent
     [SerializeField] private bool isLevelHasMovingPlatforms = false;
     [SerializeField] private bool isLevelHasSlopes = false;
 
+    public static float MoveSpeed { get; set; }
+
     private Transform hips;
 
     protected override void Init()
     {
         base.Init();
+        MoveSpeed = 1.0f;
 
         glassesButton.onClick.AddListener(GameScript.PutOnGlasses);
 
@@ -54,7 +57,8 @@ public class PlayerInput : InputParent
                 leftJoy.GetHorizontal(),
                 0.0f,
                 leftJoy.GetVertical()
-                ),
+                )
+            * MoveSpeed,
             delta);
         
         // jump
