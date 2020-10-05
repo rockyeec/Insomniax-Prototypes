@@ -1,43 +1,43 @@
-﻿using System.Collections.Generic;
+﻿using System.Linq;
 using UnityEngine;
 
 public class InteractBehavior : Behavior
 {
-    readonly List<InteractableObject> oldInteractables = new List<InteractableObject>();
+    InteractableObject oldInteractable = null;
     public override void Execute(CharacterController controller, in float delta)
     {
         Transform transform = controller.Transform;
 
-        Collider[] colliders = Physics.OverlapSphere(
-                transform.position + Vector3.up + transform.forward * 0.26f, 1.0f,
-                1 << 10);
-        if (colliders.Length > 0)
+        Collider nearest = Physics.OverlapSphere(
+                transform.position + Vector3.up + transform.forward * 0.26f,
+                1.0f,
+                1 << 10)
+            .OrderBy(t => (t.transform.position - transform.position).sqrMagnitude)
+            .FirstOrDefault();
+
+        if (nearest != null)
         {
-            foreach (var item in colliders)
+            InteractableObject newInteractable = nearest.GetComponent<InteractableObject>();
+            if (oldInteractable != newInteractable)
             {
-                InteractableObject interactable = item.GetComponent<InteractableObject>();
-                if (interactable != null)
-                {
-                    if (!oldInteractables.Contains(interactable))
-                    {
-                        oldInteractables.Add(interactable);
-                        interactable.MakeOutline();
-                    }
-                }
+                ClearOldInteractable();
+
+                newInteractable.MakeOutline();
+                oldInteractable = newInteractable;
             }
         }
         else
         {
-            ClearOldInteractables();
+            ClearOldInteractable();
         }
     }
 
-    void ClearOldInteractables()
+    void ClearOldInteractable()
     {
-        foreach (var item in oldInteractables)
+        if (oldInteractable != null)
         {
-            item.MakeStandard();
+            oldInteractable.MakeStandard();
+            oldInteractable = null;
         }
-        oldInteractables.Clear();
     }
 }
