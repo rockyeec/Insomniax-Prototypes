@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BroNpcInput : InputParent
 {
+    [SerializeField] private bool isStop = false;
     float duration = 0.69f;
     float time = 0.0f;
     private Vector3 direction;
@@ -18,7 +19,7 @@ public class BroNpcInput : InputParent
             direction.x = UnityEngine.Random.Range(-1.0f, 1.0f);
             direction.z = UnityEngine.Random.Range(-1.0f, 1.0f);
             direction.Normalize();
-            direction *= 0.420f;
+            direction *= 0.69f;
         }
     }
 
@@ -37,7 +38,10 @@ public class BroNpcInput : InputParent
         if (IsDisabled)
             return;
 
-        HandleNextAction();
+        if (isStop)
+            direction = Vector3.zero;
+        else
+            HandleNextAction();
 
         // locomotion
         Controller.inputs.SmoothMoveInput(direction, delta);

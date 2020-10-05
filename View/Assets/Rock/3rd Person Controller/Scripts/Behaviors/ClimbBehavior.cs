@@ -12,7 +12,7 @@ public class ClimbBehavior : Behavior
     private void Init(CharacterController controller)
     {
         isFirstFrame = false;
-        charModelTrans = controller.CharTransform.GetComponentInChildren<Animator>().transform;
+        charModelTrans = controller.Transform.GetComponentInChildren<Animator>().transform;
     }
 
     public override void Execute(CharacterController controller, in float delta)
@@ -20,7 +20,7 @@ public class ClimbBehavior : Behavior
         if (isFirstFrame)
             Init(controller);
 
-        Transform transform = controller.CharTransform;
+        Transform transform = controller.Transform;
 
         if (isClimbing)
         {

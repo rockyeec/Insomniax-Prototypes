@@ -25,6 +25,7 @@ public class PlayerInput : InputParent
         else
             Controller.AddFixedTickBehavior(new CheckGroundWithNoMovingPlatformBehavior());
 
+        Controller.AddFixedTickBehavior(new InteractBehavior());
         Controller.AddFixedTickBehavior(new LocomotionBehavior());
         Controller.AddFixedTickBehavior(new JumpBehavior());
 

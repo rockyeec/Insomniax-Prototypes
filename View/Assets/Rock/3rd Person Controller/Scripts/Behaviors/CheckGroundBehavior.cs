@@ -7,7 +7,7 @@ public class CheckGroundBehavior : Behavior
 
     public override void Execute(CharacterController controller, in float delta)
     {
-        Transform transform = controller.CharTransform;
+        Transform transform = controller.Transform;
 
         bool prevOnGround = controller.outputs.onGround;
 
@@ -41,7 +41,7 @@ public class CheckGroundBehavior : Behavior
 
     private void HandleOnGround(ref CharacterController controller, in RaycastHit hit)
     {
-        Transform transform = controller.CharTransform;
+        Transform transform = controller.Transform;
 
         transform.position = hit.point;
         controller.outputs.onGround = true;
@@ -59,7 +59,7 @@ public class CheckGroundBehavior : Behavior
             controller.outputs.onGround = false;
             controller.inputs.canJump = true;
 
-            controller.CharTransform.SetParent(null);
+            controller.Transform.SetParent(null);
         }
         else if (Time.time >= timeOffGround)
         {

@@ -3,6 +3,7 @@
 public class SpinningSegment : MonoBehaviour
 {
     [SerializeField] private float spinSpeed = 6.9f;
+    [SerializeField] private Vector3 spinAxis = Vector3.forward;
 
     private void Start()
     {
@@ -27,6 +28,6 @@ public class SpinningSegment : MonoBehaviour
 
     private void FixedUpdate()
     {
-        transform.Rotate(transform.forward, Time.fixedDeltaTime * spinSpeed);
+        transform.Rotate(spinAxis, Time.fixedDeltaTime * spinSpeed);
     }
 }

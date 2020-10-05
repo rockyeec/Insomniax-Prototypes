@@ -20,6 +20,12 @@ public class GameScript : MonoBehaviour
 
     private void Awake()
     {
+#if UNITY_EDITOR
+        Debug.unityLogger.logEnabled = true;
+#else
+        Debug.unityLogger.logEnabled = false;
+#endif
+
         instance = this;
 
         glassesButton.onClick.AddListener(PutOnGlasses);

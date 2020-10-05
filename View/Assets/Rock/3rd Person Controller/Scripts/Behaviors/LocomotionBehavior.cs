@@ -17,7 +17,7 @@ public class LocomotionBehavior : Behavior
         // usings
         CharacterController.CustomInputs inputs = controller.inputs;
         CharacterController.CustomOutputs outputs = controller.outputs;
-        Transform transform = controller.CharTransform;
+        Transform transform = controller.Transform;
         Rigidbody rb = controller.Rb;
         Vector3 moveDir = inputs.MoveDir;
 
@@ -38,8 +38,7 @@ public class LocomotionBehavior : Behavior
         if (isMoving
             && Physics.OverlapSphere(
                 transform.position + Vector3.up + transform.forward * 0.26f, 0.24f,
-                ~(1 << 31 | 1 << 9 | 1 << 30))
-            .Length > 0)
+                ~(1 << 31 | 1 << 9 | 1 << 30)).Length > 0)
         {
             moveDir = Vector3.zero;
             outputs.vertical = 0.0f;

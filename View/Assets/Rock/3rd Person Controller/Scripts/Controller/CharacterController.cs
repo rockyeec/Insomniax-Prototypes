@@ -30,8 +30,9 @@ public class CharacterController
         public bool animateClimb = false;
     }
 
-    public Transform CharTransform { get; private set; }
+    public Transform Transform { get; private set; }
     public Rigidbody Rb { get; private set; }
+    public Collider Collider { get; private set; }
     public bool Hold { get; set; }
 
     readonly private List<Behavior> fixedTicks = new List<Behavior>();
@@ -50,7 +51,8 @@ public class CharacterController
     {
         rb.constraints = RigidbodyConstraints.FreezeRotation;
         Rb = rb;
-        CharTransform = rb.transform;
+        Transform = rb.transform;
+        Collider = Transform.GetComponent<Collider>();
     }
 
     public void Tick(in float delta)
