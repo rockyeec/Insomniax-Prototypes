@@ -19,7 +19,7 @@ public class BroNpcInput : InputParent
             direction.x = UnityEngine.Random.Range(-1.0f, 1.0f);
             direction.z = UnityEngine.Random.Range(-1.0f, 1.0f);
             direction.Normalize();
-            direction *= 0.69f;
+            direction *= 0.55f;
         }
     }
 

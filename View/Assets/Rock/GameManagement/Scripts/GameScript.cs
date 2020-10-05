@@ -28,7 +28,8 @@ public class GameScript : MonoBehaviour
 
         instance = this;
 
-        glassesButton.onClick.AddListener(PutOnGlasses);
+        if (glassesButton != null)
+            glassesButton.onClick.AddListener(PutOnGlasses);
         menuButton.onClick.AddListener(Pause);
 
         cam = Camera.main.gameObject.AddComponent<CameraSpecialEffects>();
