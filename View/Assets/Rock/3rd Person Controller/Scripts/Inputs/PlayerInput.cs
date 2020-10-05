@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerInput : InputParent
 {
+    [SerializeField] private Button glassesButton = null;
     [SerializeField] private ButtonScript jumpButton = null;
     [SerializeField] private JoystickScript leftJoy = null;
     [SerializeField] private JoystickScript rightJoy = null;
@@ -16,6 +18,8 @@ public class PlayerInput : InputParent
     protected override void Init()
     {
         base.Init();
+
+        glassesButton.onClick.AddListener(GameScript.PutOnGlasses);
 
         if (isCanClimb)
             Controller.AddFixedTickBehavior(new ClimbBehavior());

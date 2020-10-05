@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TempMenuHandler : MonoBehaviour
 {
+    [SerializeField] private Button menuButton = null;
     [SerializeField] private MenuPage pauseMenu = null;
     [SerializeField] private MenuPage settings = null;
 
@@ -10,6 +12,8 @@ public class TempMenuHandler : MonoBehaviour
 
     private void Start()
     {
+        menuButton.onClick.AddListener(GameScript.Pause);
+
         pauseMenu.Init();
         settings.Init();
 

@@ -12,9 +12,6 @@ public class GameScript : MonoBehaviour
     public static event Action OnGlassesOn = delegate { };
     public static event Action OnGlassesOff = delegate { };
 
-    [SerializeField] private Button glassesButton = null;
-    [SerializeField] private Button menuButton = null;
-
     private CameraSpecialEffects cam;
     private bool isGlassesOn = false;
 
@@ -27,10 +24,6 @@ public class GameScript : MonoBehaviour
 #endif
 
         instance = this;
-
-        if (glassesButton != null)
-            glassesButton.onClick.AddListener(PutOnGlasses);
-        menuButton.onClick.AddListener(Pause);
 
         cam = Camera.main.gameObject.AddComponent<CameraSpecialEffects>();
 
@@ -71,10 +64,10 @@ public class GameScript : MonoBehaviour
         instance.cam.ZoomIn();
     }
 
-    private void PutOnGlasses()
+    public static void PutOnGlasses()
     {
-        isGlassesOn = !isGlassesOn;
-        if (isGlassesOn)
+        instance.isGlassesOn = !instance.isGlassesOn;
+        if (instance.isGlassesOn)
         {
             OnGlassesOn();
         }
