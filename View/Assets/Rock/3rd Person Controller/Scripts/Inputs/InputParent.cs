@@ -7,12 +7,18 @@ public abstract class InputParent : MonoBehaviour
     private bool isPause;
     protected bool IsDisabled { get; private set; }
 
+    public event System.Action<float> OnTick = delegate { };
+    public event System.Action<float> OnFixedTick = delegate { };
+
     private void Awake()
     {
         Controller = new CharacterController(gameObject.AddComponent<Rigidbody>());
         Animator anim = transform.GetComponentInChildren<Animator>();
-        animatorHook = anim.gameObject.AddComponent<AnimatorHook>();
-        animatorHook.Init(anim, Controller);
+        if (anim != null)
+        {
+            animatorHook = anim.gameObject.AddComponent<AnimatorHook>();
+            animatorHook.Init(anim, Controller, this);
+        }
         Init();
     }
     private void Start()
@@ -26,6 +32,9 @@ public abstract class InputParent : MonoBehaviour
     {
         GameScript.OnPause -= GameScript_OnPause;
         GameScript.OnUnpause -= GameScript_OnUnpause;
+
+        if (animatorHook != null)
+            animatorHook.DeInit(this);
     }
 
     private void GameScript_OnUnpause()
@@ -49,14 +58,14 @@ public abstract class InputParent : MonoBehaviour
         float delta = Time.deltaTime;
         Tick(delta);
         Controller.Tick(in delta);
-        animatorHook.Tick(/*in delta*/);
+        OnTick(delta);
     }
     private void FixedUpdate()
     {
         float delta = Time.fixedDeltaTime;
         FixedTick(in delta);
         Controller.FixedTick(in delta);
-        animatorHook.FixedTick(in delta);
+        OnFixedTick(delta);
     }
     private void LateUpdate()
     {
