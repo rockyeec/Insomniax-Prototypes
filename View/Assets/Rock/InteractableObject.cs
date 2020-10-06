@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class InteractableObject : MonoBehaviour
 {
-    private Renderer ren = null;
+    private Renderer[] rens = null;
     private Material[] outlineMaterials = null;
     private Material[] standardMaterials = null;
     private void Start()
@@ -15,24 +16,33 @@ public class InteractableObject : MonoBehaviour
     private IEnumerator WaitStart()
     {
         yield return null;
-        ren = GetComponentInChildren<Renderer>();
+        rens = GetComponentsInChildren<Renderer>();
         List<Material> materials = new List<Material>();
-        foreach (var item in ren.materials)
+        foreach (var ren in rens)
         {
-            materials.Add(item);
+            foreach (var item in ren.materials)
+            {
+                materials.Add(item);
+            }
         }
         materials.Add(MaterialManager.OutLineMaterial);
 
         outlineMaterials = materials.ToArray();
-        standardMaterials = ren.materials;
+        standardMaterials = rens.FirstOrDefault().materials;
     }
 
     public void MakeOutline()
     {
-        ren.materials = outlineMaterials;
+        foreach (var item in rens)
+        {
+            item.materials = outlineMaterials;
+        }
     }
     public void MakeStandard()
     {
-        ren.materials = standardMaterials;
+        foreach (var item in rens)
+        {
+            item.materials = standardMaterials;
+        }
     }
 }
