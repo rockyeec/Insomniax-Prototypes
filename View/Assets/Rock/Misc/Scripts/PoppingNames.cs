@@ -5,8 +5,9 @@ using UnityEngine;
 public class PoppingNames : MonoBehaviour
 {
     [SerializeField] private TextMeshPro tmp = null;
+    [SerializeField] private SpriteRenderer spriteRenderer = null;
     private string text = string.Empty;
-    private float durationBetweenLetters = 0.05f;
+    private readonly float durationBetweenLetters = 0.05f;
     private bool isTyped = false;
 
 
@@ -16,6 +17,8 @@ public class PoppingNames : MonoBehaviour
         text = tmp.text;
         tmp.text = string.Empty;
         TimeHandler.Enable();
+
+        spriteRenderer.enabled = false;
     }
 
     public void TriggerTypeText()
@@ -26,6 +29,7 @@ public class PoppingNames : MonoBehaviour
         isTyped = true;
         StopAllCoroutines();
         StartCoroutine(TypeText());
+        spriteRenderer.enabled = true;
     }
 
     private IEnumerator TypeText()
