@@ -13,7 +13,9 @@ public class DialogueManager : MonoBehaviour
     public GameObject DialogueElement;
     public Image characterIcon;
     public TextMeshProUGUI nameText;
+    public TextMeshPro nameTextWorld;
     public TextMeshProUGUI dialogueText;
+    public TextMeshPro dialogueTextWorld;
     public GameObject[] NextbuttonParents = new GameObject[2];
 
     [Header("Buttons For Answer")]
@@ -67,7 +69,12 @@ public class DialogueManager : MonoBehaviour
 
         Dialogue.infomation info = sentences.Dequeue();
         characterIcon.sprite = info.characImage;
-        nameText.text = info.nameText; //Display name
+        if(nameText.gameObject != null)
+        {
+            nameText.text = info.nameText; //Display name
+        }
+        if(nameTextWorld.gameObject != null)
+        { nameTextWorld.text = info.nameText; }
         StartCoroutine(Wordbyword(info.DialogueText)); //Animation display
         //dialogueText.text = info.DialogueText; //This is for normal display
 
@@ -110,11 +117,24 @@ public class DialogueManager : MonoBehaviour
 
     IEnumerator Wordbyword (string sentence) //Animation show words one by one for dialogue text
     {
-        dialogueText.text = "";
-        foreach(char letter in sentence.ToCharArray())
+        if(dialogueText.gameObject != null)
         {
-            dialogueText.text += letter;
-            yield return null;
+            dialogueText.text = "";
+            foreach (char letter in sentence.ToCharArray())
+            {
+                dialogueText.text += letter;
+                yield return null;
+            }
+        }
+
+        if(dialogueTextWorld.gameObject != null)
+        {
+            dialogueTextWorld.text = "";
+            foreach (char letter in sentence.ToCharArray())
+            {
+                dialogueTextWorld.text += letter;
+                yield return null;
+            }
         }
     }
 
