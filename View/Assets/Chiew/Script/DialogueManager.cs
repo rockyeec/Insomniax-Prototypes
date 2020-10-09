@@ -17,6 +17,7 @@ public class DialogueManager : MonoBehaviour
     public TextMeshProUGUI dialogueText;
     public TextMeshPro dialogueTextWorld;
     public GameObject[] NextbuttonParents = new GameObject[2];
+    public GameObject Controls;
 
     [Header("Buttons For Answer")]
     public GameObject answerButtonParent;
@@ -40,12 +41,14 @@ public class DialogueManager : MonoBehaviour
     }
     private void Start()
     {
-        DialogueElement.SetActive(false);   
+        DialogueElement.SetActive(false);
+        Controls.SetActive(true);
     }
 
     public void StartDialogue(Dialogue d) //Call start dialogue
     {
         DialogueElement.SetActive(true);
+        Controls.SetActive(false);
         Debug.Log("Start Dialogue");
         isDialogueDone = false;
         sentences.Clear();
@@ -145,6 +148,7 @@ public class DialogueManager : MonoBehaviour
             MCQTemp[i] = null;
         }
         DialogueElement.SetActive(false);
+        Controls.SetActive(true);
         isDialogueDone = true;
     }
 }
