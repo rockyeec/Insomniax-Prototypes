@@ -76,6 +76,10 @@ public class PlayerInput : InputParent
     protected override void FixedTick(in float delta)
     {
         base.FixedTick(delta);
+
+        if (IsDisabled)
+            return;
+
         // camera
         cam.Tick(
             rightJoy.GetVerticalDelta(),
