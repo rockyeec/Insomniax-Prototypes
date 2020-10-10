@@ -15,6 +15,8 @@ public class PlayerInput : InputParent
 
     public static float MoveSpeed { get; set; }
 
+    public static bool IsEnableCamera { get; set; }
+
     private Transform hips;
 
     protected override void Init()
@@ -45,11 +47,11 @@ public class PlayerInput : InputParent
 
     protected override void Tick(in float delta)
     {
-        base.Tick(delta);        
-
-        if (IsDisabled)
+        if (IsEnableCamera)
             return;
 
+        base.Tick(delta);    
+        
         // locomotion
         Controller.inputs.SmoothMoveInput(
             cam.transform.rotation 
