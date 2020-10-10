@@ -47,8 +47,11 @@ public class PlayerInput : InputParent
 
     protected override void Tick(in float delta)
     {
-        if (IsEnableCamera)
+        if (!IsEnableCamera)
+        {
+            Controller.inputs.SmoothMoveInput(Vector3.zero, delta);
             return;
+        }
 
         if (IsDisabled)
             return;
@@ -80,7 +83,7 @@ public class PlayerInput : InputParent
 
     protected override void FixedTick(in float delta)
     {
-        if (IsEnableCamera)
+        if (!IsEnableCamera)
             return;
 
         if (IsDisabled)
