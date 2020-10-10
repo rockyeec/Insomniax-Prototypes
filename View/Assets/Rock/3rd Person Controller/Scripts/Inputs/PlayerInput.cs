@@ -50,6 +50,9 @@ public class PlayerInput : InputParent
         if (IsEnableCamera)
             return;
 
+        if (IsDisabled)
+            return;
+
         base.Tick(delta);    
         
         // locomotion
@@ -77,10 +80,13 @@ public class PlayerInput : InputParent
 
     protected override void FixedTick(in float delta)
     {
-        base.FixedTick(delta);
+        if (IsEnableCamera)
+            return;
 
         if (IsDisabled)
             return;
+
+        base.FixedTick(delta);
 
         // camera
         cam.Tick(
