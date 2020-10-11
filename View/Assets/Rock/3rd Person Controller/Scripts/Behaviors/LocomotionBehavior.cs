@@ -38,7 +38,7 @@ public class LocomotionBehavior : Behavior
         if (isMoving
             && Physics.OverlapSphere(
                 transform.position + Vector3.up + transform.forward * 0.26f, 0.24f,
-                ~(1 << 31 | 1 << 9 | 1 << 30)).Length > 0)
+                ~(1 << 31 | 1 << 9 | 1 << 30 | 1 << 25)).Length > 0)
         {
             moveDir = Vector3.zero;
             outputs.vertical = 0.0f;

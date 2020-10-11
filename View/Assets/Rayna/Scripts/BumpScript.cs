@@ -5,11 +5,9 @@ using UnityEngine;
 public class BumpScript : MonoBehaviour
 {
 
-    public GameObject player;
-    public Rigidbody r;
     void Start()
     {
-        r = GetComponent<InputParent>().Rb;
+        
     }
 
     // Update is called once per frame
@@ -17,14 +15,17 @@ public class BumpScript : MonoBehaviour
     {
         
     }
-
-    void OnCollisionEnter(Collision col)
+    private void OnTriggerEnter(Collider other)
     {
-        if (col.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
-            //PlayerInput.MoveSpeed = 0.5f;
-            Debug.Log(PlayerInput.MoveSpeed);
-            r.AddForce(-transform.forward * 5f, ForceMode.Acceleration);
+            //PlayerInput.MoveSpeed = 0.5f; // does this not work?
+            //Debug.Log(PlayerInput.MoveSpeed);
+            Rigidbody r = other.GetComponent<InputParent>().Rb;
+            if (r != null)
+            {
+                r.AddForce(-transform.forward * 500f, ForceMode.Acceleration);
+            }
 
         }
     }
