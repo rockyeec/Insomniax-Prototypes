@@ -29,6 +29,9 @@ public class DialogueManager : MonoBehaviour
     //Private Variable Below Please
     private Queue<Dialogue.infomation> sentences = new Queue<Dialogue.infomation>();
     private MCQInfo[] MCQTemp = new MCQInfo[3];
+    private bool isSentenceEnd = false;
+    private int curSentenceLength, MaxSentenceLength;
+    private string tempStore;
 
     // Start is called before the first frame update
     void Awake()
@@ -43,6 +46,12 @@ public class DialogueManager : MonoBehaviour
     {
         DialogueElement.SetActive(false);
         Controls.SetActive(true);
+    }
+
+    private void Update()
+    {
+        Debug.Log("curSentenceLength"  + curSentenceLength);
+        Debug.Log("MaxSentenceLength" + MaxSentenceLength);
     }
 
     public void StartDialogue(Dialogue d) //Call start dialogue
@@ -62,30 +71,57 @@ public class DialogueManager : MonoBehaviour
         DisplayNextSentence();
     }
 
-    public void DisplayNextSentence()
+    public void DisplayNextSentence() //Display more sentence
     {
+        curSentenceLength = dialogueTextWorld.text.Length;
+        if (isSentenceEnd == true)
+        {
+            curSentenceLength = 0;
+            MaxSentenceLength = 0;
+            isSentenceEnd = false;
+        }
+        if (curSentenceLength != 0 && MaxSentenceLength != 0)
+        {
+            StopAllCoroutines();
+            if (curSentenceLength >= MaxSentenceLength)
+            {
+                dialogueTextWorld.text = tempStore;
+                isSentenceEnd = true;
+                Debug.Log("MaxReset");
+            }
+            if (curSentenceLength < MaxSentenceLength)
+            {
+                dialogueTextWorld.text = tempStore;
+                isSentenceEnd = true;
+                Debug.Log("Reset");
+                return;
+            }
+        }
         if (sentences.Count <= 0)
         {
             EndDialogue(); //end dialogue if no more dialogues
             return;
         }
-
+        StopAllCoroutines();
+        dialogueTextWorld.text = ""; dialogueText.text = ""; tempStore = "";
         Dialogue.infomation info = sentences.Dequeue();
-        characterIcon.sprite = info.characImage;
+        tempStore = info.DialogueText;
+        StartCoroutine(Wordbyword(info.DialogueText)); //Animation display
+        //dialogueText.text = info.DialogueText; //This is for normal display
+        //characterIcon.sprite = info.characImage; //If needed picture/icon
+        characterIcon.gameObject.SetActive(false); //If doesn't want picture/icon
         if(nameText.gameObject != null)
         {
             nameText.text = info.nameText; //Display name
         }
         if(nameTextWorld.gameObject != null)
         { nameTextWorld.text = info.nameText; }
-        StartCoroutine(Wordbyword(info.DialogueText)); //Animation display
-        //dialogueText.text = info.DialogueText; //This is for normal display
 
         //MCQ
         AssignAnswerToButton(info);
     }
 
-    void AssignAnswerToButton(Dialogue.infomation curInfo)
+    void AssignAnswerToButton(Dialogue.infomation curInfo) //Assign text to buttons.text
     {
         if (curInfo.isQuestion == true)
         {
@@ -103,11 +139,11 @@ public class DialogueManager : MonoBehaviour
         else
         {
             foreach (GameObject i in NextbuttonParents) { i.SetActive(true); }
-            foreach (Button i in answerButtons){ i.gameObject.SetActive(false);}
+            foreach (Button i in answerButtons) { i.gameObject.SetActive(false); }
         }
     }
 
-    public void OnPressButtonSelection(int i)
+    public void OnPressButtonSelection(int i) //For Buttons
     {
         if(MCQTemp[i] != null && MCQTemp[i].nxtDialogue != null)
         {
@@ -120,13 +156,14 @@ public class DialogueManager : MonoBehaviour
 
     IEnumerator Wordbyword (string sentence) //Animation show words one by one for dialogue text
     {
-        if(dialogueText.gameObject != null)
+        MaxSentenceLength = sentence.Length;
+        if (dialogueText.gameObject != null)
         {
             dialogueText.text = "";
             foreach (char letter in sentence.ToCharArray())
             {
                 dialogueText.text += letter;
-                yield return null;
+                yield return null;              
             }
         }
 
