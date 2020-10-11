@@ -2308,7 +2308,7 @@ RectTransform:
   m_GameObject: {fileID: 5547280523268741547}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.554902, y: 1.554902, z: 1.554902}
   m_Children:
   - {fileID: 5547280523699415090}
   - {fileID: 5547280524286209168}
@@ -2318,7 +2318,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 314, y: -9}
+  m_AnchoredPosition: {x: 280, y: -9}
   m_SizeDelta: {x: 155.45107, y: 77.958466}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5547280523268741545
@@ -2444,10 +2444,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 0.050980393}
+    m_HighlightedColor: {r: 0.6132076, g: 0.6132076, b: 0.6132076, a: 1}
+    m_PressedColor: {r: 0.41509432, g: 0.41509432, b: 0.41509432, a: 1}
+    m_SelectedColor: {r: 0.6117647, g: 0.6117647, b: 0.6117647, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -2576,10 +2576,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 0.050980393}
+    m_HighlightedColor: {r: 0.6132076, g: 0.6132076, b: 0.6132076, a: 1}
+    m_PressedColor: {r: 0.41509432, g: 0.41509432, b: 0.41509432, a: 1}
+    m_SelectedColor: {r: 0.6117647, g: 0.6117647, b: 0.6117647, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -2842,10 +2842,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 0.050980393}
+    m_HighlightedColor: {r: 0.6132076, g: 0.6132076, b: 0.6132076, a: 1}
+    m_PressedColor: {r: 0.41509432, g: 0.41509432, b: 0.41509432, a: 1}
+    m_SelectedColor: {r: 0.6117647, g: 0.6117647, b: 0.6117647, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -3676,6 +3676,7 @@ Transform:
   - {fileID: 7204943322246827901}
   - {fileID: 1430473378}
   - {fileID: 72882961900585051}
+  - {fileID: 7239431647727844454}
   m_Father: {fileID: 7204943322855080271}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4027,3 +4028,78 @@ Transform:
   m_Father: {fileID: 7204943322088879662}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0.029, y: -58.156, z: -2.857}
+--- !u!1001 &7204943322496146317
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7204943323006972279}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: b89e376f5cb245943835556192362b53,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.9795017
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b89e376f5cb245943835556192362b53,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.1431673
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b89e376f5cb245943835556192362b53,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.65719604
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b89e376f5cb245943835556192362b53,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b89e376f5cb245943835556192362b53,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b89e376f5cb245943835556192362b53,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b89e376f5cb245943835556192362b53,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b89e376f5cb245943835556192362b53,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b89e376f5cb245943835556192362b53,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b89e376f5cb245943835556192362b53,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b89e376f5cb245943835556192362b53,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b89e376f5cb245943835556192362b53,
+        type: 3}
+      propertyPath: m_Name
+      value: Alex No Grey Patch Mixamo Rigged
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b89e376f5cb245943835556192362b53, type: 3}
+--- !u!4 &7239431647727844454 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b89e376f5cb245943835556192362b53,
+    type: 3}
+  m_PrefabInstance: {fileID: 7204943322496146317}
+  m_PrefabAsset: {fileID: 0}
