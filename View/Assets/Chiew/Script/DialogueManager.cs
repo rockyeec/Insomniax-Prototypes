@@ -29,9 +29,9 @@ public class DialogueManager : MonoBehaviour
     //Private Variable Below Please
     private Queue<Dialogue.infomation> sentences = new Queue<Dialogue.infomation>();
     private MCQInfo[] MCQTemp = new MCQInfo[3];
-    private bool isSentenceEnd = false;
-    private int curSentenceLength, MaxSentenceLength;
-    private string tempStore;
+    private bool isSentenceEnd = false; //is the sentence end
+    private int curSentenceLength, MaxSentenceLength; //Calculate the current sentence length and max length
+    private string tempStore; //Replace if press next before show up
 
     // Start is called before the first frame update
     void Awake()
@@ -46,12 +46,6 @@ public class DialogueManager : MonoBehaviour
     {
         DialogueElement.SetActive(false);
         Controls.SetActive(true);
-    }
-
-    private void Update()
-    {
-        Debug.Log("curSentenceLength"  + curSentenceLength);
-        Debug.Log("MaxSentenceLength" + MaxSentenceLength);
     }
 
     public void StartDialogue(Dialogue d) //Call start dialogue
@@ -73,13 +67,13 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence() //Display more sentence
     {
-        curSentenceLength = dialogueTextWorld.text.Length;
+        curSentenceLength = dialogueTextWorld.text.Length; //determine current length value
         if (isSentenceEnd == true)
         {
             curSentenceLength = 0;
             MaxSentenceLength = 0;
             isSentenceEnd = false;
-        }
+        } //Reset default value
         if (curSentenceLength != 0 && MaxSentenceLength != 0)
         {
             StopAllCoroutines();
@@ -87,23 +81,21 @@ public class DialogueManager : MonoBehaviour
             {
                 dialogueTextWorld.text = tempStore;
                 isSentenceEnd = true;
-                Debug.Log("MaxReset");
             }
             if (curSentenceLength < MaxSentenceLength)
             {
                 dialogueTextWorld.text = tempStore;
                 isSentenceEnd = true;
-                Debug.Log("Reset");
                 return;
             }
-        }
-        if (sentences.Count <= 0)
+        } //If current got sentence playing ald
+        if (sentences.Count <= 0) //End dialogue
         {
             EndDialogue(); //end dialogue if no more dialogues
             return;
         }
         StopAllCoroutines();
-        dialogueTextWorld.text = ""; dialogueText.text = ""; tempStore = "";
+        dialogueTextWorld.text = ""; dialogueText.text = ""; tempStore = ""; //Reset all word
         Dialogue.infomation info = sentences.Dequeue();
         tempStore = info.DialogueText;
         StartCoroutine(Wordbyword(info.DialogueText)); //Animation display
