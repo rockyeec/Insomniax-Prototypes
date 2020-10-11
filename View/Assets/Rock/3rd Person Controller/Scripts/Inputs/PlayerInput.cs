@@ -15,12 +15,15 @@ public class PlayerInput : InputParent
 
     public static float MoveSpeed { get; set; }
 
+    public static bool IsEnableCamera { get; set; }
+
     private Transform hips;
 
     protected override void Init()
     {
         base.Init();
         MoveSpeed = 1.0f;
+        IsEnableCamera = true;
 
         glassesButton.onClick.AddListener(GameScript.PutOnGlasses);
 
@@ -45,11 +48,17 @@ public class PlayerInput : InputParent
 
     protected override void Tick(in float delta)
     {
-        base.Tick(delta);        
+        if (!IsEnableCamera)
+        {
+            Controller.inputs.SmoothMoveInput(Vector3.zero, delta);
+            return;
+        }
 
         if (IsDisabled)
             return;
 
+        base.Tick(delta);    
+        
         // locomotion
         Controller.inputs.SmoothMoveInput(
             cam.transform.rotation 
@@ -75,7 +84,11 @@ public class PlayerInput : InputParent
 
     protected override void FixedTick(in float delta)
     {
+        if (!IsEnableCamera)
+            return;
+
         base.FixedTick(delta);
+
         // camera
         cam.Tick(
             rightJoy.GetVerticalDelta(),
