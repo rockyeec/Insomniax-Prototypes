@@ -23,6 +23,7 @@ public class PlayerInput : InputParent
     {
         base.Init();
         MoveSpeed = 1.0f;
+        IsEnableCamera = true;
 
         glassesButton.onClick.AddListener(GameScript.PutOnGlasses);
 
@@ -84,9 +85,6 @@ public class PlayerInput : InputParent
     protected override void FixedTick(in float delta)
     {
         if (!IsEnableCamera)
-            return;
-
-        if (IsDisabled)
             return;
 
         base.FixedTick(delta);
