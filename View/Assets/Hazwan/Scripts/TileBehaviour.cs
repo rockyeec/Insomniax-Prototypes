@@ -29,10 +29,12 @@ public class TileBehaviour : MonoBehaviour
 
     [HideInInspector]
     public List<GameObject> tile = new List<GameObject>();
+    [HideInInspector]
+    public static List<GameObject> stackSteppedTile = new List<GameObject>();
 
     public List<int> leftTile = new List<int>();
     public List<int> rightTile = new List<int>();
-    public List<int> startingTile = new List<int>();    // First row
+    public List<int> startingTile = new List<int>();
     public List<int> middleTile = new List<int>();
     public List<int> endTile = new List<int>();
     public List<int> endEdgeTile = new List<int>();
@@ -45,7 +47,6 @@ public class TileBehaviour : MonoBehaviour
     int endEdgeTileIndex = 0;
     int startEdgeTileIndex = 0;
 
-    bool stop = false;
     bool isPlayed = false;
     bool copyThis = true;
 
@@ -57,6 +58,11 @@ public class TileBehaviour : MonoBehaviour
     private void Start()
     {
         GameScript.OnGlassesOn += StartTileProgram;
+    }
+
+    private void Update()
+    {
+        
     }
 
     private void StartTileProgram()
@@ -74,30 +80,6 @@ public class TileBehaviour : MonoBehaviour
         }
         
     }
-
-    void Update()
-    {
-        if (Input.GetKey("up") && !stop)
-        {
-            StartingTilesIndex();
-            RightTilesIndex();
-            LeftTilesIndex();
-            EndTilesIndex();
-            EndEdgesTileIndex();
-            StartingEdgesTileIndex();
-            MiddleTilesIndex();
-            
-            stop = true;
-        }
-
-        if (Input.GetKey("down") && !stop)
-        {
-            EndTilesIndex();
-            MiddleTilesIndex();
-            stop = true;
-        }
-    }
-
     public void LeftTilesIndex()
     {
         for (int i = 0; i < totalOfGridY; i++)
@@ -153,7 +135,6 @@ public class TileBehaviour : MonoBehaviour
 
         startEdgeTileIndex = totalOfGridX - 1;
         startEdgeTile.Add(startEdgeTileIndex);
-
     }
 
     public void MiddleTilesIndex()
@@ -190,16 +171,9 @@ public class TileBehaviour : MonoBehaviour
             {
                 middleTile.Add(i);
             }
-
             copyThis = true;
         }
     }
 
-    void Test()     // Explore this.
-    {
-        var b = rightTile.All(leftTile.Contains);
 
-        Debug.Log(b);
-        print(b);
-    }
 }
