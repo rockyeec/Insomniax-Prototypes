@@ -23,6 +23,7 @@ public class PlayerInput : InputParent
     {
         base.Init();
         MoveSpeed = 1.0f;
+        IsEnableCamera = true;
 
         glassesButton.onClick.AddListener(GameScript.PutOnGlasses);
 
@@ -86,9 +87,6 @@ public class PlayerInput : InputParent
         if (!IsEnableCamera)
             return;
 
-        if (IsDisabled)
-            return;
-
         base.FixedTick(delta);
 
         // camera
@@ -107,4 +105,5 @@ public class PlayerInput : InputParent
         rightJoy.Release();
         jumpButton.Release();
     }
+
 }

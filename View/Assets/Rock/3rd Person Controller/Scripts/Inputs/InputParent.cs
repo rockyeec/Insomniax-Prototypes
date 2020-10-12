@@ -3,6 +3,7 @@
 public abstract class InputParent : MonoBehaviour
 {
     protected CharacterController Controller { get; private set; }
+    public Rigidbody Rb { get { return Controller.Rb; } }
     private AnimatorHook animatorHook = null;
     private bool isPause;
     protected bool IsDisabled { get; private set; }
