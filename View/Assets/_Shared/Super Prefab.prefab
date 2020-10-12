@@ -137,7 +137,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -1240,6 +1240,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1680312020401829619}
     m_Modifications:
+    - target: {fileID: 3326655742308844792, guid: 32d00a53b96a79d4fa14fa2cf08c7f9a,
+        type: 3}
+      propertyPath: ceilingMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: cb7cf60840cc7ec42ae840374e679ae6, type: 2}
+    - target: {fileID: 3326655742308844792, guid: 32d00a53b96a79d4fa14fa2cf08c7f9a,
+        type: 3}
+      propertyPath: floorMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 28b26391ad9af844489d62b7250ebfa5, type: 2}
     - target: {fileID: 4609963705872414196, guid: 32d00a53b96a79d4fa14fa2cf08c7f9a,
         type: 3}
       propertyPath: m_LocalPosition.x
