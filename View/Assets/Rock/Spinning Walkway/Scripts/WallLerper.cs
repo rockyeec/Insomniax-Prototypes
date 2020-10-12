@@ -6,15 +6,18 @@ public class WallLerper : MonoBehaviour
     private MeshRenderer ren = null;
     private Collider col = null;
 
+    protected virtual Material SolidMaterial { get { return MaterialManager.WallMaterial; } }
+    protected virtual Material TransluscentMaterial { get { return MaterialManager.FadedOutMaterial; } }
+
     private void Start()
     {
         GameScript.OnGlassesOn += GameScript_OnGlassesOn;
         GameScript.OnGlassesOff += GameScript_OnGlassesOff;
 
-        col = GetComponent<Collider>();
-        ren = GetComponent<MeshRenderer>();
+        col = GetComponentInChildren<Collider>();
+        ren = GetComponentInChildren<MeshRenderer>();
         ren.materials = new Material[0];
-        ren.material = MaterialManager.WallMaterial;
+        ren.material = SolidMaterial;
     }
 
     private void OnDestroy()
@@ -26,13 +29,13 @@ public class WallLerper : MonoBehaviour
     private void GameScript_OnGlassesOff()
     {
         StopAllCoroutines();
-        StartCoroutine(LerpMaterial(MaterialManager.FadedOutMaterial, MaterialManager.WallMaterial, true));
+        StartCoroutine(LerpMaterial(TransluscentMaterial, SolidMaterial, true));
     }
 
     private void GameScript_OnGlassesOn()
     {
         StopAllCoroutines();
-        StartCoroutine(LerpMaterial(MaterialManager.WallMaterial, MaterialManager.FadedOutMaterial, false));
+        StartCoroutine(LerpMaterial(SolidMaterial, TransluscentMaterial, false));
     }
 
     private IEnumerator LerpMaterial(Material cur, Material target, bool isColliderActive)
@@ -53,6 +56,7 @@ public class WallLerper : MonoBehaviour
         }
 
         ren.material = target;
-        col.enabled = isColliderActive;
+        if (col != null)
+            col.enabled = isColliderActive;
     }
 }

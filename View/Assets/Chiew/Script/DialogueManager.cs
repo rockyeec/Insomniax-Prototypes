@@ -13,8 +13,11 @@ public class DialogueManager : MonoBehaviour
     public GameObject DialogueElement;
     public Image characterIcon;
     public TextMeshProUGUI nameText;
+    public TextMeshPro nameTextWorld;
     public TextMeshProUGUI dialogueText;
+    public TextMeshPro dialogueTextWorld;
     public GameObject[] NextbuttonParents = new GameObject[2];
+    public GameObject Controls;
 
     [Header("Buttons For Answer")]
     public GameObject answerButtonParent;
@@ -26,6 +29,9 @@ public class DialogueManager : MonoBehaviour
     //Private Variable Below Please
     private Queue<Dialogue.infomation> sentences = new Queue<Dialogue.infomation>();
     private MCQInfo[] MCQTemp = new MCQInfo[3];
+    private bool isSentenceEnd = false; //is the sentence end
+    private int curSentenceLength, MaxSentenceLength; //Calculate the current sentence length and max length
+    private string tempStore; //Replace if press next before show up
 
     // Start is called before the first frame update
     void Awake()
@@ -38,12 +44,14 @@ public class DialogueManager : MonoBehaviour
     }
     private void Start()
     {
-        DialogueElement.SetActive(false);   
+        DialogueElement.SetActive(false);
+        Controls.SetActive(true);
     }
 
     public void StartDialogue(Dialogue d) //Call start dialogue
     {
         DialogueElement.SetActive(true);
+        Controls.SetActive(false);
         Debug.Log("Start Dialogue");
         isDialogueDone = false;
         sentences.Clear();
@@ -57,25 +65,55 @@ public class DialogueManager : MonoBehaviour
         DisplayNextSentence();
     }
 
-    public void DisplayNextSentence()
+    public void DisplayNextSentence() //Display more sentence
     {
-        if (sentences.Count <= 0)
+        curSentenceLength = dialogueTextWorld.text.Length; //determine current length value
+        if (isSentenceEnd == true)
+        {
+            curSentenceLength = 0;
+            MaxSentenceLength = 0;
+            isSentenceEnd = false;
+        } //Reset default value
+        if (curSentenceLength != 0 && MaxSentenceLength != 0)
+        {
+            StopAllCoroutines();
+            if (curSentenceLength >= MaxSentenceLength)
+            {
+                dialogueTextWorld.text = tempStore;
+                isSentenceEnd = true;
+            }
+            if (curSentenceLength < MaxSentenceLength)
+            {
+                dialogueTextWorld.text = tempStore;
+                isSentenceEnd = true;
+                return;
+            }
+        } //If current got sentence playing ald
+        if (sentences.Count <= 0) //End dialogue
         {
             EndDialogue(); //end dialogue if no more dialogues
             return;
         }
-
+        StopAllCoroutines();
+        dialogueTextWorld.text = ""; dialogueText.text = ""; tempStore = ""; //Reset all word
         Dialogue.infomation info = sentences.Dequeue();
-        characterIcon.sprite = info.characImage;
-        nameText.text = info.nameText; //Display name
+        tempStore = info.DialogueText;
         StartCoroutine(Wordbyword(info.DialogueText)); //Animation display
         //dialogueText.text = info.DialogueText; //This is for normal display
+        //characterIcon.sprite = info.characImage; //If needed picture/icon
+        characterIcon.gameObject.SetActive(false); //If doesn't want picture/icon
+        if(nameText.gameObject != null)
+        {
+            nameText.text = info.nameText; //Display name
+        }
+        if(nameTextWorld.gameObject != null)
+        { nameTextWorld.text = info.nameText; }
 
         //MCQ
         AssignAnswerToButton(info);
     }
 
-    void AssignAnswerToButton(Dialogue.infomation curInfo)
+    void AssignAnswerToButton(Dialogue.infomation curInfo) //Assign text to buttons.text
     {
         if (curInfo.isQuestion == true)
         {
@@ -93,11 +131,11 @@ public class DialogueManager : MonoBehaviour
         else
         {
             foreach (GameObject i in NextbuttonParents) { i.SetActive(true); }
-            foreach (Button i in answerButtons){ i.gameObject.SetActive(false);}
+            foreach (Button i in answerButtons) { i.gameObject.SetActive(false); }
         }
     }
 
-    public void OnPressButtonSelection(int i)
+    public void OnPressButtonSelection(int i) //For Buttons
     {
         if(MCQTemp[i] != null && MCQTemp[i].nxtDialogue != null)
         {
@@ -110,11 +148,25 @@ public class DialogueManager : MonoBehaviour
 
     IEnumerator Wordbyword (string sentence) //Animation show words one by one for dialogue text
     {
-        dialogueText.text = "";
-        foreach(char letter in sentence.ToCharArray())
+        MaxSentenceLength = sentence.Length;
+        if (dialogueText.gameObject != null)
         {
-            dialogueText.text += letter;
-            yield return null;
+            dialogueText.text = "";
+            foreach (char letter in sentence.ToCharArray())
+            {
+                dialogueText.text += letter;
+                yield return null;              
+            }
+        }
+
+        if(dialogueTextWorld.gameObject != null)
+        {
+            dialogueTextWorld.text = "";
+            foreach (char letter in sentence.ToCharArray())
+            {
+                dialogueTextWorld.text += letter;
+                yield return null;
+            }
         }
     }
 
@@ -125,6 +177,7 @@ public class DialogueManager : MonoBehaviour
             MCQTemp[i] = null;
         }
         DialogueElement.SetActive(false);
+        Controls.SetActive(true);
         isDialogueDone = true;
     }
 }
