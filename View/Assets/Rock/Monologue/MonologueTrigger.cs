@@ -9,6 +9,9 @@ public class MonologueTrigger : MonoBehaviour
     {
         if (other.gameObject.layer == 20)
         {
+            if (other.gameObject.name != "Player")
+                return;
+
             Queue<string> q = new Queue<string>();
             foreach (var item in monologue)
             {
