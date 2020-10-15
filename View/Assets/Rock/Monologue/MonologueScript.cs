@@ -20,6 +20,11 @@ public class MonologueScript : MonoBehaviour
 
     private void Update()
     {
+#if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.F))
+            isSkip = true;
+#endif
+
         if (Time.timeScale == 0.0f)
             return;
 

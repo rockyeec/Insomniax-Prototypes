@@ -30,7 +30,7 @@ public class SceneTransitionFader : MonoBehaviour
     {
         instance.gameObject.SetActive(true);
         instance.StopAllCoroutines();
-        instance.StartCoroutine(instance.Fade(0.0f, 6.9f));
+        instance.StartCoroutine(instance.Fade(0.0f, 5.0f));
     }
 
     IEnumerator Fade(float targetAlpha, float duration)

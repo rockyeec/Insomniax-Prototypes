@@ -47,7 +47,7 @@ public class PoppingNames : MonoBehaviour
         }
     }
 
-    private void Update()
+    /*private void Update()
     {
         tmp.ForceMeshUpdate();
         Vector3[] vertices = tmp.mesh.vertices;
@@ -71,5 +71,5 @@ public class PoppingNames : MonoBehaviour
                 tmp.mesh.vertices = vertices;
             }
         }
-    }
+    }*/
 }
