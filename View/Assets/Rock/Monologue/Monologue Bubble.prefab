@@ -97,6 +97,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7144089354128493588}
   - component: {fileID: -2924944683967709488}
+  - component: {fileID: 2997452305507837313}
   m_Layer: 0
   m_Name: Monologue Bubble
   m_TagString: Untagged
@@ -133,6 +134,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 2022017174266041473}
   ren: {fileID: 2950216258490385131}
+--- !u!114 &2997452305507837313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7671793204082235233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30860ced6ac8a2849a19dc534d2a0121, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableCameraControlCommand: DisableCameraControl
+  enableCameraControlCommand: EnableCameraControl
 --- !u!1 &8295650690336422787
 GameObject:
   m_ObjectHideFlags: 0

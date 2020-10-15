@@ -8,6 +8,7 @@ public class MonologueScript : MonoBehaviour
     [SerializeField] TextMeshPro text = null;
     [SerializeField] SpriteRenderer ren = null;
     Camera cam;
+    bool isSkip = false;
 
     private static MonologueScript instance;
     private void Awake()
@@ -37,25 +38,49 @@ public class MonologueScript : MonoBehaviour
 
     IEnumerator PrintOut(Queue<string> monologue)
     {
-        StartCoroutine(StyloLerp(true));
+        StartCoroutine(Fade(true));
 
         while (monologue.Count != 0)
         {
             text.text = string.Empty;
             string stringCur = monologue.Dequeue();
-            foreach (var item in stringCur)
+            if (InvokerForMonologue.ContainsCommand(stringCur))
             {
-                yield return new WaitForSeconds(0.02f);
-                text.text += item;
+                InvokerForMonologue.Do(stringCur);
             }
+            else
+            {
+                // type out sentence
+                foreach (var item in stringCur)
+                {
+                    if (isSkip)
+                        break;
 
-            yield return new WaitForSeconds(1.5f);
+                    yield return new WaitForSeconds(0.02f);
+                    text.text += item;
+                }
+
+                // short pause after every sentence
+                float duration = 1.2f;
+                float time = Time.time + duration;
+                while (Time.time < time)
+                {
+                    if (isSkip)
+                    {
+                        isSkip = false;
+                        break;
+                    }
+                    yield return null;
+                }
+            }            
         }
 
-        StartCoroutine(StyloLerp(false));
+        StartCoroutine(Fade(false));
     }
 
-    IEnumerator StyloLerp(bool isActive)
+    
+
+    IEnumerator Fade(bool isActive)
     {
         float elapsed = 0.0f;
         float duration = 0.3f;

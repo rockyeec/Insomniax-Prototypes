@@ -129,22 +129,22 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1474183564}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: f336102f7f560624cba51a9b0077af16,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.35
+      value: 7.510872
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f336102f7f560624cba51a9b0077af16,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f336102f7f560624cba51a9b0077af16,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.69
+      value: -3.6147513
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f336102f7f560624cba51a9b0077af16,
         type: 3}
@@ -169,7 +169,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: f336102f7f560624cba51a9b0077af16,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f336102f7f560624cba51a9b0077af16,
         type: 3}
@@ -612,6 +612,81 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ee18e026795e4342aec14b78b6faca5, type: 3}
+--- !u!1 &247808851
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 247808852}
+  - component: {fileID: 247808854}
+  - component: {fileID: 247808853}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &247808852
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 247808851}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.93767, y: 0.93767, z: 0.93767}
+  m_Children: []
+  m_Father: {fileID: 297663401}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 146.85715, y: 146.28572}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &247808853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 247808851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 53f1958e7f49a1149b68b15c8a903d42, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &247808854
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 247808851}
+  m_CullTransparentMesh: 0
 --- !u!1 &282420556
 GameObject:
   m_ObjectHideFlags: 0
@@ -806,6 +881,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fefc6046914efa740964822a37db2178, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &297663401 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 9164610607727806798, guid: 5c7a2e51d97eb9c4d9051ba36e244a40,
+    type: 3}
+  m_PrefabInstance: {fileID: 1055739455}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &350474165
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1016,22 +1097,22 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1474183564}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: f336102f7f560624cba51a9b0077af16,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.5700006
+      value: -7.4091287
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f336102f7f560624cba51a9b0077af16,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f336102f7f560624cba51a9b0077af16,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.1499994
+      value: -9.454751
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f336102f7f560624cba51a9b0077af16,
         type: 3}
@@ -1056,7 +1137,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: f336102f7f560624cba51a9b0077af16,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f336102f7f560624cba51a9b0077af16,
         type: 3}
@@ -1278,22 +1359,22 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1474183564}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: f336102f7f560624cba51a9b0077af16,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.9404645
+      value: 7.1013365
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f336102f7f560624cba51a9b0077af16,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f336102f7f560624cba51a9b0077af16,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 24.305513
+      value: 17.000763
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f336102f7f560624cba51a9b0077af16,
         type: 3}
@@ -1318,7 +1399,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: f336102f7f560624cba51a9b0077af16,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f336102f7f560624cba51a9b0077af16,
         type: 3}
@@ -1443,22 +1524,22 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1474183564}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: f336102f7f560624cba51a9b0077af16,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.63
+      value: -7.469128
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f336102f7f560624cba51a9b0077af16,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f336102f7f560624cba51a9b0077af16,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 18.45
+      value: 11.145249
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f336102f7f560624cba51a9b0077af16,
         type: 3}
@@ -1483,7 +1564,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: f336102f7f560624cba51a9b0077af16,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f336102f7f560624cba51a9b0077af16,
         type: 3}
@@ -2123,6 +2204,12 @@ Transform:
   m_Father: {fileID: 1211397735}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1260611586 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f336102f7f560624cba51a9b0077af16,
+    type: 3}
+  m_PrefabInstance: {fileID: 712799295}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1301631009
 GameObject:
   m_ObjectHideFlags: 0
@@ -2204,6 +2291,52 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1301631009}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1353876046 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f336102f7f560624cba51a9b0077af16,
+    type: 3}
+  m_PrefabInstance: {fileID: 62245399}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1363498263 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f336102f7f560624cba51a9b0077af16,
+    type: 3}
+  m_PrefabInstance: {fileID: 441539180}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1474183563
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1474183564}
+  m_Layer: 0
+  m_Name: Houses
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1474183564
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1474183563}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.16087198, y: 1, z: 7.3047514}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1353876046}
+  - {fileID: 1363498263}
+  - {fileID: 2031313655}
+  - {fileID: 1260611586}
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1794468125 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4834901216101704761, guid: 5c7a2e51d97eb9c4d9051ba36e244a40,
@@ -2348,6 +2481,12 @@ Transform:
   m_Father: {fileID: 1211397735}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &2031313655 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f336102f7f560624cba51a9b0077af16,
+    type: 3}
+  m_PrefabInstance: {fileID: 1006267792}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2120763555 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7218300649377526510, guid: 9ee18e026795e4342aec14b78b6faca5,
@@ -2368,7 +2507,7 @@ Transform:
   - {fileID: 1033561845}
   - {fileID: 684311462}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &5147101354438359053
 PrefabInstance:
@@ -2559,62 +2698,67 @@ PrefabInstance:
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.size
-      value: 10
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[0]
-      value: ' I wanted to see him again...but not like this.'
+      value: DisableMoveControl
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[5]
-      value: "No..That shouldn\u2019t be...Max?"
+      value: 'This place, it''s changing. I''m not feeling too good. '
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[6]
-      value: "Max! You\u2019re alive?!"
+      value: "No..That shouldn\u2019t be...Max?"
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[7]
-      value: "No! Stop Max! It\u2019s me, Alex! "
+      value: "Max! You\u2019re alive?!"
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[8]
-      value: 'Please, Max, stop! '
+      value: "No! Stop Max! It\u2019s me, Alex! "
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[9]
-      value: 'Why is this happening?! '
+      value: 'Please, Max, stop! '
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[10]
-      value: ok
+      value: 'Why is this happening?! '
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[1]
-      value: My eyesight-
+      value: ' I wanted to see him again...but not like this.'
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[2]
-      value: "Glasses? Who\u2019s? "
+      value: My eyesight-
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[3]
-      value: " I can see\u2026? "
+      value: "Glasses? Who\u2019s? "
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[4]
-      value: 'This place, it''s changing. I''m not feeling too good. '
+      value: " I can see\u2026? "
+      objectReference: {fileID: 0}
+    - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
+        type: 3}
+      propertyPath: monologue.Array.data[11]
+      value: EnableMoveControl
       objectReference: {fileID: 0}
     - target: {fileID: 8267381906275170538, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
@@ -2693,42 +2837,52 @@ PrefabInstance:
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.size
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[5]
-      value: "I don\u2019t like this!"
+      value: 'Max. This is where I used to walk Max. '
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[6]
-      value: 'I want to go back! '
+      value: "I don\u2019t like this!"
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[0]
-      value: 'Wha- I was just in my room. '
+      value: DisableMoveControl
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[1]
-      value: 'I need to get back to my room.  '
+      value: 'Wha- I was just in my room. '
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[2]
-      value: "I can\u2019t be out here, I don\u2019t want to be out here. "
+      value: 'I need to get back to my room.  '
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[3]
-      value: "I can\u2019t move. "
+      value: "I can\u2019t be out here, I don\u2019t want to be out here. "
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[4]
-      value: 'Max. This is where I used to walk Max. '
+      value: "I can\u2019t move. "
+      objectReference: {fileID: 0}
+    - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
+        type: 3}
+      propertyPath: monologue.Array.data[7]
+      value: 'I want to go back! '
+      objectReference: {fileID: 0}
+    - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
+        type: 3}
+      propertyPath: monologue.Array.data[8]
+      value: EnableMoveControl
       objectReference: {fileID: 0}
     - target: {fileID: 8267381906275170538, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
@@ -2869,7 +3023,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2925563463474689335}
   m_Layer: 0
-  m_Name: temp prefab
+  m_Name: Monologues
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
