@@ -64,6 +64,17 @@ public class PlayerInput : InputParent
         {
             Controller.inputs.jumpRelease = true;
         }
+
+
+        // temp
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            GetComponentInChildren<Animator>().CrossFade("Put On Glasses", 0.15f);
+        }
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            GetComponentInChildren<Animator>().CrossFade("Put Off Glasses", 0.15f);
+        }
     }
 
     protected override void FixedTick(in float delta)
