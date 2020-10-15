@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class InvokerForMonologue : MonoBehaviour
 {
-    List<string> commands = new List<string>();
+    readonly List<string> commands = new List<string>();
 
     private static InvokerForMonologue instance;
     private void Awake()
@@ -25,20 +25,20 @@ public class InvokerForMonologue : MonoBehaviour
         instance.Invoke(command, 0.0f);
     }
 
-    public void DisableCameraControl()
+    void DisableCameraControl()
     {
         PlayerInput.IsEnableCamera = false;
     }
-    public void EnableCameraControl()
+    void EnableCameraControl()
     {
         PlayerInput.IsEnableCamera = true;
     }
 
-    public void DisableMoveControl()
+    void DisableMoveControl()
     {
         PlayerInput.IsCanMove = false;
     }
-    public void EnableMoveControl()
+    void EnableMoveControl()
     {
         PlayerInput.IsCanMove = true;
     }

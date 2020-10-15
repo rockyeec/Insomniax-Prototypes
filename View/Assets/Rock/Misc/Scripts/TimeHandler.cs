@@ -10,6 +10,8 @@ public class TimeHandler : MonoBehaviour
 
     public static void Enable()
     {
+        if (instance == null)
+            return;
         instance.enabled = true;
     }
 

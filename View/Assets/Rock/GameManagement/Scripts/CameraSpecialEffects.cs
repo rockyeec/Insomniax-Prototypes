@@ -41,7 +41,7 @@ public class CameraSpecialEffects : MonoBehaviour
     private IEnumerator CameraGoUpNZoomOut()
     {
         float elapsed = 0.0f;
-        float duration = CurveManager.AnimationDuration * 2.0f;
+        float duration = CurveManager.CameraAnimationDuration;
         float startFov = cam.fieldOfView;
         Quaternion startRot = cam.transform.rotation;
         Vector3 startPos = cam.transform.position;
