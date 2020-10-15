@@ -700,7 +700,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.7728729, g: 0.9481197, b: 0.9811321, a: 0}
+  m_BackGroundColor: {r: 0.6392157, g: 0.7568628, b: 0.8705883, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1156,7 +1156,13 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1055739455}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &527727372
+--- !u!224 &527727375 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 9068892027921865581, guid: 5c7a2e51d97eb9c4d9051ba36e244a40,
+    type: 3}
+  m_PrefabInstance: {fileID: 1055739455}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &527727376
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1169,12 +1175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rect: {fileID: 527727375}
---- !u!224 &527727375 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 9068892027921865581, guid: 5c7a2e51d97eb9c4d9051ba36e244a40,
-    type: 3}
-  m_PrefabInstance: {fileID: 1055739455}
-  m_PrefabAsset: {fileID: 0}
+  description: Press To Open Menu
 --- !u!1 &564602006
 GameObject:
   m_ObjectHideFlags: 0
@@ -1242,7 +1243,7 @@ PrefabInstance:
         type: 3}
       propertyPath: highlightable
       value: 
-      objectReference: {fileID: 527727372}
+      objectReference: {fileID: 527727376}
     - target: {fileID: 3948947820089254882, guid: fa50161003ea8cd4b95f332599d28f6e,
         type: 3}
       propertyPath: m_Name
@@ -2034,6 +2035,11 @@ PrefabInstance:
       propertyPath: manager
       value: 
       objectReference: {fileID: 1386610604}
+    - target: {fileID: 375751818804859493, guid: fa50161003ea8cd4b95f332599d28f6e,
+        type: 3}
+      propertyPath: delay
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3948947820089254882, guid: fa50161003ea8cd4b95f332599d28f6e,
         type: 3}
       propertyPath: m_Name
@@ -2052,7 +2058,7 @@ PrefabInstance:
     - target: {fileID: 8267381906275170538, guid: fa50161003ea8cd4b95f332599d28f6e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -100.496
+      value: -102.01
       objectReference: {fileID: 0}
     - target: {fileID: 8267381906275170538, guid: fa50161003ea8cd4b95f332599d28f6e,
         type: 3}
@@ -3316,6 +3322,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rect: {fileID: 1341064011}
+  description: Press To Toggle Glasses Mode
 --- !u!4 &1353876046 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f336102f7f560624cba51a9b0077af16,
@@ -3398,6 +3405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rect: {fileID: 1489608260}
+  description: Hold To Jump
 --- !u!1 &1500456124
 GameObject:
   m_ObjectHideFlags: 0
@@ -3590,6 +3598,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rect: {fileID: 297663401}
+  description: Drag To Move
 --- !u!1 &1858372083 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1754203064913886639, guid: 5c7a2e51d97eb9c4d9051ba36e244a40,
@@ -3609,6 +3618,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rect: {fileID: 215003478}
+  description: Drag To Look Around
 --- !u!1001 &1885614130
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7164,62 +7174,62 @@ PrefabInstance:
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.size
-      value: 12
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[0]
-      value: DisableMoveControl
-      objectReference: {fileID: 0}
-    - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
-        type: 3}
-      propertyPath: monologue.Array.data[5]
-      value: 'This place, it''s changing. I''m not feeling too good. '
-      objectReference: {fileID: 0}
-    - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
-        type: 3}
-      propertyPath: monologue.Array.data[6]
-      value: "No..That shouldn\u2019t be...Max?"
-      objectReference: {fileID: 0}
-    - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
-        type: 3}
-      propertyPath: monologue.Array.data[7]
-      value: "Max! You\u2019re alive?!"
-      objectReference: {fileID: 0}
-    - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
-        type: 3}
-      propertyPath: monologue.Array.data[8]
-      value: "No! Stop Max! It\u2019s me, Alex! "
-      objectReference: {fileID: 0}
-    - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
-        type: 3}
-      propertyPath: monologue.Array.data[9]
-      value: 'Please, Max, stop! '
-      objectReference: {fileID: 0}
-    - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
-        type: 3}
-      propertyPath: monologue.Array.data[10]
-      value: 'Why is this happening?! '
-      objectReference: {fileID: 0}
-    - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
-        type: 3}
-      propertyPath: monologue.Array.data[1]
       value: ' I wanted to see him again...but not like this.'
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
-      propertyPath: monologue.Array.data[2]
+      propertyPath: monologue.Array.data[5]
+      value: "No..That shouldn\u2019t be...Max?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
+        type: 3}
+      propertyPath: monologue.Array.data[6]
+      value: "Max! You\u2019re alive?!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
+        type: 3}
+      propertyPath: monologue.Array.data[7]
+      value: "No! Stop Max! It\u2019s me, Alex! "
+      objectReference: {fileID: 0}
+    - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
+        type: 3}
+      propertyPath: monologue.Array.data[8]
+      value: 'Please, Max, stop! '
+      objectReference: {fileID: 0}
+    - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
+        type: 3}
+      propertyPath: monologue.Array.data[9]
+      value: 'Why is this happening?! '
+      objectReference: {fileID: 0}
+    - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
+        type: 3}
+      propertyPath: monologue.Array.data[10]
+      value: EnableMoveControl
+      objectReference: {fileID: 0}
+    - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
+        type: 3}
+      propertyPath: monologue.Array.data[1]
       value: My eyesight-
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
-      propertyPath: monologue.Array.data[3]
+      propertyPath: monologue.Array.data[2]
       value: "Glasses? Who\u2019s? "
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
-      propertyPath: monologue.Array.data[4]
+      propertyPath: monologue.Array.data[3]
       value: " I can see\u2026? "
+      objectReference: {fileID: 0}
+    - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
+        type: 3}
+      propertyPath: monologue.Array.data[4]
+      value: 'This place, it''s changing. I''m not feeling too good. '
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
