@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class MonologueScript : MonoBehaviour
 {
+    [SerializeField] Button skipButton = null;
     [SerializeField] TextMeshPro text = null;
     [SerializeField] SpriteRenderer ren = null;
     Camera cam;
@@ -15,7 +17,18 @@ public class MonologueScript : MonoBehaviour
     {
         instance = this;
 
+        if (skipButton != null)
+        {
+            skipButton.onClick.AddListener(Skip);
+            skipButton.gameObject.SetActive(false);
+        }
+
         gameObject.SetActive(false);
+    }
+
+    void Skip()
+    {
+        isSkip = true;
     }
 
     private void Update()
@@ -36,7 +49,10 @@ public class MonologueScript : MonoBehaviour
 
     public static void TriggerText(Queue<string> monologue)
     {
-        instance.gameObject.SetActive(true);
+        instance.gameObject.SetActive(true); 
+        if (instance.skipButton != null)
+            instance.skipButton.gameObject.SetActive(true);
+
         instance.StopAllCoroutines();
         instance.StartCoroutine(instance.PrintOut(monologue));
     }
@@ -98,12 +114,17 @@ public class MonologueScript : MonoBehaviour
 
             float t = CurveManager.Curve.Evaluate(elapsed / duration);
 
-            ren.color = Color.Lerp(ori, target, t);
+            ren.color = Color.LerpUnclamped(ori, target, t);
+
+            if (skipButton != null)
+                skipButton.image.color = Color.LerpUnclamped(ori, target, t);
 
             yield return null;
         }
 
         ren.color = target;
         gameObject.SetActive(isActive);
+        if (skipButton != null)
+            skipButton.gameObject.SetActive(isActive);
     }
 }
