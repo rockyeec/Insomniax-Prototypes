@@ -19,6 +19,8 @@ public class PlayerInput : InputParent
 
     private Transform hips;
 
+    public event System.Action OnGlassesButtonPress = delegate { };
+
     protected override void Init()
     {
         base.Init();
@@ -27,7 +29,12 @@ public class PlayerInput : InputParent
         AssignAnimatorComponents();
         AssignProperties();
 
-        glassesButton.onClick.AddListener(GameScript.PutOnGlasses);
+        glassesButton.onClick.AddListener(PressGlassesButton);
+    }
+
+    void PressGlassesButton()
+    {
+        OnGlassesButtonPress();
     }
 
     protected override void Tick(in float delta)
@@ -63,17 +70,6 @@ public class PlayerInput : InputParent
         if (jumpButton.IsUp)
         {
             Controller.inputs.jumpRelease = true;
-        }
-
-
-        // temp
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            GetComponentInChildren<Animator>().CrossFade("Put On Glasses", 0.15f);
-        }
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            GetComponentInChildren<Animator>().CrossFade("Put Off Glasses", 0.15f);
         }
     }
 
