@@ -25,4 +25,9 @@ public static class Extensions
     {
         return new Color(orignal.r, orignal.g, orignal.b, alpha);
     }
+
+    public static Vector3 With(this Vector3 original, float? x = null, float? y = null, float? z = null)
+    {
+        return new Vector3(x ?? original.x, y ?? original.y, z ?? original.z);
+    }
 }

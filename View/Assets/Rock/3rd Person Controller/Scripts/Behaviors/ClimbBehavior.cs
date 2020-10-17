@@ -48,7 +48,7 @@ public class ClimbBehavior : Behavior
         
         //Debug.DrawRay(transform.rotation * rayOri + transform.position, Vector3.down * rayLength);
         Ray verticalRay = new Ray(transform.rotation * rayOri + transform.position, Vector3.down);
-        if (Physics.Raycast(verticalRay, out RaycastHit hit0, rayLength, ~(1 << 20 | 1 << 9 | 1 << 30)))
+        if (Physics.Raycast(verticalRay, out RaycastHit hit0, rayLength, ~(1 << 20 | 1 << 9 | 1 << 30 | 1 << 25)))
         {
             Vector3 horizontalRayOri = transform.position;
             horizontalRayOri.y = hit0.point.y - 0.01f;

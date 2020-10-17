@@ -48,8 +48,6 @@ public class GameScript : MonoBehaviour
 
         OnPause();
         Time.timeScale = 0.0f;
-
-        instance.cam.ZoomOut();
     }
 
     public static void Unpause()
@@ -59,8 +57,6 @@ public class GameScript : MonoBehaviour
 
         OnUnpause();
         Time.timeScale = 1.0f;
-
-        instance.cam.ZoomIn();
     }
 
     public static void PutOnGlasses()

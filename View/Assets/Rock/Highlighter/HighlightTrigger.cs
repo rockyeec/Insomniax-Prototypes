@@ -7,6 +7,7 @@ public class HighlightTrigger : MonoBehaviour
     [SerializeField] ButtonsHighLighter manager = null;
     [SerializeField] Highlightable highlightable = null;
     [SerializeField] float delay = 0.0f;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == 20)
@@ -17,6 +18,7 @@ public class HighlightTrigger : MonoBehaviour
             Invoke("CallAfterDelay", delay);
         }
     }
+
 
     void CallAfterDelay()
     {

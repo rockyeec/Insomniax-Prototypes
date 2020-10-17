@@ -6,7 +6,7 @@ using UnityEngine;
 public class SpinningSegmentArranger : MonoBehaviour
 {
     [SerializeField] bool isArrange = false;
-    [SerializeField] float segmentLength = 0.45f;
+    [SerializeField] float segmentLength = 3.5f;
 
     private void Update()
     {

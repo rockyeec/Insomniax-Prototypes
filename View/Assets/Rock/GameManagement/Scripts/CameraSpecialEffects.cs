@@ -5,7 +5,7 @@ public class CameraSpecialEffects : MonoBehaviour
 {
     private Camera cam = null;
 
-    readonly private float defaultCameraFov = 60.0f;
+    private float defaultCameraFov = 60.0f;
     readonly private float zoomedOutFov = 133.7f;
 
     private Quaternion downRot;
@@ -24,15 +24,33 @@ public class CameraSpecialEffects : MonoBehaviour
         downRot = Quaternion.LookRotation(Vector3.down);
         forwardRot = Quaternion.LookRotation(Vector3.forward);
         downColor = cam.backgroundColor;
+
+        GameScript.OnPause += GameScript_OnPause;
+        GameScript.OnUnpause += GameScript_OnUnpause;
+    }
+    private void OnDestroy()
+    {
+        GameScript.OnPause -= GameScript_OnPause;
+        GameScript.OnUnpause -= GameScript_OnUnpause;
     }
 
-    public void ZoomOut()
+    private void GameScript_OnUnpause()
+    {
+        ZoomIn();
+    }
+
+    private void GameScript_OnPause()
+    {
+        ZoomOut();
+    }
+
+    void ZoomOut()
     {
         StopAllCoroutines();
         StartCoroutine(CameraGoUpNZoomOut());
     }
 
-    public void ZoomIn()
+    void ZoomIn()
     {
         StopAllCoroutines();
         StartCoroutine(CameraGoDownNZoomIn());
@@ -40,6 +58,8 @@ public class CameraSpecialEffects : MonoBehaviour
 
     private IEnumerator CameraGoUpNZoomOut()
     {
+        defaultCameraFov = cam.fieldOfView;
+
         float elapsed = 0.0f;
         float duration = CurveManager.CameraAnimationDuration;
         float startFov = cam.fieldOfView;

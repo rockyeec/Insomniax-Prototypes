@@ -6,6 +6,7 @@ public class InvokerForMonologue : MonoBehaviour
     readonly List<string> commands = new List<string>();
 
     private static InvokerForMonologue instance;
+
     private void Awake()
     {
         instance = this;

@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[ExecuteInEditMode]
 public class TreadmillRecycler : MonoBehaviour
 {
     Vector3 spawnPoint;
 
     [SerializeField] float platformLength = 45.0f;
     [SerializeField] float speed = 0.12f;
+
+    [SerializeField] bool applyChanges = false;
 
     TreadmillScript[] allTreadmills;
 
@@ -19,6 +22,13 @@ public class TreadmillRecycler : MonoBehaviour
     private void Awake()
     {
         instance = this;
+    }
+
+    private void Update()
+    {
+        if (!applyChanges)
+            return;
+        applyChanges = false;
 
         allTreadmills = GetComponentsInChildren<TreadmillScript>();
 
@@ -27,7 +37,7 @@ public class TreadmillRecycler : MonoBehaviour
 
         for (int i = 0; i < allTreadmills.Length; i++)
         {
-            allTreadmills[i].Art.localScale 
+            allTreadmills[i].Art.localScale
                 = allTreadmills[i].Box.size
                 = new Vector3(6.9f, 1.0f, platformLength);
 
