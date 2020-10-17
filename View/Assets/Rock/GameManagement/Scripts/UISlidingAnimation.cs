@@ -71,8 +71,8 @@ public class UISlidingAnimation : MonoBehaviour
 
             transform.position =
                 isPhase1
-                ? Vector3.Lerp(ori, overshootPos, t)
-                : Vector3.Lerp(overshootPos, target, t);
+                ? Vector3.LerpUnclamped(ori, overshootPos, t)
+                : Vector3.LerpUnclamped(overshootPos, target, t);
 
             yield return null;
         }

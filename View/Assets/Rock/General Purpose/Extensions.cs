@@ -20,4 +20,14 @@ public static class Extensions
             && Mathf.Abs(lhs.y - rhs.y) < minDistance
             && Mathf.Abs(lhs.z - rhs.z) < minDistance;
     }
+
+    public static Color WithAlpha(this Color orignal, in float alpha)
+    {
+        return new Color(orignal.r, orignal.g, orignal.b, alpha);
+    }
+
+    public static Vector3 With(this Vector3 original, float? x = null, float? y = null, float? z = null)
+    {
+        return new Vector3(x ?? original.x, y ?? original.y, z ?? original.z);
+    }
 }

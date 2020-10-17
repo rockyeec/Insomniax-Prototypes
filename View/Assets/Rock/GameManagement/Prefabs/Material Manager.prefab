@@ -43,6 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7e077555f517ba489c769567f549d7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  floorMaterial: {fileID: 2100000, guid: 28b26391ad9af844489d62b7250ebfa5, type: 2}
+  ceilingMaterial: {fileID: 2100000, guid: cb7cf60840cc7ec42ae840374e679ae6, type: 2}
   wallMaterial: {fileID: 2100000, guid: 11e9787186031d64fa86d5ff663e8666, type: 2}
   fadedOutMaterial: {fileID: 2100000, guid: 1e2a9118b4da7b8499583f8daa6d252f, type: 2}
   outLineMaterial: {fileID: 2100000, guid: 295926fa8f909da4a994c63120f727f8, type: 2}

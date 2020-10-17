@@ -13,7 +13,6 @@ public class GameScript : MonoBehaviour
     public static event Action OnGlassesOff = delegate { };
 
     private CameraSpecialEffects cam;
-    private bool isGlassesOn = false;
 
     private void Awake()
     {
@@ -49,8 +48,6 @@ public class GameScript : MonoBehaviour
 
         OnPause();
         Time.timeScale = 0.0f;
-
-        instance.cam.ZoomOut();
     }
 
     public static void Unpause()
@@ -60,21 +57,14 @@ public class GameScript : MonoBehaviour
 
         OnUnpause();
         Time.timeScale = 1.0f;
-
-        instance.cam.ZoomIn();
     }
 
     public static void PutOnGlasses()
     {
-        instance.isGlassesOn = !instance.isGlassesOn;
-        if (instance.isGlassesOn)
-        {
-            OnGlassesOn();
-        }
-        else
-        {
-            OnGlassesOff();
-        }
+        OnGlassesOn();
     }
-
+    public static void TakeOffGlasses()
+    {
+        OnGlassesOff();
+    }
 }
