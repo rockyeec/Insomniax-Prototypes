@@ -67,7 +67,7 @@ public class DogNpcInput : InputParent
             direction.x = Mathf.Abs(direction.x);
         }
 
-        Controller.inputs.SmoothMoveInput(direction, delta);
+        Controller.inputs.SmoothMoveInput(direction * 1.02f, delta);
 
     }
     public bool CalDist()

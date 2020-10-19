@@ -77,7 +77,7 @@ public class MonologueScript : MonoBehaviour
                     if (isSkip)
                         break;
 
-                    yield return new WaitForSeconds(0.02f);
+                    yield return new WaitForSeconds(0.015f);
                     text.text += item;
                 }
 

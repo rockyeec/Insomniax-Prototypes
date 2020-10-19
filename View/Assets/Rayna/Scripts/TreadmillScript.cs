@@ -37,15 +37,40 @@ public class TreadmillScript : MonoBehaviour
         if (!isCanMove)
             return;
 
-        transform.Translate(Vector3.back * TreadmillRecycler.Speed); 
-        if (transform.localPosition.z < TreadmillRecycler.KillSelfZ)
+        ManagePlatformMovement();
+    }
+
+    private void ManagePlatformMovement()
+    {
+        PullPlatformBack();
+        if (IsMoreThanLimit())
         {
-            PlayerInput pI = GetComponentInChildren<PlayerInput>();
-            if (pI != null)
-            {
-                pI.transform.SetParent(null);
-            }
-            transform.localPosition = TreadmillRecycler.SpawnPoint;
+            MakePlayerFall();
+            ResetPlatformPosition();
+        }
+    }
+
+    private void ResetPlatformPosition()
+    {
+        transform.localPosition = TreadmillRecycler.SpawnPoint;
+    }
+
+    private void PullPlatformBack()
+    {
+        transform.Translate(Vector3.back * TreadmillRecycler.Speed);
+    }
+
+    private bool IsMoreThanLimit()
+    {
+        return transform.localPosition.z < TreadmillRecycler.KillSelfZ;
+    }
+
+    private void MakePlayerFall()
+    {
+        PlayerInput pI = GetComponentInChildren<PlayerInput>();
+        if (pI != null)
+        {
+            pI.transform.SetParent(null);
         }
     }
 }

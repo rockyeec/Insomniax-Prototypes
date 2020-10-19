@@ -61,8 +61,8 @@ public class DelayedWallLerper : MonoBehaviour
         }
 
         ren.material = target;
-        //if (col != null)
-        //    col.enabled = isColliderActive;
+        if (col != null)
+            col.enabled = isColliderActive;
         gameObject.SetActive(keepActive);
     }
 }

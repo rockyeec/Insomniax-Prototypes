@@ -14,7 +14,7 @@ public class TutorialsMonologueInvoker : InvokerForMonologue
 
         glassesButton.GetComponent<Button>().onClick.AddListener(MakeCanMoveAgain);
     }
-
+   
     private void HighlightGlasses()
     {
         manager.Highlight(glassesButton);
