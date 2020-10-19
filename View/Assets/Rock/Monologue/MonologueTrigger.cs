@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MonologueTrigger : MonoBehaviour
 {
+    [SerializeField] float delay = 0.0f;
     [SerializeField] string[] monologue = null;
     private void OnTriggerEnter(Collider other)
     {
@@ -12,13 +13,18 @@ public class MonologueTrigger : MonoBehaviour
             if (other.gameObject.name != "Player")
                 return;
 
-            Queue<string> q = new Queue<string>();
-            foreach (var item in monologue)
-            {
-                q.Enqueue(item);
-            }
-            MonologueScript.TriggerText(q);
-            Destroy(transform.parent.gameObject);
+            Invoke("StartSpeech", delay);
         }
+    }
+
+    void StartSpeech()
+    {
+        Queue<string> q = new Queue<string>();
+        foreach (var item in monologue)
+        {
+            q.Enqueue(item);
+        }
+        MonologueScript.TriggerText(q);
+        Destroy(transform.parent.gameObject);
     }
 }
