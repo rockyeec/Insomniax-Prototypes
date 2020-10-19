@@ -42,11 +42,15 @@ public class SpinningSegmentArranger : MonoBehaviour
         {
             SegmentInfo segment = new SegmentInfo();
             segment.Segment = item;
-            segment.TargetPos = new Vector3(0.0f, 0.0f, i++ * segmentLength);
+            segment.TargetPos = new Vector3(0.0f, 0.0f, 1.725f + i++ * segmentLength);
             segment.WallLerpers = item.GetComponentsInChildren<DelayedWallLerper>();
             segments.Add(segment);
 
             item.transform.localPosition = Vector3.zero;
+            foreach (var wall in segment.WallLerpers)
+            {
+                wall.gameObject.SetActive(false);
+            }
         }
 
         GameScript.OnGlassesOn += StartLerp;
@@ -65,6 +69,10 @@ public class SpinningSegmentArranger : MonoBehaviour
         foreach (var item in segments)
         {
             item.OriPos = item.Segment.transform.localPosition;
+            foreach (var wall in item.WallLerpers)
+            {
+                wall.gameObject.SetActive(true);
+            }
         }
     }
     void EndLerp()

@@ -25,12 +25,14 @@ public class DelayedWallLerper : MonoBehaviour
 
     public void FadeIn()
     {
+        gameObject.SetActive(true);
         StopAllCoroutines();
         StartCoroutine(LerpMaterial(TransluscentMaterial, SolidMaterial, true));
     }
 
     public void FadeOut()
     {
+        gameObject.SetActive(true);
         StopAllCoroutines();
         StartCoroutine(LerpMaterial(SolidMaterial, TransluscentMaterial, false));
     }
@@ -53,7 +55,8 @@ public class DelayedWallLerper : MonoBehaviour
         }
 
         ren.material = target;
-        if (col != null)
-            col.enabled = isColliderActive;
+        //if (col != null)
+        //    col.enabled = isColliderActive;
+        gameObject.SetActive(false);
     }
 }
