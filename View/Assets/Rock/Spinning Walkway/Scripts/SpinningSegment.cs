@@ -7,17 +7,17 @@ public class SpinningSegment : MonoBehaviour
 
     private void Start()
     {
-        GameScript.OnGlassesOn += GameScript_OnGlassesOn;
+        SpinningSegmentArranger.OnStartSpinning += SpinningSegment_OnStartSpinning;
         GameScript.OnGlassesOff += GameScript_OnGlassesOff;
         enabled = false;
     }
     private void OnDestroy()
     {
-        GameScript.OnGlassesOn -= GameScript_OnGlassesOn;
+        SpinningSegmentArranger.OnStartSpinning -= SpinningSegment_OnStartSpinning;
         GameScript.OnGlassesOff -= GameScript_OnGlassesOff;
     }
 
-    private void GameScript_OnGlassesOn()
+    private void SpinningSegment_OnStartSpinning()
     {
         enabled = true;
     }

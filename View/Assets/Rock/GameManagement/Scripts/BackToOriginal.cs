@@ -9,6 +9,12 @@ public class BackToOriginal : MonoBehaviour
 
     private float elapsed = float.MaxValue;
 
+    public void SetTargetPosAndRot(in Vector3 pos, in Quaternion rot)
+    {
+        targetPos = pos;
+        targetRot = rot;
+    }
+
     virtual protected void Start()
     {
         targetPos = transform.position;

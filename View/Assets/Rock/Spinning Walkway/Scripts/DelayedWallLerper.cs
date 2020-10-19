@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class WallLerper : MonoBehaviour
+public class DelayedWallLerper : MonoBehaviour
 {
     private MeshRenderer ren = null;
     private Collider col = null;
@@ -11,28 +11,25 @@ public class WallLerper : MonoBehaviour
 
     private void Start()
     {
-        GameScript.OnGlassesOn += GameScript_OnGlassesOn;
-        GameScript.OnGlassesOff += GameScript_OnGlassesOff;
-
         col = GetComponentInChildren<Collider>();
         ren = GetComponentInChildren<MeshRenderer>();
         ren.materials = new Material[0];
         ren.material = SolidMaterial;
-    }
 
+        GameScript.OnGlassesOff += FadeIn;
+    }
     private void OnDestroy()
     {
-        GameScript.OnGlassesOn -= GameScript_OnGlassesOn;
-        GameScript.OnGlassesOff -= GameScript_OnGlassesOff;
+        GameScript.OnGlassesOff -= FadeIn;
     }
 
-    private void GameScript_OnGlassesOff()
+    public void FadeIn()
     {
         StopAllCoroutines();
         StartCoroutine(LerpMaterial(TransluscentMaterial, SolidMaterial, true));
     }
 
-    private void GameScript_OnGlassesOn()
+    public void FadeOut()
     {
         StopAllCoroutines();
         StartCoroutine(LerpMaterial(SolidMaterial, TransluscentMaterial, false));
