@@ -21,9 +21,6 @@ public abstract class InputParent : MonoBehaviour
             animatorHook.Init(anim, Controller, this);
         }
         Init();
-    }
-    private void Start()
-    {
         GameScript.OnPause += GameScript_OnPause;
         GameScript.OnUnpause += GameScript_OnUnpause;
 

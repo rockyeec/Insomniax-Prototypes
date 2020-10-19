@@ -5,25 +5,30 @@ public class InvokerForMonologue : MonoBehaviour
 {
     readonly List<string> commands = new List<string>();
 
-    private static InvokerForMonologue instance;
+    protected static InvokerForMonologue Instance { get; set; }
 
-    private void Awake()
+    protected virtual void Awake()
     {
-        instance = this;
+        Instance = this;
         commands.Add("DisableCameraControl");
         commands.Add("EnableCameraControl");
         commands.Add("DisableMoveControl");
         commands.Add("EnableMoveControl");
     }
 
+    protected void Add(in string command)
+    {
+        commands.Add(command);
+    }
+
     public static bool ContainsCommand(in string command)
     {
-        return instance.commands.Contains(command);
+        return Instance.commands.Contains(command);
     }
 
     public static void Do(in string command)
     {
-        instance.Invoke(command, 0.0f);
+        Instance.Invoke(command, 0.0f);
     }
 
     void DisableCameraControl()

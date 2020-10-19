@@ -9,6 +9,7 @@ public class SpinningSegmentArranger : MonoBehaviour
     [SerializeField] float segmentLength = 3.5f;
     
     List<SegmentInfo> segments = new List<SegmentInfo>();
+    DelayedWallLerper[] walls;
     float elapsed = 0.0f;
     readonly float duration = 0.69f;
 
@@ -43,14 +44,15 @@ public class SpinningSegmentArranger : MonoBehaviour
             SegmentInfo segment = new SegmentInfo();
             segment.Segment = item;
             segment.TargetPos = new Vector3(0.0f, 0.0f, 1.725f + i++ * segmentLength);
-            segment.WallLerpers = item.GetComponentsInChildren<DelayedWallLerper>();
             segments.Add(segment);
 
             item.transform.localPosition = Vector3.zero;
-            foreach (var wall in segment.WallLerpers)
-            {
-                wall.gameObject.SetActive(false);
-            }
+        }
+
+        walls = GetComponentsInChildren<DelayedWallLerper>();
+        foreach (var wall in walls)
+        {
+            wall.Disable();
         }
 
         GameScript.OnGlassesOn += StartLerp;
@@ -68,11 +70,11 @@ public class SpinningSegmentArranger : MonoBehaviour
         elapsed = 0.0f;
         foreach (var item in segments)
         {
-            item.OriPos = item.Segment.transform.localPosition;
-            foreach (var wall in item.WallLerpers)
-            {
-                wall.gameObject.SetActive(true);
-            }
+            item.OriPos = item.Segment.transform.localPosition;            
+        }
+        foreach (var wall in walls)
+        {
+            wall.gameObject.SetActive(true);
         }
     }
     void EndLerp()
@@ -81,11 +83,11 @@ public class SpinningSegmentArranger : MonoBehaviour
         OnStartSpinning();
         foreach (var item in segments)
         {
-            item.Segment.transform.localPosition = item.TargetPos;
-            foreach (var wall in item.WallLerpers)
-            {
-                wall.FadeOut();
-            }
+            item.Segment.transform.localPosition = item.TargetPos;            
+        }
+        foreach (var wall in walls)
+        {
+            wall.FadeOut();
         }
     }
     private void FixedUpdate()
@@ -112,7 +114,6 @@ public class SpinningSegmentArranger : MonoBehaviour
         public SpinningSegment Segment { get; set; }
         public Vector3 TargetPos { get; set; }
         public Vector3 OriPos { get; set; }
-        public DelayedWallLerper[] WallLerpers { get; set; }
     }
 
 }

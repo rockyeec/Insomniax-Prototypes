@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class DelayedWallLerper : MonoBehaviour
 {
+    [SerializeField] bool keepActive = false;
     private MeshRenderer ren = null;
     private Collider col = null;
 
@@ -21,6 +22,11 @@ public class DelayedWallLerper : MonoBehaviour
     private void OnDestroy()
     {
         GameScript.OnGlassesOff -= FadeIn;
+    }
+
+    public void Disable()
+    {
+        gameObject.SetActive(keepActive);
     }
 
     public void FadeIn()
@@ -57,6 +63,6 @@ public class DelayedWallLerper : MonoBehaviour
         ren.material = target;
         //if (col != null)
         //    col.enabled = isColliderActive;
-        gameObject.SetActive(false);
+        gameObject.SetActive(keepActive);
     }
 }

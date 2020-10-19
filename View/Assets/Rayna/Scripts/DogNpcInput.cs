@@ -16,6 +16,25 @@ public class DogNpcInput : InputParent
         Controller.AddFixedTickBehavior(new JumpBehavior());
 
         time = Time.time;
+
+        GameScript.OnGlassesOn += GameScript_OnGlassesOn; 
+        GameScript.OnGlassesOff += GameScript_OnGlassesOff;
+        gameObject.SetActive(false);
+    }
+    private void OnDestroy()
+    {
+        GameScript.OnGlassesOn -= GameScript_OnGlassesOn;
+        GameScript.OnGlassesOff -= GameScript_OnGlassesOff;
+    }
+
+    private void GameScript_OnGlassesOff()
+    {
+        gameObject.SetActive(false);
+    }
+
+    private void GameScript_OnGlassesOn()
+    {
+        gameObject.SetActive(true);
     }
 
     protected override void Tick(in float delta)
