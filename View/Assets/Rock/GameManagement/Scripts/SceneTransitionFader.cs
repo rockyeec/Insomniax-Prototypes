@@ -33,6 +33,19 @@ public class SceneTransitionFader : MonoBehaviour
         instance.StartCoroutine(instance.Fade(0.0f, 5.0f));
     }
 
+    public static void FadeInHalf()
+    {
+        instance.gameObject.SetActive(true);
+        instance.StopAllCoroutines();
+        instance.StartCoroutine(instance.Fade(0.05f, 0.69f));
+    }
+    public static void FadeOutHalf()
+    {
+        instance.gameObject.SetActive(true);
+        instance.StopAllCoroutines();
+        instance.StartCoroutine(instance.Fade(0.0f, 0.69f));
+    }
+
     IEnumerator Fade(float targetAlpha, float duration)
     {
         while (!SplashScreen.isFinished)
@@ -57,6 +70,6 @@ public class SceneTransitionFader : MonoBehaviour
         }
 
         image.color = target;
-        gameObject.SetActive(targetAlpha == 1.0f);
+        gameObject.SetActive(targetAlpha != 0.0f);
     }
 }

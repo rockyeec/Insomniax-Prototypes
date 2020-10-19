@@ -4,10 +4,8 @@ public class BackToOriginal : MonoBehaviour
 {
     private Vector3 oriPos;
     private Quaternion oriRot;
-    private Vector3 oriScale;
     private Vector3 targetPos;
     private Quaternion targetRot;
-    private Vector3 targetScale;
 
     private float elapsed = float.MaxValue;
 
@@ -15,7 +13,6 @@ public class BackToOriginal : MonoBehaviour
     {
         targetPos = transform.position;
         targetRot = transform.rotation;
-        targetScale = transform.localScale;
         GameScript.OnGlassesOff += GameScript_OnGlassesOff;
         enabled = false;
     }
@@ -54,7 +51,6 @@ public class BackToOriginal : MonoBehaviour
 
             transform.position = Vector3.LerpUnclamped(oriPos, targetPos, t);
             transform.rotation = Quaternion.Slerp(oriRot, targetRot, t);
-            //transform.localScale = Vector3.LerpUnclamped()
         }
         else
         {

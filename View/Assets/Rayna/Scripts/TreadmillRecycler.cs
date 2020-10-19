@@ -24,12 +24,22 @@ public class TreadmillRecycler : MonoBehaviour
         instance = this;
     }
 
+    private void Start()
+    {
+        Arrange();
+    }
+
     private void Update()
     {
         if (!applyChanges)
             return;
         applyChanges = false;
 
+        Arrange();
+    }
+
+    void Arrange()
+    {
         allTreadmills = GetComponentsInChildren<TreadmillScript>();
 
         KillSelfZ = -platformLength * allTreadmills.Length / 2;
@@ -39,7 +49,7 @@ public class TreadmillRecycler : MonoBehaviour
         {
             allTreadmills[i].Art.localScale
                 = allTreadmills[i].Box.size
-                = new Vector3(6.9f, 1.0f, platformLength);
+                = new Vector3(5.0f, 1.0f, platformLength);
 
             allTreadmills[i].transform.localPosition = new Vector3(
                 0.0f,

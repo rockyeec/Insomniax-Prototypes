@@ -12,8 +12,6 @@ public class GameScript : MonoBehaviour
     public static event Action OnGlassesOn = delegate { };
     public static event Action OnGlassesOff = delegate { };
 
-    private CameraSpecialEffects cam;
-
     private void Awake()
     {
 #if UNITY_EDITOR
@@ -23,8 +21,6 @@ public class GameScript : MonoBehaviour
 #endif
 
         instance = this;
-
-        cam = Camera.main.gameObject.AddComponent<CameraSpecialEffects>();
 
         if (isStartGame)
         {

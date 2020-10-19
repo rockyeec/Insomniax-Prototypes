@@ -45,10 +45,12 @@ public class GlassesController : MonoBehaviour
         glasses.SetActive(false);
 
         GameScript.TakeOffGlasses();
+        //SceneTransitionFader.FadeOutHalf();
     }
     public void OnOnAnimFinish()
     {
         GameScript.PutOnGlasses();
+        //SceneTransitionFader.FadeInHalf();
     }
 
     public void OnPutOn()

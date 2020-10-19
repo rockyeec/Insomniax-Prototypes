@@ -33,7 +33,7 @@ public class PlayerInput : InputParent
         glassesButton.onClick.AddListener(PressGlassesButton);
     }
 
-    void PressGlassesButton()
+    public void PressGlassesButton()
     {
         OnGlassesButtonPress();
     }

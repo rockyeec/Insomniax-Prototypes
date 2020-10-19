@@ -15,7 +15,9 @@ public class OpenDoorScript : MonoBehaviour
 
         if (other.gameObject.layer == 11)
         {
-            other.GetComponent<Rigidbody>().AddForce(rb.velocity * 1.1f, ForceMode.Impulse);
+            Rigidbody otherRb = other.GetComponent<Rigidbody>();
+            if (otherRb != null)
+                otherRb.AddForce(rb.velocity * 1.1f, ForceMode.Impulse);
         }
     }
 }

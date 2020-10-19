@@ -29,7 +29,7 @@ public class CameraGlassesEffectHandler : MonoBehaviour
         FillUpVarIfNull();
 
         StopAllCoroutines();
-        StartCoroutine(Transition(85.0f, Vector3.forward * 1.5f));
+        StartCoroutine(Transition(105.0f, Vector3.forward * 1.5f));
     }
 
     private void FillUpVarIfNull()
