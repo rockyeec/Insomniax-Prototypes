@@ -1,16 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class HouseScript : MonoBehaviour
 {
-    Vector3 top;
-    Vector3 bottom;
+    Vector3 target;
+    Vector3 source;
 
     float elapsed = 0.0f;
-    float duration;
+    float duration = 1.337f;
 
-    float depth = 1.5f;
+    //float depth = 1.5f;
 
     private void Start()
     {
@@ -19,8 +17,8 @@ public class HouseScript : MonoBehaviour
 
         Instantiate(HouseFlyManager.HousePrefabs.GetRandom(), transform).transform.localPosition = Vector3.zero;
 
-        top = transform.localPosition + Vector3.up * Random.Range(0.4f, 8.0f);
-        bottom = transform.localPosition;
+        RandomizeTarget();
+        source = transform.localScale;
 
         ResetHouse();
         enabled = false;
@@ -44,38 +42,46 @@ public class HouseScript : MonoBehaviour
 
     private void ResetHouse()
     {
-        if (bottom.y > top.y)
+        if (Mathf.Abs(source.z) > Mathf.Abs(target.z))
         {
-            Vector3 swap = top;
-            top = bottom;
-            bottom = swap;
+            SwapSourceTarget();
+            RandomizeTarget();
         }
         elapsed = 0.0f;
 
-        duration = Random.Range(1.2f, 14.5f);
-        depth = Random.Range(0.5f, 3.5f);
+        duration = Random.Range(1.2f, 3.0f);
+        //depth = Random.Range(0.5f, 3.5f);
     }
 
-    private void Update()
+    private void RandomizeTarget()
+    {
+        target = Vector3.one * Random.Range(1.1f, 2.0f);
+    }
+
+    private void FixedUpdate()
     {
         if (elapsed < duration)
         {
-            elapsed += Time.deltaTime;
-            transform.localPosition = Vector3.LerpUnclamped(
-                bottom.With(z: transform.localPosition.z),
-                top.With(z: transform.localPosition.z),
+            elapsed += Time.fixedDeltaTime;
+            transform.localScale = Vector3.LerpUnclamped(
+                source,
+                target,
                 CurveManager.Curve.Evaluate(elapsed / duration));
         }
         else
         {
             elapsed -= duration;
-            Vector3 swap = top;
-            top = bottom;
-            bottom = swap;
+            SwapSourceTarget();
         }
 
-        if (transform.localPosition.z < depth)
-            transform.localPosition += Vector3.forward * Time.deltaTime * 0.16f;
+        //if (transform.localPosition.z < depth)
+        //    transform.localPosition += Vector3.forward * Time.deltaTime * 0.16f;
     }
 
+    private void SwapSourceTarget()
+    {
+        Vector3 swap = target;
+        target = source;
+        source = swap;
+    }
 }

@@ -16,7 +16,6 @@ public class HouseColliderScript : MonoBehaviour
         PlayerInput player = other.GetComponent<PlayerInput>();
         if (player != null)
         {
-            Debug.Log("bigno");
             if (PlayerInput.MoveSpeed > 0.0f)
                 StartCoroutine(MakeSlow());
         }
@@ -24,8 +23,10 @@ public class HouseColliderScript : MonoBehaviour
 
     IEnumerator MakeSlow()
     {
-        PlayerInput.MoveSpeed -= 0.25f;
+        if(PlayerInput.MoveSpeed >= 0.25f)
+            PlayerInput.MoveSpeed -= 0.25f;
         yield return new WaitForSeconds(0.6f);
-        PlayerInput.MoveSpeed += 0.25f;
+        if (PlayerInput.MoveSpeed <= 0.75f) 
+            PlayerInput.MoveSpeed += 0.25f;
     }
 }
