@@ -22,7 +22,7 @@ public class BackToOriginal : MonoBehaviour
         GameScript.OnGlassesOff += GameScript_OnGlassesOff;
         enabled = false;
     }
-    private void OnDestroy()
+    protected virtual void OnDestroy()
     {
         GameScript.OnGlassesOff -= GameScript_OnGlassesOff;
     }
@@ -52,8 +52,7 @@ public class BackToOriginal : MonoBehaviour
         {
             elapsed += Time.fixedDeltaTime;
 
-            float t = elapsed / CurveManager.AnimationDuration;
-            t = CurveManager.Curve.Evaluate(t);
+            float t = CurveManagerForFixedUpdate.T;
 
             transform.position = Vector3.LerpUnclamped(oriPos, targetPos, t);
             transform.rotation = Quaternion.Slerp(oriRot, targetRot, t);

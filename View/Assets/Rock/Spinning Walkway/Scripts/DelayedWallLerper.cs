@@ -29,12 +29,14 @@ public class DelayedWallLerper : MonoBehaviour
         faded = SolidMaterial.color.WithAlpha(0.0f);
 
         GameScript.OnGlassesOff += FadeIn;
+        SpinningSegmentArranger.OnStopSpinning += FadeOut;
         duration = CurveManager.AnimationDuration;
         enabled = false;
     }
     private void OnDestroy()
     {
         GameScript.OnGlassesOff -= FadeIn;
+        SpinningSegmentArranger.OnStopSpinning -= FadeOut;
     }
 
     public void Disable()
@@ -78,10 +80,10 @@ public class DelayedWallLerper : MonoBehaviour
         {
             elapsed += Time.deltaTime;
 
-            float t = elapsed / duration;
-            t = CurveManager.FadeCurve.Evaluate(t);
+           // float t = elapsed / duration;
+           // t = CurveManager.FadeCurve.Evaluate(t);
 
-            ren.material.color = Color.LerpUnclamped(a, b, t);
+            ren.material.color = Color.LerpUnclamped(a, b, CurveManager.GlassesAnimT);
         }
         else
         {

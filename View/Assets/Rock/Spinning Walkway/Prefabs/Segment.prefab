@@ -622,7 +622,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3200764899983249549}
   - component: {fileID: 1989657289616816738}
-  - component: {fileID: 3855094816000311641}
+  - component: {fileID: 6701417510837046688}
   m_Layer: 0
   m_Name: Segment
   m_TagString: Untagged
@@ -663,7 +663,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spinSpeed: 15
   spinAxis: {x: 0, y: 0, z: 1}
---- !u!114 &3855094816000311641
+--- !u!114 &6701417510837046688
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -672,9 +672,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3200764899983249650}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6dad3fb768c8a0c4794a90537e08fb2d, type: 3}
+  m_Script: {fileID: 11500000, guid: 6b96b68b0b727ec41913023b5407ed25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  platform: {fileID: 740226827}
 --- !u!1 &5136430550692432600
 GameObject:
   m_ObjectHideFlags: 0

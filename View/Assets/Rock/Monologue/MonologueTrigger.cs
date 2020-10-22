@@ -6,6 +6,8 @@ public class MonologueTrigger : MonoBehaviour
 {
     [SerializeField] float delay = 0.0f;
     [SerializeField] string[] monologue = null;
+
+    readonly string startSpeechString = "StartSpeech";
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == 20)
@@ -13,7 +15,7 @@ public class MonologueTrigger : MonoBehaviour
             if (other.gameObject.name != "Player")
                 return;
 
-            Invoke("StartSpeech", delay);
+            Invoke(startSpeechString, delay);
         }
     }
 

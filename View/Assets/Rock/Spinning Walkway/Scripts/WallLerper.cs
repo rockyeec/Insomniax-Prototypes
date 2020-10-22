@@ -82,10 +82,7 @@ public class WallLerper : MonoBehaviour
 
             if (ren != null)
             {
-                float t = elapsed / duration;
-                t = CurveManager.FadeCurve.Evaluate(t);
-
-                ren.material.color = Color.LerpUnclamped(a, b, t);
+                ren.material.color = Color.LerpUnclamped(a, b, CurveManager.GlassesAnimT);
             }
         }
         else

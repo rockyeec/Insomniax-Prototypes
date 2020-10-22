@@ -5,7 +5,6 @@ using System;
 
 public class GameScript : MonoBehaviour
 {
-    private static GameScript instance;
     private static bool isStartGame = true;
     public static event Action OnPause = delegate { };
     public static event Action OnUnpause = delegate { };
@@ -22,7 +21,6 @@ public class GameScript : MonoBehaviour
 
         Application.targetFrameRate = 60;
 
-        instance = this;
 
         if (isStartGame)
         {

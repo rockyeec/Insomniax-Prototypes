@@ -43,7 +43,8 @@ public class CameraGlassesEffectHandler : MonoBehaviour
 
     private void FillUpVarIfNull()
     {
-        cam = cam ?? Camera.main;
+        if (cam == null)
+            cam = Camera.main;
         camParent = cam.transform.parent;
     }
 

@@ -12,6 +12,7 @@ public class SpinningSegmentArranger : MonoBehaviour
     readonly float duration = 0.69f;
 
     public static event System.Action OnStartSpinning = delegate { };
+    public static event System.Action OnStopSpinning = delegate { };
 
     private void Start()
     {
@@ -27,7 +28,7 @@ public class SpinningSegmentArranger : MonoBehaviour
             segments.Add(segment);
 
             item.transform.localPosition = Vector3.zero;
-            item.GetComponent<BackToOriginal>().SetTargetPosAndRot(transform.TransformPoint(Vector3.zero), transform.rotation);
+            item.GetComponent<BackToOriginalForSpinningPlatform>().SetTargetPosAndRot(transform.TransformPoint(Vector3.zero), transform.rotation);
         }
 
         walls = GetComponentsInChildren<DelayedWallLerper>();
@@ -66,10 +67,8 @@ public class SpinningSegmentArranger : MonoBehaviour
         {
             item.Segment.transform.localPosition = item.TargetPos;            
         }
-        foreach (var wall in walls)
-        {
-            wall.FadeOut();
-        }
+
+        OnStopSpinning();
     }
     private void FixedUpdate()
     {

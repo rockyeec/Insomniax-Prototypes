@@ -8,6 +8,8 @@ public class HighlightTrigger : MonoBehaviour
     [SerializeField] Highlightable highlightable = null;
     [SerializeField] float delay = 0.0f;
 
+    readonly string callAfterDelayString = "CallAfterDelay";
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == 20)
@@ -15,7 +17,7 @@ public class HighlightTrigger : MonoBehaviour
             if (other.gameObject.name != "Player")
                 return;
 
-            Invoke("CallAfterDelay", delay);
+            Invoke(callAfterDelayString, delay);
         }
     }
 
