@@ -7,7 +7,15 @@ public class WallLerper : MonoBehaviour
     private Collider col = null;
 
     protected virtual Material SolidMaterial { get { return MaterialManager.WallMaterial; } }
-    protected virtual Material TransluscentMaterial { get { return MaterialManager.FadedOutMaterial; } }
+
+    Color solid;
+    Color faded;
+
+    float elapsed = 0.0f;
+    float duration;
+    Color a;
+    Color b;
+    bool isColliderActive = false;
 
     private void Start()
     {
@@ -16,8 +24,16 @@ public class WallLerper : MonoBehaviour
 
         col = GetComponentInChildren<Collider>();
         ren = GetComponentInChildren<MeshRenderer>();
-        ren.materials = new Material[0];
-        ren.material = SolidMaterial;
+        if (ren != null)
+        {
+            ren.materials = new Material[0];
+            ren.material = SolidMaterial;
+        }
+
+        solid = SolidMaterial.color;
+        faded = SolidMaterial.color.WithAlpha(0.0f);
+
+        enabled = false;
     }
 
     private void OnDestroy()
@@ -26,37 +42,55 @@ public class WallLerper : MonoBehaviour
         GameScript.OnGlassesOff -= GameScript_OnGlassesOff;
     }
 
-    private void GameScript_OnGlassesOff()
+
+    public void GameScript_OnGlassesOff()
     {
-        StopAllCoroutines();
-        StartCoroutine(LerpMaterial(TransluscentMaterial, SolidMaterial, true));
+        gameObject.SetActive(true);
+        StartLerp(faded, solid, true);
     }
 
-    private void GameScript_OnGlassesOn()
+    public void GameScript_OnGlassesOn()
     {
-        StopAllCoroutines();
-        StartCoroutine(LerpMaterial(SolidMaterial, TransluscentMaterial, false));
+        gameObject.SetActive(true);
+        StartLerp(solid, faded, false);
     }
 
-    private IEnumerator LerpMaterial(Material cur, Material target, bool isColliderActive)
-    {
-        float elapsed = 0.0f;
-        float duration = CurveManager.AnimationDuration;
 
-        while (elapsed < duration)
+    private void StartLerp(Color a, Color b, bool isColliderActive)
+    {
+        enabled = true;
+        elapsed = 0.0f;
+        duration = CurveManager.AnimationDuration;
+
+        this.a = a;
+        this.b = b;
+        this.isColliderActive = isColliderActive;
+    }
+    private void EndLerp()
+    {
+        enabled = false;
+        if (ren != null)
+            ren.material.color = b;
+        if (col != null)
+            col.enabled = isColliderActive;
+    }
+    private void Update()
+    {
+        if (elapsed < duration)
         {
             elapsed += Time.deltaTime;
 
-            float t = elapsed / duration;
-            t = CurveManager.FadeCurve.Evaluate(t);
+            if (ren != null)
+            {
+                float t = elapsed / duration;
+                t = CurveManager.FadeCurve.Evaluate(t);
 
-            ren.material.Lerp(cur, target, t);
-
-            yield return null;
+                ren.material.color = Color.LerpUnclamped(a, b, t);
+            }
         }
-
-        ren.material = target;
-        if (col != null)
-            col.enabled = isColliderActive;
+        else
+        {
+            EndLerp();
+        }
     }
 }

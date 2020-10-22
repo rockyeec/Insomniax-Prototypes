@@ -8,7 +8,15 @@ public class DelayedWallLerper : MonoBehaviour
     private Collider col = null;
 
     protected virtual Material SolidMaterial { get { return MaterialManager.WallMaterial; } }
-    protected virtual Material TransluscentMaterial { get { return MaterialManager.FadedOutMaterial; } }
+
+    Color solid;
+    Color faded;
+
+    float elapsed = 0.0f;
+    float duration;
+    Color a;
+    Color b;
+    bool isColliderActive = false;
 
     private void Start()
     {
@@ -17,7 +25,11 @@ public class DelayedWallLerper : MonoBehaviour
         ren.materials = new Material[0];
         ren.material = SolidMaterial;
 
+        solid = SolidMaterial.color;
+        faded = SolidMaterial.color.WithAlpha(0.0f);
+
         GameScript.OnGlassesOff += FadeIn;
+        enabled = false;
     }
     private void OnDestroy()
     {
@@ -32,37 +44,48 @@ public class DelayedWallLerper : MonoBehaviour
     public void FadeIn()
     {
         gameObject.SetActive(true);
-        StopAllCoroutines();
-        StartCoroutine(LerpMaterial(TransluscentMaterial, SolidMaterial, true));
+        StartLerp(faded, solid, true);
     }
 
     public void FadeOut()
     {
         gameObject.SetActive(true);
-        StopAllCoroutines();
-        StartCoroutine(LerpMaterial(SolidMaterial, TransluscentMaterial, false));
+        StartLerp(solid, faded, false);
     }
 
-    private IEnumerator LerpMaterial(Material cur, Material target, bool isColliderActive)
-    {
-        float elapsed = 0.0f;
-        float duration = CurveManager.AnimationDuration;
 
-        while (elapsed < duration)
+    private void StartLerp(Color a, Color b, bool isColliderActive)
+    {
+        enabled = true;
+        elapsed = 0.0f;
+        duration = CurveManager.AnimationDuration;
+
+        this.a = a;
+        this.b = b;
+        this.isColliderActive = isColliderActive;
+    }
+    private void EndLerp()
+    {
+        enabled = false;
+        ren.material.color = b;
+        if (col != null)
+            col.enabled = isColliderActive;
+        gameObject.SetActive(keepActive);
+    }
+    private void Update()
+    {
+        if (elapsed < duration)
         {
             elapsed += Time.deltaTime;
 
             float t = elapsed / duration;
             t = CurveManager.FadeCurve.Evaluate(t);
 
-            ren.material.Lerp(cur, target, t);
-
-            yield return null;
+            ren.material.color = Color.LerpUnclamped(a, b, t);
         }
-
-        ren.material = target;
-        if (col != null)
-            col.enabled = isColliderActive;
-        gameObject.SetActive(keepActive);
+        else
+        {
+            EndLerp();
+        }
     }
 }
