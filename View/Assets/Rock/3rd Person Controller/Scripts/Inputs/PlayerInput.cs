@@ -19,6 +19,7 @@ public class PlayerInput : InputParent
     public static bool IsCanMove { get; set; }
 
     private Transform hips;
+    private float cameraSensitivity = 1.0f;
 
     public event System.Action OnGlassesButtonPress = delegate { };
 
@@ -86,8 +87,8 @@ public class PlayerInput : InputParent
 
         // camera
         cam.Tick(
-            rightJoy.GetVerticalDelta(),
-            rightJoy.GetHorizontalDelta(),
+            rightJoy.GetVerticalDelta() * cameraSensitivity,
+            rightJoy.GetHorizontalDelta() * cameraSensitivity,
             hips.position,
             delta);
     }
@@ -132,5 +133,10 @@ public class PlayerInput : InputParent
         MoveSpeed = 1.0f;
         IsEnableCamera = true;
         IsCanMove = true;
+    }
+
+    public void SetCameraSensitivity(float value)
+    {
+        cameraSensitivity = value;
     }
 }
