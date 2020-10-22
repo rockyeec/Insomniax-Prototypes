@@ -2,38 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//[ExecuteInEditMode]
 public class SpinningSegmentArranger : MonoBehaviour
 {
-    //[SerializeField] bool isArrange = false;
     [SerializeField] float segmentLength = 3.5f;
     
-    List<SegmentInfo> segments = new List<SegmentInfo>();
+    readonly List<SegmentInfo> segments = new List<SegmentInfo>();
     DelayedWallLerper[] walls;
     float elapsed = 0.0f;
     readonly float duration = 0.69f;
 
     public static event System.Action OnStartSpinning = delegate { };
-
-    /*private void Update()
-    {
-        if (isArrange)
-        {
-            isArrange = false;
-
-            SpinningSegment[] segments = GetComponentsInChildren<SpinningSegment>();
-            if (segments != null)
-            {
-                if (segments.Length != 0)
-                {
-                    for (int i = 0; i < segments.Length; i++)
-                    {
-                        segments[i].transform.localPosition = new Vector3(0.0f, 0.0f, i * segmentLength);
-                    }
-                }
-            }
-        }
-    }*/
 
     private void Start()
     {
@@ -41,12 +19,15 @@ public class SpinningSegmentArranger : MonoBehaviour
         int i = 0;
         foreach (var item in tempSegments)
         {
-            SegmentInfo segment = new SegmentInfo();
-            segment.Segment = item;
-            segment.TargetPos = new Vector3(0.0f, 0.0f, 1.725f + i++ * segmentLength);
+            SegmentInfo segment = new SegmentInfo
+            {
+                Segment = item,
+                TargetPos = new Vector3(0.0f, 0.0f, 1.725f + i++ * segmentLength)
+            };
             segments.Add(segment);
 
             item.transform.localPosition = Vector3.zero;
+            item.GetComponent<BackToOriginal>().SetTargetPosAndRot(transform.TransformPoint(Vector3.zero), transform.rotation);
         }
 
         walls = GetComponentsInChildren<DelayedWallLerper>();

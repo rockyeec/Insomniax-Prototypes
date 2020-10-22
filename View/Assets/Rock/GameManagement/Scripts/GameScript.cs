@@ -20,6 +20,8 @@ public class GameScript : MonoBehaviour
         Debug.unityLogger.logEnabled = false;
 #endif
 
+        Application.targetFrameRate = 60;
+
         instance = this;
 
         if (isStartGame)

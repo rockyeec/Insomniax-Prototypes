@@ -28,7 +28,7 @@ public class FallReset : MonoBehaviour
 
     void Update()
     {
-        if (transform.position.y < -12.0f)
+        if (transform.position.y < -8.0f)
         {
             if (!isPuttingOnGlasses)
             {
