@@ -5,6 +5,17 @@ public class CameraGlassesEffectHandler : MonoBehaviour
 {
     Camera cam = null;
     Transform camParent = null;
+
+
+    float targetFov;
+    Vector3 targetPos;
+    float elapsed = float.MaxValue;
+    float duration;
+    float startFov;
+    Vector3 startPos;
+
+
+
     private void Awake()
     {
         GameScript.OnGlassesOn += GameScript_OnGlassesOn; 
@@ -20,16 +31,14 @@ public class CameraGlassesEffectHandler : MonoBehaviour
     {
         FillUpVarIfNull();
 
-        StopAllCoroutines();
-        StartCoroutine(Transition(60.0f, Vector3.zero));
+        StartLerp(60.0f, Vector3.zero);
     }
 
     private void GameScript_OnGlassesOn()
     {
         FillUpVarIfNull();
 
-        StopAllCoroutines();
-        StartCoroutine(Transition(105.0f, Vector3.forward * 1.5f));
+        StartLerp(105.0f, Vector3.forward * 1.5f);
     }
 
     private void FillUpVarIfNull()
@@ -38,15 +47,36 @@ public class CameraGlassesEffectHandler : MonoBehaviour
         camParent = cam.transform.parent;
     }
 
-    IEnumerator Transition(float targetFov, Vector3 targetPos)
+
+
+    private void Start()
     {
-        float elapsed = 0.0f;
-        float duration = CurveManager.AnimationDuration;
+        duration = CurveManager.AnimationDuration;
+        enabled = false;
+    }
+    private void StartLerp(in float targetFov, Vector3 targetPos)
+    {
+        enabled = true;
 
-        float startFov = cam.fieldOfView;
-        Vector3 startPos = camParent.localPosition;
+        elapsed = 0.0f;
+        duration = CurveManager.AnimationDuration;
 
-        while (elapsed < duration)
+        startFov = cam.fieldOfView; 
+        startPos = camParent.localPosition;
+
+        this.targetFov = targetFov;
+        this.targetPos = targetPos;
+    }
+    private void EndLerp()
+    {
+        enabled = false;
+
+        camParent.localPosition = targetPos;
+        cam.fieldOfView = targetFov;
+    }
+    private void Update()
+    {
+        if (elapsed < duration)
         {
             elapsed += Time.deltaTime;
 
@@ -54,11 +84,10 @@ public class CameraGlassesEffectHandler : MonoBehaviour
 
             camParent.localPosition = Vector3.LerpUnclamped(startPos, targetPos, t);
             cam.fieldOfView = Mathf.LerpUnclamped(startFov, targetFov, t);
-
-            yield return null;
         }
-
-        camParent.localPosition = targetPos;
-        cam.fieldOfView = targetFov;
+        else
+        {
+            EndLerp();
+        }
     }
 }

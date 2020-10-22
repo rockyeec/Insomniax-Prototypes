@@ -2,6 +2,7 @@
 
 public abstract class InputParent : MonoBehaviour
 {
+    [SerializeField] bool isBackToOriginal = true;
     protected CharacterController Controller { get; private set; }
     public Rigidbody Rb { get { return Controller.Rb; } }
     private AnimatorHook animatorHook = null;
@@ -24,7 +25,8 @@ public abstract class InputParent : MonoBehaviour
         GameScript.OnPause += GameScript_OnPause;
         GameScript.OnUnpause += GameScript_OnUnpause;
 
-        gameObject.AddComponent<BackToOriginalForCharacter>();
+        if (isBackToOriginal)
+            gameObject.AddComponent<BackToOriginalForCharacter>();
     }
     private void OnDestroy()
     {

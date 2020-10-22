@@ -12,7 +12,7 @@ public class DelayedWallLerper : MonoBehaviour
     Color solid;
     Color faded;
 
-    float elapsed = 0.0f;
+    float elapsed = float.MaxValue;
     float duration;
     Color a;
     Color b;
@@ -29,6 +29,7 @@ public class DelayedWallLerper : MonoBehaviour
         faded = SolidMaterial.color.WithAlpha(0.0f);
 
         GameScript.OnGlassesOff += FadeIn;
+        duration = CurveManager.AnimationDuration;
         enabled = false;
     }
     private void OnDestroy()
@@ -58,7 +59,6 @@ public class DelayedWallLerper : MonoBehaviour
     {
         enabled = true;
         elapsed = 0.0f;
-        duration = CurveManager.AnimationDuration;
 
         this.a = a;
         this.b = b;

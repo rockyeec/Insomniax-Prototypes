@@ -16,24 +16,35 @@ public class UISlidingAnimation : MonoBehaviour
     private Vector3 offScreenPos;
     private Vector3 overshootPos;
 
+
+    float elapsed = float.MaxValue;
+    float duration;
+    float phase1;
+    float phase2;
+    bool isActive;
+
+    Vector3 ori;
+    Vector3 target;
+
     protected virtual void Start()
     {
         originalPos = transform.position;
         offScreenPos = originalPos + outwardsDirection * 1337.0f;
         overshootPos = originalPos - outwardsDirection * 133.7f;
+
+        duration = CurveManager.AnimationDuration;
+        enabled = false;
     }
 
     public void SlideIn()
     {
         gameObject.SetActive(true);
-        StopAllCoroutines();
-        StartCoroutine(Slide(originalPos, true, percentageOvershoot));
+        StartLerp(originalPos, true, percentageOvershoot);
     }
     public void SlideOut()
     {
         gameObject.SetActive(true);
-        StopAllCoroutines();
-        StartCoroutine(Slide(offScreenPos, false, 1 - percentageOvershoot));
+        StartLerp(offScreenPos, false, 1 - percentageOvershoot);
     }
 
     public void SnapOut()
@@ -46,17 +57,33 @@ public class UISlidingAnimation : MonoBehaviour
         transform.position = originalPos;
     }
 
-    private IEnumerator Slide(Vector3 target, bool isActive, float phase1Duration = 0.5f)
+    
+
+
+    private void StartLerp(Vector3 target, bool isActive, float phase1Duration = 0.5f)
     {
-        float elapsed = 0.0f;
+        elapsed = 0.0f;
+        phase1 = duration * phase1Duration;
+        phase2 = duration - phase1;
+        ori = transform.position;
 
-        float duration = CurveManager.AnimationDuration;
-        float phase1 = duration * phase1Duration;
-        float phase2 = duration - phase1;
+        this.target = target;
+        this.isActive = isActive;
 
-        Vector3 ori = transform.position;
+        enabled = true;
+    }
 
-        while (elapsed < duration)
+    private void EndLerp()
+    {
+        transform.position = target;
+        gameObject.SetActive(isActive);
+
+        enabled = false;
+    }
+
+    private void Update()
+    {
+        if (elapsed < duration)
         {
             elapsed += Time.unscaledDeltaTime;
 
@@ -73,10 +100,10 @@ public class UISlidingAnimation : MonoBehaviour
                 isPhase1
                 ? Vector3.LerpUnclamped(ori, overshootPos, t)
                 : Vector3.LerpUnclamped(overshootPos, target, t);
-
-            yield return null;
         }
-        transform.position = target;
-        gameObject.SetActive(isActive);
+        else
+        {
+            EndLerp();
+        }
     }
 }

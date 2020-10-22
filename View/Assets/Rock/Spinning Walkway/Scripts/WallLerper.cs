@@ -33,6 +33,7 @@ public class WallLerper : MonoBehaviour
         solid = SolidMaterial.color;
         faded = SolidMaterial.color.WithAlpha(0.0f);
 
+        duration = CurveManager.AnimationDuration;
         enabled = false;
     }
 
@@ -60,7 +61,6 @@ public class WallLerper : MonoBehaviour
     {
         enabled = true;
         elapsed = 0.0f;
-        duration = CurveManager.AnimationDuration;
 
         this.a = a;
         this.b = b;
