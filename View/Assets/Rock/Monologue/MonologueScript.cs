@@ -70,14 +70,25 @@ public class MonologueScript : MonoBehaviour
                 foreach (var item in stringCur)
                 {
                     if (isSkip)
+                    {
+                        text.text = stringCur;
+                        isSkip = false;
                         break;
+                    }
 
                     yield return null;
                     text.text += item;
                 }
 
+                while (!isSkip)
+                {
+                    yield return null;
+                }
+
+                isSkip = false;
+
                 // short pause after every sentence
-                float duration = 1.2f;
+                /*float duration = 1.2f;
                 float time = Time.time + duration;
                 while (Time.time < time)
                 {
@@ -87,7 +98,7 @@ public class MonologueScript : MonoBehaviour
                         break;
                     }
                     yield return null;
-                }
+                }*/
             }            
         }
 
