@@ -13,7 +13,7 @@ public class Dialogue : ScriptableObject
         [Header("Bubble or UI")]
         public bool isBubble = false;
         [Header("Change Text Color")]
-        public Color TextColor;
+        public Color TextColor = new Color(255,255,255,255);
         [Header("Picture/Sprite")]
         public Sprite characImage;
         [Header("Name And Dialogues")]

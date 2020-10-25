@@ -52,7 +52,6 @@ public class DialogueManager : MonoBehaviour
     private void Start()
     {
         DialogueElement.SetActive(false);
-        Controls.SetActive(true);
     }
 
     public void StartDialogue(Dialogue d) //Call start dialogue
@@ -105,9 +104,9 @@ public class DialogueManager : MonoBehaviour
         dialogueTextWorld.text = ""; dialogueText.text = ""; tempStore = ""; //Reset all word
         Dialogue.infomation info = sentences.Dequeue();
         tempStore = info.DialogueText;
-        StartCoroutine(Wordbyword(info.DialogueText, info)); //Animation display
         dialogueTextWorld.color = info.TextColor;
         dialogueText.color = info.TextColor;
+        StartCoroutine(Wordbyword(info.DialogueText, info)); //Animation display
         //dialogueText.text = info.DialogueText; //This is for normal display
         //characterIcon.sprite = info.characImage; //If needed picture/icon
         characterIcon.gameObject.SetActive(false); //If doesn't want picture/icon
@@ -117,11 +116,19 @@ public class DialogueManager : MonoBehaviour
             {
                 nameText.text = info.nameText; //Display name
             }
+            nameText.gameObject.SetActive(true);
+            dialogueText.gameObject.SetActive(true);
+            nameTextWorld.gameObject.SetActive(false);
+            dialogueTextWorld.gameObject.SetActive(false);
         }
         else
         {
             if (nameTextWorld.gameObject != null)
             { nameTextWorld.text = info.nameText; }
+            nameText.gameObject.SetActive(false);
+            dialogueText.gameObject.SetActive(false);
+            nameTextWorld.gameObject.SetActive(true);
+            dialogueTextWorld.gameObject.SetActive(true);
         }
 
 
@@ -165,7 +172,7 @@ public class DialogueManager : MonoBehaviour
     IEnumerator Wordbyword (string sentence, Dialogue.infomation d) //Animation show words one by one for dialogue text
     {
         MaxSentenceLength = sentence.Length;
-        if(d.isBubble == false)
+        if (d.isBubble == false)
         {
             if (dialogueText.gameObject != null)
             {
@@ -182,6 +189,7 @@ public class DialogueManager : MonoBehaviour
         {
             if (dialogueTextWorld.gameObject != null)
             {
+                dialogueTextWorld.color = d.TextColor;
                 dialogueTextWorld.text = "";
                 foreach (char letter in sentence.ToCharArray())
                 {

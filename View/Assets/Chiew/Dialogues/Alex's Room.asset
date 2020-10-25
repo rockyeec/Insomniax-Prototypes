@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueInfo:
   - isBubble: 0
-    TextColor: {r: 0, g: 0, b: 0, a: 0}
+    TextColor: {r: 0, g: 0, b: 0, a: 1}
     characImage: {fileID: 0}
     nameText: Alex
     DialogueText: '(Wakes up from dream) '
@@ -23,7 +23,7 @@ MonoBehaviour:
     isQuestion: 0
     newMCQ: []
   - isBubble: 0
-    TextColor: {r: 0, g: 0, b: 0, a: 0}
+    TextColor: {r: 0, g: 0, b: 0, a: 1}
     characImage: {fileID: 0}
     nameText: Alex
     DialogueText: "It was a dream. It was just a dream. \r\n"
@@ -32,7 +32,7 @@ MonoBehaviour:
     isQuestion: 0
     newMCQ: []
   - isBubble: 1
-    TextColor: {r: 0, g: 0, b: 0, a: 0}
+    TextColor: {r: 0, g: 0, b: 0, a: 1}
     characImage: {fileID: 0}
     nameText: Alex
     DialogueText: "He\u2019s not here anymore. Max is gone. \r"
@@ -41,7 +41,7 @@ MonoBehaviour:
     isQuestion: 0
     newMCQ: []
   - isBubble: 1
-    TextColor: {r: 0, g: 0, b: 0, a: 0}
+    TextColor: {r: 0, g: 0, b: 0, a: 1}
     characImage: {fileID: 0}
     nameText: Alex
     DialogueText: "Out of all days, a nightmare. \r"
@@ -50,7 +50,7 @@ MonoBehaviour:
     isQuestion: 0
     newMCQ: []
   - isBubble: 0
-    TextColor: {r: 0, g: 0, b: 0, a: 0}
+    TextColor: {r: 0, g: 0, b: 0, a: 1}
     characImage: {fileID: 0}
     nameText: Alex
     DialogueText: "It\u2019s been a month now."

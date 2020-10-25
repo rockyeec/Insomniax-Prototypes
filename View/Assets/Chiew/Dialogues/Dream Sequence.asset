@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueInfo:
   - isBubble: 0
-    TextColor: {r: 0, g: 0, b: 0, a: 0}
+    TextColor: {r: 0, g: 0, b: 0, a: 1}
     characImage: {fileID: 0}
     nameText: Alex
     DialogueText: (Looks Around)
@@ -23,7 +23,7 @@ MonoBehaviour:
     isQuestion: 0
     newMCQ: []
   - isBubble: 1
-    TextColor: {r: 0, g: 0, b: 0, a: 0}
+    TextColor: {r: 0, g: 0, b: 0, a: 1}
     characImage: {fileID: 0}
     nameText: Alex
     DialogueText: Wha- I was just in my room.
@@ -41,7 +41,7 @@ MonoBehaviour:
     isQuestion: 0
     newMCQ: []
   - isBubble: 0
-    TextColor: {r: 0, g: 0, b: 0, a: 0}
+    TextColor: {r: 0, g: 0, b: 0, a: 1}
     characImage: {fileID: 0}
     nameText: Alex
     DialogueText: I can't move.
@@ -59,7 +59,7 @@ MonoBehaviour:
     isQuestion: 0
     newMCQ: []
   - isBubble: 1
-    TextColor: {r: 0, g: 0, b: 0, a: 0}
+    TextColor: {r: 0, g: 0, b: 0, a: 1}
     characImage: {fileID: 0}
     nameText: Alex
     DialogueText: Max. This is where I used to walk Max. No... NO not this again

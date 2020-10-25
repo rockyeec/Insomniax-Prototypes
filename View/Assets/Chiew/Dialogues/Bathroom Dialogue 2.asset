@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueInfo:
   - isBubble: 1
-    TextColor: {r: 0, g: 0, b: 0, a: 0}
+    TextColor: {r: 0, g: 0, b: 0, a: 1}
     characImage: {fileID: 0}
     nameText: Inner Alex
     DialogueText: Area you sure about that? Memories that you're clearly suppressing?
@@ -23,7 +23,7 @@ MonoBehaviour:
     isQuestion: 0
     newMCQ: []
   - isBubble: 1
-    TextColor: {r: 0, g: 0, b: 0, a: 0}
+    TextColor: {r: 0, g: 0, b: 0, a: 1}
     characImage: {fileID: 0}
     nameText: Alex
     DialogueText: I....
@@ -34,6 +34,6 @@ MonoBehaviour:
     - answerString: am.... SURE!!!
       nxtDialogue: {fileID: 0}
     - answerString: am... not sure...
-      nxtDialogue: {fileID: 0}
+      nxtDialogue: {fileID: 11400000}
     - answerString: 
       nxtDialogue: {fileID: 0}

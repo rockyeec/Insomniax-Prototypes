@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Bathroom Dialogue
   m_EditorClassIdentifier: 
   dialogueInfo:
-  - isBubble: 0
-    TextColor: {r: 0, g: 0, b: 0, a: 0}
+  - isBubble: 1
+    TextColor: {r: 1, g: 0, b: 0, a: 1}
     characImage: {fileID: 0}
     nameText: Alex
     DialogueText: (Approaches mirror)
@@ -22,8 +22,8 @@ MonoBehaviour:
     isPlayed: 0
     isQuestion: 0
     newMCQ: []
-  - isBubble: 1
-    TextColor: {r: 0.6415094, g: 0.6415094, b: 0.6415094, a: 0}
+  - isBubble: 0
+    TextColor: {r: 1, g: 0.66122735, b: 0, a: 1}
     characImage: {fileID: 0}
     nameText: Alex
     DialogueText: You got this, Alex. You got this.
@@ -32,7 +32,7 @@ MonoBehaviour:
     isQuestion: 0
     newMCQ: []
   - isBubble: 1
-    TextColor: {r: 0, g: 0, b: 0, a: 0}
+    TextColor: {r: 0, g: 0, b: 0, a: 1}
     characImage: {fileID: 0}
     nameText: Inner Alex
     DialogueText: You know you dont...right?
@@ -40,8 +40,8 @@ MonoBehaviour:
     isPlayed: 0
     isQuestion: 0
     newMCQ: []
-  - isBubble: 0
-    TextColor: {r: 0, g: 0, b: 0, a: 0}
+  - isBubble: 1
+    TextColor: {r: 0, g: 0, b: 0, a: 1}
     characImage: {fileID: 0}
     nameText: Inner Alex
     DialogueText: After all, what do you have?
@@ -49,8 +49,8 @@ MonoBehaviour:
     isPlayed: 0
     isQuestion: 0
     newMCQ: []
-  - isBubble: 0
-    TextColor: {r: 0, g: 0, b: 0, a: 0}
+  - isBubble: 1
+    TextColor: {r: 0.8513665, g: 0, b: 1, a: 1}
     characImage: {fileID: 0}
     nameText: Alex
     DialogueText: I...I have
