@@ -16,6 +16,13 @@ public class DialogueManager : MonoBehaviour
     public TextMeshPro nameTextWorld;
     public TextMeshProUGUI dialogueText;
     public TextMeshPro dialogueTextWorld;
+
+    [Header("Bubble Elements")]
+    public GameObject Bubble;
+    public TextMeshPro bubbleText;
+    public TextMeshPro bubbleTextName;
+
+    [Header("Next Buttons")]
     public GameObject[] NextbuttonParents = new GameObject[2];
     public GameObject Controls;
 
@@ -98,16 +105,25 @@ public class DialogueManager : MonoBehaviour
         dialogueTextWorld.text = ""; dialogueText.text = ""; tempStore = ""; //Reset all word
         Dialogue.infomation info = sentences.Dequeue();
         tempStore = info.DialogueText;
-        StartCoroutine(Wordbyword(info.DialogueText)); //Animation display
+        StartCoroutine(Wordbyword(info.DialogueText, info)); //Animation display
+        dialogueTextWorld.color = info.TextColor;
+        dialogueText.color = info.TextColor;
         //dialogueText.text = info.DialogueText; //This is for normal display
         //characterIcon.sprite = info.characImage; //If needed picture/icon
         characterIcon.gameObject.SetActive(false); //If doesn't want picture/icon
-        if(nameText.gameObject != null)
+        if(info.isBubble == false)
         {
-            nameText.text = info.nameText; //Display name
+            if (nameText.gameObject != null)
+            {
+                nameText.text = info.nameText; //Display name
+            }
         }
-        if(nameTextWorld.gameObject != null)
-        { nameTextWorld.text = info.nameText; }
+        else
+        {
+            if (nameTextWorld.gameObject != null)
+            { nameTextWorld.text = info.nameText; }
+        }
+
 
         //MCQ
         AssignAnswerToButton(info);
@@ -146,28 +162,34 @@ public class DialogueManager : MonoBehaviour
         EndDialogue(); return;
     }
 
-    IEnumerator Wordbyword (string sentence) //Animation show words one by one for dialogue text
+    IEnumerator Wordbyword (string sentence, Dialogue.infomation d) //Animation show words one by one for dialogue text
     {
         MaxSentenceLength = sentence.Length;
-        if (dialogueText.gameObject != null)
+        if(d.isBubble == false)
         {
-            dialogueText.text = "";
-            foreach (char letter in sentence.ToCharArray())
+            if (dialogueText.gameObject != null)
             {
-                dialogueText.text += letter;
-                yield return null;              
+                dialogueText.color = d.TextColor;
+                dialogueText.text = "";
+                foreach (char letter in sentence.ToCharArray())
+                {
+                    dialogueText.text += letter;
+                    yield return null;
+                }
             }
         }
-
-        if(dialogueTextWorld.gameObject != null)
+        else
         {
-            dialogueTextWorld.text = "";
-            foreach (char letter in sentence.ToCharArray())
+            if (dialogueTextWorld.gameObject != null)
             {
-                dialogueTextWorld.text += letter;
-                yield return null;
+                dialogueTextWorld.text = "";
+                foreach (char letter in sentence.ToCharArray())
+                {
+                    dialogueTextWorld.text += letter;
+                    yield return null;
+                }
             }
-        }
+        }      
     }
 
     public void EndDialogue() //End Dialogues
