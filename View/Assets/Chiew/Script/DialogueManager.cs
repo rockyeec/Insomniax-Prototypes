@@ -16,6 +16,13 @@ public class DialogueManager : MonoBehaviour
     public TextMeshPro nameTextWorld;
     public TextMeshProUGUI dialogueText;
     public TextMeshPro dialogueTextWorld;
+
+    [Header("Bubble Elements")]
+    public GameObject Bubble;
+    public TextMeshPro bubbleText;
+    public TextMeshPro bubbleTextName;
+
+    [Header("Next Buttons")]
     public GameObject[] NextbuttonParents = new GameObject[2];
     public GameObject Controls;
 
@@ -45,7 +52,6 @@ public class DialogueManager : MonoBehaviour
     private void Start()
     {
         DialogueElement.SetActive(false);
-        Controls.SetActive(true);
     }
 
     public void StartDialogue(Dialogue d) //Call start dialogue
@@ -98,16 +104,33 @@ public class DialogueManager : MonoBehaviour
         dialogueTextWorld.text = ""; dialogueText.text = ""; tempStore = ""; //Reset all word
         Dialogue.infomation info = sentences.Dequeue();
         tempStore = info.DialogueText;
-        StartCoroutine(Wordbyword(info.DialogueText)); //Animation display
+        dialogueTextWorld.color = info.TextColor;
+        dialogueText.color = info.TextColor;
+        StartCoroutine(Wordbyword(info.DialogueText, info)); //Animation display
         //dialogueText.text = info.DialogueText; //This is for normal display
         //characterIcon.sprite = info.characImage; //If needed picture/icon
         characterIcon.gameObject.SetActive(false); //If doesn't want picture/icon
-        if(nameText.gameObject != null)
+        if(info.isBubble == false)
         {
-            nameText.text = info.nameText; //Display name
+            if (nameText.gameObject != null)
+            {
+                nameText.text = info.nameText; //Display name
+            }
+            nameText.gameObject.SetActive(true);
+            dialogueText.gameObject.SetActive(true);
+            nameTextWorld.gameObject.SetActive(false);
+            dialogueTextWorld.gameObject.SetActive(false);
         }
-        if(nameTextWorld.gameObject != null)
-        { nameTextWorld.text = info.nameText; }
+        else
+        {
+            if (nameTextWorld.gameObject != null)
+            { nameTextWorld.text = info.nameText; }
+            nameText.gameObject.SetActive(false);
+            dialogueText.gameObject.SetActive(false);
+            nameTextWorld.gameObject.SetActive(true);
+            dialogueTextWorld.gameObject.SetActive(true);
+        }
+
 
         //MCQ
         AssignAnswerToButton(info);
@@ -146,28 +169,35 @@ public class DialogueManager : MonoBehaviour
         EndDialogue(); return;
     }
 
-    IEnumerator Wordbyword (string sentence) //Animation show words one by one for dialogue text
+    IEnumerator Wordbyword (string sentence, Dialogue.infomation d) //Animation show words one by one for dialogue text
     {
         MaxSentenceLength = sentence.Length;
-        if (dialogueText.gameObject != null)
+        if (d.isBubble == false)
         {
-            dialogueText.text = "";
-            foreach (char letter in sentence.ToCharArray())
+            if (dialogueText.gameObject != null)
             {
-                dialogueText.text += letter;
-                yield return null;              
+                dialogueText.color = d.TextColor;
+                dialogueText.text = "";
+                foreach (char letter in sentence.ToCharArray())
+                {
+                    dialogueText.text += letter;
+                    yield return null;
+                }
             }
         }
-
-        if(dialogueTextWorld.gameObject != null)
+        else
         {
-            dialogueTextWorld.text = "";
-            foreach (char letter in sentence.ToCharArray())
+            if (dialogueTextWorld.gameObject != null)
             {
-                dialogueTextWorld.text += letter;
-                yield return null;
+                dialogueTextWorld.color = d.TextColor;
+                dialogueTextWorld.text = "";
+                foreach (char letter in sentence.ToCharArray())
+                {
+                    dialogueTextWorld.text += letter;
+                    yield return null;
+                }
             }
-        }
+        }      
     }
 
     public void EndDialogue() //End Dialogues
