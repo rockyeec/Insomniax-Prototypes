@@ -3,7 +3,22 @@ guid: c75e4fbf8f5c48d45aac3beb051607b5
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #1372
+    second: {fileID: 2100000, guid: 432683e9bc6b10f4dbe55e93f9d776c7, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Modern house Texture
+    second: {fileID: 2800000, guid: 2e0ee39210fcc7e46bd2848d98909096, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 'Modern house bump '
+    second: {fileID: 2800000, guid: 0874d8090669ce64cafd79c8fd5aee1c, type: 3}
   materials:
     materialImportMode: 1
     materialName: 0
