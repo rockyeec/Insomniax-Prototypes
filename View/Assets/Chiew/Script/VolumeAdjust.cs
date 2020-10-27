@@ -11,19 +11,24 @@ public class VolumeAdjust : MonoBehaviour
     // Update is called once per frame
     private void Start()
     {
-        BGMSlider.value = AudioManager.instance.BGM.First().volume;
-        SFXSlider.value = AudioManager.instance.SFX.First().volume;
+        if(!PlayerPrefs.HasKey("bgmVolume"))
+        {
+            PlayerPrefs.SetFloat("bgmVolume", 0.5f);
+            PlayerPrefs.SetFloat("sfxVolume", 0.5f);
+        }
+        SetBGMVolume(PlayerPrefs.GetFloat("bgmVolume"));
+        SetSFXVolume(PlayerPrefs.GetFloat("sfxVolume"));
     }
 
     public void SetBGMVolume(float amount)
     {
-        BGMSlider.value = amount;
-        AudioManager.instance.AdjustTypeVolume(BGMSlider.value, "BGM");
+        PlayerPrefs.SetFloat("bgmVolume", amount);
+        AudioManager.instance.AdjustTypeVolume(amount, "BGM");
     }
 
     public void SetSFXVolume(float amount)
     {
-        SFXSlider.value = amount;
-        AudioManager.instance.AdjustTypeVolume(SFXSlider.value, "SFX");
+        PlayerPrefs.SetFloat("sfxVolume", amount);
+        AudioManager.instance.AdjustTypeVolume(amount, "SFX");
     }
 }

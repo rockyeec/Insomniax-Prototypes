@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 using System;
 
 public class GameScript : MonoBehaviour
@@ -19,15 +18,11 @@ public class GameScript : MonoBehaviour
         Debug.unityLogger.logEnabled = false;
 #endif
 
-        Application.targetFrameRate = 60;
-
-
         if (isStartGame)
         {
             isStartGame = false;
             StartCoroutine(WaitAndPause());
-        }
-        
+        }        
     }
 
     IEnumerator WaitAndPause()

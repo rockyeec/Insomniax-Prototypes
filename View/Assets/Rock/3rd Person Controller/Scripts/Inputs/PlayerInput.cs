@@ -8,6 +8,7 @@ public class PlayerInput : InputParent
     [SerializeField] private JoystickScript leftJoy = null;
     [SerializeField] private JoystickScript rightJoy = null;
     [SerializeField] private Camera3rdPerson cam = null;
+    [SerializeField] private Slider camSensitivitySlider = null;
 
     [SerializeField] private bool isCanClimb = true;
     [SerializeField] private bool isLevelHasMovingPlatforms = false;
@@ -19,9 +20,9 @@ public class PlayerInput : InputParent
     public static bool IsCanMove { get; set; }
 
     private Transform hips;
-    private float cameraSensitivity = 1.0f;
 
     public event System.Action OnGlassesButtonPress = delegate { };
+
 
     protected override void Init()
     {
@@ -32,6 +33,13 @@ public class PlayerInput : InputParent
         AssignProperties();
 
         glassesButton.onClick.AddListener(PressGlassesButton);
+
+        if (!PlayerPrefs.HasKey("camSensitivity"))
+        {
+            PlayerPrefs.SetFloat("camSensitivity", 1.0f);
+        }
+        camSensitivitySlider.value = PlayerPrefs.GetFloat("camSensitivity");
+        camSensitivitySlider.onValueChanged.AddListener(SetCameraSensitivity);
     }
 
     public void PressGlassesButton()
@@ -87,8 +95,8 @@ public class PlayerInput : InputParent
 
         // camera
         cam.Tick(
-            rightJoy.GetVerticalDelta() * cameraSensitivity,
-            rightJoy.GetHorizontalDelta() * cameraSensitivity,
+            rightJoy.GetVerticalDelta() * PlayerPrefs.GetFloat("camSensitivity"),
+            rightJoy.GetHorizontalDelta() * PlayerPrefs.GetFloat("camSensitivity"),
             hips.position,
             delta);
     }
@@ -135,8 +143,8 @@ public class PlayerInput : InputParent
         IsCanMove = true;
     }
 
-    public void SetCameraSensitivity(float value)
+    private void SetCameraSensitivity(float value)
     {
-        cameraSensitivity = value;
+        PlayerPrefs.SetFloat("camSensitivity", value);
     }
 }

@@ -870,6 +870,11 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 8415789906703068119}
+    - target: {fileID: 5068675352819072751, guid: 6b1b623cfb49d9646a2e9b01372a4f62,
+        type: 3}
+      propertyPath: camSensitivitySlider
+      value: 
+      objectReference: {fileID: 7211371937891751121}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b1b623cfb49d9646a2e9b01372a4f62, type: 3}
 --- !u!4 &4834901216101704759 stripped
@@ -1409,7 +1414,7 @@ PrefabInstance:
     - target: {fileID: 3382561098776028925, guid: 633c4e9cf68bad04abc38aa2b8d96513,
         type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3382561098776028925, guid: 633c4e9cf68bad04abc38aa2b8d96513,
         type: 3}
@@ -1612,6 +1617,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 5396075364174508588}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7211371937891751121 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3382561098776028925, guid: 633c4e9cf68bad04abc38aa2b8d96513,
+    type: 3}
+  m_PrefabInstance: {fileID: 5396075364174508588}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4834901215900816365 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 719363171118539201, guid: 633c4e9cf68bad04abc38aa2b8d96513,
@@ -1828,15 +1845,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64263343127f1af4d95e428df4afe0b8, type: 3}
---- !u!1 &8943890397448480730 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3743713161544166324, guid: 64263343127f1af4d95e428df4afe0b8,
-    type: 3}
-  m_PrefabInstance: {fileID: 5758770933317422190}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8249555529471968947 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4438029893996088029, guid: 64263343127f1af4d95e428df4afe0b8,
+    type: 3}
+  m_PrefabInstance: {fileID: 5758770933317422190}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8943890397448480730 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3743713161544166324, guid: 64263343127f1af4d95e428df4afe0b8,
     type: 3}
   m_PrefabInstance: {fileID: 5758770933317422190}
   m_PrefabAsset: {fileID: 0}
