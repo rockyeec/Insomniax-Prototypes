@@ -51,13 +51,8 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        AdjustAllVolume(0.5f); //Adjust all to 0.5f;
+        //AdjustAllVolume(0.5f); //Adjust all to 0.5f;
         Play("MainMenuBGM","BGM"); //Play BGM
-    }
-
-    private void Update()
-    {
-        //if needed for scene update put here
     }
 
     public Sound FindSound(string name, string type) //function to find sound

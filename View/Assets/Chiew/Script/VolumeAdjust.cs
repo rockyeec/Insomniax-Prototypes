@@ -18,6 +18,8 @@ public class VolumeAdjust : MonoBehaviour
         }
         SetBGMVolume(PlayerPrefs.GetFloat("bgmVolume"));
         SetSFXVolume(PlayerPrefs.GetFloat("sfxVolume"));
+        BGMSlider.value = PlayerPrefs.GetFloat("bgmVolume");
+        SFXSlider.value = PlayerPrefs.GetFloat("sfxVolume");
     }
 
     public void SetBGMVolume(float amount)
