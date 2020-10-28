@@ -15,13 +15,13 @@ public class CurveManager : MonoBehaviour
 
         GameScript.OnGlassesOn += StartLerp;
         GameScript.OnGlassesOff += StartLerp;
-        SpinningSegmentArranger.OnStopSpinning += StartLerp;
+        SpinningSegmentArranger.OnStartSpinning += StartLerp;
     }
     private void OnDestroy()
     {
         GameScript.OnGlassesOn -= StartLerp;
         GameScript.OnGlassesOff -= StartLerp;
-        SpinningSegmentArranger.OnStopSpinning -= StartLerp;
+        SpinningSegmentArranger.OnStartSpinning -= StartLerp;
     }
 
 

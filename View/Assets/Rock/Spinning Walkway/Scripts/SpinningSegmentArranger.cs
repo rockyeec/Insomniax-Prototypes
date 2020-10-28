@@ -15,7 +15,6 @@ public class SpinningSegmentArranger : MonoBehaviour
     readonly float duration = 0.69f;
 
     public static event System.Action OnStartSpinning = delegate { };
-    public static event System.Action OnStopSpinning = delegate { };
 
     public void GenerateSegments()
     {
@@ -122,13 +121,12 @@ public class SpinningSegmentArranger : MonoBehaviour
     void EndLerp()
     {
         enabled = false;
-        OnStartSpinning();
         foreach (var item in segments)
         {
             item.Segment.transform.localPosition = item.TargetPos;            
         }
 
-        OnStopSpinning();
+        OnStartSpinning();
     }
     private void FixedUpdate()
     {

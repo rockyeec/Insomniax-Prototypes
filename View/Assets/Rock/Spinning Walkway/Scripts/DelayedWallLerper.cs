@@ -29,14 +29,14 @@ public class DelayedWallLerper : MonoBehaviour
         faded = SolidMaterial.color.WithAlpha(0.0f);
 
         GameScript.OnGlassesOff += FadeIn;
-        SpinningSegmentArranger.OnStopSpinning += FadeOut;
+        SpinningSegmentArranger.OnStartSpinning += FadeOut;
         duration = CurveManager.AnimationDuration;
         enabled = false;
     }
     private void OnDestroy()
     {
         GameScript.OnGlassesOff -= FadeIn;
-        SpinningSegmentArranger.OnStopSpinning -= FadeOut;
+        SpinningSegmentArranger.OnStartSpinning -= FadeOut;
     }
 
     public void Disable()
