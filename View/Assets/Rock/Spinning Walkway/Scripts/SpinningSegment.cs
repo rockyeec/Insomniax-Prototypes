@@ -2,8 +2,12 @@
 
 public class SpinningSegment : MonoBehaviour
 {
+    [SerializeField] Transform room = null;
+
     [SerializeField] private float spinSpeed = 6.9f;
     [SerializeField] private Vector3 spinAxis = Vector3.forward;
+
+    public Transform Room { get { return room; } }
 
     private void Start()
     {
@@ -30,4 +34,6 @@ public class SpinningSegment : MonoBehaviour
     {
         transform.Rotate(spinAxis, Time.fixedDeltaTime * spinSpeed);
     }
+
+
 }

@@ -80,9 +80,6 @@ public class DelayedWallLerper : MonoBehaviour
         {
             elapsed += Time.deltaTime;
 
-           // float t = elapsed / duration;
-           // t = CurveManager.FadeCurve.Evaluate(t);
-
             ren.material.color = Color.LerpUnclamped(a, b, CurveManager.GlassesAnimT);
         }
         else
