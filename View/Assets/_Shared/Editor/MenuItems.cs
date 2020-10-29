@@ -1,18 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
-public class MenuItems : MonoBehaviour
+public class MenuItems
 {
-    // Start is called before the first frame update
-    void Start()
+    [MenuItem("Tools/Clear PlayerPrefs")]
+    private static void NewMenuOpeion()
     {
-        
+        PlayerPrefs.DeleteAll();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }
