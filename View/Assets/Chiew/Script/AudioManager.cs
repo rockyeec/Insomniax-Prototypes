@@ -86,7 +86,7 @@ public class AudioManager : MonoBehaviour
     public void Play(string name,string type) //Play Sound source
     {
         Sound temp = FindSound(name,type);
-        if(temp != null) { temp.source.Play();Debug.Log("Playing"); } else { return; }
+        if(temp != null) { temp.source.Play();/*Debug.Log("Playing");*/ } else { return; }
     }
 
     public void Pause(string name, string type) //Pause Sound source

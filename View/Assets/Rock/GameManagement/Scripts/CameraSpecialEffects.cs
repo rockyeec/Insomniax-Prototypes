@@ -23,7 +23,7 @@ public class CameraSpecialEffects : MonoBehaviour
 
         downRot = Quaternion.LookRotation(Vector3.down);
         forwardRot = Quaternion.LookRotation(Vector3.forward);
-        downColor = cam.backgroundColor;
+        
 
         GameScript.OnPause += GameScript_OnPause;
         GameScript.OnUnpause += GameScript_OnUnpause;
@@ -58,6 +58,7 @@ public class CameraSpecialEffects : MonoBehaviour
 
     private IEnumerator CameraGoUpNZoomOut()
     {
+        downColor = cam.backgroundColor;
         defaultCameraFov = cam.fieldOfView;
 
         float elapsed = 0.0f;

@@ -236,6 +236,7 @@ GameObject:
   - component: {fileID: 296025566}
   - component: {fileID: 296025565}
   - component: {fileID: 296025564}
+  - component: {fileID: 296025567}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -308,6 +309,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &296025567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 296025563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adf8d1480498df54788d1b2be575a307, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skyColor: {r: 0.6392157, g: 0.75686276, b: 0.87058824, a: 0}
+  redColor: {r: 0.8490566, g: 0.47530028, b: 0.31639373, a: 0}
 --- !u!4 &426914939 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 157976089020687186, guid: 88b32c98e74b95f41a42d3cdd45dc30f,
@@ -486,7 +501,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 678965947}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.1, y: 0.1, z: 0}
+  m_LocalPosition: {x: 7.1, y: 0.0001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 911069218}
@@ -557,7 +572,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f6cb77c04f7c3664ea1d4ace75ea4245, type: 2}
+  - {fileID: 2100000, guid: 1ce31ef808410214ea8865e13536fa2f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -612,7 +627,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 947688115}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.4, y: 0.1, z: 0}
+  m_LocalPosition: {x: -7.4, y: 0.0001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1301631010}
@@ -1209,7 +1224,6 @@ PrefabInstance:
       value: 0.039494455
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 1166410833681337577, guid: 5c7a2e51d97eb9c4d9051ba36e244a40, type: 3}
     - {fileID: 4493275909739252316, guid: 5c7a2e51d97eb9c4d9051ba36e244a40, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5c7a2e51d97eb9c4d9051ba36e244a40, type: 3}
 --- !u!1 &1110875167
@@ -1222,6 +1236,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1110875169}
   - component: {fileID: 1110875168}
+  - component: {fileID: 1110875170}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -1304,6 +1319,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &1110875170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1110875167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62cd0127a1db648469ff280e94e38d50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisLight: {fileID: 1110875168}
+  skyColor: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  redColor: {r: 0.9339623, g: 0.5154415, b: 0.5154415, a: 1}
 --- !u!1 &1134025098
 GameObject:
   m_ObjectHideFlags: 0
@@ -1466,7 +1496,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f6cb77c04f7c3664ea1d4ace75ea4245, type: 2}
+  - {fileID: 2100000, guid: 1ce31ef808410214ea8865e13536fa2f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
