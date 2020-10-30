@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FloorLerper : WallLerper
+public class FloorLerper : DelayedWallLerper
 {
     protected override Material SolidMaterial { get { return MaterialManager.FloorMaterial; } }
 }

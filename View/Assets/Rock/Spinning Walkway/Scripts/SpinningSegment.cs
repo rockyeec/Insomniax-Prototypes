@@ -2,22 +2,26 @@
 
 public class SpinningSegment : MonoBehaviour
 {
+    [SerializeField] Transform room = null;
+
     [SerializeField] private float spinSpeed = 6.9f;
     [SerializeField] private Vector3 spinAxis = Vector3.forward;
 
+    public Transform Room { get { return room; } }
+
     private void Start()
     {
-        GameScript.OnGlassesOn += GameScript_OnGlassesOn;
+        SpinningSegmentArranger.OnStartSpinning += SpinningSegment_OnStartSpinning;
         GameScript.OnGlassesOff += GameScript_OnGlassesOff;
         enabled = false;
     }
     private void OnDestroy()
     {
-        GameScript.OnGlassesOn -= GameScript_OnGlassesOn;
+        SpinningSegmentArranger.OnStartSpinning -= SpinningSegment_OnStartSpinning;
         GameScript.OnGlassesOff -= GameScript_OnGlassesOff;
     }
 
-    private void GameScript_OnGlassesOn()
+    private void SpinningSegment_OnStartSpinning()
     {
         enabled = true;
     }
@@ -30,4 +34,6 @@ public class SpinningSegment : MonoBehaviour
     {
         transform.Rotate(spinAxis, Time.fixedDeltaTime * spinSpeed);
     }
+
+
 }

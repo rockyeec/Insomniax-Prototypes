@@ -9,6 +9,12 @@ public class BackToOriginal : MonoBehaviour
 
     private float elapsed = float.MaxValue;
 
+    public void SetTargetPosAndRot(in Vector3 pos, in Quaternion rot)
+    {
+        targetPos = pos;
+        targetRot = rot;
+    }
+
     virtual protected void Start()
     {
         targetPos = transform.position;
@@ -16,7 +22,7 @@ public class BackToOriginal : MonoBehaviour
         GameScript.OnGlassesOff += GameScript_OnGlassesOff;
         enabled = false;
     }
-    private void OnDestroy()
+    protected virtual void OnDestroy()
     {
         GameScript.OnGlassesOff -= GameScript_OnGlassesOff;
     }
@@ -46,10 +52,9 @@ public class BackToOriginal : MonoBehaviour
         {
             elapsed += Time.fixedDeltaTime;
 
-            float t = elapsed / CurveManager.AnimationDuration;
-            t = CurveManager.Curve.Evaluate(t);
+            float t = CurveManagerForFixedUpdate.T;
 
-            transform.position = Vector3.Lerp(oriPos, targetPos, t);
+            transform.position = Vector3.LerpUnclamped(oriPos, targetPos, t);
             transform.rotation = Quaternion.Slerp(oriRot, targetRot, t);
         }
         else

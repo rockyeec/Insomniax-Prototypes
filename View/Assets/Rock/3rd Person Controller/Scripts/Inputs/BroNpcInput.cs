@@ -5,7 +5,7 @@ using UnityEngine;
 public class BroNpcInput : InputParent
 {
     [SerializeField] private bool isStop = false;
-    float duration = 0.69f;
+    float duration = 1.337f;
     float time = 0.0f;
     private Vector3 direction;
 
@@ -13,7 +13,7 @@ public class BroNpcInput : InputParent
     {
         if (Time.time >= time)
         {
-            duration = UnityEngine.Random.Range(0.69f, 1.337f);
+            duration = UnityEngine.Random.Range(1.337f, 4.20f);
             time = Time.time + duration;
 
             direction.x = UnityEngine.Random.Range(-1.0f, 1.0f);
@@ -27,7 +27,7 @@ public class BroNpcInput : InputParent
     {
         base.Init();
 
-        Controller.AddFixedTickBehavior(new CheckGroundBehavior());
+        Controller.AddFixedTickBehavior(new CheckGroundWithNoMovingPlatformBehavior());
         Controller.AddFixedTickBehavior(new LocomotionBehavior());
         Controller.AddRegularTickBehavior(new ClimbBehavior());
     }

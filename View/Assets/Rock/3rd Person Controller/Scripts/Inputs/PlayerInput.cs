@@ -8,47 +8,48 @@ public class PlayerInput : InputParent
     [SerializeField] private JoystickScript leftJoy = null;
     [SerializeField] private JoystickScript rightJoy = null;
     [SerializeField] private Camera3rdPerson cam = null;
+    [SerializeField] private Slider camSensitivitySlider = null;
 
     [SerializeField] private bool isCanClimb = true;
     [SerializeField] private bool isLevelHasMovingPlatforms = false;
     [SerializeField] private bool isLevelHasSlopes = false;
+    [SerializeField] private bool isLevelHasInteractables = false;
 
     public static float MoveSpeed { get; set; }
-
     public static bool IsEnableCamera { get; set; }
+    public static bool IsCanMove { get; set; }
 
     private Transform hips;
+
+    public event System.Action OnGlassesButtonPress = delegate { };
+
 
     protected override void Init()
     {
         base.Init();
-        MoveSpeed = 1.0f;
-        IsEnableCamera = true;
 
-        glassesButton.onClick.AddListener(GameScript.PutOnGlasses);
+        AssignBehaviors();
+        AssignAnimatorComponents();
+        AssignProperties();
 
-        if (isCanClimb)
-            Controller.AddFixedTickBehavior(new ClimbBehavior());
+        glassesButton.onClick.AddListener(PressGlassesButton);
 
-        if (isLevelHasMovingPlatforms)
-            Controller.AddFixedTickBehavior(new CheckGroundBehavior());
-        else
-            Controller.AddFixedTickBehavior(new CheckGroundWithNoMovingPlatformBehavior());
+        if (!PlayerPrefs.HasKey("camSensitivity"))
+        {
+            PlayerPrefs.SetFloat("camSensitivity", 1.0f);
+        }
+        camSensitivitySlider.value = PlayerPrefs.GetFloat("camSensitivity");
+        camSensitivitySlider.onValueChanged.AddListener(SetCameraSensitivity);
+    }
 
-        Controller.AddFixedTickBehavior(new InteractBehavior());
-        Controller.AddFixedTickBehavior(new LocomotionBehavior());
-        Controller.AddFixedTickBehavior(new JumpBehavior());
-
-        Animator anim = GetComponentInChildren<Animator>();
-        hips = anim.GetBoneTransform(HumanBodyBones.Hips);
-
-        if (isLevelHasSlopes)
-            anim.gameObject.AddComponent<IKHandler>();
+    public void PressGlassesButton()
+    {
+        OnGlassesButtonPress();
     }
 
     protected override void Tick(in float delta)
     {
-        if (!IsEnableCamera)
+        if (!IsCanMove)
         {
             Controller.inputs.SmoothMoveInput(Vector3.zero, delta);
             return;
@@ -85,16 +86,18 @@ public class PlayerInput : InputParent
     protected override void FixedTick(in float delta)
     {
         if (!IsEnableCamera)
+        {
+            cam.transform.position = hips.position;
             return;
+        }
 
         base.FixedTick(delta);
 
         // camera
         cam.Tick(
-            rightJoy.GetVerticalDelta(),
-            rightJoy.GetHorizontalDelta(),
+            rightJoy.GetVerticalDelta() * PlayerPrefs.GetFloat("camSensitivity"),
+            rightJoy.GetHorizontalDelta() * PlayerPrefs.GetFloat("camSensitivity"),
             hips.position,
-            //transform.position,
             delta);
     }
 
@@ -106,4 +109,42 @@ public class PlayerInput : InputParent
         jumpButton.Release();
     }
 
+
+    private void AssignBehaviors()
+    {
+        if (isCanClimb)
+            Controller.AddFixedTickBehavior(new ClimbBehavior());
+
+        if (isLevelHasMovingPlatforms)
+            Controller.AddFixedTickBehavior(new CheckGroundBehavior());
+        else
+            Controller.AddFixedTickBehavior(new CheckGroundWithNoMovingPlatformBehavior());
+
+        if (isLevelHasInteractables)
+            Controller.AddFixedTickBehavior(new InteractBehavior());
+
+        Controller.AddFixedTickBehavior(new LocomotionBehavior());
+        Controller.AddFixedTickBehavior(new JumpBehavior());
+    }
+
+    private void AssignAnimatorComponents()
+    {
+        Animator anim = GetComponentInChildren<Animator>();
+        hips = anim.GetBoneTransform(HumanBodyBones.Hips);
+
+        if (isLevelHasSlopes)
+            anim.gameObject.AddComponent<IKHandler>();
+    }
+
+    private void AssignProperties()
+    {
+        MoveSpeed = 1.0f;
+        IsEnableCamera = true;
+        IsCanMove = true;
+    }
+
+    private void SetCameraSensitivity(float value)
+    {
+        PlayerPrefs.SetFloat("camSensitivity", value);
+    }
 }

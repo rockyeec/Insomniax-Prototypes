@@ -13,35 +13,45 @@ MonoBehaviour:
   m_Name: Bathroom Dialogue
   m_EditorClassIdentifier: 
   dialogueInfo:
-  - characImage: {fileID: 0}
+  - isBubble: 1
+    TextColor: {r: 1, g: 0, b: 0, a: 1}
+    characImage: {fileID: 0}
     nameText: Alex
     DialogueText: (Approaches mirror)
     isEndedSentence: 0
     isPlayed: 0
     isQuestion: 0
     newMCQ: []
-  - characImage: {fileID: 0}
+  - isBubble: 0
+    TextColor: {r: 1, g: 0.66122735, b: 0, a: 1}
+    characImage: {fileID: 0}
     nameText: Alex
     DialogueText: You got this, Alex. You got this.
     isEndedSentence: 0
     isPlayed: 0
     isQuestion: 0
     newMCQ: []
-  - characImage: {fileID: 0}
+  - isBubble: 1
+    TextColor: {r: 0, g: 0, b: 0, a: 1}
+    characImage: {fileID: 0}
     nameText: Inner Alex
     DialogueText: You know you dont...right?
     isEndedSentence: 0
     isPlayed: 0
     isQuestion: 0
     newMCQ: []
-  - characImage: {fileID: 0}
+  - isBubble: 1
+    TextColor: {r: 0, g: 0, b: 0, a: 1}
+    characImage: {fileID: 0}
     nameText: Inner Alex
     DialogueText: After all, what do you have?
     isEndedSentence: 0
     isPlayed: 0
     isQuestion: 0
     newMCQ: []
-  - characImage: {fileID: 0}
+  - isBubble: 1
+    TextColor: {r: 0.8513665, g: 0, b: 1, a: 1}
+    characImage: {fileID: 0}
     nameText: Alex
     DialogueText: I...I have
     isEndedSentence: 0

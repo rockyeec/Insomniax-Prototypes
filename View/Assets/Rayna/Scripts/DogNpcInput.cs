@@ -2,6 +2,7 @@
 
 public class DogNpcInput : InputParent
 {
+    [SerializeField] float xLimits = 3.0f;
     public GameObject player;
     float time = 0.0f;
     Vector3 direction = Vector3.forward;
@@ -15,6 +16,25 @@ public class DogNpcInput : InputParent
         Controller.AddFixedTickBehavior(new JumpBehavior());
 
         time = Time.time;
+
+        GameScript.OnGlassesOn += GameScript_OnGlassesOn; 
+        GameScript.OnGlassesOff += GameScript_OnGlassesOff;
+        gameObject.SetActive(false);
+    }
+    private void OnDestroy()
+    {
+        GameScript.OnGlassesOn -= GameScript_OnGlassesOn;
+        GameScript.OnGlassesOff -= GameScript_OnGlassesOff;
+    }
+
+    private void GameScript_OnGlassesOff()
+    {
+        gameObject.SetActive(false);
+    }
+
+    private void GameScript_OnGlassesOn()
+    {
+        gameObject.SetActive(true);
     }
 
     protected override void Tick(in float delta)
@@ -38,8 +58,16 @@ public class DogNpcInput : InputParent
                 direction = new Vector3(0.0f, 0.0f, 0.0f);
             }
         }
+        if (transform.position.x > xLimits)
+        {
+            direction.x = -Mathf.Abs( direction.x);
+        }
+        else if (transform.position.x < -xLimits)
+        {
+            direction.x = Mathf.Abs(direction.x);
+        }
 
-        Controller.inputs.SmoothMoveInput(direction, delta);
+        Controller.inputs.SmoothMoveInput(direction * 1.02f, delta);
 
     }
     public bool CalDist()

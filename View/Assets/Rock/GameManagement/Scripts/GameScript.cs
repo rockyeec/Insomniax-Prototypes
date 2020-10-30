@@ -1,19 +1,14 @@
 ﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 using System;
 
 public class GameScript : MonoBehaviour
 {
-    private static GameScript instance;
     private static bool isStartGame = true;
     public static event Action OnPause = delegate { };
     public static event Action OnUnpause = delegate { };
     public static event Action OnGlassesOn = delegate { };
     public static event Action OnGlassesOff = delegate { };
-
-    private CameraSpecialEffects cam;
-    private bool isGlassesOn = false;
 
     private void Awake()
     {
@@ -23,16 +18,11 @@ public class GameScript : MonoBehaviour
         Debug.unityLogger.logEnabled = false;
 #endif
 
-        instance = this;
-
-        cam = Camera.main.gameObject.AddComponent<CameraSpecialEffects>();
-
         if (isStartGame)
         {
             isStartGame = false;
             StartCoroutine(WaitAndPause());
-        }
-        
+        }        
     }
 
     IEnumerator WaitAndPause()
@@ -49,8 +39,6 @@ public class GameScript : MonoBehaviour
 
         OnPause();
         Time.timeScale = 0.0f;
-
-        instance.cam.ZoomOut();
     }
 
     public static void Unpause()
@@ -60,21 +48,14 @@ public class GameScript : MonoBehaviour
 
         OnUnpause();
         Time.timeScale = 1.0f;
-
-        instance.cam.ZoomIn();
     }
 
     public static void PutOnGlasses()
     {
-        instance.isGlassesOn = !instance.isGlassesOn;
-        if (instance.isGlassesOn)
-        {
-            OnGlassesOn();
-        }
-        else
-        {
-            OnGlassesOff();
-        }
+        OnGlassesOn();
     }
-
+    public static void TakeOffGlasses()
+    {
+        OnGlassesOff();
+    }
 }
