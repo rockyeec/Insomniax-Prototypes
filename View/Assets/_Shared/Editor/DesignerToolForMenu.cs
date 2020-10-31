@@ -1,17 +1,33 @@
 ﻿using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(TempMenuPageHandler))]
-public class DesignerToolForMenu : Editor
+[CustomEditor(typeof(TempMenuHandler))]
+public class DesignerToolForMenuHandler : Editor
 {
-    [MenuItem("Tools/Clear PlayerPrefs")]
-    private static void NewMenuOpeion()
-    {
-        PlayerPrefs.DeleteAll();
-    }
-
     public override void OnInspectorGUI()
     {
         DrawDefaultInspector();
     }
 }
+
+[CustomEditor(typeof(TempMenuPageHandler))]
+public class DesignerToolForMenuPage : Editor
+{
+    public override void OnInspectorGUI()
+    {
+        DrawDefaultInspector();
+
+        TempMenuPageHandler menuPage = target as TempMenuPageHandler;
+
+        if (GUILayout.Button("Initialize"))
+        {
+            menuPage.Init();
+        }
+
+        // temp
+        EditorGUILayout.LabelField("Children", menuPage.transform.childCount.ToString());
+    }
+}
+
+
+

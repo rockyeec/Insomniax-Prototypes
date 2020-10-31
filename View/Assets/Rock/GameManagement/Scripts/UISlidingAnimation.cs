@@ -5,7 +5,11 @@ public class UISlidingAnimation : MonoBehaviour
 {
     [SerializeField] private Vector3 outwardsDirection = Vector3.zero;
     [SerializeField] private float percentageOvershoot = 0.5f;
-
+    public Vector3 OutwardsDirection
+    {
+        get { return outwardsDirection; }
+        set { outwardsDirection = value; }
+    }
     public float PercentageOvershoot 
     { 
         get { return percentageOvershoot; } 
@@ -18,7 +22,7 @@ public class UISlidingAnimation : MonoBehaviour
 
 
     float elapsed = float.MaxValue;
-    float duration;
+    float duration = 0.0f;
     float phase1;
     float phase2;
     bool isActive;
@@ -31,8 +35,6 @@ public class UISlidingAnimation : MonoBehaviour
         originalPos = transform.position;
         offScreenPos = originalPos + outwardsDirection * 1337.0f;
         overshootPos = originalPos - outwardsDirection * 133.7f;
-
-        duration = CurveManager.AnimationDuration;
         enabled = false;
     }
 
@@ -62,6 +64,11 @@ public class UISlidingAnimation : MonoBehaviour
 
     private void StartLerp(Vector3 target, bool isActive, float phase1Duration = 0.5f)
     {
+        if (duration == 0.0f)
+        {
+            duration = CurveManager.AnimationDuration;
+        }
+
         elapsed = 0.0f;
         phase1 = duration * phase1Duration;
         phase2 = duration - phase1;
