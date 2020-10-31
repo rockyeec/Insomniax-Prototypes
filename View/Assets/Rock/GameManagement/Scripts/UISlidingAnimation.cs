@@ -15,6 +15,15 @@ public class UISlidingAnimation : MonoBehaviour
         get { return percentageOvershoot; } 
         set { percentageOvershoot = value; } 
     }
+    public Vector3 OriginalPosition 
+    { 
+        set 
+        { 
+            originalPos = value; 
+            offScreenPos = originalPos + outwardsDirection * 1337.0f;
+            overshootPos = originalPos - outwardsDirection * 133.7f;
+        } 
+    }
 
     private Vector3 originalPos;
     private Vector3 offScreenPos;
@@ -32,9 +41,6 @@ public class UISlidingAnimation : MonoBehaviour
 
     protected virtual void Start()
     {
-        originalPos = transform.position;
-        offScreenPos = originalPos + outwardsDirection * 1337.0f;
-        overshootPos = originalPos - outwardsDirection * 133.7f;
         enabled = false;
     }
 

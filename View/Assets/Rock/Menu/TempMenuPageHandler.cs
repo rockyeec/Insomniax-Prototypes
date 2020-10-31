@@ -9,7 +9,14 @@ public class TempMenuPageHandler : MonoBehaviour
 
     private void Awake()
     {
-        animatedChildren = transform.GetComponentsInChildren<UISlidingAnimation>();
+        animatedChildren = transform.GetComponentsInChildren<UISlidingAnimation>();        
+    }
+    private void Start()
+    {
+        foreach (var item in animatedChildren)
+        {
+            item.OriginalPosition = item.transform.position;
+        }
     }
 
     public void Init()
@@ -50,7 +57,7 @@ public class TempMenuPageHandler : MonoBehaviour
 
     void InitAnimations()
     {
-        float minOvershoot = 0.69f;
+        float minOvershoot = 0.60f;
         float maxOvershoot = 0.80f;
         int length = transform.childCount;
         for (int i = 0; i < length; i++)
