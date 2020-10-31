@@ -23,7 +23,6 @@ public class PlayerInput : InputParent
 
     public event System.Action OnGlassesButtonPress = delegate { };
 
-
     protected override void Init()
     {
         base.Init();
