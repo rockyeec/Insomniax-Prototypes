@@ -6,6 +6,8 @@ public class HudAnimationHandler : UISlidingAnimation
     {
         base.Start();
 
+        OriginalPosition = transform.position;
+
         GameScript.OnPause += GameScript_OnPause;
         GameScript.OnUnpause += GameScript_OnUnpause;
     }

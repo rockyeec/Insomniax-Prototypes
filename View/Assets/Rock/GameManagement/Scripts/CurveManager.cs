@@ -32,9 +32,6 @@ public class CurveManager : MonoBehaviour
 
     public static float GlassesAnimT { get { return instance.glassesT; } }
 
-
-
-
     private float glassesT = 0.0f;
     private float elapsed = float.MaxValue;
     private void Start()

@@ -5,11 +5,24 @@ public class UISlidingAnimation : MonoBehaviour
 {
     [SerializeField] private Vector3 outwardsDirection = Vector3.zero;
     [SerializeField] private float percentageOvershoot = 0.5f;
-
+    public Vector3 OutwardsDirection
+    {
+        get { return outwardsDirection; }
+        set { outwardsDirection = value; }
+    }
     public float PercentageOvershoot 
     { 
         get { return percentageOvershoot; } 
         set { percentageOvershoot = value; } 
+    }
+    public Vector3 OriginalPosition 
+    { 
+        set 
+        { 
+            originalPos = value; 
+            offScreenPos = originalPos + outwardsDirection * 1337.0f;
+            overshootPos = originalPos - outwardsDirection * 133.7f;
+        } 
     }
 
     private Vector3 originalPos;
@@ -18,7 +31,7 @@ public class UISlidingAnimation : MonoBehaviour
 
 
     float elapsed = float.MaxValue;
-    float duration;
+    float duration = 0.0f;
     float phase1;
     float phase2;
     bool isActive;
@@ -28,11 +41,6 @@ public class UISlidingAnimation : MonoBehaviour
 
     protected virtual void Start()
     {
-        originalPos = transform.position;
-        offScreenPos = originalPos + outwardsDirection * 1337.0f;
-        overshootPos = originalPos - outwardsDirection * 133.7f;
-
-        duration = CurveManager.AnimationDuration;
         enabled = false;
     }
 
@@ -49,11 +57,14 @@ public class UISlidingAnimation : MonoBehaviour
 
     public void SnapOut()
     {
+        enabled = false;
         transform.position = offScreenPos;
         gameObject.SetActive(false);
     }
     public void SnapIn()
     {
+        enabled = false;
+        gameObject.SetActive(true);
         transform.position = originalPos;
     }
 
@@ -62,6 +73,11 @@ public class UISlidingAnimation : MonoBehaviour
 
     private void StartLerp(Vector3 target, bool isActive, float phase1Duration = 0.5f)
     {
+        if (duration == 0.0f)
+        {
+            duration = CurveManager.AnimationDuration;
+        }
+
         elapsed = 0.0f;
         phase1 = duration * phase1Duration;
         phase2 = duration - phase1;
