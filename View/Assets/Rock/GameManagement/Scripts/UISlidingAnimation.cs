@@ -57,11 +57,14 @@ public class UISlidingAnimation : MonoBehaviour
 
     public void SnapOut()
     {
+        enabled = false;
         transform.position = offScreenPos;
         gameObject.SetActive(false);
     }
     public void SnapIn()
     {
+        enabled = false;
+        gameObject.SetActive(true);
         transform.position = originalPos;
     }
 

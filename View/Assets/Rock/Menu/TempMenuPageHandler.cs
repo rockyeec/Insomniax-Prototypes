@@ -1,15 +1,40 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TempMenuPageHandler : MonoBehaviour
 {
     [SerializeField] float padding = 10.0f;
     private UISlidingAnimation[] animatedChildren = null;
 
+    [Header("Interactions")]
+    [SerializeField] TempMenuPageHandler previousPage = null;
+    [SerializeField] Button openButton = null;
+    [SerializeField] Button closeButton = null;
+
+
     private void Awake()
     {
-        animatedChildren = transform.GetComponentsInChildren<UISlidingAnimation>();        
+        animatedChildren = transform.GetComponentsInChildren<UISlidingAnimation>();
+        openButton.onClick.AddListener(OnOpenPress);
+        closeButton.onClick.AddListener(OnClosePress);
+    }
+    void OnOpenPress()
+    {
+        if (Input.touchCount > 1)
+            return;
+        if (previousPage != null)
+            previousPage.SlideOut();
+        SlideIn();
+    }
+    void OnClosePress()
+    {
+        if (Input.touchCount > 1)
+            return;
+        if (previousPage != null)
+            previousPage.SlideIn();
+        SlideOut();
     }
     private void Start()
     {
@@ -17,6 +42,7 @@ public class TempMenuPageHandler : MonoBehaviour
         {
             item.OriginalPosition = item.transform.position;
         }
+        SnapOut();
     }
 
     public void Init()
