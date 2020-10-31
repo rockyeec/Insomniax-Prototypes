@@ -27,13 +27,13 @@ public class GraphicSetting : MonoBehaviour
         else if(num == 2)
         {
             //med
-            QualitySettings.SetQualityLevel(3);
+            QualitySettings.SetQualityLevel(1);
             Debug.Log("Change to Med");
         }
         else
         {
             //high
-            QualitySettings.SetQualityLevel(5);
+            QualitySettings.SetQualityLevel(2);
             Debug.Log("Change to High");
         }
     }
