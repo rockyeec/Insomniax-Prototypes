@@ -321,11 +321,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 75135972}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58e4f5b4397effe498a68388f0f11951, type: 3}
+  m_Script: {fileID: 11500000, guid: d42cd7e1b0af8194db5dd07dddd9ce87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isCoverText: 0
-  textCover: {fileID: 0}
   content: {fileID: 1610020887}
 --- !u!65 &75135974
 BoxCollider:
@@ -907,12 +905,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 574846701}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58e4f5b4397effe498a68388f0f11951, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e90ed844f804ad4897ba6b1ef18a8ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isCoverText: 1
   textCover: {fileID: 0}
-  content: {fileID: 884804757}
 --- !u!65 &574846703
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2891,11 +2887,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1565123289}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58e4f5b4397effe498a68388f0f11951, type: 3}
+  m_Script: {fileID: 11500000, guid: d42cd7e1b0af8194db5dd07dddd9ce87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isCoverText: 0
-  textCover: {fileID: 0}
   content: {fileID: 148664744}
 --- !u!65 &1565123291
 BoxCollider:
@@ -4928,6 +4922,7 @@ MonoBehaviour:
   DiaryContainer: {fileID: 8257472806763253519}
   firstContent: {fileID: 148664744}
   secondContent: {fileID: 1610020887}
+  thirdContent: {fileID: 0}
   ContentCanvas: {fileID: 946230468}
 --- !u!114 &8257472807928395046
 MonoBehaviour:
