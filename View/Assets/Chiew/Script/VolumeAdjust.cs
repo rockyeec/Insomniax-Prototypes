@@ -1,6 +1,4 @@
-﻿
-using System.Linq;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class VolumeAdjust : MonoBehaviour
