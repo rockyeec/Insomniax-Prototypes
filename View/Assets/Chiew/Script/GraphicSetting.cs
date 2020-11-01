@@ -13,6 +13,7 @@ public class GraphicSetting : MonoBehaviour
 
     public void DefaultQuality()
     {
+
         GraphicSettingButtons(1);
     }
 

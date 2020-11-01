@@ -9,6 +9,16 @@ public class LevelManager : MonoBehaviour
     {
         instance = this;
     }
+    public static int CurrentLevel
+    {
+        get 
+        {
+            if (!PlayerPrefs.HasKey("currentLevel") || PlayerPrefs.GetInt("currentLevel") == 0)
+                PlayerPrefs.SetInt("currentLevel", 1);
+            return PlayerPrefs.GetInt("currentLevel"); 
+        }
+    }
+
     public static void LoadNextLevel()
     {
         instance.StartCoroutine(instance.Transition());
@@ -24,6 +34,8 @@ public class LevelManager : MonoBehaviour
 
         yield return new WaitForSeconds(0.75f);
 
-        SceneManager.LoadScene((SceneManager.GetActiveScene().buildIndex + 1) % SceneManager.sceneCountInBuildSettings);
+        int nextLevel = (SceneManager.GetActiveScene().buildIndex + 1) % SceneManager.sceneCountInBuildSettings;
+        PlayerPrefs.SetInt("currentLevel", nextLevel);
+        SceneManager.LoadScene(nextLevel);
     }
 }
