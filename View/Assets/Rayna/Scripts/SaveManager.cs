@@ -7,7 +7,7 @@ public class SaveManager : MonoBehaviour
     //public LevelManager levelManager;
     public void SavePlayer()
     {
-        SaveSystem.SavePlayer(this.gameObject, LevelManager.CurrentLevel, Diary.diaryContent);
+        SaveSystem.SavePlayer(this.gameObject);
     }
 
     public void LoadPlayer()

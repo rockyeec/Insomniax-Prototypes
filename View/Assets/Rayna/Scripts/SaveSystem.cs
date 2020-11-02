@@ -7,13 +7,13 @@ using System;
 
 public static class SaveSystem
 {
-    public static void SavePlayer(GameObject player, int curLevel, List<GameObject> diary)
+    public static void SavePlayer(GameObject player)
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/player.save";
         FileStream stream = new FileStream(path, FileMode.Create);
 
-        SaveData data = new SaveData(player, curLevel, diary);
+        SaveData data = new SaveData(player);
 
         formatter.Serialize(stream, data);
         stream.Close();
