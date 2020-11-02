@@ -22,7 +22,8 @@ public static class SaveSystem
     public static SaveData LoadPlayer()
     {
         string path = Application.persistentDataPath + "/player.save";
-        if(File.Exists(path))
+
+        if (File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(path, FileMode.Open);
@@ -39,6 +40,7 @@ public static class SaveSystem
             Debug.Log("Save file not found");
             return null;
         }
+        
     }
 
     internal static void SavePlayer(SaveManager saveManager)

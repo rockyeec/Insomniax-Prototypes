@@ -16,6 +16,7 @@ public class SaveData
     public SaveData(GameObject player)
     {
         level = LevelManager.CurrentLevel;
+        Debug.Log(level);
 
         //diaryCon = new List<GameObject>();
         for (int i = 0; i < Diary.diaryContent.Count; i++)

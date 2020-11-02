@@ -5,6 +5,9 @@ public class StartSceneLoader : MonoBehaviour
 {
     void Start()
     {
-        SceneManager.LoadScene(LevelManager.CurrentLevel);
+        SaveData data = SaveSystem.LoadPlayer();
+        Debug.Log("Start Scene Loader" + data.level);
+        SceneManager.LoadScene(data.level);
+        
     }
 }
