@@ -5,17 +5,21 @@ using UnityEngine.UI;
 
 public class CloseDiaryBtn : MonoBehaviour
 {
-    private Button openDiaryBtn = null;
+    private Button closeDiaryBtn = null;
+
+    [SerializeField]
+    private GameObject openDiaryBtn = null;
 
     void Start()
     {
-        openDiaryBtn = gameObject.GetComponent<Button>();
+        closeDiaryBtn = gameObject.GetComponent<Button>();
 
-        openDiaryBtn.onClick.AddListener(CallDiaryFunc);
+        closeDiaryBtn.onClick.AddListener(CallDiaryFunc);
     }
 
     public void CallDiaryFunc()
     {
         Diary.Instance.CloseDiary();
+        openDiaryBtn.SetActive(true);
     }
 }

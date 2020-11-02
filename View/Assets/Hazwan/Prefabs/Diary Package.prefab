@@ -249,6 +249,7 @@ GameObject:
   - component: {fileID: 660047040094343051}
   - component: {fileID: 660047040094343048}
   - component: {fileID: 660047040094343049}
+  - component: {fileID: 2853670952631941203}
   m_Layer: 5
   m_Name: PreviousBtn
   m_TagString: Untagged
@@ -356,19 +357,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 660047040094343048}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 660047039620584531}
-        m_TargetAssemblyTypeName: Diary, Assembly-CSharp
-        m_MethodName: PreviousPage
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+--- !u!114 &2853670952631941203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 660047040094343055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc7c3ec778f66164aa7c7d137947f37d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &660047040118482759
 GameObject:
   m_ObjectHideFlags: 0
@@ -502,6 +503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f09d0904b2cf2146b0062bdb0d14882, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  openDiaryBtn: {fileID: 0}
 --- !u!1 &660047040379684323
 GameObject:
   m_ObjectHideFlags: 0
