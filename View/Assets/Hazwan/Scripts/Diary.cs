@@ -23,6 +23,8 @@ public class Diary : DiaryManager
 
     static public List<GameObject> diaryContent = new List<GameObject>();
 
+    public static int getCurrentpage = 0;
+
     public GameObject firstContent;
     public GameObject secondContent;
     public GameObject thirdContent;
@@ -42,6 +44,7 @@ public class Diary : DiaryManager
     public void NextPage()
     {
         currentPage++;
+        getCurrentpage = currentPage;
         ButtonsVisibility(currentPage, diaryContent);
         HiddenContent(currentPage,diaryContent);
     }
@@ -49,6 +52,7 @@ public class Diary : DiaryManager
     public void PreviousPage()
     {
         currentPage--;
+        getCurrentpage = currentPage;
         ButtonsVisibility(currentPage, diaryContent);
         HiddenContent(currentPage, diaryContent);
     }
@@ -63,6 +67,7 @@ public class Diary : DiaryManager
     public void CloseDiary()
     {
         currentPage = 0;
+        getCurrentpage = currentPage;
         ButtonsVisibility(currentPage, diaryContent);
         HiddenContent(currentPage, diaryContent);
         DiaryContainer.SetActive(false);
