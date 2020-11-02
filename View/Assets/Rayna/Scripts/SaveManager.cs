@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class SaveManager : MonoBehaviour
 {
+    //public LevelManager levelManager;
     public void SavePlayer()
     {
-        SaveSystem.SavePlayer(this.gameObject);
+        SaveSystem.SavePlayer(this.gameObject, LevelManager.CurrentLevel, Diary.diaryContent);
     }
 
     public void LoadPlayer()
