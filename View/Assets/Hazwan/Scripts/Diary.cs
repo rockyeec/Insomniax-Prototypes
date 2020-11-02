@@ -35,7 +35,7 @@ public class Diary : DiaryManager
         diaryContent.Add(firstContent);
         diaryContent.Add(secondContent);
         diaryContent.Add(thirdContent);
-        //print(diaryContent.Count);
+        print(diaryContent.Count);
         ActiveDiary(DiaryContainer);
     }
 
