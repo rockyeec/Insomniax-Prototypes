@@ -7,9 +7,9 @@ public class NextDiaryBtn : MonoBehaviour
 {
     void Start()
     {
-        Button openDiaryBtn = gameObject.GetComponent<Button>();
+        Button nextDiaryBtn = gameObject.GetComponent<Button>();
 
-        openDiaryBtn.onClick.AddListener(CallDiaryFunc);
+        nextDiaryBtn.onClick.AddListener(CallDiaryFunc);
     }
 
     public void CallDiaryFunc()
