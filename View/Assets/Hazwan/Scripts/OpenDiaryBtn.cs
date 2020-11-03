@@ -18,6 +18,7 @@ public class OpenDiaryBtn : MonoBehaviour
     public void CallDiaryFunc()
     {
         Diary.Instance.OpenDiary();
+        gameObject.SetActive(false);
     }
 
 }

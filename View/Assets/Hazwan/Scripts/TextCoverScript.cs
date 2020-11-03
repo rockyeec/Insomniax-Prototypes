@@ -22,27 +22,77 @@ public class TextCoverScript : MonoBehaviour
     }
     #endregion
 
-    public GameObject DiaryContainer;
-    public GameObject TextCover;
+    private GameObject diaryContainer;
+    private GameObject childContent;
+    GameObject textCovered;
+
+    private string darkenTextTag;
+
+    private int diaryContentChildNum = 0;
+
+    string diaryContentTag;
+    string diaryTag;
 
     private float timeDelay = 2;
 
-    public void DisableTextCover(TextMeshProUGUI textCovered)
+    bool isTriggered = false;
+
+    public bool coverLayer1 = false;
+    public bool coverLayer2 = false;
+
+    private void Start()
     {
-        StartCoroutine(DelayFadeAnim(textCovered));
+        diaryContentTag = "DiaryContent";
+        diaryTag = "DiaryPackage";
+        GetTag();
     }
 
-    IEnumerator DelayFadeAnim(TextMeshProUGUI textCovered)
+    void OnTriggerEnter(Collider col)
     {
-        DiaryContainer.SetActive(true);
+        if (col.gameObject.CompareTag("TriggerCheck") && !isTriggered)
+        {
+            isTriggered = true;
+            DisableTextCover();
+        }
+    }
+
+    public void DisableTextCover()
+    {
+        StartCoroutine(DelayFadeAnim());
+    }
+
+    IEnumerator DelayFadeAnim()
+    {
+        diaryContainer = GameObject.FindGameObjectWithTag(diaryTag);
+        childContent = GameObject.FindGameObjectWithTag(diaryContentTag);
+        diaryContainer.transform.GetChild(diaryContentChildNum).gameObject.SetActive(true);
+        childContent.transform.GetChild(diaryContentChildNum).gameObject.SetActive(true);
+        textCovered = GameObject.FindGameObjectWithTag(darkenTextTag);
+
         yield return new WaitForSeconds(1.5f);
-        FadeOutTextCover(textCovered);
+        TextMeshProUGUI temp = textCovered.GetComponent<TextMeshProUGUI>();
+        FadeOutDarkenText(temp);
+
         yield return new WaitForSeconds(timeDelay);
-        TextCover.SetActive(false);
+        textCovered.SetActive(false);
     }
 
-    void FadeOutTextCover(TextMeshProUGUI textCovered)
+    void FadeOutDarkenText(TextMeshProUGUI textCovered)
     {
         textCovered.CrossFadeAlpha(0, timeDelay, true);
+    }
+
+    void GetTag()
+    {
+        if (coverLayer1)
+        {
+            darkenTextTag = "TextCovered1";
+            diaryContentChildNum = 0;
+        }
+        else if (coverLayer2) //Not set yet
+        {
+            //textCoverName = "TextCovered2";
+            //diaryContentChildNum = 1;
+        }
     }
 }
