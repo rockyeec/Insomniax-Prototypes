@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
-using UnityEditor.Experimental.RestService;
-using UnityEngine;
+﻿using UnityEngine;
 
 [System.Serializable]
 public class SaveData
