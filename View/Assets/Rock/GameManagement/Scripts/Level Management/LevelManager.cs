@@ -13,11 +13,13 @@ public class LevelManager : MonoBehaviour
     {
         get 
         {
-            if (!PlayerPrefs.HasKey("currentLevel") || PlayerPrefs.GetInt("currentLevel") == 0)
-                PlayerPrefs.SetInt("currentLevel", 1);
-            return PlayerPrefs.GetInt("currentLevel");
-            //SaveData data = SaveSystem.LoadPlayer();
-            //return data.level;
+            SaveData data = SaveSystem.LoadData();
+
+            if (data == null || data.level == 0)
+            {
+                SaveSystem.SavePlayer(Vector3.zero, 1);
+            }
+            return SaveSystem.LoadData().level;
         }
     }
 
@@ -37,8 +39,7 @@ public class LevelManager : MonoBehaviour
         yield return new WaitForSeconds(0.75f);
 
         int nextLevel = (SceneManager.GetActiveScene().buildIndex + 1) % SceneManager.sceneCountInBuildSettings;
-        PlayerPrefs.SetInt("currentLevel", nextLevel);
-        //SaveSystem.LoadPlayer().level = nextLevel;
+        SaveSystem.SavePlayer(Vector3.zero, nextLevel);
         SceneManager.LoadScene(nextLevel);
     }
 }

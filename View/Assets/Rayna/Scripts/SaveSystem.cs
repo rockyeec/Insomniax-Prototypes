@@ -1,25 +1,32 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-using System;
 
 public static class SaveSystem
 {
-    public static void SavePlayer(GameObject player)
+    public static void SavePlayer(Vector3 position, int? level)
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/player.save";
         FileStream stream = new FileStream(path, FileMode.Create);
 
-        SaveData data = new SaveData(player);
+
+        SaveData data = LoadData();
+        if (data == null)
+        {
+            data = new SaveData();
+        }
+
+        data.level = level ?? data.level;
+        data.position = new float[3] { position.x, position.y, position.z };
+
 
         formatter.Serialize(stream, data);
         stream.Close();
     }
 
-    public static SaveData LoadPlayer()
+    public static SaveData LoadData()
     {
         string path = Application.persistentDataPath + "/player.save";
 
@@ -39,10 +46,5 @@ public static class SaveSystem
             return null;
         }
         
-    }
-
-    internal static void SavePlayer(SaveManager saveManager)
-    {
-        throw new NotImplementedException();
     }
 }

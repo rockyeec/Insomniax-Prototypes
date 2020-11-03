@@ -93,9 +93,10 @@ public class PlayerInput : InputParent
         base.FixedTick(delta);
 
         // camera
+        float sensitivity = camSensitivitySlider.value;
         cam.Tick(
-            rightJoy.GetVerticalDelta() * PlayerPrefs.GetFloat("camSensitivity"),
-            rightJoy.GetHorizontalDelta() * PlayerPrefs.GetFloat("camSensitivity"),
+            rightJoy.GetVerticalDelta() * sensitivity,
+            rightJoy.GetHorizontalDelta() * sensitivity,
             hips.position,
             delta);
     }
