@@ -1,23 +1,29 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SaveManager : MonoBehaviour
 {
     public void SavePlayer()
     {
-        SaveSystem.SavePlayer(this.gameObject);
+        SaveSystem.SavePlayer(transform.position, null);
     }
 
     public void LoadPlayer()
     {
-        SaveData data = SaveSystem.LoadPlayer();
+        SaveData data = SaveSystem.LoadData();
 
-        Vector3 position;
-        position.x = data.position[0];
-        position.y = data.position[1];
-        position.z = data.position[2];
 
-        transform.position = position;
+        Debug.Log("Load in save manager " + data.level);
+        SceneManager.LoadScene(data.level);
+
+        if (data.position[0] == 0.0f && data.position[1] == 0.0f && data.position[2] == 0.0f)
+            transform.position = new Vector3 ( data.position[0], data.position[1], data.position[2] );
+    }
+    void Update()
+    {
+        if (gameObject.transform.position.y < -8.0f)
+        {
+            LoadPlayer();
+        }
     }
 }

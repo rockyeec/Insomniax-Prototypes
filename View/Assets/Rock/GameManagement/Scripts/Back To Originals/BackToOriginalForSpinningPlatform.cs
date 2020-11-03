@@ -23,9 +23,10 @@ public class BackToOriginalForSpinningPlatform : BackToOriginal
     {
         platform.SetActive(true);
     }
-    protected override void OnEndLerp()
+    protected override void OnStartLerp()
     {
-        base.OnEndLerp();
+        base.OnStartLerp();
+        platform.transform.localRotation = Quaternion.identity;
         platform.SetActive(false);
     }
 }
