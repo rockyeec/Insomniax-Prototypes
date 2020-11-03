@@ -28,6 +28,7 @@ public class TextCoverScript : MonoBehaviour
 
     private string darkenTextTag;
 
+    [SerializeField]
     private int diaryContentChildNum = 0;
 
     string diaryContentTag;
