@@ -310,6 +310,11 @@ PrefabInstance:
       propertyPath: spinSpeed
       value: 35
       objectReference: {fileID: 0}
+    - target: {fileID: 1989657289616816738, guid: 01556ef22e0192146a0e88dea744163f,
+        type: 3}
+      propertyPath: spinAxis.z
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 3200764899983249549, guid: 01556ef22e0192146a0e88dea744163f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -612,11 +617,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 119086561, guid: 01556ef22e0192146a0e88dea744163f, type: 3}
       propertyPath: m_LocalScale.x
-      value: 9.0895
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 119086561, guid: 01556ef22e0192146a0e88dea744163f, type: 3}
       propertyPath: m_LocalScale.z
-      value: 8.6718
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 740226828, guid: 01556ef22e0192146a0e88dea744163f, type: 3}
       propertyPath: m_LocalScale.z
@@ -626,13 +631,17 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 740226828, guid: 01556ef22e0192146a0e88dea744163f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 740226829, guid: 01556ef22e0192146a0e88dea744163f, type: 3}
       propertyPath: m_Size.x
-      value: 9.0895
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 740226829, guid: 01556ef22e0192146a0e88dea744163f, type: 3}
       propertyPath: m_Size.z
-      value: 8.6718
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3200764899983249549, guid: 01556ef22e0192146a0e88dea744163f,
         type: 3}
@@ -729,6 +738,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1734155987}
     m_Modifications:
+    - target: {fileID: 740226828, guid: 01556ef22e0192146a0e88dea744163f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -5.61
+      objectReference: {fileID: 0}
     - target: {fileID: 1989657289616816738, guid: 01556ef22e0192146a0e88dea744163f,
         type: 3}
       propertyPath: spinSpeed
@@ -1177,7 +1190,7 @@ PrefabInstance:
     - target: {fileID: 4834901216101704758, guid: 5c7a2e51d97eb9c4d9051ba36e244a40,
         type: 3}
       propertyPath: isLevelHasSlopes
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4834901216101704758, guid: 5c7a2e51d97eb9c4d9051ba36e244a40,
         type: 3}
@@ -1971,7 +1984,12 @@ PrefabInstance:
     - target: {fileID: 1989657289616816738, guid: 01556ef22e0192146a0e88dea744163f,
         type: 3}
       propertyPath: spinSpeed
-      value: 0
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 1989657289616816738, guid: 01556ef22e0192146a0e88dea744163f,
+        type: 3}
+      propertyPath: spinAxis.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3200764899983249549, guid: 01556ef22e0192146a0e88dea744163f,
         type: 3}
