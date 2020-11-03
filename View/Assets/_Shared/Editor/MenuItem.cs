@@ -8,4 +8,10 @@ public class MenuItems
     {
         PlayerPrefs.DeleteAll();
     }
+
+    [MenuItem("Tools/Clear Binary Save")]
+    private static void ClearBinarySave()
+    {
+        PlayerPrefs.DeleteAll();
+    }
 }
