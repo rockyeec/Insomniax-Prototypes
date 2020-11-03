@@ -7,10 +7,6 @@ public static class SaveSystem
 {
     public static void SavePlayer(Vector3 position, int? level)
     {
-        BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "/player.save";
-        FileStream stream = new FileStream(path, FileMode.Create);
-
 
         SaveData data = LoadData();
         if (data == null)
@@ -21,6 +17,10 @@ public static class SaveSystem
         data.level = level ?? data.level;
         data.position = new float[3] { position.x, position.y, position.z };
 
+
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/player.save";
+        FileStream stream = new FileStream(path, FileMode.Create);
 
         formatter.Serialize(stream, data);
         stream.Close();
@@ -38,13 +38,13 @@ public static class SaveSystem
             SaveData data = formatter.Deserialize(stream) as SaveData;
             stream.Close();
 
-            Debug.Log("Saved file");
+            //Debug.Log("Saved file");
 
             return data;
         }
         else
         {
-            Debug.Log("Save file not found");
+            //Debug.Log("Save file not found");
             return null;
         }
         
