@@ -15,8 +15,6 @@ public class SaveManager : MonoBehaviour
     {
         SaveData data = SaveSystem.LoadPlayer();
 
-
-        Debug.Log("Load in save manager " + data.level);
         SceneManager.LoadScene(data.level);
 
         Vector3 position;

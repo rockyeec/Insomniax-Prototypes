@@ -16,7 +16,8 @@ public class LevelManager : MonoBehaviour
             if (!PlayerPrefs.HasKey("currentLevel") || PlayerPrefs.GetInt("currentLevel") == 0)
                 PlayerPrefs.SetInt("currentLevel", 1);
             return PlayerPrefs.GetInt("currentLevel");
-
+            //SaveData data = SaveSystem.LoadPlayer();
+            //return data.level;
         }
     }
 
@@ -37,6 +38,7 @@ public class LevelManager : MonoBehaviour
 
         int nextLevel = (SceneManager.GetActiveScene().buildIndex + 1) % SceneManager.sceneCountInBuildSettings;
         PlayerPrefs.SetInt("currentLevel", nextLevel);
+        //SaveSystem.LoadPlayer().level = nextLevel;
         SceneManager.LoadScene(nextLevel);
     }
 }

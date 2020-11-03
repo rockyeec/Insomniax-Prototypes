@@ -9,25 +9,31 @@ using UnityEngine;
 public class SaveData
 {
     public int level;
-    public List<GameObject> diaryCon;
+    //public List<GameObject> diaryCon /*= new List<GameObject>()*/;
     public float[] position;
 
 
     public SaveData(GameObject player)
     {
         level = LevelManager.CurrentLevel;
-        Debug.Log(level);
 
         //diaryCon = new List<GameObject>();
-        for (int i = 0; i < Diary.diaryContent.Count; i++)
-        {
-            diaryCon.Add(Diary.diaryContent[i]);
-            Debug.Log(diaryCon[i]);
-        }
+        //diaryCon.Clear();
+        //for (int i = 0; i < Diary.diaryContent.Count; i++)
+        //{
+        //    diaryCon.Add(Diary.diaryContent[i]);
+        //    Debug.Log(diaryCon[i]);
+        //}
 
         position = new float[3];
         position[0] = player.gameObject.transform.position.x;
         position[1] = player.gameObject.transform.position.y;
         position[2] = player.gameObject.transform.position.z;
+
+    }
+
+    public void setLeve(int l)
+    {
+        level = l;
     }
 }

@@ -31,8 +31,6 @@ public static class SaveSystem
             SaveData data = formatter.Deserialize(stream) as SaveData;
             stream.Close();
 
-            Debug.Log("Saved file");
-
             return data;
         }
         else
