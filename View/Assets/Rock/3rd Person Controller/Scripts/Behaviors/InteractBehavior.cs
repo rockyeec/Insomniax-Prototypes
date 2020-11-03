@@ -1,6 +1,8 @@
 ﻿using System.Linq;
 using UnityEngine;
 
+
+
 public class InteractBehavior : Behavior
 {
     InteractableObject oldInteractable = null;
@@ -30,6 +32,7 @@ public class InteractBehavior : Behavior
         {
             ClearOldInteractable();
         }
+
     }
 
     void ClearOldInteractable()
