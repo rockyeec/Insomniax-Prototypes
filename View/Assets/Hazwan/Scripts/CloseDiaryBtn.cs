@@ -7,9 +7,6 @@ public class CloseDiaryBtn : MonoBehaviour
 {
     private Button closeDiaryBtn = null;
 
-    [SerializeField]
-    private GameObject openDiaryBtn = null;
-
     void Start()
     {
         closeDiaryBtn = gameObject.GetComponent<Button>();
@@ -20,6 +17,6 @@ public class CloseDiaryBtn : MonoBehaviour
     public void CallDiaryFunc()
     {
         Diary.Instance.CloseDiary();
-        openDiaryBtn.SetActive(true);
+        gameObject.SetActive(true);
     }
 }

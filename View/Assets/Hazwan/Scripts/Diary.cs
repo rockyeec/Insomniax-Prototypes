@@ -29,6 +29,7 @@ public class Diary : DiaryManager
     public GameObject thirdContent;
 
     public GameObject ContentCanvas;
+    public GameObject DiaryEntry;
 
     void Start()
     {
@@ -59,6 +60,7 @@ public class Diary : DiaryManager
         DiaryContainer.SetActive(true);
         diaryContent[0].SetActive(true);
         ContentCanvas.SetActive(true);
+        DiaryEntry.SetActive(true);
     }
 
     public void CloseDiary()
@@ -68,6 +70,7 @@ public class Diary : DiaryManager
         HiddenContent(currentPage, diaryContent);
         DiaryContainer.SetActive(false);
         ContentCanvas.SetActive(false);
+        DiaryEntry.SetActive(false);
     }
    
 }
