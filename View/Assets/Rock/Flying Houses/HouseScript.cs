@@ -8,7 +8,7 @@ public class HouseScript : MonoBehaviour
     float elapsed = 0.0f;
     float duration = 1.337f;
 
-    //float depth = 1.5f;
+    float depth = 1.5f;
 
     private void Start()
     {
@@ -50,7 +50,7 @@ public class HouseScript : MonoBehaviour
         elapsed = 0.0f;
 
         duration = Random.Range(1.2f, 3.0f);
-        //depth = Random.Range(0.5f, 3.5f);
+        depth = Random.Range(0.5f, 3.5f);
     }
 
     private void RandomizeTarget()
@@ -74,8 +74,8 @@ public class HouseScript : MonoBehaviour
             SwapSourceTarget();
         }
 
-        //if (transform.localPosition.z < depth)
-        //    transform.localPosition += Vector3.forward * Time.deltaTime * 0.16f;
+        if (transform.localPosition.z < depth)
+            transform.localPosition += Vector3.forward * Time.deltaTime * 0.16f;
     }
 
     private void SwapSourceTarget()
