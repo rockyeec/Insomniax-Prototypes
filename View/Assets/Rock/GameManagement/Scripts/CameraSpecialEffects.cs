@@ -90,7 +90,7 @@ public class CameraSpecialEffects : MonoBehaviour
     private IEnumerator CameraGoDownNZoomIn()
     {
         float elapsed = 0.0f;
-        float duration = 1.2f;
+        float duration = CurveManager.CameraAnimationDuration;
         float startFov = cam.fieldOfView;
         Quaternion startRot = cam.transform.localRotation;
         Vector3 startPos = cam.transform.localPosition;
