@@ -8,7 +8,7 @@ public class MonologueScript : MonoBehaviour
 {
     [SerializeField] Button skipButton = null;
     [SerializeField] TextMeshPro text = null;
-    [SerializeField] SpriteRenderer ren = null;
+    [SerializeField] Renderer ren = null;
     Camera cam;
     bool isSkip = false;
 
@@ -80,25 +80,17 @@ public class MonologueScript : MonoBehaviour
                     text.text += item;
                 }
 
+                float duration = 1.2f;
+                float time = Time.time + duration;
                 while (!isSkip)
                 {
+                    if (Time.time > time)
+                        break;
+
                     yield return null;
                 }
 
                 isSkip = false;
-
-                // short pause after every sentence
-                /*float duration = 1.2f;
-                float time = Time.time + duration;
-                while (Time.time < time)
-                {
-                    if (isSkip)
-                    {
-                        isSkip = false;
-                        break;
-                    }
-                    yield return null;
-                }*/
             }            
         }
 
@@ -111,8 +103,8 @@ public class MonologueScript : MonoBehaviour
     {
         float elapsed = 0.0f;
         float duration = 0.3f;
-        Color ori = ren.color;
-        Color target = ren.color.WithAlpha(isActive ? 1.0f : 0.0f);
+        Color ori = ren.material.color;
+        Color target = ren.material.color.WithAlpha(isActive ? 1.0f : 0.0f);
 
         while (elapsed < duration)
         {
@@ -120,7 +112,7 @@ public class MonologueScript : MonoBehaviour
 
             float t = CurveManager.Curve.Evaluate(elapsed / duration);
 
-            ren.color = Color.LerpUnclamped(ori, target, t);
+            ren.material.color = Color.LerpUnclamped(ori, target, t);
 
             if (skipButton != null)
                 skipButton.image.color = Color.LerpUnclamped(ori, target, t);
@@ -128,7 +120,7 @@ public class MonologueScript : MonoBehaviour
             yield return null;
         }
 
-        ren.color = target;
+        ren.material.color = target;
         gameObject.SetActive(isActive);
         if (skipButton != null)
             skipButton.gameObject.SetActive(isActive);

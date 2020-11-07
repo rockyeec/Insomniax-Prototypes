@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class TreadmillScript : MonoBehaviour
 {
@@ -8,12 +9,11 @@ public class TreadmillScript : MonoBehaviour
     public BoxCollider Box { get { return box; } }
     public Transform Art { get { return art; } }
 
-    bool isCanMove = false;
-
     private void Start()
     {
         GameScript.OnGlassesOn += GameScript_OnGlassesOn;
         GameScript.OnGlassesOff += GameScript_OnGlassesOff;
+        enabled = false;
     }
 
     private void OnDestroy()
@@ -24,19 +24,23 @@ public class TreadmillScript : MonoBehaviour
 
     private void GameScript_OnGlassesOff()
     {
-        isCanMove = false;
+        StopAllCoroutines();
+        enabled = false;
     }
 
     private void GameScript_OnGlassesOn()
     {
-        isCanMove = true;
+        StopAllCoroutines();
+        StartCoroutine(ScriptEnabler());
+    }
+    IEnumerator ScriptEnabler()
+    {
+        yield return new WaitForSeconds(10.0f);
+        enabled = true;
     }
 
     private void FixedUpdate()
     {
-        if (!isCanMove)
-            return;
-
         ManagePlatformMovement();
     }
 

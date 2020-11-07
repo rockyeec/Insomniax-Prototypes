@@ -18,11 +18,6 @@ public class TileMain : MonoBehaviour
         SetTileIndex();
     }
     
-    void Update()
-    {
-
-    }
-
     private void OnTriggerEnter(Collider collision)
     {
         if(collision.gameObject.CompareTag("GroundCheck"))

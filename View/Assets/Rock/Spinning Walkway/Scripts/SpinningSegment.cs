@@ -3,6 +3,7 @@
 public class SpinningSegment : MonoBehaviour
 {
     [SerializeField] Transform room = null;
+    [SerializeField] Transform platform = null;
 
     [SerializeField] private float spinSpeed = 6.9f;
     [SerializeField] private Vector3 spinAxis = Vector3.forward;
@@ -33,6 +34,7 @@ public class SpinningSegment : MonoBehaviour
     private void FixedUpdate()
     {
         transform.Rotate(spinAxis, Time.fixedDeltaTime * spinSpeed);
+        platform.rotation = Quaternion.LookRotation(Vector3.forward, Vector3.up);
     }
 
 

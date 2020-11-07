@@ -1,10 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class GraphicSetting : MonoBehaviour
 {
+    [SerializeField]
+    TMP_Dropdown dropdown = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,11 +14,16 @@ public class GraphicSetting : MonoBehaviour
 
     public void DefaultQuality()
     {
-        GraphicSettingButtons(1);
+        if (!PlayerPrefs.HasKey("graphicsSetting"))
+            PlayerPrefs.SetInt("graphicsSetting", 1);
+
+        dropdown.value = PlayerPrefs.GetInt("graphicsSetting");
+        GraphicSettingButtons(PlayerPrefs.GetInt("graphicsSetting"));
     }
 
     public void GraphicSettingButtons(int num)
     {
+        PlayerPrefs.SetInt("graphicsSetting", num);
         if(num == 1)
         {
             //low

@@ -12,9 +12,6 @@ public class DiaryManager : MonoBehaviour
     public GameObject previousBtn;
     public GameObject DiaryContainer;
 
-    public TextMeshProUGUI diaryTextPageLeft;
-    public TextMeshProUGUI diaryTextPageRight;
-
     protected void ActiveDiary(GameObject diaryContainer)
     {
         if (diaryContainer.activeInHierarchy)
@@ -29,24 +26,22 @@ public class DiaryManager : MonoBehaviour
         previousBtn.SetActive(prevButton);
     }
 
-    protected void OpenDiary()
-    {
-        DiaryContainer.SetActive(true);
-    }
-
-    public void ButtonsVisibility(int pageNum, List<string> diaryList)
+    public void ButtonsVisibility(int pageNum, List<GameObject> diaryList)
     {
         if (pageNum == 0)
-        {
             SetButton(true, false);
-        }
         else if (pageNum == diaryList.Count - 1)
-        {
             SetButton(false, true);
-        }
         else
-        {
             SetButton(true, true);
+    }
+
+    public void HiddenContent(int pageNum, List<GameObject> diaryContent)
+    {
+        for (int i = 0; i < diaryContent.Count; i++)
+        {
+            diaryContent[i].SetActive(false);
         }
+        diaryContent[pageNum].SetActive(true);
     }
 }

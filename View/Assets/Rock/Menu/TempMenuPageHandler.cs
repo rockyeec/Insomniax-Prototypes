@@ -14,12 +14,12 @@ public class TempMenuPageHandler : MonoBehaviour
     [SerializeField] Button closeButton = null;
 
 
-    private void Awake()
-    {
-        animatedChildren = transform.GetComponentsInChildren<UISlidingAnimation>();
-        openButton.onClick.AddListener(OnOpenPress);
-        closeButton.onClick.AddListener(OnClosePress);
-    }
+    //private void Awake()
+    //{
+    //    animatedChildren = transform.GetComponentsInChildren<UISlidingAnimation>();
+    //    openButton.onClick.AddListener(OnOpenPress);
+    //    closeButton.onClick.AddListener(OnClosePress);
+    //}
     void OnOpenPress()
     {
         if (Input.touchCount > 1)
@@ -38,6 +38,9 @@ public class TempMenuPageHandler : MonoBehaviour
     }
     private void Start()
     {
+        animatedChildren = transform.GetComponentsInChildren<UISlidingAnimation>();
+        openButton.onClick.AddListener(OnOpenPress);
+        closeButton.onClick.AddListener(OnClosePress);
         foreach (var item in animatedChildren)
         {
             item.OriginalPosition = item.transform.position;
@@ -104,9 +107,7 @@ public class TempMenuPageHandler : MonoBehaviour
 
     public void SlideIn()
     {
-        if (animatedChildren == null)
-            Awake();
-
+        FillAnimatedChildren();
         foreach (var item in animatedChildren)
         {
             item.SlideIn();
@@ -114,9 +115,7 @@ public class TempMenuPageHandler : MonoBehaviour
     }
     public void SlideOut()
     {
-        if (animatedChildren == null)
-            Awake();
-
+        FillAnimatedChildren();
         foreach (var item in animatedChildren)
         {
             item.SlideOut();
@@ -124,9 +123,7 @@ public class TempMenuPageHandler : MonoBehaviour
     }
     public void SnapIn()
     {
-        if (animatedChildren == null)
-            Awake();
-
+        FillAnimatedChildren();
         foreach (var item in animatedChildren)
         {
             item.SnapIn();
@@ -134,12 +131,16 @@ public class TempMenuPageHandler : MonoBehaviour
     }
     public void SnapOut()
     {
-        if (animatedChildren == null)
-            Awake();
-
+        FillAnimatedChildren();
         foreach (var item in animatedChildren)
         {
             item.SnapOut();
         }
+    }
+
+    private void FillAnimatedChildren()
+    {
+        if (animatedChildren == null)
+            animatedChildren = transform.GetComponentsInChildren<UISlidingAnimation>();
     }
 }

@@ -1,53 +1,73 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 public class Diary : DiaryManager
 {
-    static public List<string> diaryTextList = new List<string>();
+    #region Singleton
 
-    public string test;
-    public string test2;
-    public string test3;
+    private static Diary _instance;
+
+    public static Diary Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = GameObject.FindObjectOfType<Diary>();
+            }
+            return _instance;
+        }
+    }
+    #endregion
+
+    static public List<GameObject> diaryContent = new List<GameObject>();
+
+
+    public GameObject firstContent;
+    public GameObject secondContent;
+    public GameObject thirdContent;
+
+    public GameObject ContentCanvas;
 
     void Start()
     {
         previousBtn.SetActive(false);
-
-        test = "Maggi goreng telur mata satu.";
-        test2 = "Nasi putih + Tomyam seafood.";
-        test3 = "1 Lamb grill";
-
-        diaryTextList.Add(test);
-        diaryTextList.Add(test2);
-        diaryTextList.Add(test3);
-
-        diaryTextPageLeft.text = test;
-
+        diaryContent.Add(firstContent);
+        diaryContent.Add(secondContent);
+        diaryContent.Add(thirdContent);
+        //print(diaryContent.Count);
         ActiveDiary(DiaryContainer);
     }
 
     public void NextPage()
     {
         currentPage++;
-        ButtonsVisibility(currentPage, diaryTextList);
-        diaryTextPageLeft.text = diaryTextList[currentPage];
+        ButtonsVisibility(currentPage, diaryContent);
+        HiddenContent(currentPage,diaryContent);
     }
 
     public void PreviousPage()
     {
         currentPage--;
-        ButtonsVisibility(currentPage, diaryTextList);
-        diaryTextPageLeft.text = diaryTextList[currentPage];
+        ButtonsVisibility(currentPage, diaryContent);
+        HiddenContent(currentPage, diaryContent);
+    }
+
+    public void OpenDiary()
+    {
+        DiaryContainer.SetActive(true);
+        diaryContent[0].SetActive(true);
+        ContentCanvas.SetActive(true);
     }
 
     public void CloseDiary()
     {
         currentPage = 0;
-        ButtonsVisibility(currentPage, diaryTextList);
-        diaryTextPageLeft.text = diaryTextList[currentPage];
+        ButtonsVisibility(currentPage, diaryContent);
+        HiddenContent(currentPage, diaryContent);
         DiaryContainer.SetActive(false);
+        ContentCanvas.SetActive(false);
     }
-
+   
 }
