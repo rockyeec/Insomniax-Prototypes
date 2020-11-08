@@ -11,6 +11,12 @@ public class InvokerForMonologue : MonoBehaviour
     [SerializeField] Highlightable menuButton = null;
     [SerializeField] Highlightable fakeDiaryButton = null;
 
+    [SerializeField] ButtonEnabler glassesEnabler = null;
+    [SerializeField] ButtonEnabler moveEnabler = null;
+    [SerializeField] ButtonEnabler lookEnabler = null;
+    [SerializeField] ButtonEnabler jumpEnabler = null;
+    [SerializeField] ButtonEnabler menuEnabler = null;
+
     readonly List<string> commands = new List<string>();
 
     private static InvokerForMonologue instance;
@@ -34,6 +40,17 @@ public class InvokerForMonologue : MonoBehaviour
         Add("Hold");
         Add("SlowMove");
         Add("NormalMove");
+
+        Add("EnableGlasses");
+        Add("DisableGlasses");
+        Add("EnableMove");
+        Add("DisableMove");
+        Add("EnableLook");
+        Add("DisableLook");
+        Add("EnableJump");
+        Add("DisableJump");
+        Add("EnableMenu");
+        Add("DisableMenu");
     }
 
     private void Add(in string command)
@@ -107,6 +124,51 @@ public class InvokerForMonologue : MonoBehaviour
     void Hold()
     {
         IsHold = true;
+    }
+
+    void EnableGlasses()
+    {
+        glassesEnabler.SlideIn();
+    }
+    void DisableGlasses()
+    {
+        glassesEnabler.SlideOut();
+    }
+
+    void EnableMove()
+    {
+        moveEnabler.SlideIn();
+    }
+    void DisableMove()
+    {
+        moveEnabler.SlideOut();
+    }
+
+    void EnableLook()
+    {
+        lookEnabler.SlideIn();
+    }
+    void DisableLook()
+    {
+        lookEnabler.SlideOut();
+    }
+
+    void EnableJump()
+    {
+        jumpEnabler.SlideIn();
+    }
+    void DisableJump()
+    {
+        jumpEnabler.SlideOut();
+    }
+
+    void EnableMenu()
+    {
+        menuEnabler.SlideIn();
+    }
+    void DisableMenu()
+    {
+        menuEnabler.SlideOut();
     }
 
     /*private void Update()
