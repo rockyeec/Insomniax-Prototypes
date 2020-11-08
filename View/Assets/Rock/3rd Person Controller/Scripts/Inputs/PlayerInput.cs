@@ -13,7 +13,6 @@ public class PlayerInput : InputParent
     [SerializeField] private bool isCanClimb = true;
     [SerializeField] private bool isLevelHasMovingPlatforms = false;
     [SerializeField] private bool isLevelHasSlopes = false;
-    [SerializeField] private bool isLevelHasInteractables = false;
 
     public static float MoveSpeed { get; set; }
     public static bool IsEnableCamera { get; set; }
@@ -119,9 +118,6 @@ public class PlayerInput : InputParent
             Controller.AddFixedTickBehavior(new CheckGroundBehavior());
         else
             Controller.AddFixedTickBehavior(new CheckGroundWithNoMovingPlatformBehavior());
-
-        if (isLevelHasInteractables)
-            Controller.AddFixedTickBehavior(new InteractBehavior());
 
         Controller.AddFixedTickBehavior(new LocomotionBehavior());
         Controller.AddFixedTickBehavior(new JumpBehavior());

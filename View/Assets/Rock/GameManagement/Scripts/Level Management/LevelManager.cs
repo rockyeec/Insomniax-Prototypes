@@ -13,13 +13,12 @@ public class LevelManager : MonoBehaviour
     {
         get 
         {
-            SaveData data = SaveSystem.LoadData();
-
-            if (data == null || data.level == 0)
+            if (SaveSystem.GetInt("level") == 0)
             {
-                SaveSystem.SavePlayer(Vector3.zero, 1);
+                SaveSystem.Reset();
+                SaveSystem.SetInt("level", 1);
             }
-            return SaveSystem.LoadData().level;
+            return SaveSystem.GetInt("level");
         }
     }
 
@@ -39,7 +38,7 @@ public class LevelManager : MonoBehaviour
         yield return new WaitForSeconds(0.75f);
 
         int nextLevel = (SceneManager.GetActiveScene().buildIndex + 1) % SceneManager.sceneCountInBuildSettings;
-        SaveSystem.SavePlayer(Vector3.zero, nextLevel);
+        SaveSystem.SetInt("level", nextLevel);
         SceneManager.LoadScene(nextLevel);
     }
 }
