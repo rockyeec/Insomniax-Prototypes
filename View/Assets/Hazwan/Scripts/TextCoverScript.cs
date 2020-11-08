@@ -28,8 +28,7 @@ public class TextCoverScript : MonoBehaviour
 
     private string darkenTextTag;
 
-    [SerializeField]
-    private int diaryContentChildNum = 0;
+    private int diaryEntryNum = 0;
 
     string diaryContentTag;
     string diaryTag;
@@ -41,11 +40,15 @@ public class TextCoverScript : MonoBehaviour
     public bool coverLayer1 = false;
     public bool coverLayer2 = false;
 
+    private string saveEntryID;
+
     private void Start()
     {
         diaryContentTag = "DiaryContent";
         diaryTag = "DiaryPackage";
-        GetTag();
+        diaryContainer = GameObject.FindGameObjectWithTag("DiaryPackage"); // Don't change this [Note to self] - Diary Container
+        childContent = GameObject.FindGameObjectWithTag("DiaryContent"); // Don't change this [Note to self] - Diary Entries
+        
     }
 
     void OnTriggerEnter(Collider col)
@@ -53,22 +56,26 @@ public class TextCoverScript : MonoBehaviour
         if (col.gameObject.CompareTag("TriggerCheck") && !isTriggered)
         {
             isTriggered = true;
+            
             DisableTextCover();
         }
     }
 
     public void DisableTextCover()
     {
+        Diary.Instance.OpenButton.SetActive(false);
+        Diary.Instance.DiaryEntry.SetActive(true);
         StartCoroutine(DelayFadeAnim());
     }
 
     IEnumerator DelayFadeAnim()
     {
-        diaryContainer = GameObject.FindGameObjectWithTag(diaryTag);
-        childContent = GameObject.FindGameObjectWithTag(diaryContentTag);
-        diaryContainer.transform.GetChild(0).gameObject.SetActive(true);
+        diaryContainer.transform.GetChild(0).gameObject.SetActive(true); // Don't change this [Note to self]
+
         //childContent.transform.GetChild(diaryContentChildNum).gameObject.SetActive(true);
-        childContent.transform.GetChild(0).gameObject.SetActive(true);
+        GetTag();
+
+        childContent.transform.GetChild(diaryEntryNum).gameObject.SetActive(true);
         textCovered = GameObject.FindGameObjectWithTag(darkenTextTag);
 
         yield return new WaitForSeconds(1.5f);
@@ -89,12 +96,17 @@ public class TextCoverScript : MonoBehaviour
         if (coverLayer1)
         {
             darkenTextTag = "TextCovered1";
-            diaryContentChildNum = 0;
+            diaryEntryNum = 0;
+            saveEntryID = "entryOne";
         }
-        else if (coverLayer2) //Not set yet
+        else if (coverLayer2)
         {
-            //textCoverName = "TextCovered2";
-            //diaryContentChildNum = 1;
+            darkenTextTag = "TextCovered2";
+            diaryEntryNum = 1;
+            saveEntryID = "entryTwo";
         }
+
+        Diary.Instance.currentPage = diaryEntryNum;
+        Diary.Instance.ButtonsVisibility(diaryEntryNum, Diary.diaryContent);
     }
 }

@@ -6,7 +6,7 @@ using TMPro;
 public class DiaryManager : MonoBehaviour
 {
     protected bool isDiaryOpened = false;
-    protected int currentPage = 0;
+    public int currentPage = 0;
 
     public GameObject nextBtn;
     public GameObject previousBtn;
