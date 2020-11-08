@@ -67,6 +67,8 @@ public class Diary : DiaryManager
         diaryContent[0].SetActive(true);
         ContentCanvas.SetActive(true);
         DiaryEntry.SetActive(true);
+
+        InvokerForMonologue.IsHold = false;
     }
 
     public void CloseDiary()
@@ -78,6 +80,8 @@ public class Diary : DiaryManager
         DiaryContainer.SetActive(false);
         ContentCanvas.SetActive(false);
         DiaryEntry.SetActive(false);
+
+        InvokerForMonologue.IsHold = false;
     }
    
 }

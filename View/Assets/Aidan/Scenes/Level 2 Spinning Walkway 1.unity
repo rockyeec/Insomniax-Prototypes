@@ -292,8 +292,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3, y: 5, z: 5}
-  m_Center: {x: 0, y: 0, z: 2.5}
+  m_Size: {x: 1.2237563, y: 1.5855658, z: 1.067476}
+  m_Center: {x: -0.27548206, y: 0.13666546, z: 2.6904755}
 --- !u!1 &155128846
 GameObject:
   m_ObjectHideFlags: 0
@@ -2261,32 +2261,32 @@ PrefabInstance:
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.size
-      value: 14
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[5]
-      value: " It\u2019s been a month now. "
+      value: I just want to go back to sleep.
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[6]
-      value: A new day, but I still feel the same.
+      value: 'Think of the good things, think of the good things, Alex.  '
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[7]
-      value: ' I just want to go back to sleep. '
+      value: EnableMoveControl
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[8]
-      value: 'Hopefully this time no more dreams. '
+      value: EnableCameraControl
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[9]
-      value: 'or waking up.  '
+      value: EnableCameraControl
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
@@ -2301,7 +2301,7 @@ PrefabInstance:
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[2]
-      value: ' It was a dream. It was just a dream.  '
+      value: 'It was a dream. It was just a dream.  '
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
@@ -2311,7 +2311,8 @@ PrefabInstance:
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[4]
-      value: 'Out of all days, a nightmare. '
+      value: "I need to stop trying to remember, it\u2019s going to cause more harm
+        than not. "
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
@@ -2321,22 +2322,27 @@ PrefabInstance:
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[10]
-      value: "I vaguely remember\u2026 "
+      value: EnableCameraControl
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[11]
-      value: "I\u2019m not in the mood to remember.  "
+      value: EnableCameraControl
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[12]
-      value: EnableMoveControl
+      value: EnableCameraControl
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[13]
       value: EnableCameraControl
+      objectReference: {fileID: 0}
+    - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
+        type: 3}
+      propertyPath: saveEntry
+      value: '(Wakes up from dream) '
       objectReference: {fileID: 0}
     - target: {fileID: 8267381906275170538, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}

@@ -15,7 +15,7 @@ public static class SaveSystem
         public Dictionary<string, float[]> vector3Dic = new Dictionary<string, float[]>();
     }
 
-    private static void Save(SaveData data)
+    private static void Save(in SaveData data)
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/player.save";

@@ -13,6 +13,5 @@ public class Highlightable : MonoBehaviour
             return rect; 
         } 
     }
-    public string Description { get { return description; } }
-    
+    public string Description { get { return description; } }    
 }
