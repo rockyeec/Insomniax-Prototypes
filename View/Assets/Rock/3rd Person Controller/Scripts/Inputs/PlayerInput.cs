@@ -42,6 +42,7 @@ public class PlayerInput : InputParent
 
     public void PressGlassesButton()
     {
+        InvokerForMonologue.IsHold = false;
         OnGlassesButtonPress();
     }
 
