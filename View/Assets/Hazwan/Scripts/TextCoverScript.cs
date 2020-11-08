@@ -66,7 +66,7 @@ public class TextCoverScript : MonoBehaviour
     {
         diaryContainer = GameObject.FindGameObjectWithTag(diaryTag);
         childContent = GameObject.FindGameObjectWithTag(diaryContentTag);
-        diaryContainer.transform.GetChild(diaryContentChildNum).gameObject.SetActive(true);
+        diaryContainer.transform.GetChild(0).gameObject.SetActive(true);
         //childContent.transform.GetChild(diaryContentChildNum).gameObject.SetActive(true);
         childContent.transform.GetChild(0).gameObject.SetActive(true);
         textCovered = GameObject.FindGameObjectWithTag(darkenTextTag);
