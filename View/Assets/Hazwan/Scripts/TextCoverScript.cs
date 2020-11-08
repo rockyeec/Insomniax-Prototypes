@@ -30,8 +30,8 @@ public class TextCoverScript : MonoBehaviour
 
     private int diaryEntryNum = 0;
 
-    string diaryContentTag;
-    string diaryTag;
+    string diaryContentTag = "DiaryContent";
+    string diaryTag = "DiaryPackage";
 
     private float timeDelay = 2;
 
@@ -44,11 +44,19 @@ public class TextCoverScript : MonoBehaviour
 
     private void Start()
     {
-        diaryContentTag = "DiaryContent";
-        diaryTag = "DiaryPackage";
-        diaryContainer = GameObject.FindGameObjectWithTag("DiaryPackage"); // Don't change this [Note to self] - Diary Container
-        childContent = GameObject.FindGameObjectWithTag("DiaryContent"); // Don't change this [Note to self] - Diary Entries
-        
+        diaryContainer = GameObject.FindGameObjectWithTag("DiaryPackage");
+        childContent = GameObject.FindGameObjectWithTag("DiaryContent");
+        CheckSavedData();
+    }
+
+    void CheckSavedData()
+    {
+        GetTag();
+        if (SaveSystem.GetBool(saveEntryID))
+        {
+            textCovered = GameObject.FindGameObjectWithTag(darkenTextTag);
+            textCovered.SetActive(false);
+        }
     }
 
     void OnTriggerEnter(Collider col)
@@ -56,15 +64,17 @@ public class TextCoverScript : MonoBehaviour
         if (col.gameObject.CompareTag("TriggerCheck") && !isTriggered)
         {
             isTriggered = true;
-            
             DisableTextCover();
         }
     }
 
     public void DisableTextCover()
     {
+        Diary.Instance.currentPage = diaryEntryNum;
+        Diary.Instance.ButtonsVisibility(diaryEntryNum, Diary.diaryContent);
         Diary.Instance.OpenButton.SetActive(false);
         Diary.Instance.DiaryEntry.SetActive(true);
+        SaveSystem.SetBool(saveEntryID, true);
         StartCoroutine(DelayFadeAnim());
     }
 
@@ -97,16 +107,15 @@ public class TextCoverScript : MonoBehaviour
         {
             darkenTextTag = "TextCovered1";
             diaryEntryNum = 0;
-            saveEntryID = "entryOne";
+            saveEntryID = "CoverLayer1";
         }
         else if (coverLayer2)
         {
             darkenTextTag = "TextCovered2";
             diaryEntryNum = 1;
-            saveEntryID = "entryTwo";
+            saveEntryID = "CoverLayer2";
         }
 
-        Diary.Instance.currentPage = diaryEntryNum;
-        Diary.Instance.ButtonsVisibility(diaryEntryNum, Diary.diaryContent);
+        
     }
 }
