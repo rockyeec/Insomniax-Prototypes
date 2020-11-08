@@ -2,60 +2,39 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class TextCoverScript : MonoBehaviour
 {
-    #region Singleton
-
-    private static TextCoverScript _instance;
-
-    public static TextCoverScript Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                _instance = GameObject.FindObjectOfType<TextCoverScript>();
-            }
-            return _instance;
-        }
-    }
-    #endregion
+    [SerializeField] int coverIndex = 0;
 
     private GameObject diaryContainer;
     private GameObject childContent;
-    GameObject textCovered;
-
-    private string darkenTextTag;
 
     private int diaryEntryNum = 0;
-
-    string diaryContentTag = "DiaryContent";
-    string diaryTag = "DiaryPackage";
-
-    private float timeDelay = 2;
-
     bool isTriggered = false;
 
-    public bool coverLayer1 = false;
-    public bool coverLayer2 = false;
-
-    private string saveEntryID;
+    private ClickableObject clickable = null;
+    private InteractableObserver observer = null;
 
     private void Start()
     {
+        CheckSavedData();
+        clickable = gameObject.AddComponent<ClickableObject>();
+        clickable.Init(this);
+        observer = gameObject.AddComponent<InteractableObserver>();
+        observer.Init(coverIndex);
+
         diaryContainer = GameObject.FindGameObjectWithTag("DiaryPackage");
         childContent = GameObject.FindGameObjectWithTag("DiaryContent");
-        CheckSavedData();
     }
 
     void CheckSavedData()
     {
-        GetTag();
-        if (SaveSystem.GetBool(saveEntryID))
+        string entryName = "Entry " + coverIndex.ToString();
+        if (SaveSystem.GetBool(entryName))
         {
-            textCovered = GameObject.FindGameObjectWithTag(darkenTextTag);
-            textCovered.SetActive(false);
+            isTriggered = true;
         }
     }
 
@@ -63,8 +42,15 @@ public class TextCoverScript : MonoBehaviour
     {
         if (col.gameObject.CompareTag("TriggerCheck") && !isTriggered)
         {
-            isTriggered = true;
-            DisableTextCover();
+            clickable.enabled = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider col)
+    {
+        if (col.gameObject.CompareTag("TriggerCheck"))
+        {
+            clickable.enabled = false;
         }
     }
 
@@ -74,48 +60,11 @@ public class TextCoverScript : MonoBehaviour
         Diary.Instance.ButtonsVisibility(diaryEntryNum, Diary.diaryContent);
         Diary.Instance.OpenButton.SetActive(false);
         Diary.Instance.DiaryEntry.SetActive(true);
-        SaveSystem.SetBool(saveEntryID, true);
-        StartCoroutine(DelayFadeAnim());
+        diaryContainer.transform.GetChild(0).gameObject.SetActive(true);
+        childContent.transform.GetChild(coverIndex).gameObject.SetActive(true);
+        isTriggered = true;
+        observer.Trigger();
     }
 
-    IEnumerator DelayFadeAnim()
-    {
-        diaryContainer.transform.GetChild(0).gameObject.SetActive(true); // Don't change this [Note to self]
 
-        //childContent.transform.GetChild(diaryContentChildNum).gameObject.SetActive(true);
-        GetTag();
-
-        childContent.transform.GetChild(diaryEntryNum).gameObject.SetActive(true);
-        textCovered = GameObject.FindGameObjectWithTag(darkenTextTag);
-
-        yield return new WaitForSeconds(1.5f);
-        TextMeshProUGUI temp = textCovered.GetComponent<TextMeshProUGUI>();
-        FadeOutDarkenText(temp);
-
-        yield return new WaitForSeconds(timeDelay);
-        textCovered.SetActive(false);
-    }
-
-    void FadeOutDarkenText(TextMeshProUGUI textCovered)
-    {
-        textCovered.CrossFadeAlpha(0, timeDelay, true);
-    }
-
-    void GetTag()
-    {
-        if (coverLayer1)
-        {
-            darkenTextTag = "TextCovered1";
-            diaryEntryNum = 0;
-            saveEntryID = "CoverLayer1";
-        }
-        else if (coverLayer2)
-        {
-            darkenTextTag = "TextCovered2";
-            diaryEntryNum = 1;
-            saveEntryID = "CoverLayer2";
-        }
-
-        
-    }
 }

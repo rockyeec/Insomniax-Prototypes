@@ -1711,6 +1711,7 @@ MonoBehaviour:
   ContentCanvas: {fileID: 2331174745716999085}
   DiaryEntry: {fileID: 2351471129166980550}
   OpenButton: {fileID: 2331174747336709077}
+  coverLayer_1: {fileID: 0}
 --- !u!1 &2331174747284005467
 GameObject:
   m_ObjectHideFlags: 0
@@ -3825,6 +3826,7 @@ GameObject:
   - component: {fileID: 3079811275683642873}
   - component: {fileID: 3079811275683642872}
   - component: {fileID: 8851008104596728423}
+  - component: {fileID: 5266323246807266673}
   m_Layer: 0
   m_Name: Diary
   m_TagString: Untagged
@@ -3874,6 +3876,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outwardsDirection: {x: -0.42, y: 0, z: 0}
   percentageOvershoot: 0.85
+--- !u!114 &5266323246807266673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3079811275683642855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a10c5d306407b1f42b2ef6ebea21310f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coverArr:
+  - {fileID: 2351471129095241108}
+  - {fileID: 6695255114261525215}
 --- !u!1 &3100606439944747054
 GameObject:
   m_ObjectHideFlags: 0
@@ -5202,7 +5219,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &105632965119575617
 RectTransform:
   m_ObjectHideFlags: 0

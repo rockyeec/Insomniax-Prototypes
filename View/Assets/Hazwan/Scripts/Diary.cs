@@ -35,6 +35,8 @@ public class Diary : DiaryManager
     public GameObject DiaryEntry;
     public GameObject OpenButton;
 
+    public GameObject coverLayer_1;
+
     void Start()
     {
         previousBtn.SetActive(false);
