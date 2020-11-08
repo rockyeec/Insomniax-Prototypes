@@ -136,7 +136,6 @@ public static class SaveSystem
         return dic[key];
     }
 
-
     public static void SetString(string key, string value)
     {
         SaveData data = Load();
