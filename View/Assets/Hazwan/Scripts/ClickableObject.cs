@@ -29,7 +29,7 @@ public class ClickableObject : MonoBehaviour
         if (Physics.Raycast(ray, out hit, 1 << 10))
         {
             GameObject touchedObject = hit.transform.gameObject;
-            Debug.Log("Touched " + touchedObject.transform.name);
+            //Debug.Log("Touched " + touchedObject.transform.name);
 
             for (int i = 0; i < ObjectName.Count; i++)
             {
