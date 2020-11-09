@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &157976089020687191
+--- !u!1 &4852584084435556389
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,90 +8,35 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 157976089020687186}
-  - component: {fileID: 2794384847564914059}
-  - component: {fileID: 7873506087293292379}
-  - component: {fileID: 568225670001853484}
-  - component: {fileID: 3068330894952732855}
-  m_Layer: 20
-  m_Name: Neighbours - Dynamic - Girl
+  - component: {fileID: 3886393224346168076}
+  m_Layer: 0
+  m_Name: Talking Neighbour
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &157976089020687186
+--- !u!4 &3886393224346168076
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 157976089020687191}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_GameObject: {fileID: 4852584084435556389}
+  m_LocalRotation: {x: -0, y: 0.8104676, z: -0, w: 0.5857835}
+  m_LocalPosition: {x: -5.74, y: 0, z: -37.79}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 2249124342089225648}
+  - {fileID: 6403787805897882713}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &2794384847564914059
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 157976089020687191}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.01
-  m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &7873506087293292379
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 157976089020687191}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6200d6501036ed4a907670ee5f17680, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isBackToOriginal: 1
-  isStop: 0
---- !u!114 &568225670001853484
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 157976089020687191}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0492fce5d819d12429c46e35f230482a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3068330894952732855
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 157976089020687191}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4c4c082d9bf4f043a362b3701e4942a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1001 &4012615963354051905
+  m_LocalEulerAnglesHint: {x: 0, y: 108.283, z: 0}
+--- !u!1001 &8090436689738816680
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 157976089020687186}
+    m_TransformParent: {fileID: 3886393224346168076}
     m_Modifications:
     - target: {fileID: 2581128791361223243, guid: 0dbbfd65caf834641b4bf1142f78d27a,
         type: 3}
@@ -153,11 +98,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9113595205848922763, guid: 0dbbfd65caf834641b4bf1142f78d27a,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 2edb7cb10ce26bb408dbe3412e411a8a, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0dbbfd65caf834641b4bf1142f78d27a, type: 3}
---- !u!4 &2249124342089225648 stripped
+--- !u!4 &6403787805897882713 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2925600713758089457, guid: 0dbbfd65caf834641b4bf1142f78d27a,
     type: 3}
-  m_PrefabInstance: {fileID: 4012615963354051905}
+  m_PrefabInstance: {fileID: 8090436689738816680}
   m_PrefabAsset: {fileID: 0}

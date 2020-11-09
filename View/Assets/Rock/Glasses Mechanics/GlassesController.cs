@@ -26,7 +26,7 @@ public class GlassesController : MonoBehaviour
 
         playerInput.OnGlassesButtonPress += PlayerInput_OnGlassesButtonPress;
 
-        StartCoroutine(WaitEndOfFrameLoad());
+        //StartCoroutine(WaitEndOfFrameLoad());
     }
     private void OnDestroy()
     {
@@ -64,14 +64,14 @@ public class GlassesController : MonoBehaviour
         GameScript.TakeOffGlasses();
         //SceneTransitionFader.FadeOutHalf();
 
-        SaveSystem.SetBool("is glasses", false);
+        //SaveSystem.SetBool("is glasses", false);
     }
     public void OnOnAnimFinish()
     {
         GameScript.PutOnGlasses();
         //SceneTransitionFader.FadeInHalf();
 
-        SaveSystem.SetBool("is glasses", true);
+        //SaveSystem.SetBool("is glasses", true);
     }
 
     public void OnPutOn()
