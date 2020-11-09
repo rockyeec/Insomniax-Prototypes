@@ -4,6 +4,7 @@ using UnityEngine;
 public class TextCoverScript : MonoBehaviour
 {
     [SerializeField] int coverIndex = 0;
+    [SerializeField] int diaryPage = 0;
 
     private GameObject diaryContainer;
     private GameObject childContent;
@@ -50,12 +51,13 @@ public class TextCoverScript : MonoBehaviour
 
     public void DisableTextCover()
     {
-        Diary.Instance.currentPage = coverIndex;
-        Diary.Instance.ButtonsVisibility(coverIndex, Diary.diaryContent);
+        Diary.Instance.currentPage = diaryPage;
+        Diary.Instance.ButtonsVisibility(diaryPage, Diary.diaryList);
+        Diary.Instance.HiddenContent(diaryPage, Diary.diaryList);
         Diary.Instance.OpenButton.SetActive(false);
         Diary.Instance.DiaryEntry.SetActive(true);
         diaryContainer.transform.GetChild(0).gameObject.SetActive(true);
-        childContent.transform.GetChild(coverIndex).gameObject.SetActive(true);
+        childContent.transform.GetChild(diaryPage).gameObject.SetActive(true);
         isTriggered = true;
         observer.Trigger();
     }

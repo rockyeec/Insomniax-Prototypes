@@ -21,15 +21,11 @@ public class Diary : DiaryManager
     }
     #endregion
 
-    static public List<GameObject> diaryContent = new List<GameObject>();
+    static public List<GameObject> diaryList = new List<GameObject>();
 
     public int currentPage = 0;
 
-    public GameObject firstContent;
-    public GameObject secondContent;
-    public GameObject thirdContent;
-    public GameObject fourthContent;
-    public GameObject fifthContent;
+    public GameObject[] diaryContent;
 
     public GameObject ContentCanvas;
     public GameObject DiaryEntry;
@@ -39,35 +35,33 @@ public class Diary : DiaryManager
 
     void Start()
     {
+        for (int i = 0; i < diaryContent.Length; i++)
+        {
+            diaryList.Add(diaryContent[i]);
+        }
         previousBtn.SetActive(false);
-        diaryContent.Add(firstContent);
-        diaryContent.Add(secondContent);
-        diaryContent.Add(thirdContent);
-        diaryContent.Add(fourthContent);
-        diaryContent.Add(fifthContent);
-        //print(diaryContent.Count);
         ActiveDiary(DiaryContainer);
     }
 
     public void NextPage()
     {
         currentPage++;
-        ButtonsVisibility(currentPage, diaryContent);
-        HiddenContent(currentPage,diaryContent);
+        ButtonsVisibility(currentPage, diaryList);
+        HiddenContent(currentPage,diaryList);
     }
 
     public void PreviousPage()
     {
         currentPage--;
-        ButtonsVisibility(currentPage, diaryContent);
-        HiddenContent(currentPage, diaryContent);
+        ButtonsVisibility(currentPage, diaryList);
+        HiddenContent(currentPage, diaryList);
     }
 
     public void OpenDiary()
     {
         OpenButton.SetActive(false);
         DiaryContainer.SetActive(true);
-        diaryContent[0].SetActive(true);
+        diaryList[0].SetActive(true);
         ContentCanvas.SetActive(true);
         DiaryEntry.SetActive(true);
 
@@ -78,8 +72,8 @@ public class Diary : DiaryManager
     {
         OpenButton.SetActive(true);
         currentPage = 0;
-        ButtonsVisibility(currentPage, diaryContent);
-        HiddenContent(currentPage, diaryContent);
+        ButtonsVisibility(currentPage, diaryList);
+        HiddenContent(currentPage, diaryList);
         DiaryContainer.SetActive(false);
         ContentCanvas.SetActive(false);
         DiaryEntry.SetActive(false);
