@@ -7,6 +7,8 @@ public class MonologueTrigger : MonoBehaviour
     [SerializeField] string saveEntry = string.Empty;
     [SerializeField] float delay = 0.0f;
     [SerializeField] string[] monologue = null;
+    [SerializeField] bool isSave = true;
+    [SerializeField] bool isRepeatedEveryGame = false;
 
     private void Start()
     {
@@ -22,6 +24,9 @@ public class MonologueTrigger : MonoBehaviour
         {
             if (other.gameObject.name != "Player")
                 return;
+            
+            if (isSave)
+                other.GetComponent<SaveManager>().SavePlayer();
 
             StartCoroutine(StartSpeech());
         }
@@ -41,7 +46,7 @@ public class MonologueTrigger : MonoBehaviour
             q.Enqueue(item);
         }
         MonologueScript.TriggerText(q);
-        SaveSystem.SetBool(saveEntry, true);
+        SaveSystem.SetBool(saveEntry, !isRepeatedEveryGame);
         KillSelf();
     }
 

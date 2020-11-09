@@ -36,7 +36,7 @@ public class DogNpcInput : InputParent
     {
         gameObject.SetActive(true);
     }
-
+    int barkInterval = 0;
     protected override void Tick(in float delta)
     {
         base.Tick(delta);
@@ -47,9 +47,18 @@ public class DogNpcInput : InputParent
         float dur = 0.5f;
         if (Time.time >= time)
         {
+            time = Time.time + dur;
+            if (barkInterval > 6)
+            {
+                barkInterval = 0;
+                AudioManager.instance.Play("Bark", "SFX");
+            }
+            else
+            {
+                ++barkInterval;
+            }
             if (CalDist())
             {
-                time = Time.time + dur;
                 direction = new Vector3(Random.Range(-0.2f, 0.2f), 0.0f, 0.5f);
                 direction.Normalize();
             }

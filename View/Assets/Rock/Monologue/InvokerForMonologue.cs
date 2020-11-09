@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InvokerForMonologue : MonoBehaviour
 {
@@ -16,6 +17,9 @@ public class InvokerForMonologue : MonoBehaviour
     [SerializeField] ButtonEnabler lookEnabler = null;
     [SerializeField] ButtonEnabler jumpEnabler = null;
     [SerializeField] ButtonEnabler menuEnabler = null;
+
+    [SerializeField] Camera3rdPerson cam = null;
+    [SerializeField] GlassesController glassesController = null;
 
     readonly List<string> commands = new List<string>();
 
@@ -43,14 +47,17 @@ public class InvokerForMonologue : MonoBehaviour
 
         Add("EnableGlasses");
         Add("DisableGlasses");
-        Add("EnableMove");
-        Add("DisableMove");
-        Add("EnableLook");
-        Add("DisableLook");
         Add("EnableJump");
         Add("DisableJump");
         Add("EnableMenu");
         Add("DisableMenu");
+        Add("SnapOutMove");
+        Add("SnapOutGlasses");
+        Add("SnapOutJump");
+        Add("ShakeScreen");
+
+        Add("SetGlassesOn");
+        Add("SetGlassesOff");
     }
 
     private void Add(in string command)
@@ -71,19 +78,23 @@ public class InvokerForMonologue : MonoBehaviour
     void DisableCameraControl()
     {
         PlayerInput.IsEnableCamera = false;
+        lookEnabler.SlideOut();
     }
     void EnableCameraControl()
     {
         PlayerInput.IsEnableCamera = true;
+        lookEnabler.SlideIn();
     }
 
     void DisableMoveControl()
     {
         PlayerInput.IsCanMove = false;
+        moveEnabler.SlideOut();
     }
     void EnableMoveControl()
     {
         PlayerInput.IsCanMove = true;
+        moveEnabler.SlideIn();
     }
     void SlowMove()
     {
@@ -128,29 +139,13 @@ public class InvokerForMonologue : MonoBehaviour
 
     void EnableGlasses()
     {
+        glassesEnabler.GetComponent<Image>().raycastTarget = true;
         glassesEnabler.SlideIn();
     }
     void DisableGlasses()
     {
+        glassesEnabler.GetComponent<Image>().raycastTarget = false;
         glassesEnabler.SlideOut();
-    }
-
-    void EnableMove()
-    {
-        moveEnabler.SlideIn();
-    }
-    void DisableMove()
-    {
-        moveEnabler.SlideOut();
-    }
-
-    void EnableLook()
-    {
-        lookEnabler.SlideIn();
-    }
-    void DisableLook()
-    {
-        lookEnabler.SlideOut();
     }
 
     void EnableJump()
@@ -169,6 +164,33 @@ public class InvokerForMonologue : MonoBehaviour
     void DisableMenu()
     {
         menuEnabler.SlideOut();
+    }
+
+    void SnapOutMove()
+    {
+        moveEnabler.SnapOut();
+    }
+    void SnapOutGlasses()
+    {        
+        glassesEnabler.SnapOut();
+    }
+    void SnapOutJump()
+    {
+        jumpEnabler.SnapOut();
+    }
+    void ShakeScreen()
+    {
+        cam.Vibrate();
+    }
+    void SetGlassesOn()
+    {
+        SaveSystem.SetBool("is glasses", true);
+        glassesController.LoadState();
+    }
+    void SetGlassesOff()
+    {
+        SaveSystem.SetBool("is glasses", false);
+        glassesController.LoadState();
     }
 
     /*private void Update()

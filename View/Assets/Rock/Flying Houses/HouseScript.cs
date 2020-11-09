@@ -8,7 +8,7 @@ public class HouseScript : MonoBehaviour
     float elapsed = 0.0f;
     float duration = 1.337f;
 
-    float depth = 1.5f;
+    float depth = 0.69f;
 
     private void Start()
     {
@@ -49,13 +49,13 @@ public class HouseScript : MonoBehaviour
         }
         elapsed = 0.0f;
 
-        duration = Random.Range(1.2f, 3.0f);
-        depth = Random.Range(0.5f, 3.5f);
+        duration = Random.Range(1.2f, 4.5f);
+        depth = Random.Range(0.5f, 1.8f);
     }
 
     private void RandomizeTarget()
     {
-        target = Vector3.one * Random.Range(1.1f, 2.0f);
+        target = Vector3.one * Random.Range(1.05f, 1.45f);
     }
 
     private void FixedUpdate()

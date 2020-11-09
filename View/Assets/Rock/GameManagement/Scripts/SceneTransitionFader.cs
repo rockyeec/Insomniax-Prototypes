@@ -22,12 +22,16 @@ public class SceneTransitionFader : MonoBehaviour
 
     public static void FadeIn()
     {
+        if (instance == null)
+            return;
         instance.gameObject.SetActive(true);
         instance.StopAllCoroutines();
         instance.StartCoroutine(instance.Fade(1.0f, 0.69f));
     }
     public static void FadeOut()
     {
+        if (instance == null)
+            return;
         instance.gameObject.SetActive(true);
         instance.StopAllCoroutines();
         instance.StartCoroutine(instance.Fade(0.0f, 5.0f));
@@ -35,12 +39,16 @@ public class SceneTransitionFader : MonoBehaviour
 
     public static void FadeInHalf()
     {
+        if (instance == null)
+            return;
         instance.gameObject.SetActive(true);
         instance.StopAllCoroutines();
         instance.StartCoroutine(instance.Fade(0.05f, 0.69f));
     }
     public static void FadeOutHalf()
     {
+        if (instance == null)
+            return;
         instance.gameObject.SetActive(true);
         instance.StopAllCoroutines();
         instance.StartCoroutine(instance.Fade(0.0f, 0.69f));

@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class LoseColliderScript : MonoBehaviour
 {
-    PlayerInput player;
+    //PlayerInput player;
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.gameObject.layer != 20)
             return;
 
-        StartCoroutine(ResetToNormal());
+        LevelManager.ResetLevel();
+    }
+
+        /*StartCoroutine(ResetToNormal());
 
         if (player == null)
             player = collision.collider.GetComponent<PlayerInput>();
@@ -23,5 +26,5 @@ public class LoseColliderScript : MonoBehaviour
         SceneTransitionFader.FadeIn();
         yield return new WaitForSeconds(0.69f);
         SceneTransitionFader.FadeOut();
-    }
+    }*/
 }

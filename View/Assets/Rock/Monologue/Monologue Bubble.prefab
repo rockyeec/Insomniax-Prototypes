@@ -53,9 +53,9 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5413002300730774665}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -132,6 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skipButton: {fileID: 0}
+  skipText: {fileID: 0}
   text: {fileID: 2022017174266041473}
   ren: {fileID: 4988795204413896833}
 --- !u!114 &2997452305507837313
@@ -146,6 +147,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30860ced6ac8a2849a19dc534d2a0121, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  manager: {fileID: 0}
+  glassesButton: {fileID: 0}
+  moveButton: {fileID: 0}
+  lookButton: {fileID: 0}
+  jumpButton: {fileID: 0}
+  menuButton: {fileID: 0}
+  fakeDiaryButton: {fileID: 0}
+  glassesEnabler: {fileID: 0}
+  moveEnabler: {fileID: 0}
+  lookEnabler: {fileID: 0}
+  jumpEnabler: {fileID: 0}
+  menuEnabler: {fileID: 0}
+  cam: {fileID: 0}
 --- !u!1 &8295650690336422787
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,17 +185,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8295650690336422787}
-  m_LocalRotation: {x: -0.20644009, y: 0.17123762, z: -0.055119675, w: 0.9617806}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.31713912, y: 0, z: 0, w: 0.948379}
+  m_LocalPosition: {x: 0, y: 0, z: -0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3725400023752795959}
   m_Father: {fileID: 7144089354128493588}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -22.224, y: 22.359, z: -11.006}
+  m_LocalEulerAnglesHint: {x: -36.98, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.8, y: 2.45}
+  m_AnchoredPosition: {x: 0.5, y: 2.45}
   m_SizeDelta: {x: 1.69, y: 0.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &380866082067520870
@@ -223,7 +237,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1001
+  m_SortingOrder: 2001
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &2022017174266041473
 MonoBehaviour:
@@ -317,4 +331,4 @@ MonoBehaviour:
   m_renderer: {fileID: 380866082067520870}
   m_maskType: 0
   _SortingLayerID: 0
-  _SortingOrder: 1001
+  _SortingOrder: 2001

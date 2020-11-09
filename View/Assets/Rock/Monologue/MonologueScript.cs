@@ -24,7 +24,9 @@ public class MonologueScript : MonoBehaviour
             skipButton.gameObject.SetActive(false);
         }
 
+        ren.sortingOrder = 2000;
         ren.material.color = ren.material.color.WithAlpha(0.0f);
+        text.color = text.color.WithAlpha(0.0f);
         skipText.color = skipText.color.WithAlpha(0.0f);
         gameObject.SetActive(false);
     }
@@ -72,11 +74,11 @@ public class MonologueScript : MonoBehaviour
                     yield return null;
                 }
             }
-            else if (stringCur.Contains("Wait"))
+            else if (stringCur.Contains("WaitFor"))
             {
-                if (stringCur.Length < 6)
+                if (stringCur.Length < 9)
                     continue;
-                string numSubstring = stringCur.Substring(5);
+                string numSubstring = stringCur.Substring(8);
                 float seconds = float.Parse(numSubstring);
 
                 StartCoroutine(Fade(0.0f, true));
@@ -125,8 +127,10 @@ public class MonologueScript : MonoBehaviour
         float duration = 0.3f;
         Color ori = ren.material.color;
         Color target = ren.material.color.WithAlpha(alpha);
-        Color textColOri = skipText.color;
-        Color textColTarget = skipText.color.WithAlpha(alpha);
+        Color textColOri = text.color;
+        Color textColTarget = text.color.WithAlpha(alpha);
+        Color skipTextOri = skipText.color;
+        Color skipTextTar = skipText.color.WithAlpha(alpha);
 
         while (elapsed < duration)
         {
@@ -135,7 +139,8 @@ public class MonologueScript : MonoBehaviour
             float t = CurveManager.Curve.Evaluate(elapsed / duration);
 
             ren.material.color = Color.LerpUnclamped(ori, target, t);
-            skipText.color = Color.LerpUnclamped(textColOri, textColTarget, t);
+            text.color = Color.LerpUnclamped(textColOri, textColTarget, t);
+            skipText.color = Color.LerpUnclamped(skipTextOri, skipTextTar, t);
 
             if (skipButton != null)
                 skipButton.image.color = Color.LerpUnclamped(ori, target, t);
@@ -144,7 +149,8 @@ public class MonologueScript : MonoBehaviour
         }
 
         ren.material.color = target;
-        skipText.color = textColTarget;
+        text.color = textColTarget;
+        skipText.color = skipTextTar;
         gameObject.SetActive(isActive);
         if (skipButton != null)
             skipButton.gameObject.SetActive(isActive);
