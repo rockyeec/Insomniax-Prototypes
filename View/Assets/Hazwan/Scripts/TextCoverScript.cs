@@ -6,8 +6,8 @@ public class TextCoverScript : MonoBehaviour
     [SerializeField] int coverIndex = 0;
     [SerializeField] int diaryPage = 0;
 
-    private GameObject diaryContainer;
-    private GameObject childContent;
+   // private GameObject diaryContainer;
+   // private GameObject childContent;
 
     bool isTriggered = false;
 
@@ -23,13 +23,12 @@ public class TextCoverScript : MonoBehaviour
     {
         CheckSavedData();
         clickable = gameObject.AddComponent<ClickableObject>();
-        clickable.ObjectName.Add(gameObject);
         clickable.Init(this);
         observer = gameObject.AddComponent<InteractableObserver>();
         observer.Init(coverIndex);
         Outline();
-        diaryContainer = GameObject.FindGameObjectWithTag("DiaryPackage");
-        childContent = GameObject.FindGameObjectWithTag("DiaryContent");
+        //diaryContainer = GameObject.FindGameObjectWithTag("DiaryPackage");
+        //childContent = GameObject.FindGameObjectWithTag("DiaryContent");
     }
 
     void OnTriggerEnter(Collider col)
@@ -57,8 +56,12 @@ public class TextCoverScript : MonoBehaviour
         Diary.Instance.HiddenContent(diaryPage, Diary.diaryList);
         Diary.Instance.OpenButton.SetActive(false);
         Diary.Instance.DiaryEntry.SetActive(true);
-        diaryContainer.transform.GetChild(0).gameObject.SetActive(true);
-        childContent.transform.GetChild(diaryPage).gameObject.SetActive(true);
+       //if (diaryContainer == null)
+       //    diaryContainer = GameObject.FindGameObjectWithTag("DiaryPackage");
+        DiaryManager.StaticDiaryContainer.transform.GetChild(0).gameObject.SetActive(true);
+        //if (childContent == null)
+        //    childContent = GameObject.FindGameObjectWithTag("DiaryContent");
+        DiaryManager.ChildContent.transform.GetChild(diaryPage).gameObject.SetActive(true);
         isTriggered = true;
         observer.Trigger();
     }

@@ -12,6 +12,18 @@ public class DiaryManager : MonoBehaviour
     public GameObject previousBtn;
     public GameObject DiaryContainer;
 
+    [SerializeField] GameObject diaryContainerWithTag = null;
+    [SerializeField] GameObject childContent = null;
+
+    private static DiaryManager instance;
+    private void Awake()
+    {
+        instance = this;
+    }
+    
+    public static GameObject ChildContent { get { return instance.childContent; } }
+    public static GameObject StaticDiaryContainer { get { return instance.diaryContainerWithTag; } }
+
     protected void ActiveDiary(GameObject diaryContainer)
     {
         if (diaryContainer.activeInHierarchy)

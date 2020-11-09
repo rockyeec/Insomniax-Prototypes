@@ -6,7 +6,13 @@ using UnityEngine.EventSystems;
 
 public class OpenDiaryBtn : MonoBehaviour
 {
+    public static OpenDiaryBtn Instance { get; private set; }
     private Button openDiaryBtn = null;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     void Start()
     {

@@ -1971,6 +1971,8 @@ MonoBehaviour:
   nextBtn: {fileID: 0}
   previousBtn: {fileID: 0}
   DiaryContainer: {fileID: 0}
+  diaryContainerWithTag: {fileID: 0}
+  childContent: {fileID: 0}
 --- !u!114 &2331174747217623431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1986,6 +1988,8 @@ MonoBehaviour:
   nextBtn: {fileID: 2331174746392024692}
   previousBtn: {fileID: 2331174747284005467}
   DiaryContainer: {fileID: 2331174745716999085}
+  diaryContainerWithTag: {fileID: 2331174746798200378}
+  childContent: {fileID: 2351471129166980550}
   currentPage: 0
   diaryContent:
   - {fileID: 2351471129965592746}
@@ -1997,7 +2001,6 @@ MonoBehaviour:
   ContentCanvas: {fileID: 2331174745716999085}
   DiaryEntry: {fileID: 2351471129166980550}
   OpenButton: {fileID: 2331174747336709077}
-  coverLayer_1: {fileID: 0}
 --- !u!1 &2331174747284005467
 GameObject:
   m_ObjectHideFlags: 0

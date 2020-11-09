@@ -7,8 +7,6 @@ public class ClickableObject : MonoBehaviour
     TextCoverScript textCoverScript;
     Camera cam = null;
 
-    public List<GameObject> ObjectName = new List<GameObject>();
-
     public void Init(TextCoverScript tcs)
     {
         textCoverScript = tcs;
@@ -25,23 +23,12 @@ public class ClickableObject : MonoBehaviour
             cam = Camera.main;
 
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 1 << 10))
+        //Debug.DrawRay(ray.origin, ray.direction * 100);
+        if (Physics.Raycast(ray, 100.0f, 1 << 10))
         {
-            GameObject touchedObject = hit.transform.gameObject;
-            //Debug.Log("Touched " + touchedObject.transform.name);
+            textCoverScript.DisableTextCover();
+            enabled = false;
 
-            for (int i = 0; i < ObjectName.Count; i++)
-            {
-                if (hit.transform.gameObject.name == ObjectName[i].transform.name)
-                {
-                    textCoverScript.DisableTextCover();
-                    enabled = false;
-                }
-            }
-
-            
-            
         }
     }
 }

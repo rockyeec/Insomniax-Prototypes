@@ -51,6 +51,9 @@ public class InvokerForMonologue : MonoBehaviour
         Add("DisableJump");
         Add("EnableMenu");
         Add("DisableMenu");
+        Add("EnableDiary");
+        Add("DisableDiary");
+
         Add("SnapOutMove");
         Add("SnapOutGlasses");
         Add("SnapOutJump");
@@ -164,6 +167,15 @@ public class InvokerForMonologue : MonoBehaviour
     void DisableMenu()
     {
         menuEnabler.SlideOut();
+    }
+
+    void EnableDiary()
+    {
+        OpenDiaryBtn.Instance.gameObject.SetActive(true);
+    }
+    void DisableDiary()
+    {
+        OpenDiaryBtn.Instance.gameObject.SetActive(false);
     }
 
     void SnapOutMove()
