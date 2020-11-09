@@ -24,6 +24,7 @@ public class TempMenuHandler : MonoBehaviour
         if (isFirstLevel)
         {
             isFirstLevel = false;
+            GameScript.Pause();
             pauseMenu.SnapIn();
         }
     }

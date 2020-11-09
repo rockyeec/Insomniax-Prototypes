@@ -27,7 +27,7 @@ public class TempMenuPageHandler : MonoBehaviour
         if (previousPage != null)
             previousPage.SlideOut();
         SlideIn();
-        AudioManager.instance.Play("FlipBook", "SFX");
+        AudioManager.instance.Play("Shoot", "SFX");
     }
     void OnClosePress()
     {
@@ -36,7 +36,7 @@ public class TempMenuPageHandler : MonoBehaviour
         if (previousPage != null)
             previousPage.SlideIn();
         SlideOut();
-        AudioManager.instance.Play("FlipBook", "SFX");
+        AudioManager.instance.Play("Shoot", "SFX");
     }
     private void Start()
     {

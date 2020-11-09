@@ -6,7 +6,6 @@ public class GameScript : MonoBehaviour
 {
     private static GameScript instance;
 
-    private static bool isStartGame = true;
     public static event Action OnPause = delegate { };
     public static event Action OnUnpause = delegate { };
     public static event Action OnPlay = delegate { };
@@ -22,19 +21,6 @@ public class GameScript : MonoBehaviour
 #endif
 
         instance = this;
-
-        if (isStartGame)
-        {
-            isStartGame = false;
-            StartCoroutine(WaitAndPause());
-        }        
-    }
-
-    IEnumerator WaitAndPause()
-    {
-        yield return new WaitForEndOfFrame();
-
-        Pause();
     }
 
     public static void Pause()
