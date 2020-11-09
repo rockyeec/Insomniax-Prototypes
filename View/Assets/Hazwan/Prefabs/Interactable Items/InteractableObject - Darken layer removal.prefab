@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2287585609653785147}
   - component: {fileID: 2287585609653785127}
   m_Layer: 10
-  m_Name: InteractableItem - Darken layer removal
+  m_Name: InteractableObject - Darken layer removal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -108,5 +108,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72fad91453a3db646b739085df909119, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coverLayer1: 1
-  coverLayer2: 0
+  coverIndex: 0

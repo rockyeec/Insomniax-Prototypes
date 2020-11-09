@@ -33,7 +33,7 @@ public class InteractableItemDiaryContent : MonoBehaviour
     {
         if (col.gameObject.CompareTag("TriggerCheck") && !isTriggered)
         {
-            Diary.diaryContent.Add(content);
+            Diary.diaryList.Add(content);
             callTempMeshRend.materials = matArrayOutline;
             //print(Diary.diaryContent.Count);
             StartCoroutine(Prompt());
