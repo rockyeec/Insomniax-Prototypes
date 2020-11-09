@@ -47,6 +47,9 @@ public class ToRedSky : MonoBehaviour
     }
     private void Update()
     {
+        if (Time.timeScale == 0.0f)
+            return;
+
         if (elapsed < CurveManager.AnimationDuration)
         {
             elapsed += Time.deltaTime;

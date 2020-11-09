@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class LoseColliderScript : MonoBehaviour
 {
-    [SerializeField] string monologueTrigger1 = "Pulsating Houses 1";
     //PlayerInput player;
     private void OnCollisionEnter(Collision collision)
     {

@@ -26,13 +26,17 @@ public class GlassesController : MonoBehaviour
 
         playerInput.OnGlassesButtonPress += PlayerInput_OnGlassesButtonPress;
 
-        LoadState();
+        StartCoroutine(WaitEndOfFrameLoad());
     }
     private void OnDestroy()
     {
         playerInput.OnGlassesButtonPress -= PlayerInput_OnGlassesButtonPress;
     }
-
+    IEnumerator WaitEndOfFrameLoad()
+    {
+        yield return new WaitForEndOfFrame();
+        LoadState();
+    }
     public void LoadState()
     {
         if (SaveSystem.GetBool("is glasses"))
