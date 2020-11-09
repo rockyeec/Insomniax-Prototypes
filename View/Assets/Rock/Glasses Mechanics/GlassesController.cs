@@ -79,12 +79,16 @@ public class GlassesController : MonoBehaviour
         glasses.transform.SetParent(head);
         glasses.transform.localPosition = Vector3.zero;
         glasses.transform.localRotation = Quaternion.identity;
+
+        AudioManager.instance.Play("Glasses", "SFX");
     }
     public void OnTakeOff()
     {
         glasses.transform.SetParent(hand);
         glasses.transform.localPosition = handPositionOffset;
         glasses.transform.localRotation = Quaternion.Euler(handEulerOffset);
+
+        AudioManager.instance.Play("Glasses", "SFX");
     }
 
     public void FromPocketOn()
