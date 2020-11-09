@@ -16,7 +16,6 @@ public class ClickableObject : MonoBehaviour
     }
     void Update()
     {
-
         if (!Input.GetMouseButtonDown(0))
             return;
 

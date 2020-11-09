@@ -45,6 +45,7 @@ public class Diary : DiaryManager
 
     public void NextPage()
     {
+        AudioManager.instance.Play("FlipBook", "SFX");
         currentPage++;
         ButtonsVisibility(currentPage, diaryList);
         HiddenContent(currentPage,diaryList);
@@ -52,6 +53,7 @@ public class Diary : DiaryManager
 
     public void PreviousPage()
     {
+        AudioManager.instance.Play("FlipBook", "SFX");
         currentPage--;
         ButtonsVisibility(currentPage, diaryList);
         HiddenContent(currentPage, diaryList);
