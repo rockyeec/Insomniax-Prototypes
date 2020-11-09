@@ -17,9 +17,14 @@ public class LevelManager : MonoBehaviour
 
             if (data == null || data.level == 0)
             {
-                SaveSystem.SavePlayer(Vector3.zero, 1);
+                //SaveSystem.SavePlayer(Vector3.zero, 1);
+                return 1;
             }
-            return SaveSystem.LoadData().level;
+            else
+            {
+                return SaveSystem.LoadData().level;
+            }
+            
         }
     }
 

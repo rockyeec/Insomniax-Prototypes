@@ -28,23 +28,32 @@ public static class SaveSystem
 
     public static SaveData LoadData()
     {
-        string path = Application.persistentDataPath + "/player.save";
-
-        if (File.Exists(path))
+        try 
         {
-            BinaryFormatter formatter = new BinaryFormatter();
-            FileStream stream = new FileStream(path, FileMode.Open);
+            string path = Application.persistentDataPath + "/player.save";
+            //FileStream stream = new FileStream(path, FileMode.Open);
+            
+            if (File.Exists(path))
+            {
+                BinaryFormatter formatter = new BinaryFormatter();
+                FileStream stream = new FileStream(path, FileMode.Open);
+                
+                SaveData data = formatter.Deserialize(stream) as SaveData;
+                stream.Close();
 
-            SaveData data = formatter.Deserialize(stream) as SaveData;
-            stream.Close();
-
-            return data;
-        }
-        else
-        {
-            Debug.Log("Save file not found");
-            return null;
+                return data;
+                
+                
+            }
+            else
+            {
+                Debug.Log("Save file not found");
+                //BinaryFormatter formatter = new BinaryFormatter();
+                //SaveData data = new SaveData;
+                return null;
+            }
         }
         
+        catch(System.Exception e) { Debug.LogError("Error Loading save" + e); return null; }
     }
 }
