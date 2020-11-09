@@ -23,7 +23,7 @@ public class Diary : DiaryManager
 
     static public List<GameObject> diaryContent = new List<GameObject>();
 
-
+    public GameObject[] defaultEntries;
     public GameObject firstContent;
     public GameObject secondContent;
     public GameObject thirdContent;
@@ -44,6 +44,7 @@ public class Diary : DiaryManager
         diaryContent.Add(fifthContent);
         //print(diaryContent.Count);
         ActiveDiary(DiaryContainer);
+        
     }
 
     public void NextPage()

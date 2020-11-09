@@ -449,7 +449,8 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 105632965119575617}
   m_Father: {fileID: 7854284360309260169}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1701,6 +1702,7 @@ MonoBehaviour:
   nextBtn: {fileID: 2331174746392024692}
   previousBtn: {fileID: 2331174747284005467}
   DiaryContainer: {fileID: 2331174745716999085}
+  defaultEntries: []
   firstContent: {fileID: 2351471129965592746}
   secondContent: {fileID: 2821104076164986363}
   thirdContent: {fileID: 4422728650327222508}
@@ -2161,7 +2163,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2351471129095241114
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2608,7 +2610,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2351471130308480788
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2657,16 +2659,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Name: Alexander
-
-    Age: 17
-
-    Birthday: 15th January 2000
-
-    Gender:
-    Male
-
-    Hometown: Kuala Lumpur'
+  m_text: testing
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4494,8 +4487,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 105632965119575617}
+  m_Children: []
   m_Father: {fileID: 7854284360309260169}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7305,7 +7297,7 @@ GameObject:
   - component: {fileID: 6695255114261525215}
   m_Layer: 5
   m_Name: Covered
-  m_TagString: TextCovered1
+  m_TagString: TextCovered2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7321,12 +7313,12 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 6077685492934904069}
+  m_Father: {fileID: 7951155554277591148}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 100.00003, y: 0}
+  m_AnchoredPosition: {x: 100.00003, y: -216.99997}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &617675996805647582
