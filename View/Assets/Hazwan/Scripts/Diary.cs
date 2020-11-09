@@ -31,8 +31,6 @@ public class Diary : DiaryManager
     public GameObject DiaryEntry;
     public GameObject OpenButton;
 
-    public GameObject coverLayer_1;
-
     void Start()
     {
         for (int i = 0; i < diaryContent.Length; i++)
@@ -61,6 +59,7 @@ public class Diary : DiaryManager
 
     public void OpenDiary()
     {
+        AudioManager.instance.Play("OpenBook", "SFX");
         OpenButton.SetActive(false);
         DiaryContainer.SetActive(true);
         diaryList[0].SetActive(true);
