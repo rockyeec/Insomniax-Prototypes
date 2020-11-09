@@ -14,11 +14,13 @@ public class ButtonEnabler : MonoBehaviour
     }
     public void SnapIn()
     {
+        enabled = false;
         b = inPos;
         transform.localPosition = inPos;
     }
     public void SnapOut()
     {
+        enabled = false;
         b = outPos;
         transform.localPosition = outPos;
     }
@@ -28,7 +30,6 @@ public class ButtonEnabler : MonoBehaviour
     float duration = 0.0f;
 
     [SerializeField] Vector3 outwardDisplacement = new Vector3(0.0f, -420.0f, 0.0f);
-    [SerializeField] bool isDefaultSnappedIn = false;
 
     Vector3 outPos, inPos;
     Vector3 a, b;
@@ -37,14 +38,7 @@ public class ButtonEnabler : MonoBehaviour
         inPos = transform.localPosition;
         outPos = transform.localPosition + outwardDisplacement;
 
-        if (isDefaultSnappedIn)
-        {
-            SnapIn();
-        }
-        else
-        {
-            SnapOut();
-        }
+        SnapIn();
     }
     private void StartLerp(Vector3 target)
     {

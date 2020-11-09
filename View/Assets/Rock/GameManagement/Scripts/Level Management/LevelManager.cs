@@ -26,7 +26,7 @@ public class LevelManager : MonoBehaviour
     {
         instance.StartCoroutine(instance.Transition());
     }
-    public static void ResetGame()
+    public static void ResetLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
@@ -39,6 +39,8 @@ public class LevelManager : MonoBehaviour
 
         int nextLevel = (SceneManager.GetActiveScene().buildIndex + 1) % SceneManager.sceneCountInBuildSettings;
         SaveSystem.SetInt("level", nextLevel);
+        SaveSystem.SetVector3("player position", Vector3.zero);
+        SaveSystem.SetBool("is glasses", false);
         SceneManager.LoadScene(nextLevel);
     }
 }

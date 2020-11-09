@@ -13,9 +13,9 @@ public class GlassesController : MonoBehaviour
     Transform head;
     Transform hand;
 
-    string isAnimPlayingString = "isGlassesTransition";
-    string putOnString = "Put On Glasses";
-    string putOffString = "Put Off Glasses";
+    readonly string isAnimPlayingString = "isGlassesTransition";
+    readonly string putOnString = "Put On Glasses";
+    readonly string putOffString = "Put Off Glasses";
     bool isOn = false;
     bool IsTransitioning { get { return animator.GetBool(isAnimPlayingString); } }
 
@@ -25,10 +25,23 @@ public class GlassesController : MonoBehaviour
         hand = animator.GetBoneTransform(HumanBodyBones.RightHand);
 
         playerInput.OnGlassesButtonPress += PlayerInput_OnGlassesButtonPress;
+
+        LoadState();
     }
     private void OnDestroy()
     {
         playerInput.OnGlassesButtonPress -= PlayerInput_OnGlassesButtonPress;
+    }
+
+    public void LoadState()
+    {
+        if (SaveSystem.GetBool("is glasses"))
+        {
+            glasses.SetActive(true);
+            OnPutOn();
+            OnOnAnimFinish();
+            isOn = true;
+        }
     }
 
     private void PlayerInput_OnGlassesButtonPress()
@@ -46,11 +59,15 @@ public class GlassesController : MonoBehaviour
 
         GameScript.TakeOffGlasses();
         //SceneTransitionFader.FadeOutHalf();
+
+        SaveSystem.SetBool("is glasses", false);
     }
     public void OnOnAnimFinish()
     {
         GameScript.PutOnGlasses();
         //SceneTransitionFader.FadeInHalf();
+
+        SaveSystem.SetBool("is glasses", true);
     }
 
     public void OnPutOn()
