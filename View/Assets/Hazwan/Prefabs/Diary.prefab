@@ -1159,8 +1159,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 17
+  m_fontSizeBase: 17
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2325,8 +2325,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 321, y: 206.50003}
-  m_SizeDelta: {x: 100.221634, y: 37.000023}
+  m_AnchoredPosition: {x: 300.2, y: 159.3}
+  m_SizeDelta: {x: 81.72792, y: 28.312569}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2331174747794639511
 CanvasRenderer:
@@ -4974,7 +4974,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "My Memories :)\n15th January 2013 \r"
+  m_text: "<b>My Memories :)</b>\n15th January 2013 \r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2af7cd50236e4174d9fd0bb071787592, type: 2}
   m_sharedMaterial: {fileID: 8759312306410246067, guid: 2af7cd50236e4174d9fd0bb071787592,
@@ -5008,7 +5008,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535

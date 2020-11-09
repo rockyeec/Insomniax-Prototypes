@@ -23,6 +23,7 @@ public class TextCoverScript : MonoBehaviour
     {
         CheckSavedData();
         clickable = gameObject.AddComponent<ClickableObject>();
+        clickable.ObjectName.Add(gameObject);
         clickable.Init(this);
         observer = gameObject.AddComponent<InteractableObserver>();
         observer.Init(coverIndex);
