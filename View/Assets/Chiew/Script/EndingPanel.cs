@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class EndingPanel : MonoBehaviour
 {
@@ -15,6 +16,10 @@ public class EndingPanel : MonoBehaviour
     public GameObject buttonsParents;
     public Image imagesBackground;
     public GameObject holder;
+    public TextMeshProUGUI TMP_UI;
+
+    [Header("What text you wanted to show on it")]
+    public string Text_Here;
  
     //Variable as below
     //private
@@ -44,6 +49,8 @@ public class EndingPanel : MonoBehaviour
             { imagesBackground.gameObject.SetActive(true); }
             else { imagesBackground.gameObject.SetActive(false); }
             buttonsParents.SetActive(true);
+            TMP_UI.gameObject.SetActive(true);
+            TMP_UI.text = Text_Here;
         }
         else
         {

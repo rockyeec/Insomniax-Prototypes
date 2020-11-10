@@ -49,11 +49,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a923b6364c402f40a6c72a12dbfd8cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debug: 0
+  debug: 1
   withPicture: 1
   buttonsParents: {fileID: 3972381029425157479}
   imagesBackground: {fileID: 3972381028844928908}
   holder: {fileID: 3972381028010787672}
+  TMP_UI: {fileID: 3972381029151884488}
+  Text_Here: To Be Continue...
 --- !u!1 &3972381028010787672
 GameObject:
   m_ObjectHideFlags: 0
