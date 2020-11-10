@@ -581,6 +581,26 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 3972381027691947331, guid: de85ea4fb6e471840b0c1d63393da513,
+        type: 3}
+      propertyPath: withPicture
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3972381027691947331, guid: de85ea4fb6e471840b0c1d63393da513,
+        type: 3}
+      propertyPath: debug
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3972381027691947331, guid: de85ea4fb6e471840b0c1d63393da513,
+        type: 3}
+      propertyPath: TMP_UI
+      value: 
+      objectReference: {fileID: 3972381029195652319}
+    - target: {fileID: 3972381027691947331, guid: de85ea4fb6e471840b0c1d63393da513,
+        type: 3}
+      propertyPath: Text_Here
+      value: To Be Continue...
+      objectReference: {fileID: 0}
     - target: {fileID: 3972381027691947333, guid: de85ea4fb6e471840b0c1d63393da513,
         type: 3}
       propertyPath: m_Name
@@ -628,3 +648,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de85ea4fb6e471840b0c1d63393da513, type: 3}
+--- !u!114 &3972381029195652319 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3972381029151884488, guid: de85ea4fb6e471840b0c1d63393da513,
+    type: 3}
+  m_PrefabInstance: {fileID: 3972381029195652318}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
