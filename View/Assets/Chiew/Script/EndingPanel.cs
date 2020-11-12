@@ -29,14 +29,9 @@ public class EndingPanel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(debug == true) { PanelOnOfF(true); }
-        else { PanelOnOfF(false); }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        //if(debug == true) { PanelOnOfF(true); }
+        //else { PanelOnOfF(false); }
+        PanelOnOfF(false);
     }
 
     public void PanelOnOfF(bool o)
@@ -71,7 +66,6 @@ public class EndingPanel : MonoBehaviour
         //LevelManager.changescene(1);
         DebugFunction("Change to main menu");
     }
-
 
     private void DebugFunction(string d)
     {
