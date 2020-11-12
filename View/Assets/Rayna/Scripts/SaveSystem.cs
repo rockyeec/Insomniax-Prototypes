@@ -13,6 +13,8 @@ public static class SaveSystem
         public Dictionary<string, float> floatDic = new Dictionary<string, float>();
         public Dictionary<string, string> stringDic = new Dictionary<string, string>();
         public Dictionary<string, float[]> vector3Dic = new Dictionary<string, float[]>();
+        public Dictionary<string, int[]> intArrDic = new Dictionary<string, int[]>();
+        public Dictionary<string, string[]> stringArrDic = new Dictionary<string, string[]>();
     }
 
     private static void Save(in SaveData data)
@@ -189,5 +191,57 @@ public static class SaveSystem
             dic.Add(key, new float[3] { 0.0f, 0.0f, 0.0f });
         }
         return new Vector3( dic[key][0], dic[key][1], dic[key][2]);
+    }
+
+    public static void SetIntArr(string key, int[] value)
+    {
+        SaveData data = Load();
+        var dic = data.intArrDic;
+        if (dic.ContainsKey(key))
+        {
+            dic[key] = value;
+        }
+        else
+        {
+            dic.Add(key, value);
+        }
+
+        Save(data);
+    }
+    public static int[] GetIntArr(string key)
+    {
+        SaveData data = Load();
+        var dic = data.intArrDic;
+        if (!dic.ContainsKey(key))
+        {
+            dic.Add(key, null);
+        }
+        return dic[key];
+    }
+
+    public static void SetStringArr(string key, string[] value)
+    {
+        SaveData data = Load();
+        var dic = data.stringArrDic;
+        if (dic.ContainsKey(key))
+        {
+            dic[key] = value;
+        }
+        else
+        {
+            dic.Add(key, value);
+        }
+
+        Save(data);
+    }
+    public static string[] GetStringArr(string key)
+    {
+        SaveData data = Load();
+        var dic = data.stringArrDic;
+        if (!dic.ContainsKey(key))
+        {
+            dic.Add(key, null);
+        }
+        return dic[key];
     }
 }

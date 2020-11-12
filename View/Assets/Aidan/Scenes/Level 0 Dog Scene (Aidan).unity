@@ -10839,7 +10839,7 @@ PrefabInstance:
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.size
-      value: 28
+      value: 27
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
@@ -10914,42 +10914,42 @@ PrefabInstance:
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[12]
-      value: "I can\u2019t move?"
-      objectReference: {fileID: 0}
-    - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
-        type: 3}
-      propertyPath: monologue.Array.data[13]
       value: My eyesight-
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
-      propertyPath: monologue.Array.data[14]
+      propertyPath: monologue.Array.data[13]
       value: 'Glasses? '
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
-      propertyPath: monologue.Array.data[15]
+      propertyPath: monologue.Array.data[14]
       value: EnableGlasses
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
-      propertyPath: monologue.Array.data[16]
+      propertyPath: monologue.Array.data[15]
       value: WaitFor 0.81
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
-      propertyPath: monologue.Array.data[17]
+      propertyPath: monologue.Array.data[16]
       value: HighlightGlasses
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
-      propertyPath: monologue.Array.data[18]
+      propertyPath: monologue.Array.data[17]
       value: Hold
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
-      propertyPath: monologue.Array.data[19]
+      propertyPath: monologue.Array.data[18]
       value: TurnOffHighlight
+      objectReference: {fileID: 0}
+    - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
+        type: 3}
+      propertyPath: monologue.Array.data[19]
+      value: DisableGlasses
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
@@ -10959,12 +10959,12 @@ PrefabInstance:
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[21]
-      value: DisableGlasses
+      value: "I can see\u2026? "
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[22]
-      value: "I can see\u2026? "
+      value: 'The environment is distorting?  '
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
@@ -10979,27 +10979,32 @@ PrefabInstance:
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[23]
-      value: 'The environment is distorting?  '
-      objectReference: {fileID: 0}
-    - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
-        type: 3}
-      propertyPath: monologue.Array.data[24]
       value: EnableMoveControl
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
-      propertyPath: monologue.Array.data[25]
+      propertyPath: monologue.Array.data[24]
       value: " I can\u2019t seem to take the glasses off, looks like it's staying
         on.  "
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
-      propertyPath: monologue.Array.data[26]
+      propertyPath: monologue.Array.data[25]
       value: ' this is definitely not ideal  '
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
+      propertyPath: monologue.Array.data[26]
+      value: NormalMove
+      objectReference: {fileID: 0}
+    - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
+        type: 3}
       propertyPath: monologue.Array.data[27]
+      value: NormalMove
+      objectReference: {fileID: 0}
+    - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
+        type: 3}
+      propertyPath: monologue.Array.data[28]
       value: NormalMove
       objectReference: {fileID: 0}
     - target: {fileID: 8267381906275170538, guid: 7f697d8f15228f243bae8ca9f2a48a06,
