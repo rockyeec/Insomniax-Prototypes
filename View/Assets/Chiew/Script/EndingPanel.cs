@@ -29,7 +29,7 @@ public class EndingPanel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PanelOnOfF(true);
+        PanelOnOfF(false);
         //if (debug == true) { PanelOnOfF(true); }
         //else { PanelOnOfF(false); }
     }
