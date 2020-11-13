@@ -24,9 +24,14 @@ public class Dialogue : ScriptableObject
         public bool isEndedSentence = false;
         [HideInInspector]
         public bool isPlayed = false;
-        [Header("Related to MCQ Mechanics")]
+
+        [Header("If only have MCQ")]
         public bool isQuestion = false;
+        [Header("Maximum 3")]
         public MCQInfo[] newMCQ = new MCQInfo[3]; //Line 25
+
+        [Header("For Level 3 dialogue, tick for last selection")]
+        public bool isEndMCQ = false;
     }
     public List<infomation> dialogueInfo;
 }

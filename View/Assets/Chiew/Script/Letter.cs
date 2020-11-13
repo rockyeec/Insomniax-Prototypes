@@ -19,15 +19,15 @@ public class Letter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        PanelOnOfF(false);
     }
 
     public void buttonFunction()
     {
         if(edPanel != null)
         {
-            edPanel.PanelOnOfF(true); //on endingpanel
             this.PanelOnOfF(false);
+            edPanel.PanelOnOfF(true); //on endingpanel
         }
         DebugFunction("Done Reading and next");
     }

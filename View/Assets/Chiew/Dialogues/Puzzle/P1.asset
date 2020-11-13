@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d716d7da002bf7146a67300f7c972544, type: 3}
+  m_Name: P1
+  m_EditorClassIdentifier: 
+  dialogueInfo:
+  - isBubble: 0
+    TextColor: {r: 0, g: 0, b: 0, a: 1}
+    characImage: {fileID: 0}
+    nameText: Inner Alex
+    DialogueText: You know you dont...right?
+    isEndedSentence: 0
+    isPlayed: 0
+    isQuestion: 0
+    newMCQ: []
+    isEndMCQ: 0
+  - isBubble: 0
+    TextColor: {r: 0, g: 0, b: 0, a: 1}
+    characImage: {fileID: 0}
+    nameText: Inner Alex
+    DialogueText: 'After all, what do you have? '
+    isEndedSentence: 0
+    isPlayed: 0
+    isQuestion: 0
+    newMCQ: []
+    isEndMCQ: 0
+  - isBubble: 0
+    TextColor: {r: 0, g: 0, b: 0, a: 1}
+    characImage: {fileID: 0}
+    nameText: Alex
+    DialogueText: I ... I have
+    isEndedSentence: 0
+    isPlayed: 0
+    isQuestion: 1
+    newMCQ:
+    - answerString: I have my memories of them
+      nxtDialogue: {fileID: 11400000, guid: ac338d006c59bfe4ca12394810399c27, type: 2}
+    - answerString: I...I don't know
+      nxtDialogue: {fileID: 11400000, guid: 9e2ce6b346d5645408231853612ea7ca, type: 2}
+    - answerString: 
+      nxtDialogue: {fileID: 0}
+    isEndMCQ: 0
