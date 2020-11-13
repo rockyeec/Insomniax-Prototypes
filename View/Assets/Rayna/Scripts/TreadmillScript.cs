@@ -35,7 +35,7 @@ public class TreadmillScript : MonoBehaviour
     }
     IEnumerator ScriptEnabler()
     {
-        yield return new WaitForSeconds(13.37f);
+        yield return new WaitForSeconds(6.9f);
         enabled = true;
     }
 
