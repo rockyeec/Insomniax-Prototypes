@@ -2,60 +2,28 @@
 
 public class HouseScript : MonoBehaviour
 {
-    Vector3 target;
-    Vector3 source;
+    [SerializeField] Transform leftHouse = null;
+    [SerializeField] Transform rightHouse = null;
+
+    Vector3 a;
+    Vector3 b;
 
     float elapsed = 0.0f;
     float duration = 1.337f;
 
-    float depth = 0.69f;
-
     private void Start()
     {
-        GameScript.OnGlassesOn += GameScript_OnGlassesOn;
-        GameScript.OnGlassesOff += GameScript_OnGlassesOff;
+        Instantiate(HouseFlyManager.HousePrefabs.GetRandom(), leftHouse).transform.localPosition = Vector3.zero;
+        Instantiate(HouseFlyManager.HousePrefabs.GetRandom(), rightHouse).transform.localPosition = Vector3.zero;
 
-        Instantiate(HouseFlyManager.HousePrefabs.GetRandom(), transform).transform.localPosition = Vector3.zero;
-
-        RandomizeTarget();
-        source = transform.localScale;
-
-        ResetHouse();
-        enabled = false;
-    }
-    private void OnDestroy()
-    {
-        GameScript.OnGlassesOn -= GameScript_OnGlassesOn;
-        GameScript.OnGlassesOff -= GameScript_OnGlassesOff;
-    }
-
-    private void GameScript_OnGlassesOff()
-    {
-        ResetHouse();
-        enabled = false;
-    }
-
-    private void GameScript_OnGlassesOn()
-    {
-        enabled = true;
-    }
-
-    private void ResetHouse()
-    {
-        if (Mathf.Abs(source.z) > Mathf.Abs(target.z))
-        {
-            SwapSourceTarget();
-            RandomizeTarget();
-        }
-        elapsed = 0.0f;
-
+        a = Vector3.one;
+        b = (Vector3.one * 1.8f).With(x: 1.0f);
         duration = Random.Range(1.2f, 4.5f);
-        depth = Random.Range(0.5f, 1.8f);
-    }
 
-    private void RandomizeTarget()
-    {
-        target = Vector3.one * Random.Range(1.05f, 1.45f);
+        if (Random.Range(0, 2) == 1)
+        {
+            SwapAB();
+        }
     }
 
     private void FixedUpdate()
@@ -63,25 +31,21 @@ public class HouseScript : MonoBehaviour
         if (elapsed < duration)
         {
             elapsed += Time.fixedDeltaTime;
-            transform.localScale = Vector3.LerpUnclamped(
-                source,
-                target,
-                CurveManager.Curve.Evaluate(elapsed / duration));
+            float t = CurveManager.Curve.Evaluate(elapsed / duration);
+            leftHouse.localScale = Vector3.LerpUnclamped(a, b, t);
+            rightHouse.localScale = Vector3.LerpUnclamped(b, a, t);
         }
         else
         {
             elapsed -= duration;
-            SwapSourceTarget();
+            SwapAB();
         }
-
-        if (transform.localPosition.z < depth)
-            transform.localPosition += Vector3.forward * Time.deltaTime * 0.16f;
     }
 
-    private void SwapSourceTarget()
+    private void SwapAB()
     {
-        Vector3 swap = target;
-        target = source;
-        source = swap;
+        Vector3 swap = a;
+        a = b;
+        b = swap;
     }
 }

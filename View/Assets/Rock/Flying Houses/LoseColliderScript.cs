@@ -10,7 +10,11 @@ public class LoseColliderScript : MonoBehaviour
         if (collision.collider.gameObject.layer != 20)
             return;
 
-        LevelManager.ResetLevel();
+        if (collision.collider.name == "Dog")
+            collision.collider.transform.position += (Vector3.down * (transform.position.y - 4.2f));
+
+        else if (collision.collider.name == "Player")
+            LevelManager.ResetLevel();
     }
 
         /*StartCoroutine(ResetToNormal());

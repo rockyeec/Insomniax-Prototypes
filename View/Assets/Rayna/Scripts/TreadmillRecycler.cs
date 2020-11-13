@@ -49,7 +49,7 @@ public class TreadmillRecycler : MonoBehaviour
         {
             allTreadmills[i].Art.localScale
                 = allTreadmills[i].Box.size
-                = new Vector3(5.0f, 1.0f, platformLength);
+                = new Vector3(5.0f, 0.1f, platformLength);
 
             allTreadmills[i].transform.localPosition = new Vector3(
                 0.0f,
