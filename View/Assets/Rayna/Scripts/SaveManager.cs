@@ -1,27 +1,24 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class SaveManager : MonoBehaviour
 {
+    private void Start()
+    {
+        LoadPlayer();
+    }
+
     public void SavePlayer()
     {
-        SaveSystem.SavePlayer(transform.position, null);
+        SaveSystem.SetVector3("player position", transform.position);
     }
 
     public void LoadPlayer()
     {
-        SaveData data = SaveSystem.LoadData();
+        Vector3 position = SaveSystem.GetVector3("player position");
 
-        SceneManager.LoadScene(data.level);
+        if (position == Vector3.zero)
+            return;
 
-        if (data.position[0] == 0.0f && data.position[1] == 0.0f && data.position[2] == 0.0f)
-            transform.position = new Vector3 ( data.position[0], data.position[1], data.position[2] );
-    }
-    void Update()
-    {
-        if (gameObject.transform.position.y < -8.0f)
-        {
-            LoadPlayer();
-        }
+        transform.position = position;
     }
 }

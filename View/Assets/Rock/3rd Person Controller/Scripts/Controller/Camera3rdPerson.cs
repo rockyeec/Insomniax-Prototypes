@@ -53,6 +53,28 @@ public class Camera3rdPerson : MonoBehaviour
                 new Vector3(x, -y, z),
             };
     }
+
+    public void Vibrate()
+    {
+        StopAllCoroutines();
+        StartCoroutine(HandleVibration());
+    }
+    IEnumerator HandleVibration()
+    {
+        float magnitude = 0.420f;
+        float elapsed = 0.0f;
+        float duration = 0.69f;
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            vibrator.localPosition = new Vector3(
+                UnityEngine.Random.Range(-magnitude, magnitude),
+                UnityEngine.Random.Range(-magnitude, magnitude),
+                UnityEngine.Random.Range(-magnitude, magnitude));
+            yield return null;
+        }
+        vibrator.localPosition = Vector3.zero;
+    }
     
     public void Tick(float pitchInput, float yawInput, in Vector3 target, float delta)
     {
@@ -95,5 +117,5 @@ public class Camera3rdPerson : MonoBehaviour
         rail.localPosition = Vector3.Lerp(rail.localPosition, Vector3.back * distance, delta * 13.37f);
     }
 
-
+    
 }

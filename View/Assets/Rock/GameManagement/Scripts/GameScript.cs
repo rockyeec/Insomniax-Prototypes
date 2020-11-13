@@ -4,9 +4,11 @@ using System;
 
 public class GameScript : MonoBehaviour
 {
-    private static bool isStartGame = true;
+    private static GameScript instance;
+
     public static event Action OnPause = delegate { };
     public static event Action OnUnpause = delegate { };
+    public static event Action OnPlay = delegate { };
     public static event Action OnGlassesOn = delegate { };
     public static event Action OnGlassesOff = delegate { };
 
@@ -18,18 +20,7 @@ public class GameScript : MonoBehaviour
         Debug.unityLogger.logEnabled = false;
 #endif
 
-        if (isStartGame)
-        {
-            isStartGame = false;
-            StartCoroutine(WaitAndPause());
-        }        
-    }
-
-    IEnumerator WaitAndPause()
-    {
-        yield return new WaitForEndOfFrame();
-
-        Pause();
+        instance = this;
     }
 
     public static void Pause()
@@ -38,6 +29,7 @@ public class GameScript : MonoBehaviour
             return;
 
         OnPause();
+        instance.StopAllCoroutines();
         Time.timeScale = 0.0f;
     }
 
@@ -47,7 +39,8 @@ public class GameScript : MonoBehaviour
             return;
 
         OnUnpause();
-        Time.timeScale = 1.0f;
+        instance.StopAllCoroutines();
+        instance.StartCoroutine(instance.WaitForCameraEffects());
     }
 
     public static void PutOnGlasses()
@@ -57,5 +50,12 @@ public class GameScript : MonoBehaviour
     public static void TakeOffGlasses()
     {
         OnGlassesOff();
+    }
+
+    IEnumerator WaitForCameraEffects()
+    {
+        yield return new WaitForSecondsRealtime(CurveManager.CameraAnimationDuration);
+        OnPlay();
+        Time.timeScale = 1.0f;
     }
 }

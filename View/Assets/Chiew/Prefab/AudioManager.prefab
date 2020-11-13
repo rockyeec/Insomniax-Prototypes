@@ -88,7 +88,7 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: Jump
-    clip: {fileID: 8300000, guid: 22fb5f335a4f2254fa4ae1ce2d391a78, type: 3}
+    clip: {fileID: 8300000, guid: 4fb7243302bb10947baf7d32a1684dbb, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0
@@ -99,8 +99,20 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: CarAccident
+    clip: {fileID: 8300000, guid: 8fd1a0163bbece941a91b9aa2e5a4b43, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
   - name: Rain
     clip: {fileID: 8300000, guid: 794cf85daecb3bc45b473edbf56b50c1, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Whoosh
+    clip: {fileID: 8300000, guid: c7451d6f844c6fc46aef3deb1b7579db, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0

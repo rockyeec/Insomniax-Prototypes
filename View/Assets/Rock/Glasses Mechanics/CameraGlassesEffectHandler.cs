@@ -4,7 +4,7 @@ using UnityEngine;
 public class CameraGlassesEffectHandler : MonoBehaviour
 {
     Camera cam = null;
-    Transform camParent = null;
+    [SerializeField] Transform camParent = null;
 
 
     float targetFov;
@@ -38,14 +38,13 @@ public class CameraGlassesEffectHandler : MonoBehaviour
     {
         FillUpVarIfNull();
 
-        StartLerp(105.0f, Vector3.forward * 1.5f);
+        StartLerp(80.0f, Vector3.forward * 1.0f);
     }
 
     private void FillUpVarIfNull()
     {
         if (cam == null)
             cam = Camera.main;
-        camParent = cam.transform.parent;
     }
 
 
@@ -57,6 +56,7 @@ public class CameraGlassesEffectHandler : MonoBehaviour
     }
     private void StartLerp(in float targetFov, Vector3 targetPos)
     {
+        FillUpVarIfNull();
         enabled = true;
 
         elapsed = 0.0f;
@@ -70,6 +70,7 @@ public class CameraGlassesEffectHandler : MonoBehaviour
     }
     private void EndLerp()
     {
+        FillUpVarIfNull();
         enabled = false;
 
         camParent.localPosition = targetPos;
@@ -79,6 +80,7 @@ public class CameraGlassesEffectHandler : MonoBehaviour
     {
         if (elapsed < duration)
         {
+            FillUpVarIfNull();
             elapsed += Time.deltaTime;
 
             float t = CurveManager.FadeCurve.Evaluate(elapsed / duration);

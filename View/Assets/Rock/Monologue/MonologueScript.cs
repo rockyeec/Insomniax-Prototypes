@@ -7,8 +7,9 @@ using UnityEngine.UI;
 public class MonologueScript : MonoBehaviour
 {
     [SerializeField] Button skipButton = null;
+    [SerializeField] TextMeshProUGUI skipText = null;
     [SerializeField] TextMeshPro text = null;
-    [SerializeField] SpriteRenderer ren = null;
+    [SerializeField] Renderer ren = null;
     Camera cam;
     bool isSkip = false;
 
@@ -23,6 +24,10 @@ public class MonologueScript : MonoBehaviour
             skipButton.gameObject.SetActive(false);
         }
 
+        ren.sortingOrder = 2000;
+        ren.material.color = ren.material.color.WithAlpha(0.0f);
+        text.color = text.color.WithAlpha(0.0f);
+        skipText.color = skipText.color.WithAlpha(0.0f);
         gameObject.SetActive(false);
     }
 
@@ -54,18 +59,36 @@ public class MonologueScript : MonoBehaviour
 
     IEnumerator PrintOut(Queue<string> monologue)
     {
-        StartCoroutine(Fade(true));
-
         while (monologue.Count != 0)
         {
             text.text = string.Empty;
             string stringCur = monologue.Dequeue();
             if (InvokerForMonologue.ContainsCommand(stringCur))
             {
+                StartCoroutine(Fade(0.0f, true));
                 InvokerForMonologue.Do(stringCur);
+
+                yield return null;
+                while (InvokerForMonologue.IsHold)
+                {
+                    yield return null;
+                }
+            }
+            else if (stringCur.Contains("WaitFor"))
+            {
+                if (stringCur.Length < 9)
+                    continue;
+                string numSubstring = stringCur.Substring(8);
+                float seconds = float.Parse(numSubstring);
+
+                StartCoroutine(Fade(0.0f, true));
+                yield return new WaitForSeconds(seconds);
+                StartCoroutine(Fade(1.0f, true));
             }
             else
             {
+                StartCoroutine(Fade(1.0f, true));
+
                 // type out sentence
                 foreach (var item in stringCur)
                 {
@@ -75,44 +98,39 @@ public class MonologueScript : MonoBehaviour
                         isSkip = false;
                         break;
                     }
-
                     yield return null;
                     text.text += item;
                 }
 
+                float duration = 2.5f;
+                float time = Time.time + duration;
                 while (!isSkip)
                 {
+                    if (Time.time > time)
+                        break;
+
                     yield return null;
                 }
 
                 isSkip = false;
-
-                // short pause after every sentence
-                /*float duration = 1.2f;
-                float time = Time.time + duration;
-                while (Time.time < time)
-                {
-                    if (isSkip)
-                    {
-                        isSkip = false;
-                        break;
-                    }
-                    yield return null;
-                }*/
             }            
         }
 
-        StartCoroutine(Fade(false));
+        StartCoroutine(Fade(0.0f, false));
     }
 
     
 
-    IEnumerator Fade(bool isActive)
+    IEnumerator Fade(float alpha, bool isActive)
     {
         float elapsed = 0.0f;
         float duration = 0.3f;
-        Color ori = ren.color;
-        Color target = ren.color.WithAlpha(isActive ? 1.0f : 0.0f);
+        Color ori = ren.material.color;
+        Color target = ren.material.color.WithAlpha(alpha);
+        Color textColOri = text.color;
+        Color textColTarget = text.color.WithAlpha(alpha);
+        Color skipTextOri = skipText.color;
+        Color skipTextTar = skipText.color.WithAlpha(alpha);
 
         while (elapsed < duration)
         {
@@ -120,7 +138,9 @@ public class MonologueScript : MonoBehaviour
 
             float t = CurveManager.Curve.Evaluate(elapsed / duration);
 
-            ren.color = Color.LerpUnclamped(ori, target, t);
+            ren.material.color = Color.LerpUnclamped(ori, target, t);
+            text.color = Color.LerpUnclamped(textColOri, textColTarget, t);
+            skipText.color = Color.LerpUnclamped(skipTextOri, skipTextTar, t);
 
             if (skipButton != null)
                 skipButton.image.color = Color.LerpUnclamped(ori, target, t);
@@ -128,7 +148,9 @@ public class MonologueScript : MonoBehaviour
             yield return null;
         }
 
-        ren.color = target;
+        ren.material.color = target;
+        text.color = textColTarget;
+        skipText.color = skipTextTar;
         gameObject.SetActive(isActive);
         if (skipButton != null)
             skipButton.gameObject.SetActive(isActive);

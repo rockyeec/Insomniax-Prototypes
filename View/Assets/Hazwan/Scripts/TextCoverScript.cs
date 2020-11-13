@@ -1,99 +1,87 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 public class TextCoverScript : MonoBehaviour
 {
-    #region Singleton
+    [SerializeField] int coverIndex = 0;
+    [SerializeField] int diaryPage = 0;
 
-    private static TextCoverScript _instance;
-
-    public static TextCoverScript Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                _instance = GameObject.FindObjectOfType<TextCoverScript>();
-            }
-            return _instance;
-        }
-    }
-    #endregion
-
-    private GameObject diaryContainer;
-    private GameObject childContent;
-    GameObject textCovered;
-
-    private string darkenTextTag;
-
-    private int diaryContentChildNum = 0;
-
-    string diaryContentTag;
-    string diaryTag;
-
-    private float timeDelay = 2;
+   // private GameObject diaryContainer;
+   // private GameObject childContent;
 
     bool isTriggered = false;
 
-    public bool coverLayer1 = false;
-    public bool coverLayer2 = false;
+    private ClickableObject clickable = null;
+    private InteractableObserver observer = null;
 
-    private void Start()
+    MeshRenderer callTempMeshRend;
+
+    Material[] matArrayOutline;
+    Material[] matArrayNormal;
+
+    void Start()
     {
-        diaryContentTag = "DiaryContent";
-        diaryTag = "DiaryPackage";
-        GetTag();
+        CheckSavedData();
+        clickable = gameObject.AddComponent<ClickableObject>();
+        clickable.Init(this);
+        observer = gameObject.AddComponent<InteractableObserver>();
+        observer.Init(coverIndex);
+        Outline();
+        //diaryContainer = GameObject.FindGameObjectWithTag("DiaryPackage");
+        //childContent = GameObject.FindGameObjectWithTag("DiaryContent");
     }
 
     void OnTriggerEnter(Collider col)
     {
         if (col.gameObject.CompareTag("TriggerCheck") && !isTriggered)
         {
-            isTriggered = true;
-            DisableTextCover();
+            callTempMeshRend.materials = matArrayOutline;
+            clickable.enabled = true;
+        }
+    }
+
+    void OnTriggerExit(Collider col)
+    {
+        if (col.gameObject.CompareTag("TriggerCheck"))
+        {
+            callTempMeshRend.materials = matArrayNormal;
+            clickable.enabled = false;
         }
     }
 
     public void DisableTextCover()
     {
-        StartCoroutine(DelayFadeAnim());
+        Diary.Instance.currentPage = diaryPage;
+        Diary.Instance.ButtonsVisibility(diaryPage, Diary.diaryList);
+        Diary.Instance.HiddenContent(diaryPage, Diary.diaryList);
+        Diary.Instance.OpenButton.SetActive(false);
+        Diary.Instance.DiaryEntry.SetActive(true);
+       //if (diaryContainer == null)
+       //    diaryContainer = GameObject.FindGameObjectWithTag("DiaryPackage");
+        DiaryManager.StaticDiaryContainer.transform.GetChild(0).gameObject.SetActive(true);
+        //if (childContent == null)
+        //    childContent = GameObject.FindGameObjectWithTag("DiaryContent");
+        DiaryManager.ChildContent.transform.GetChild(diaryPage).gameObject.SetActive(true);
+        isTriggered = true;
+        observer.Trigger();
     }
 
-    IEnumerator DelayFadeAnim()
+    public void Outline()
     {
-        diaryContainer = GameObject.FindGameObjectWithTag(diaryTag);
-        childContent = GameObject.FindGameObjectWithTag(diaryContentTag);
-        diaryContainer.transform.GetChild(diaryContentChildNum).gameObject.SetActive(true);
-        //childContent.transform.GetChild(diaryContentChildNum).gameObject.SetActive(true);
-        childContent.transform.GetChild(0).gameObject.SetActive(true);
-        textCovered = GameObject.FindGameObjectWithTag(darkenTextTag);
-
-        yield return new WaitForSeconds(1.5f);
-        TextMeshProUGUI temp = textCovered.GetComponent<TextMeshProUGUI>();
-        FadeOutDarkenText(temp);
-
-        yield return new WaitForSeconds(timeDelay);
-        textCovered.SetActive(false);
+        callTempMeshRend = GetComponent<MeshRenderer>();
+        matArrayNormal = callTempMeshRend.materials;
+        List<Material> listMaterial = new List<Material>();
+        listMaterial.AddRange(matArrayNormal);
+        listMaterial.Add(MaterialManager.OutLineMaterial);
+        matArrayOutline = listMaterial.ToArray();
     }
 
-    void FadeOutDarkenText(TextMeshProUGUI textCovered)
+    void CheckSavedData()
     {
-        textCovered.CrossFadeAlpha(0, timeDelay, true);
-    }
-
-    void GetTag()
-    {
-        if (coverLayer1)
+        string entryName = "Entry " + coverIndex.ToString();
+        if (SaveSystem.GetBool(entryName))
         {
-            darkenTextTag = "TextCovered1";
-            diaryContentChildNum = 0;
-        }
-        else if (coverLayer2) //Not set yet
-        {
-            //textCoverName = "TextCovered2";
-            //diaryContentChildNum = 1;
+            isTriggered = true;
         }
     }
 }

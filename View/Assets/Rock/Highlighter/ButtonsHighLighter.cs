@@ -10,8 +10,14 @@ public class ButtonsHighLighter : MonoBehaviour
 
     public void Highlight(Highlightable highlightable)
     {
+        gameObject.SetActive(true);
         StopAllCoroutines();
         StartCoroutine(MoveTowards(highlightable));
+    }
+    public void TurnOff()
+    {
+        StopAllCoroutines();
+        gameObject.SetActive(false);
     }
 
     IEnumerator MoveTowards(Highlightable highlightable)
@@ -71,19 +77,19 @@ public class ButtonsHighLighter : MonoBehaviour
     }
 
 
-    private void Start()
+    private void Awake()
     {
         GameScript.OnPause += GameScript_OnPause;
-        GameScript.OnUnpause += GameScript_OnUnpause;
+        GameScript.OnPlay += GameScript_OnPlay;
     }
 
     private void OnDestroy()
     {
         GameScript.OnPause -= GameScript_OnPause;
-        GameScript.OnUnpause -= GameScript_OnUnpause;
+        GameScript.OnPlay -= GameScript_OnPlay;
     }
 
-    private void GameScript_OnUnpause()
+    private void GameScript_OnPlay()
     {
         highlight.enabled = true;
         text.enabled = true;

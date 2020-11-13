@@ -13,9 +13,9 @@ public class GlassesController : MonoBehaviour
     Transform head;
     Transform hand;
 
-    string isAnimPlayingString = "isGlassesTransition";
-    string putOnString = "Put On Glasses";
-    string putOffString = "Put Off Glasses";
+    readonly string isAnimPlayingString = "isGlassesTransition";
+    readonly string putOnString = "Put On Glasses";
+    readonly string putOffString = "Put Off Glasses";
     bool isOn = false;
     bool IsTransitioning { get { return animator.GetBool(isAnimPlayingString); } }
 
@@ -25,10 +25,27 @@ public class GlassesController : MonoBehaviour
         hand = animator.GetBoneTransform(HumanBodyBones.RightHand);
 
         playerInput.OnGlassesButtonPress += PlayerInput_OnGlassesButtonPress;
+
+        //StartCoroutine(WaitEndOfFrameLoad());
     }
     private void OnDestroy()
     {
         playerInput.OnGlassesButtonPress -= PlayerInput_OnGlassesButtonPress;
+    }
+    IEnumerator WaitEndOfFrameLoad()
+    {
+        yield return new WaitForEndOfFrame();
+        LoadState();
+    }
+    public void LoadState()
+    {
+        if (SaveSystem.GetBool("is glasses"))
+        {
+            glasses.SetActive(true);
+            OnPutOn();
+            OnOnAnimFinish();
+            isOn = true;
+        }
     }
 
     private void PlayerInput_OnGlassesButtonPress()
@@ -46,11 +63,15 @@ public class GlassesController : MonoBehaviour
 
         GameScript.TakeOffGlasses();
         //SceneTransitionFader.FadeOutHalf();
+
+        //SaveSystem.SetBool("is glasses", false);
     }
     public void OnOnAnimFinish()
     {
         GameScript.PutOnGlasses();
         //SceneTransitionFader.FadeInHalf();
+
+        //SaveSystem.SetBool("is glasses", true);
     }
 
     public void OnPutOn()
@@ -58,12 +79,16 @@ public class GlassesController : MonoBehaviour
         glasses.transform.SetParent(head);
         glasses.transform.localPosition = Vector3.zero;
         glasses.transform.localRotation = Quaternion.identity;
+
+        AudioManager.instance.Play("Glasses", "SFX");
     }
     public void OnTakeOff()
     {
         glasses.transform.SetParent(hand);
         glasses.transform.localPosition = handPositionOffset;
         glasses.transform.localRotation = Quaternion.Euler(handEulerOffset);
+
+        AudioManager.instance.Play("Glasses", "SFX");
     }
 
     public void FromPocketOn()

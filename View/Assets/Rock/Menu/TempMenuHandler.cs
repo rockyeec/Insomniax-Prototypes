@@ -20,10 +20,11 @@ public class TempMenuHandler : MonoBehaviour
 
     IEnumerator SnapToPosition()
     {
-        yield return new WaitForSecondsRealtime(0.4f);
+        yield return new WaitForEndOfFrame();
         if (isFirstLevel)
         {
             isFirstLevel = false;
+            GameScript.Pause();
             pauseMenu.SnapIn();
         }
     }

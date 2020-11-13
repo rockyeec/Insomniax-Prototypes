@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BackToOriginalForSpinningPlatform : BackToOriginal
 {
@@ -26,6 +24,11 @@ public class BackToOriginalForSpinningPlatform : BackToOriginal
     protected override void OnStartLerp()
     {
         base.OnStartLerp();
+        bool isContainsPlayer = platform.transform.childCount > 1;
+        if (isContainsPlayer)
+        {
+            platform.transform.GetChild(1).SetParent(null);
+        }
         platform.transform.localRotation = Quaternion.identity;
         platform.SetActive(false);
     }

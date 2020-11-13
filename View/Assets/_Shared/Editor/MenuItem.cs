@@ -12,6 +12,6 @@ public class MenuItems
     [MenuItem("Tools/Clear Binary Save")]
     private static void ClearBinarySave()
     {
-        PlayerPrefs.DeleteAll();
+        SaveSystem.Reset();
     }
 }

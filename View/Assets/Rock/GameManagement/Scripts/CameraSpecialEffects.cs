@@ -48,12 +48,16 @@ public class CameraSpecialEffects : MonoBehaviour
     {
         StopAllCoroutines();
         StartCoroutine(CameraGoUpNZoomOut());
+
+        AudioManager.instance.Play("Whoosh", "SFX");
     }
 
     void ZoomIn()
     {
         StopAllCoroutines();
         StartCoroutine(CameraGoDownNZoomIn());
+
+        AudioManager.instance.Play("Whoosh", "SFX");
     }
 
     private IEnumerator CameraGoUpNZoomOut()
@@ -90,7 +94,7 @@ public class CameraSpecialEffects : MonoBehaviour
     private IEnumerator CameraGoDownNZoomIn()
     {
         float elapsed = 0.0f;
-        float duration = 1.2f;
+        float duration = CurveManager.CameraAnimationDuration;
         float startFov = cam.fieldOfView;
         Quaternion startRot = cam.transform.localRotation;
         Vector3 startPos = cam.transform.localPosition;

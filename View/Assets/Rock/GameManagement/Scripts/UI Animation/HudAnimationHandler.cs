@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using UnityEngine;
 
 public class HudAnimationHandler : UISlidingAnimation
 {
@@ -9,21 +10,20 @@ public class HudAnimationHandler : UISlidingAnimation
         OriginalPosition = transform.position;
 
         GameScript.OnPause += GameScript_OnPause;
-        GameScript.OnUnpause += GameScript_OnUnpause;
+        GameScript.OnPlay += GameScript_OnPlay;
     }
     private void OnDestroy()
     {
         GameScript.OnPause -= GameScript_OnPause;
-        GameScript.OnUnpause -= GameScript_OnUnpause;
+        GameScript.OnPlay -= GameScript_OnPlay;
     }
 
     private void GameScript_OnPause()
     {
         SlideOut();
     }
-    private void GameScript_OnUnpause()
+    private void GameScript_OnPlay()
     {
         SlideIn();
     }
-
 }

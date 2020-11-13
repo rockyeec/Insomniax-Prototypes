@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 public class InteractableItemDiaryContent : MonoBehaviour
 {
     [SerializeField]
     private GameObject content = null;
+
+    [SerializeField]
+    private GameObject prompt = null;
 
     MeshRenderer callTempMeshRend;
 
@@ -14,6 +16,8 @@ public class InteractableItemDiaryContent : MonoBehaviour
     Material[] matArrayNormal;
 
     bool isTriggered = false;
+
+    
 
     void Start()
     {
@@ -29,10 +33,11 @@ public class InteractableItemDiaryContent : MonoBehaviour
     {
         if (col.gameObject.CompareTag("TriggerCheck") && !isTriggered)
         {
-            Diary.diaryContent.Add(content);
-            //gameObject.SetActive(false);
+            Diary.diaryList.Add(content);
             callTempMeshRend.materials = matArrayOutline;
-            print(Diary.diaryContent.Count);
+            //print(Diary.diaryContent.Count);
+            StartCoroutine(Prompt());
+            
         }
     }
 
@@ -43,5 +48,13 @@ public class InteractableItemDiaryContent : MonoBehaviour
             isTriggered = true;
             callTempMeshRend.materials = matArrayNormal;
         }
+    }
+
+    IEnumerator Prompt()
+    {
+        prompt.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        prompt.SetActive(false);
+        gameObject.SetActive(false);
     }
 }
