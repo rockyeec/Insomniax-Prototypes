@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Diary : DiaryManager
 {
@@ -31,6 +32,14 @@ public class Diary : DiaryManager
     public GameObject DiaryEntry;
     public GameObject OpenButton;
 
+    public LeanTweenType type;
+
+    Vector3 diaryDefaultPos;
+    Vector3 entryDefaultPos;
+    Vector3 resetPos;
+    Vector3 diaryOriScale = new Vector3(0.7131789f, 0.8681303f, 1);
+    Vector3 entryOriScale = new Vector3(1.141086f, 1.389008f, 1.6f);
+
     void Start()
     {
         for (int i = 0; i < diaryContent.Length; i++)
@@ -39,6 +48,8 @@ public class Diary : DiaryManager
         }
         previousBtn.SetActive(false);
         ActiveDiary(DiaryContainer);
+        diaryDefaultPos = DiaryContainer.transform.position;
+        entryDefaultPos = diaryContent[0].transform.position;
     }
 
     public void NextPage()
@@ -65,7 +76,8 @@ public class Diary : DiaryManager
         diaryList[0].SetActive(true);
         ContentCanvas.SetActive(true);
         DiaryEntry.SetActive(true);
-
+        PlayAnim(DiaryContainer, diaryDefaultPos, diaryOriScale);
+        PlayAnim(diaryList[0], entryDefaultPos, entryOriScale);
         InvokerForMonologue.IsHold = false;
     }
 
@@ -80,6 +92,20 @@ public class Diary : DiaryManager
         DiaryEntry.SetActive(false);
 
         InvokerForMonologue.IsHold = false;
+    }
+
+    public void PlayAnim(GameObject go, Vector3 position, Vector3 scale)
+    {
+        ResetAnim(go);
+        LeanTween.move(go, position, 0.3f).setEaseLinear();
+        LeanTween.scale(go, scale, 0.3f).setEaseLinear();
+    }
+
+    public void ResetAnim(GameObject go)
+    {
+        resetPos = new Vector3(-30f, diaryDefaultPos.y + 200f, 0);
+        go.transform.position = resetPos;
+        go.transform.localScale = Vector3.zero;
     }
    
 }
