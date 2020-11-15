@@ -32,6 +32,8 @@ public class DialogueManager : MonoBehaviour
 
     [HideInInspector]
     public bool isDialogueDone = true;
+    [HideInInspector]
+    public bool isDoneMCQL3 = false;
 
     //Private Variable Below Please
     private Queue<Dialogue.infomation> sentences = new Queue<Dialogue.infomation>();
@@ -39,6 +41,7 @@ public class DialogueManager : MonoBehaviour
     private bool isSentenceEnd = false; //is the sentence end
     private int curSentenceLength, MaxSentenceLength; //Calculate the current sentence length and max length
     private string tempStore; //Replace if press next before show up
+    private bool tempStoreL3; //for temp mcql3 storing
 
     // Start is called before the first frame update
     void Awake()
@@ -57,7 +60,10 @@ public class DialogueManager : MonoBehaviour
     public void StartDialogue(Dialogue d) //Call start dialogue
     {
         DialogueElement.SetActive(true);
-        Controls.SetActive(false);
+        if(Controls!=null)
+        {
+            Controls.SetActive(false);
+        }
         Debug.Log("Start Dialogue");
         isDialogueDone = false;
         sentences.Clear();
@@ -103,6 +109,7 @@ public class DialogueManager : MonoBehaviour
         StopAllCoroutines();
         dialogueTextWorld.text = ""; dialogueText.text = ""; tempStore = ""; //Reset all word
         Dialogue.infomation info = sentences.Dequeue();
+        tempStoreL3 = info.isEndMCQ;
         tempStore = info.DialogueText;
         dialogueTextWorld.color = info.TextColor;
         dialogueText.color = info.TextColor;
@@ -207,7 +214,11 @@ public class DialogueManager : MonoBehaviour
             MCQTemp[i] = null;
         }
         DialogueElement.SetActive(false);
-        Controls.SetActive(true);
+        if (Controls != null)
+        {
+            Controls.SetActive(true);
+        }
         isDialogueDone = true;
+        isDoneMCQL3 = tempStoreL3;
     }
 }
