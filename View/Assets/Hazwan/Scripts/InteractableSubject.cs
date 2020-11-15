@@ -6,8 +6,11 @@ public class InteractableSubject : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI[] coverArr = null;
 
+    //public TileGame tileGame = new TileGame();
+
     private void Awake()
     {
+        //tileGame.Init();
         InteractableObserver.OnInteracted += InteractableObserver_OnInteracted;
 
         for (int i = 0; i < coverArr.Length; i++)
@@ -27,7 +30,7 @@ public class InteractableSubject : MonoBehaviour
     private void InteractableObserver_OnInteracted(int i)
     {
         SaveSystem.SetBool("Entry " + i.ToString(), true);
-
+        //tileGame.SavedArray(i);
         float duration = 2.0f;
         coverArr[i].CrossFadeAlpha(0.0f, duration, true);
         StartCoroutine(DelaySetActiveFalse(i, duration));
