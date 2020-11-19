@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class DiaryManager : MonoBehaviour
 {
     protected bool isDiaryOpened = false;
-    
 
     public GameObject nextBtn;
     public GameObject previousBtn;
@@ -14,6 +14,7 @@ public class DiaryManager : MonoBehaviour
 
     [SerializeField] GameObject diaryContainerWithTag = null;
     [SerializeField] GameObject childContent = null;
+    [SerializeField] GameObject promptEntry = null;
 
     private static DiaryManager instance;
     private void Awake()
@@ -23,6 +24,8 @@ public class DiaryManager : MonoBehaviour
     
     public static GameObject ChildContent { get { return instance.childContent; } }
     public static GameObject StaticDiaryContainer { get { return instance.diaryContainerWithTag; } }
+
+    public static GameObject PromptEntry { get { return instance.promptEntry; } }
 
     protected void ActiveDiary(GameObject diaryContainer)
     {

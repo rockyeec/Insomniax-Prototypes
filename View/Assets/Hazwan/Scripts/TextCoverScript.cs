@@ -6,8 +6,8 @@ public class TextCoverScript : MonoBehaviour
     [SerializeField] int coverIndex = 0;
     [SerializeField] int diaryPage = 0;
 
-   // private GameObject diaryContainer;
-   // private GameObject childContent;
+    // private GameObject diaryContainer;
+    // private GameObject childContent;
 
     bool isTriggered = false;
 
@@ -21,12 +21,13 @@ public class TextCoverScript : MonoBehaviour
 
     void Start()
     {
+        Outline();
         CheckSavedData();
         clickable = gameObject.AddComponent<ClickableObject>();
         clickable.Init(this);
         observer = gameObject.AddComponent<InteractableObserver>();
         observer.Init(coverIndex);
-        Outline();
+        //callTempMeshRend.materials = matArrayOutline;
         //diaryContainer = GameObject.FindGameObjectWithTag("DiaryPackage");
         //childContent = GameObject.FindGameObjectWithTag("DiaryContent");
     }
@@ -35,7 +36,7 @@ public class TextCoverScript : MonoBehaviour
     {
         if (col.gameObject.CompareTag("TriggerCheck") && !isTriggered)
         {
-            callTempMeshRend.materials = matArrayOutline;
+            //callTempMeshRend.materials = matArrayOutline;
             clickable.enabled = true;
         }
     }
@@ -44,7 +45,7 @@ public class TextCoverScript : MonoBehaviour
     {
         if (col.gameObject.CompareTag("TriggerCheck"))
         {
-            callTempMeshRend.materials = matArrayNormal;
+            //callTempMeshRend.materials = matArrayNormal;
             clickable.enabled = false;
         }
     }
@@ -56,8 +57,9 @@ public class TextCoverScript : MonoBehaviour
         Diary.Instance.HiddenContent(diaryPage, Diary.diaryList);
         Diary.Instance.OpenButton.SetActive(false);
         Diary.Instance.DiaryEntry.SetActive(true);
-       //if (diaryContainer == null)
-       //    diaryContainer = GameObject.FindGameObjectWithTag("DiaryPackage");
+        callTempMeshRend.materials = matArrayNormal;
+        //if (diaryContainer == null)
+        //    diaryContainer = GameObject.FindGameObjectWithTag("DiaryPackage");
         DiaryManager.StaticDiaryContainer.transform.GetChild(0).gameObject.SetActive(true);
         //if (childContent == null)
         //    childContent = GameObject.FindGameObjectWithTag("DiaryContent");
@@ -81,7 +83,12 @@ public class TextCoverScript : MonoBehaviour
         string entryName = "Entry " + coverIndex.ToString();
         if (SaveSystem.GetBool(entryName))
         {
+            callTempMeshRend.materials = matArrayNormal;
             isTriggered = true;
+        }
+        else
+        {
+            callTempMeshRend.materials = matArrayOutline;
         }
     }
 }

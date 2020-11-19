@@ -10,6 +10,10 @@ public class TileMain : MonoBehaviour
 
     public int indexRef;
 
+    [SerializeField] Color yellow;
+
+    bool isInteracted = false;
+
     public static List<GameObject> TileList = new List<GameObject>();
 
     void Start()
@@ -20,9 +24,14 @@ public class TileMain : MonoBehaviour
     
     private void OnTriggerEnter(Collider collision)
     {
-        if(collision.gameObject.CompareTag("GroundCheck"))
+        if(collision.gameObject.CompareTag("GroundCheck") && !isInteracted)
         {
-            SetMemories();
+            isInteracted = true;
+            //SetMemories();
+            LeanTween.color(gameObject, yellow, 2f);
+            TileGame.tileData.Add(indexRef);
+            TileGame.totalInteractedTile++;
+            TileGame.TileComparison();
         }
     }
 
