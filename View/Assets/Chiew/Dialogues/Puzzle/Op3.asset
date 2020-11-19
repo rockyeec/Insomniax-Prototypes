@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d716d7da002bf7146a67300f7c972544, type: 3}
+  m_Name: Op3
+  m_EditorClassIdentifier: 
+  nxtDialogue: 0
+  dialogueobj: {fileID: 0}
+  dialogueInfo:
+  - isBubble: 0
+    TextColor: {r: 0, g: 0, b: 0, a: 1}
+    characImage: {fileID: 0}
+    nameText: Alex
+    DialogueText: "I...I\u2019ve gotten this far. I have to start accepting what
+      happened. All you\u2019ve said, all I\u2019ve said; it\u2019s true. I resent
+      him for not sticking by when it happened, like me; he took the easier way out.
+      He ran away from the problem."
+    isEndedSentence: 0
+    isPlayed: 0
+    isQuestion: 0
+    newMCQ: []
+    isEndMCQ: 0
+  - isBubble: 0
+    TextColor: {r: 0, g: 0, b: 0, a: 1}
+    characImage: {fileID: 0}
+    nameText: Alex
+    DialogueText: "You are me. Everything you felt it\u2019s true. I tried to bury
+      the feelings, forget the memories but it\u2019ll always be there in one form
+      or another. If there was anytime to start being strong for myself, for Max;
+      it\u2019ll be now. "
+    isEndedSentence: 0
+    isPlayed: 0
+    isQuestion: 0
+    newMCQ: []
+    isEndMCQ: 0
+  - isBubble: 0
+    TextColor: {r: 0, g: 0, b: 0, a: 1}
+    characImage: {fileID: 0}
+    nameText: Alex
+    DialogueText: "I'm sorry to you, to myself. I\u2019ve been disrespecting the
+      memories we made together. I\u2019ve made you, myself go through unnecessary
+      pain and suffering to just prolong the pain and suffering. "
+    isEndedSentence: 0
+    isPlayed: 0
+    isQuestion: 0
+    newMCQ: []
+    isEndMCQ: 0

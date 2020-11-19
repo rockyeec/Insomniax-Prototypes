@@ -42,6 +42,7 @@ public class DialogueManager : MonoBehaviour
     private int curSentenceLength, MaxSentenceLength; //Calculate the current sentence length and max length
     private string tempStore; //Replace if press next before show up
     private bool tempStoreL3; //for temp mcql3 storing
+    private Dialogue tempDialogue;
 
     // Start is called before the first frame update
     void Awake()
@@ -60,14 +61,17 @@ public class DialogueManager : MonoBehaviour
     public void StartDialogue(Dialogue d) //Call start dialogue
     {
         DialogueElement.SetActive(true);
-        if(Controls!=null)
+        if (Controls != null)
         {
             Controls.SetActive(false);
         }
         Debug.Log("Start Dialogue");
         isDialogueDone = false;
         sentences.Clear();
-
+        if (d.nxtDialogue == true)
+        {
+            tempDialogue = d;
+        }
         Debug.Log("Cleared previous dialogue");
         foreach(Dialogue.infomation i in d.dialogueInfo)
         {
@@ -209,11 +213,22 @@ public class DialogueManager : MonoBehaviour
 
     public void EndDialogue() //End Dialogues
     {
-        for(int i = 0; i < MCQTemp.Length; i++)
+        for (int i = 0; i < MCQTemp.Length; i++)
         {
             MCQTemp[i] = null;
         }
         DialogueElement.SetActive(false);
+        if (tempDialogue != null)
+        {
+            Debug.Log("tempdialogue not empty");
+            if (tempDialogue.nxtDialogue == true)
+            {
+                StartDialogue(tempDialogue.dialogueobj);
+                tempDialogue = null;
+                Debug.Log("start next dialogue");
+                return;
+            }
+        }
         if (Controls != null)
         {
             Controls.SetActive(true);
