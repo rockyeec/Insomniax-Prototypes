@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d716d7da002bf7146a67300f7c972544, type: 3}
+  m_Name: Op1
+  m_EditorClassIdentifier: 
+  nxtDialogue: 0
+  dialogueobj: {fileID: 0}
+  dialogueInfo:
+  - isBubble: 0
+    TextColor: {r: 0, g: 0, b: 0, a: 1}
+    characImage: {fileID: 0}
+    nameText: Inner Alex
+    DialogueText: "You\u2019re making it sound like I'm not you. Everything you know,
+      everything you feel and everything you do, I\u2019ve experienced it; cause
+      I am you. "
+    isEndedSentence: 0
+    isPlayed: 0
+    isQuestion: 0
+    newMCQ: []
+    isEndMCQ: 0
+  - isBubble: 0
+    TextColor: {r: 0, g: 0, b: 0, a: 1}
+    characImage: {fileID: 0}
+    nameText: Alex
+    DialogueText: "No...no. You\u2019re not me. You don\u2019t know what I\u2019ve
+      been through, what I'm going...through. You know nothing at all. "
+    isEndedSentence: 0
+    isPlayed: 0
+    isQuestion: 0
+    newMCQ: []
+    isEndMCQ: 0
+  - isBubble: 0
+    TextColor: {r: 0, g: 0, b: 0, a: 1}
+    characImage: {fileID: 0}
+    nameText: Inner Alex
+    DialogueText: "You mean to tell me you don\u2019t resent Matthew? You don\u2019t
+      resent him for leaving you, you don\u2019t resent him from taking your best
+      friend away from you? "
+    isEndedSentence: 0
+    isPlayed: 0
+    isQuestion: 0
+    newMCQ: []
+    isEndMCQ: 0
+  - isBubble: 0
+    TextColor: {r: 0, g: 0, b: 0, a: 1}
+    characImage: {fileID: 0}
+    nameText: Alex
+    DialogueText: "I...don\u2019t resent Matthew- he didn\u2019t do anything wrong,
+      he\u2019s never done anything wrong.  He\u2019s always been there for me. It\u2019s-
+      just that I...don\u2019t want to think about this anymore. I\u2019ve thought
+      about this too much. "
+    isEndedSentence: 0
+    isPlayed: 0
+    isQuestion: 0
+    newMCQ: []
+    isEndMCQ: 0
+  - isBubble: 0
+    TextColor: {r: 0, g: 0, b: 0, a: 1}
+    characImage: {fileID: 0}
+    nameText: Inner Alex
+    DialogueText: "You\u2019re hearing yourself...right? You\u2019re avoiding the
+      reality that you\u2019re living right now. Your idol, your role model shattered
+      the image you had of him and you\u2019re trying to save whatever remnants of
+      positive memories you\u2019ve made together. Simply admit it; you hate your
+      brother. "
+    isEndedSentence: 0
+    isPlayed: 0
+    isQuestion: 1
+    newMCQ:
+    - answerString: "You\u2019re right. "
+      nxtDialogue: {fileID: 11400000, guid: 08de12cf7a491cf40be796e5736dcd8d, type: 2}
+    - answerString: "No, I don\u2019t hate him. I can\u2019t hate him."
+      nxtDialogue: {fileID: 11400000, guid: 8bcc5956cef02e345a6ec08c38af3f2a, type: 2}
+    - answerString: 
+      nxtDialogue: {fileID: 0}
+    isEndMCQ: 0

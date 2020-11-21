@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d716d7da002bf7146a67300f7c972544, type: 3}
   m_Name: P1 Option2
   m_EditorClassIdentifier: 
+  nxtDialogue: 1
+  dialogueobj: {fileID: 11400000, guid: 8bcc5956cef02e345a6ec08c38af3f2a, type: 2}
   dialogueInfo:
   - isBubble: 0
     TextColor: {r: 0, g: 0, b: 0, a: 1}
@@ -24,4 +26,4 @@ MonoBehaviour:
     isPlayed: 0
     isQuestion: 0
     newMCQ: []
-    isEndMCQ: 1
+    isEndMCQ: 0

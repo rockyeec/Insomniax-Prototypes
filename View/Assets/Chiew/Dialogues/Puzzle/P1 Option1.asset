@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d716d7da002bf7146a67300f7c972544, type: 3}
   m_Name: P1 Option1
   m_EditorClassIdentifier: 
+  nxtDialogue: 1
+  dialogueobj: {fileID: 11400000, guid: 929df9e9ad752df4c93d734cb889b128, type: 2}
   dialogueInfo:
   - isBubble: 0
     TextColor: {r: 0, g: 0, b: 0, a: 1}
@@ -22,6 +24,7 @@ MonoBehaviour:
     isPlayed: 0
     isQuestion: 0
     newMCQ: []
+    isEndMCQ: 0
   - isBubble: 0
     TextColor: {r: 0, g: 0, b: 0, a: 1}
     characImage: {fileID: 0}
@@ -32,3 +35,4 @@ MonoBehaviour:
     isPlayed: 0
     isQuestion: 0
     newMCQ: []
+    isEndMCQ: 0

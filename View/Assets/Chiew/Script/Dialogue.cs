@@ -28,11 +28,14 @@ public class Dialogue : ScriptableObject
         [Header("If only have MCQ")]
         public bool isQuestion = false;
         [Header("Maximum 3")]
-        public MCQInfo[] newMCQ = new MCQInfo[3]; //Line 25
+        public MCQInfo[] newMCQ = new MCQInfo[3]; //Line 25    
 
         [Header("For Level 3 dialogue, tick for last selection")]
         public bool isEndMCQ = false;
     }
+    [Header("for next Dialogue without MCQ")]
+    public bool nxtDialogue = false;
+    public Dialogue dialogueobj;
     public List<infomation> dialogueInfo;
 }
 
