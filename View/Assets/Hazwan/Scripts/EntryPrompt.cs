@@ -8,10 +8,16 @@ public class EntryPrompt : MonoBehaviour
 
     private InteractableObserver observer = null;
 
-    public void PromptActivation(int coverLayer) // <- Call this func
+    public static EntryPrompt Instance;
+
+    public void Awake()
+    {
+        Instance = this;
+    }
+    public void PromptActivation(int coverLayerNum) // <- Call this func
     {
         observer = gameObject.AddComponent<InteractableObserver>();
-        observer.Init(coverLayer);
+        observer.Init(coverLayerNum);
         DiaryManager.PromptEntry.transform.GetChild(0).gameObject.SetActive(true);
         observer.Trigger();
         StartCoroutine(DelaySetActiveFalse(2f));

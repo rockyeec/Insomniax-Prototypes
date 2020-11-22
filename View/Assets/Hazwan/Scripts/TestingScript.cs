@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class TestingScript : MonoBehaviour
 {
-    public Dialogue startDialogue;
-    void Start()
+    private void Start()
     {
-        DialogueManager.instance.StartDialogue(startDialogue);
+        StartCoroutine(testing());
     }
 
-    void Update()
+
+    IEnumerator testing()
     {
-        
+        yield return new WaitForSeconds(3);
+        EntryPrompt.Instance.PromptActivation(6);
     }
 }
