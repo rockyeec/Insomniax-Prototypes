@@ -23,10 +23,20 @@ public class TriggerDialogue : MonoBehaviour
     {
         if(DialogueManager.instance.isDoneMCQL3 == true)
         {
-            if (letterObj != null && doneOn == false)
+            if(DialogueManager.instance.L3IsLose == true)
             {
-                letterObj.PanelOnOfF(true);
-                doneOn = true;
+                    //Show ending Game Over
+            }
+            else if(DialogueManager.instance.L3IsPass == true)
+            {
+                //Do let player interact
+
+                //temp debuging only
+             /*   if (letterObj != null && doneOn == false)
+                {
+                    letterObj.PanelOnOfF(true);
+                    doneOn = true;
+                }*/
             }
         }
     }
