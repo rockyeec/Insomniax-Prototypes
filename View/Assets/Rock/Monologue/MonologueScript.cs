@@ -47,6 +47,22 @@ public class MonologueScript : MonoBehaviour
         transform.rotation = Quaternion.LookRotation(transform.position - cam.transform.position);
     }
 
+    public static void TriggerText(string[] monologues)
+    {
+        Queue<string> q = new Queue<string>();
+        foreach (var item in monologues)
+        {
+            q.Enqueue(item);
+        }
+        TriggerText(q);
+    }
+
+    public static void TriggerText(string monologue)
+    {
+        Queue<string> q = new Queue<string>();
+        q.Enqueue(monologue);
+        TriggerText(q);
+    }
     public static void TriggerText(Queue<string> monologue)
     {
         instance.gameObject.SetActive(true); 

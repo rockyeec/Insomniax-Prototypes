@@ -10,6 +10,8 @@ public class TileMain : MonoBehaviour
 
     public int indexRef;
 
+    public string monologue = string.Empty;
+
     [SerializeField] Color yellow;
 
     bool isInteracted = false;
@@ -32,6 +34,8 @@ public class TileMain : MonoBehaviour
             TileGame.tileData.Add(indexRef);
             TileGame.totalInteractedTile++;
             TileGame.TileComparison();
+
+            MonologueScript.TriggerText(monologue);
         }
     }
 

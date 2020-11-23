@@ -13,6 +13,10 @@ public class TileGame : MonoBehaviour
     [SerializeField] Color redColor;
     [SerializeField] Color greenColor;
 
+    //rock----------------------------------------------------
+    [SerializeField] GameObject towardsFogMonologue = null;
+    //--------------------------------------------------------
+
     private static TileGame instance;
     private void Awake()
     {
@@ -59,6 +63,12 @@ public class TileGame : MonoBehaviour
 
     private IEnumerator CorrectSequence()
     {
+        //rock-----------------------------------------------------------------------
+        yield return new WaitForSeconds(0.2f);
+        MonologueScript.TriggerText("That seemed to have done something, but what?");
+        Destroy(towardsFogMonologue);
+        //---------------------------------------------------------------------------
+
         CameraFollowTileGame.Instance.isCorrect = true;
         yield return new WaitForSeconds(2f);
         CameraFollowTileGame.Instance.changeCameraView = true;
@@ -68,14 +78,20 @@ public class TileGame : MonoBehaviour
 
     private IEnumerator IncorrectSequence()
     {
+        //rock-----------------------------------------------------------------------
+        yield return new WaitForSeconds(0.2f);
+        MonologueScript.TriggerText(new string[2] {
+                "What just happened? Did I do something wrong?", 
+                "Looks like I have to start again." });
+        //---------------------------------------------------------------------------
+
         totalInteractedTile = 0;
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(6f);
         CameraFollowTileGame.Instance.changeCameraView = true;
         yield return new WaitForSeconds(2f);
         SetTileColor(instance.redColor);
         yield return new WaitForSeconds(3f);
         GameScript.TakeOffGlasses();
         GameScript.PutOnGlasses();
-
     }
 }

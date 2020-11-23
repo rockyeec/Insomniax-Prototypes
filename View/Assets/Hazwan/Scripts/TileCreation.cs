@@ -9,6 +9,10 @@ public class TileCreation : MonoBehaviour
 
     public List<Transform> additionalObjectList = new List<Transform>();
 
+    //rock---------------------------------------------------------
+    [SerializeField] string[] additionalObjectMonologues = null;
+    //-------------------------------------------------------------
+
     [SerializeField] GameObject[] additionalObject = null;
 
     [SerializeField] Vector3[] tilePos = new Vector3[6];
@@ -30,6 +34,11 @@ public class TileCreation : MonoBehaviour
             tile.name = string.Format("Tile-{0}", tileCounter);
             tileCounter++;
             tileList.Add(tile);
+
+            //rock---------------------------------------------------------
+            var tileMainScript = tile.GetComponent<TileMain>();
+            tileMainScript.monologue = additionalObjectMonologues[x];
+            //-------------------------------------------------------------
         }
         for (int i = 0; i < totalTile; i++)
         {
