@@ -167,6 +167,46 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 1279588946639871371, guid: 5c7a2e51d97eb9c4d9051ba36e244a40,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1.4704865
+      objectReference: {fileID: 0}
+    - target: {fileID: 1279588946639871371, guid: 5c7a2e51d97eb9c4d9051ba36e244a40,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 4.629999
+      objectReference: {fileID: 0}
+    - target: {fileID: 1279588946639871371, guid: 5c7a2e51d97eb9c4d9051ba36e244a40,
+        type: 3}
+      propertyPath: m_Center.x
+      value: -4.1125903
+      objectReference: {fileID: 0}
+    - target: {fileID: 1279588946639871371, guid: 5c7a2e51d97eb9c4d9051ba36e244a40,
+        type: 3}
+      propertyPath: m_Center.z
+      value: -2.3599997
+      objectReference: {fileID: 0}
+    - target: {fileID: 1758732979657151161, guid: 5c7a2e51d97eb9c4d9051ba36e244a40,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1.6042418
+      objectReference: {fileID: 0}
+    - target: {fileID: 1758732979657151161, guid: 5c7a2e51d97eb9c4d9051ba36e244a40,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 4.629999
+      objectReference: {fileID: 0}
+    - target: {fileID: 1758732979657151161, guid: 5c7a2e51d97eb9c4d9051ba36e244a40,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 4.3139668
+      objectReference: {fileID: 0}
+    - target: {fileID: 1758732979657151161, guid: 5c7a2e51d97eb9c4d9051ba36e244a40,
+        type: 3}
+      propertyPath: m_Center.z
+      value: -2.3599997
+      objectReference: {fileID: 0}
     - target: {fileID: 1853997814984914652, guid: 5c7a2e51d97eb9c4d9051ba36e244a40,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -241,6 +281,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3575680120727948108, guid: 5c7a2e51d97eb9c4d9051ba36e244a40,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 2.1737468
+      objectReference: {fileID: 0}
+    - target: {fileID: 3575680120727948108, guid: 5c7a2e51d97eb9c4d9051ba36e244a40,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0.58862495
       objectReference: {fileID: 0}
     - target: {fileID: 3575680120727948109, guid: 5c7a2e51d97eb9c4d9051ba36e244a40,
         type: 3}
@@ -351,6 +401,21 @@ PrefabInstance:
         type: 3}
       propertyPath: isDefaultSnappedIn
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7633503896753865141, guid: 5c7a2e51d97eb9c4d9051ba36e244a40,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7881576371187150093, guid: 5c7a2e51d97eb9c4d9051ba36e244a40,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 1.5175079
+      objectReference: {fileID: 0}
+    - target: {fileID: 7881576371187150093, guid: 5c7a2e51d97eb9c4d9051ba36e244a40,
+        type: 3}
+      propertyPath: m_Center.z
+      value: -5.6494203
       objectReference: {fileID: 0}
     - target: {fileID: 8108363519147934421, guid: 5c7a2e51d97eb9c4d9051ba36e244a40,
         type: 3}
@@ -740,6 +805,7 @@ GameObject:
   - component: {fileID: 1183458512}
   - component: {fileID: 1183458511}
   - component: {fileID: 1183458510}
+  - component: {fileID: 1183458515}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -759,7 +825,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7037fec7be337b340bd89cfeace826ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coverIndex: 0
 --- !u!65 &1183458511
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -836,6 +901,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1183458515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1183458509}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4341b352ad62e241b0dc92a7d676d24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1235368664 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4834901216101704759, guid: 5c7a2e51d97eb9c4d9051ba36e244a40,

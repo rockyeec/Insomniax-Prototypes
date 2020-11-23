@@ -26,6 +26,7 @@ public class ClickableObject : MonoBehaviour
         //Debug.DrawRay(ray.origin, ray.direction * 100);
         if (Physics.Raycast(ray, 100.0f, 1 << 10))
         {
+            InteractPrompt.UndoThing();
             textCoverScript.DisableTextCover();
             enabled = false;
 

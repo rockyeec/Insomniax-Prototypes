@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d716d7da002bf7146a67300f7c972544, type: 3}
+  m_Name: Op2_Op4
+  m_EditorClassIdentifier: 
+  nxtDialogue: 0
+  dialogueobj: {fileID: 0}
+  dialogueInfo:
+  - isBubble: 0
+    TextColor: {r: 0, g: 0, b: 0, a: 1}
+    characImage: {fileID: 0}
+    nameText: Alex
+    DialogueText: "What\u2019s wrong with running away? What\u2019s wrong with running
+      away from my problems? It\u2019s the only way I can move on."
+    isEndedSentence: 0
+    isPlayed: 0
+    isQuestion: 0
+    newMCQ: []
+    isEndMCQ: 0
+    isLose: 0
+    isWin: 0
+  - isBubble: 0
+    TextColor: {r: 0, g: 0, b: 0, a: 1}
+    characImage: {fileID: 0}
+    nameText: Inner Alex
+    DialogueText: "My silly self, you\u2019ll never move on with how you\u2019re
+      living, you\u2019re going to fall deeper into despair & resentment the further
+      you tell yourself these lies and remember false memories. "
+    isEndedSentence: 0
+    isPlayed: 0
+    isQuestion: 0
+    newMCQ: []
+    isEndMCQ: 0
+    isLose: 0
+    isWin: 0
+  - isBubble: 0
+    TextColor: {r: 0, g: 0, b: 0, a: 1}
+    characImage: {fileID: 0}
+    nameText: Alex
+    DialogueText: "You\u2019re wrong. You\u2019re wrong. YOU\u2019RE WRONG. You know
+      nothing about my life. You know nothing about how I feel. "
+    isEndedSentence: 0
+    isPlayed: 0
+    isQuestion: 0
+    newMCQ: []
+    isEndMCQ: 0
+    isLose: 0
+    isWin: 0
+  - isBubble: 0
+    TextColor: {r: 0, g: 0, b: 0, a: 1}
+    characImage: {fileID: 0}
+    nameText: Inner Alex
+    DialogueText: "Again, my silly self. You\u2019re me and I\u2019m you. Everything
+      you feel, everything you experience, I too feel it and experience it. You\u2019re
+      simply talking to yourself here. "
+    isEndedSentence: 0
+    isPlayed: 0
+    isQuestion: 1
+    newMCQ:
+    - answerString: "I refuse to accept that. You\u2019re not me."
+      nxtDialogue: {fileID: 11400000, guid: 9e012ccb0bae64e4ca48531d1e8c4fec, type: 2}
+    - answerString: "\u2026 "
+      nxtDialogue: {fileID: 11400000, guid: 929df9e9ad752df4c93d734cb889b128, type: 2}
+    - answerString: 
+      nxtDialogue: {fileID: 0}
+    isEndMCQ: 0
+    isLose: 0
+    isWin: 0

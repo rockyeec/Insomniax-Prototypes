@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 public class TileCreation : MonoBehaviour
 {
@@ -10,45 +9,40 @@ public class TileCreation : MonoBehaviour
 
     public List<Transform> additionalObjectList = new List<Transform>();
 
-    [SerializeField]
-    private Transform additionalObject = null;
+    [SerializeField] GameObject[] additionalObject = null;
+
+    [SerializeField] Vector3[] tilePos = new Vector3[6];
+
+    private int totalTile = 6;
+    private int tileCounter = 0;
 
     public GameObject tilePrefab;
     protected GameObject tile;
-    public float gridX = 5f;
-    public float gridY = 5f;
-    public float spacing = 2f;
-    public float height = 1;
-    private int tileCounter = 0;
-
+    
     void Start()
     {
         tilePrefab.transform.Rotate(-90.0f, 0.0f, 0.0f, Space.Self);
 
-        for (int y = 0; y < gridY; y++)
+        for (int x = 0; x < totalTile; x++)
         {
-            for (int x = 0; x < gridX; x++)
-            {
-                Vector3 pos = new Vector3(x, height, y) * spacing;
-                tile = Instantiate(tilePrefab, pos, Quaternion.identity);
-                tile.transform.Rotate(-90.0f, 0.0f, 0.0f, Space.Self);
-                tile.name = string.Format("Tile-{0}", tileCounter);
-                tileCounter++;
-                tileList.Add(tile);
-            }
+            tile = Instantiate(tilePrefab, tilePos[x], Quaternion.identity);
+            tile.transform.Rotate(-90.0f, 0.0f, 0.0f, Space.Self);
+            tile.name = string.Format("Tile-{0}", tileCounter);
+            tileCounter++;
+            tileList.Add(tile);
         }
-
-        for (int i = 0; i < tileList.Count; i++)
+        for (int i = 0; i < totalTile; i++)
         {
-            additionalObject = tileList[i].gameObject.transform.GetChild(0);
-            additionalObjectList.Add(additionalObject);
+            additionalObject[i].transform.position = GetTilePos(i);
+            additionalObject[i].transform.SetParent(tileList[i].transform);
 
             TileMain.TileList.Add(tileList[i]);
         }
     }
 
-    void Update()
+    Vector3 GetTilePos(int num)
     {
-        
+        Vector3 originalPos = new Vector3(tileList[num].transform.position.x, tileList[num].transform.position.y + 1.0f, tileList[num].transform.position.z);
+        return originalPos;
     }
 }
