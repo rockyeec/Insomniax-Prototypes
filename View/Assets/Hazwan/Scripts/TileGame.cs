@@ -73,5 +73,9 @@ public class TileGame : MonoBehaviour
         CameraFollowTileGame.Instance.changeCameraView = true;
         yield return new WaitForSeconds(2f);
         SetTileColor(instance.redColor);
+        yield return new WaitForSeconds(3f);
+        GameScript.TakeOffGlasses();
+        GameScript.PutOnGlasses();
+
     }
 }

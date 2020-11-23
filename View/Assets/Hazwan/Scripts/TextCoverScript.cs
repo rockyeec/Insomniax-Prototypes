@@ -32,7 +32,7 @@ public class TextCoverScript : MonoBehaviour
         {
             clickable.enabled = true;
 
-
+            InteractPrompt.DoThing(transform);
         }
     }
 
@@ -41,6 +41,8 @@ public class TextCoverScript : MonoBehaviour
         if (col.gameObject.CompareTag("TriggerCheck"))
         {
             clickable.enabled = false;
+
+            InteractPrompt.UndoThing();
         }
     }
 
