@@ -10,6 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8072562604764132984}
   - component: {fileID: 8072562604764132985}
+  - component: {fileID: 3240380857374199864}
+  - component: {fileID: 5790183903906455742}
+  - component: {fileID: 6480847645026922380}
   m_Layer: 20
   m_Name: TriggerCheck_InteractableItem
   m_TagString: TriggerCheck
@@ -44,3 +47,42 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5.2, y: 5.8068147, z: 0.99999964}
   m_Center: {x: 0, y: -0.955499, z: 0}
+--- !u!65 &3240380857374199864
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8072562604764132987}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.2, y: 5.8068147, z: 0.99999964}
+  m_Center: {x: 0, y: -0.955499, z: -4.8}
+--- !u!65 &5790183903906455742
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8072562604764132987}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.91, y: 5.8068147, z: 4.63}
+  m_Center: {x: -3.52, y: -0.955499, z: -2.36}
+--- !u!65 &6480847645026922380
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8072562604764132987}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.91, y: 5.8068147, z: 4.63}
+  m_Center: {x: 3.62, y: -0.955499, z: -2.36}
