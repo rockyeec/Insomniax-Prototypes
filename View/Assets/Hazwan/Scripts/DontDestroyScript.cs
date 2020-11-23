@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class DontDestroyScript : MonoBehaviour
 {
+    public static DontDestroyScript Instance;
+
     void Awake()
     {
+        Instance = this;
         DontDestroyOnLoad(gameObject);
 
     }
@@ -16,6 +19,9 @@ public class DontDestroyScript : MonoBehaviour
 
     void Update()
     {
-
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            Destroy(gameObject);
+        }
     }
 }

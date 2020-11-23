@@ -1,17 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class TileGame : MonoBehaviour
 {
     public static int totalInteractedTile = 0;
 
-    static int[] correctSequence = { 0, 1, 2, 3, 4, 5 };
+    static int[] correctSequence = { 0, 1, 2, 3, 4 };
 
     public static List<int> tileData = new List<int>();
 
     [SerializeField] Color redColor;
     [SerializeField] Color greenColor;
+    [SerializeField] Color origin;
+
+    public static event Action OnReset = delegate { };
 
     //rock----------------------------------------------------
     [SerializeField] GameObject towardsFogMonologue = null;
@@ -22,10 +26,10 @@ public class TileGame : MonoBehaviour
     {
         instance = this;
     }
-    
+
     public static void TileComparison()
     {
-        if (totalInteractedTile != 6)
+        if (totalInteractedTile != 5)
             return;
 
         for (int i = 0; i < TileMain.TileList.Count; i++)
@@ -55,6 +59,7 @@ public class TileGame : MonoBehaviour
 
     public void CheckSequence(bool isCorrect)
     {
+        InvokerForMonologue.Do("DisableMoveControl");
         if(isCorrect)
             StartCoroutine(CorrectSequence());
         else
@@ -74,24 +79,31 @@ public class TileGame : MonoBehaviour
         CameraFollowTileGame.Instance.changeCameraView = true;
         yield return new WaitForSeconds(2f);
         SetTileColor(instance.greenColor);
+        InvokerForMonologue.Do("EnableMoveControl");
     }
 
     private IEnumerator IncorrectSequence()
     {
-        //rock-----------------------------------------------------------------------
-        yield return new WaitForSeconds(0.2f);
-        MonologueScript.TriggerText(new string[2] {
-                "What just happened? Did I do something wrong?", 
-                "Looks like I have to start again." });
-        //---------------------------------------------------------------------------
-
         totalInteractedTile = 0;
-        yield return new WaitForSeconds(6f);
+        tileData.Clear();
+        yield return new WaitForSeconds(3f);
         CameraFollowTileGame.Instance.changeCameraView = true;
         yield return new WaitForSeconds(2f);
         SetTileColor(instance.redColor);
+        
+        //rock-----------------------------------------------------------------------
+        yield return new WaitForSeconds(1.5f);
+        MonologueScript.TriggerText(new string[2] {
+                "What just happened? Did I do something wrong?",
+                "Looks like I have to start again." });
+        //---------------------------------------------------------------------------
         yield return new WaitForSeconds(3f);
+        SetTileColor(instance.origin);
         GameScript.TakeOffGlasses();
         GameScript.PutOnGlasses();
+
+        yield return new WaitForSeconds(3f);
+        OnReset();
+        InvokerForMonologue.Do("EnableMoveControl");
     }
 }

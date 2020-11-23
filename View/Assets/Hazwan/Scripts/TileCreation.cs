@@ -7,7 +7,7 @@ public class TileCreation : MonoBehaviour
     [HideInInspector]
     public List<GameObject> tileList = new List<GameObject>();
 
-    public List<Transform> additionalObjectList = new List<Transform>();
+    //public List<Transform> additionalObjectList = new List<Transform>();
 
     //rock---------------------------------------------------------
     [SerializeField] string[] additionalObjectMonologues = null;
@@ -15,9 +15,9 @@ public class TileCreation : MonoBehaviour
 
     [SerializeField] GameObject[] additionalObject = null;
 
-    [SerializeField] Vector3[] tilePos = new Vector3[6];
+    [SerializeField] Vector3[] tilePos = new Vector3[5];
 
-    private int totalTile = 6;
+    private int totalTile = 5;
     private int tileCounter = 0;
 
     public GameObject tilePrefab;
@@ -42,7 +42,7 @@ public class TileCreation : MonoBehaviour
         }
         for (int i = 0; i < totalTile; i++)
         {
-            additionalObject[i].transform.position = GetTilePos(i);
+            additionalObject[i].transform.position = GetTilePos(i) + Vector3.up * 0.4f;
             additionalObject[i].transform.SetParent(tileList[i].transform);
 
             TileMain.TileList.Add(tileList[i]);
@@ -51,7 +51,7 @@ public class TileCreation : MonoBehaviour
 
     Vector3 GetTilePos(int num)
     {
-        Vector3 originalPos = new Vector3(tileList[num].transform.position.x, tileList[num].transform.position.y + 1.0f, tileList[num].transform.position.z);
+        Vector3 originalPos = new Vector3(tileList[num].transform.position.x, tileList[num].transform.position.y, tileList[num].transform.position.z);
         return originalPos;
     }
 }
