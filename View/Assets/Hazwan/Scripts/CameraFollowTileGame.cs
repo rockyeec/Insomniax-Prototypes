@@ -22,12 +22,17 @@ public class CameraFollowTileGame : MonoBehaviour
     #endregion
 
     public Transform target;
+    public Transform target2;
+
+    [SerializeField] Transform cam = null;
 
     public bool changeCameraView = false;
+    public bool changeCameraView2 = false;
 
     public float speed = 2f;
 
     bool isPlayable = true;
+    public bool isCorrect = false;
 
     private void Awake()
     {
@@ -45,19 +50,27 @@ public class CameraFollowTileGame : MonoBehaviour
         {
             if (target != null)
             {
-                transform.position = Vector3.Lerp(transform.position, target.position, speed * Time.deltaTime);
-                transform.rotation = Quaternion.Slerp(transform.rotation, target.rotation, speed * Time.deltaTime);
+                cam.position = Vector3.Lerp(cam.position, target.position, speed * Time.deltaTime);
+                cam.rotation = Quaternion.Slerp(cam.rotation, target.rotation, speed * Time.deltaTime);
             }
-            if(isPlayable)
+            if (isPlayable)
             {
                 StartCoroutine(SwitchCameraView());
                 isPlayable = false;
             }
         }
+        else if (changeCameraView2)
+        {
+            if (target2 != null)
+            {
+                cam.position = Vector3.Lerp(cam.position, target2.position, speed * Time.deltaTime);
+                cam.rotation = Quaternion.Slerp(cam.rotation, target2.rotation, speed * Time.deltaTime);
+            }
+        }
         else
         {
-            transform.localPosition = Vector3.Lerp(transform.localPosition, Vector3.zero, speed * Time.deltaTime);
-            transform.localRotation = Quaternion.Slerp(transform.localRotation, Quaternion.identity, speed * Time.deltaTime);
+            cam.localPosition = Vector3.Lerp(cam.localPosition, Vector3.zero, speed * Time.deltaTime);
+            cam.localRotation = Quaternion.Slerp(cam.localRotation, Quaternion.identity, speed * Time.deltaTime);
             isPlayable = true;
         }
     }
@@ -65,7 +78,22 @@ public class CameraFollowTileGame : MonoBehaviour
     IEnumerator SwitchCameraView()
     {
         yield return new WaitForSeconds(3f);
-        changeCameraView = false;
-        PlayerInput.IsEnableCamera = true;
+
+        if (isCorrect)
+        {
+            changeCameraView = false;
+            changeCameraView2 = true;
+            yield return new WaitForSeconds(3f);
+            changeCameraView2 = false;
+            PlayerInput.IsEnableCamera = true;
+        }
+        else
+        {
+            changeCameraView2 = false;
+            changeCameraView = false;
+            PlayerInput.IsEnableCamera = true;
+            yield return new WaitForSeconds(2f);
+            //LevelManager.ResetLevel();
+        }
     }
 }

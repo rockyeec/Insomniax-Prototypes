@@ -28,6 +28,8 @@ MonoBehaviour:
     isQuestion: 0
     newMCQ: []
     isEndMCQ: 0
+    isLose: 0
+    isWin: 0
   - isBubble: 0
     TextColor: {r: 0, g: 0, b: 0, a: 1}
     characImage: {fileID: 0}
@@ -41,6 +43,8 @@ MonoBehaviour:
     isQuestion: 0
     newMCQ: []
     isEndMCQ: 0
+    isLose: 0
+    isWin: 0
   - isBubble: 0
     TextColor: {r: 0, g: 0, b: 0, a: 1}
     characImage: {fileID: 0}
@@ -52,4 +56,6 @@ MonoBehaviour:
     isPlayed: 0
     isQuestion: 0
     newMCQ: []
-    isEndMCQ: 0
+    isEndMCQ: 1
+    isLose: 0
+    isWin: 1

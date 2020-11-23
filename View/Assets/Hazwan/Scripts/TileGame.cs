@@ -59,12 +59,18 @@ public class TileGame : MonoBehaviour
 
     private IEnumerator CorrectSequence()
     {
+        CameraFollowTileGame.Instance.isCorrect = true;
+        yield return new WaitForSeconds(2f);
+        CameraFollowTileGame.Instance.changeCameraView = true;
         yield return new WaitForSeconds(2f);
         SetTileColor(instance.greenColor);
     }
 
     private IEnumerator IncorrectSequence()
     {
+        totalInteractedTile = 0;
+        yield return new WaitForSeconds(2f);
+        CameraFollowTileGame.Instance.changeCameraView = true;
         yield return new WaitForSeconds(2f);
         SetTileColor(instance.redColor);
     }

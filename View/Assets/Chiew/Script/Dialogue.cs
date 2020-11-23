@@ -32,6 +32,8 @@ public class Dialogue : ScriptableObject
 
         [Header("For Level 3 dialogue, tick for last selection")]
         public bool isEndMCQ = false;
+        public bool isLose = false;
+        public bool isWin = false;
     }
     [Header("for next Dialogue without MCQ")]
     public bool nxtDialogue = false;
