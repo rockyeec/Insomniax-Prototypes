@@ -51,6 +51,7 @@ public class EndingPanel : MonoBehaviour
             buttonsParents.SetActive(true);
             TMP_UI.gameObject.SetActive(true);
             TMP_UI.text = Text_Here;
+            Destroy(FindObjectOfType<DontDestroyScript>().gameObject);
         }
         else
         {

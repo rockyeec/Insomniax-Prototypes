@@ -10,18 +10,27 @@ public class TriggerDialogue : MonoBehaviour
 
     private bool doneOn = false;
 
+    private bool trigger = false;
+
     // Start is called before the first frame update
     void Start()
     {
-        if(startDialogue != null)
-        {
-            DialogueManager.instance.StartDialogue(startDialogue);
-        }
+        
     }
 
     private void Update()
     {
-        if(DialogueManager.instance.isDoneMCQL3 == true)
+        if (startDialogue != null)
+        {
+            if(trigger == false)
+            {
+                DialogueManager.instance.StartDialogue(startDialogue);
+                trigger = true;
+            }
+
+        }
+
+        if (DialogueManager.instance.isDoneMCQL3 == true)
         {
             if(DialogueManager.instance.L3IsLose == true)
             {

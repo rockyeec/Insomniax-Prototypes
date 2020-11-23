@@ -949,6 +949,11 @@ PrefabInstance:
       propertyPath: Text_Here
       value: To Be Continued...
       objectReference: {fileID: 0}
+    - target: {fileID: 3972381027691947331, guid: de85ea4fb6e471840b0c1d63393da513,
+        type: 3}
+      propertyPath: debug
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3972381027691947333, guid: de85ea4fb6e471840b0c1d63393da513,
         type: 3}
       propertyPath: m_Name
@@ -1053,6 +1058,11 @@ PrefabInstance:
       propertyPath: edPanel
       value: 
       objectReference: {fileID: 3972381029195652319}
+    - target: {fileID: 259481629834393902, guid: e7928ef2b05595349a5f9e72e7c592e5,
+        type: 3}
+      propertyPath: debug
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 259481629834393903, guid: e7928ef2b05595349a5f9e72e7c592e5,
         type: 3}
       propertyPath: m_LocalPosition.x

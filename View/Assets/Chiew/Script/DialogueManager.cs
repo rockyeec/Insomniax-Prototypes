@@ -61,6 +61,10 @@ public class DialogueManager : MonoBehaviour
         DialogueElement.SetActive(false);
     }
 
+    private void Update()
+    {
+    }
+
     public void StartDialogue(Dialogue d) //Call start dialogue
     {
         DialogueElement.SetActive(true);
@@ -147,7 +151,7 @@ public class DialogueManager : MonoBehaviour
             dialogueTextWorld.gameObject.SetActive(true);
         }
 
-
+        Debug.Log("I pass by");
         //MCQ
         AssignAnswerToButton(info);
     }
@@ -163,7 +167,6 @@ public class DialogueManager : MonoBehaviour
                 if (curInfo.newMCQ[assign] != null && curInfo.newMCQ[assign].answerString != "")
                 { answerButtons[assign].GetComponentInChildren<TextMeshProUGUI>().text = curInfo.newMCQ[assign].answerString; }
                 else { answerButtons[assign].GetComponentInChildren<TextMeshProUGUI>().text = null; answerButtons[assign].gameObject.SetActive(false); }
-
                 MCQTemp[assign] = curInfo.newMCQ[assign];
             }
         }
