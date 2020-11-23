@@ -38,6 +38,6 @@ public class InteractPrompt : MonoBehaviour
             cam = Camera.main;
         }
 
-        picture.transform.position = cam.WorldToScreenPoint(target.position + offset);
+        picture.transform.position = cam.WorldToScreenPoint(target.position) + offset;
     }
 }
