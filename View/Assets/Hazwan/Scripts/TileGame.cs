@@ -21,10 +21,14 @@ public class TileGame : MonoBehaviour
     [SerializeField] GameObject towardsFogMonologue = null;
     //--------------------------------------------------------
 
-    private static TileGame instance;
+    public static TileGame instance;
     private void Awake()
     {
         instance = this;
+    }
+    private void Start()
+    {
+        EntryPrompt.Instance.PromptActivation(8);
     }
 
     public static void TileComparison()
@@ -60,10 +64,18 @@ public class TileGame : MonoBehaviour
     public void CheckSequence(bool isCorrect)
     {
         InvokerForMonologue.Do("DisableMoveControl");
-        if(isCorrect)
+        InvokerForMonologue.Do("DisableCameraControl");
+        InvokerForMonologue.Do("DisableJump");
+        InvokerForMonologue.Do("DisableDiary");
+        if (isCorrect)
             StartCoroutine(CorrectSequence());
         else
             StartCoroutine(IncorrectSequence());
+    }
+
+    public void Restart()
+    {
+        StartCoroutine(RestartLevel());
     }
 
     private IEnumerator CorrectSequence()
@@ -79,7 +91,13 @@ public class TileGame : MonoBehaviour
         CameraFollowTileGame.Instance.changeCameraView = true;
         yield return new WaitForSeconds(2f);
         SetTileColor(instance.greenColor);
+        yield return new WaitForSeconds(7.5f);
+        InvokerForMonologue.Do("EnableCameraControl");
+        InvokerForMonologue.Do("EnableJump");
+        InvokerForMonologue.Do("EnableDiary");
         InvokerForMonologue.Do("EnableMoveControl");
+        yield return new WaitForSeconds(2f);
+        EntryPrompt.Instance.PromptActivation(10);
     }
 
     private IEnumerator IncorrectSequence()
@@ -104,6 +122,29 @@ public class TileGame : MonoBehaviour
 
         yield return new WaitForSeconds(3f);
         OnReset();
+        InvokerForMonologue.Do("EnableCameraControl");
+        InvokerForMonologue.Do("EnableJump");
+        InvokerForMonologue.Do("EnableDiary");
         InvokerForMonologue.Do("EnableMoveControl");
+    }
+
+    private IEnumerator RestartLevel()
+    {
+        totalInteractedTile = 0;
+        tileData.Clear();
+        SetTileColor(instance.origin);
+        yield return new WaitForSeconds(2f);
+        GameScript.TakeOffGlasses();
+        GameScript.PutOnGlasses();
+
+        //rock-----------------------------------------------------------------------
+        yield return new WaitForSeconds(2f);
+        MonologueScript.TriggerText(new string[2] {
+                "I need to do all over again?",
+                "Hm" });
+        //---------------------------------------------------------------------------
+
+        yield return new WaitForSeconds(3f);
+        OnReset();
     }
 }

@@ -7,5 +7,6 @@ public class Level2Triggers : MonoBehaviour
     private void Start()
     {
         EntryPrompt.Instance.PromptActivation(6);
+        EntryPrompt.Instance.PromptActivation(7);
     }
 }

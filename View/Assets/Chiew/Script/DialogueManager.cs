@@ -35,6 +35,9 @@ public class DialogueManager : MonoBehaviour
     [HideInInspector]
     public bool isDoneMCQL3 = false;
 
+    public bool L3IsPass = false;
+    public bool L3IsLose = false;
+
     //Private Variable Below Please
     private Queue<Dialogue.infomation> sentences = new Queue<Dialogue.infomation>();
     private MCQInfo[] MCQTemp = new MCQInfo[3];
@@ -56,6 +59,10 @@ public class DialogueManager : MonoBehaviour
     private void Start()
     {
         DialogueElement.SetActive(false);
+    }
+
+    private void Update()
+    {
     }
 
     public void StartDialogue(Dialogue d) //Call start dialogue
@@ -117,6 +124,8 @@ public class DialogueManager : MonoBehaviour
         tempStore = info.DialogueText;
         dialogueTextWorld.color = info.TextColor;
         dialogueText.color = info.TextColor;
+        L3IsLose = info.isLose;
+        L3IsPass = info.isWin;
         StartCoroutine(Wordbyword(info.DialogueText, info)); //Animation display
         //dialogueText.text = info.DialogueText; //This is for normal display
         //characterIcon.sprite = info.characImage; //If needed picture/icon
@@ -142,7 +151,7 @@ public class DialogueManager : MonoBehaviour
             dialogueTextWorld.gameObject.SetActive(true);
         }
 
-
+        Debug.Log("I pass by");
         //MCQ
         AssignAnswerToButton(info);
     }
@@ -158,7 +167,6 @@ public class DialogueManager : MonoBehaviour
                 if (curInfo.newMCQ[assign] != null && curInfo.newMCQ[assign].answerString != "")
                 { answerButtons[assign].GetComponentInChildren<TextMeshProUGUI>().text = curInfo.newMCQ[assign].answerString; }
                 else { answerButtons[assign].GetComponentInChildren<TextMeshProUGUI>().text = null; answerButtons[assign].gameObject.SetActive(false); }
-
                 MCQTemp[assign] = curInfo.newMCQ[assign];
             }
         }

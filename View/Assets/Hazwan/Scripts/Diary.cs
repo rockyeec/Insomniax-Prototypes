@@ -73,6 +73,7 @@ public class Diary : DiaryManager
     public void OpenDiary()
     {
         AudioManager.instance.Play("OpenBook", "SFX");
+        EntryPrompt.Instance.notifyPanel.SetActive(false);
         OpenButton.SetActive(false);
         DiaryContainer.SetActive(true);
         diaryList[0].SetActive(true);

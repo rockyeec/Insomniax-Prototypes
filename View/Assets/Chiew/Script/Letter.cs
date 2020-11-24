@@ -19,7 +19,7 @@ public class Letter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        PanelOnOfF(false);
     }
 
     public void buttonFunction()
@@ -28,6 +28,7 @@ public class Letter : MonoBehaviour
         {
             edPanel.PanelOnOfF(true); //on endingpanel
             this.PanelOnOfF(false);
+            StartCoroutine(DelayEnding());
         }
         DebugFunction("Done Reading and next");
     }
@@ -53,6 +54,13 @@ public class Letter : MonoBehaviour
     private void DebugFunction(string d)
     {
         if (debug == true) { Debug.Log(d); }
+    }
+
+    IEnumerator DelayEnding()
+    {
+        yield return new WaitForSeconds(2f);
+
+
     }
 
 }
