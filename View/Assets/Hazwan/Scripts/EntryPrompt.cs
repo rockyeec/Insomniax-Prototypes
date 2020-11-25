@@ -12,7 +12,7 @@ public class EntryPrompt : MonoBehaviour
 
     //public GameObject notifyPanel;
 
-    bool isTriggered = false;
+    //bool isTriggered = false;
 
     Vector3 originScale;
 
@@ -40,13 +40,13 @@ public class EntryPrompt : MonoBehaviour
 
     IEnumerator DelaySetActiveFalse()
     {
-        print("Play_1");
+        //print("Play_1");
         yield return new WaitForSeconds(1.5f);
         DiaryManager.DiaryPromptNotify.transform.gameObject.SetActive(true);
-        print("Play_2");
+        //print("Play_2");
         DiaryManager.PromptEntry.transform.gameObject.SetActive(true);
         yield return new WaitForSeconds(3f);
-        print("Play_3");
+        //print("Play_3");
         DiaryManager.PromptEntry.transform.gameObject.SetActive(false);
     }
 
@@ -54,18 +54,18 @@ public class EntryPrompt : MonoBehaviour
     {
         if (SaveSystem.GetBool(entryName))
         {
-            print("SAVED");
+            //print("SAVED");
         }
         else
         {
-            print("NONE");
+            //print("NONE");
             
             observer.Init(index);
             StartCoroutine(DelaySetActiveFalse());
 
             observer.TriggerDiaryPrompt();
             SaveSystem.SetBool(entryName, false);
-            isTriggered = true;
+            //isTriggered = true;
             SaveSystem.SetBool(entryName, true);
             
         }

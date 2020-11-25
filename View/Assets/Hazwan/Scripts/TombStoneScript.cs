@@ -28,7 +28,6 @@ public class TombStoneScript : MonoBehaviour
         if (col.gameObject.CompareTag("TriggerCheck") && !isTriggered && doneDialoguePuzzle)
         {
             isTriggered = true;
-            print("LETTER");
             StartCoroutine(Delay());
         }
     }
@@ -56,10 +55,8 @@ public class TombStoneScript : MonoBehaviour
 
     void Letter()
     {
-        print("CALLED");
         if (letterObj != null && !doneOn)
         {
-            print("CALLED2");
             letterObj.PanelOnOfF(true);
             doneOn = true;
         }

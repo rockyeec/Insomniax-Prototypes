@@ -43,7 +43,6 @@ public class TriggerDialoguePuzzleLevel3 : MonoBehaviour
     {
         if (col.gameObject.CompareTag("TriggerCheck") && !isTriggered)
         {
-            print("Play");
             if (startDialogue != null)
             {
                 DialogueManager.instance.isDoneMCQL3 = false;
@@ -68,7 +67,6 @@ public class TriggerDialoguePuzzleLevel3 : MonoBehaviour
             //Restart level
             StartCoroutine(DoneDialoguePuzzle(false));
             DialogueManager.instance.isDoneMCQL3 = false;
-            print("lose");
             OnRestart();
             isAbleToRun = false;
         }
