@@ -15,6 +15,7 @@ public class DiaryManager : MonoBehaviour
     [SerializeField] GameObject diaryContainerWithTag = null;
     [SerializeField] GameObject childContent = null;
     [SerializeField] GameObject promptEntry = null;
+    [SerializeField] GameObject diaryPromptNotify = null;
 
     private static DiaryManager instance;
     private void Awake()
@@ -26,6 +27,7 @@ public class DiaryManager : MonoBehaviour
     public static GameObject StaticDiaryContainer { get { return instance.diaryContainerWithTag; } }
 
     public static GameObject PromptEntry { get { return instance.promptEntry; } }
+    public static GameObject DiaryPromptNotify { get { return instance.diaryPromptNotify; } }
 
     protected void ActiveDiary(GameObject diaryContainer)
     {

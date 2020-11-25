@@ -91,7 +91,7 @@ public class TileGame : MonoBehaviour
         CameraFollowTileGame.Instance.changeCameraView = true;
         yield return new WaitForSeconds(2f);
         SetTileColor(instance.greenColor);
-        yield return new WaitForSeconds(7.5f);
+        yield return new WaitForSeconds(8.2f);
         InvokerForMonologue.Do("EnableCameraControl");
         InvokerForMonologue.Do("EnableJump");
         InvokerForMonologue.Do("EnableDiary");

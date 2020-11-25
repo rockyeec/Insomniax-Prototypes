@@ -10,8 +10,6 @@ public class EntryPrompt : MonoBehaviour
 
     public static EntryPrompt Instance;
 
-    public GameObject panel;
-
     //public GameObject notifyPanel;
 
     bool isTriggered = false;
@@ -26,6 +24,8 @@ public class EntryPrompt : MonoBehaviour
     private void Start()
     {
         originScale = new Vector3(0.2565746f, 0.1344579f, 0.2565746f);
+        DiaryManager.PromptEntry.transform.gameObject.SetActive(false);
+        //panel.SetActive(false);
         //notifyPanel.SetActive(false);
         observer = gameObject.AddComponent<InteractableObserver>();
         observer.TriggerCheckDiaryPrompt();
@@ -42,12 +42,12 @@ public class EntryPrompt : MonoBehaviour
     {
         print("Play_1");
         yield return new WaitForSeconds(1.5f);
-        //notifyPanel.SetActive(true);
+        DiaryManager.DiaryPromptNotify.transform.gameObject.SetActive(true);
         print("Play_2");
-        DiaryManager.PromptEntry.transform.GetChild(0).gameObject.SetActive(true);
+        DiaryManager.PromptEntry.transform.gameObject.SetActive(true);
         yield return new WaitForSeconds(3f);
         print("Play_3");
-        DiaryManager.PromptEntry.transform.GetChild(0).gameObject.SetActive(false);
+        DiaryManager.PromptEntry.transform.gameObject.SetActive(false);
     }
 
     void CheckSavedData(int index, string entryName)
