@@ -12,6 +12,8 @@ public class InteractableSubject : MonoBehaviour
     {
         //tileGame.Init();
         InteractableObserver.OnInteracted += InteractableObserver_OnInteracted;
+        InteractableObserver.OnInteractedDiaryPrompt += InteractableObserver_OnInteractedDiaryPrompt;
+        InteractableObserver.OnInteractedCheckDiaryPrompt += InteractableObserver_OnInteractedCheckDiaryPrompt;
 
         for (int i = 0; i < coverArr.Length; i++)
         {
@@ -22,9 +24,14 @@ public class InteractableSubject : MonoBehaviour
             }
         }
     }
+
+    
+
     private void OnDestroy()
     {
         InteractableObserver.OnInteracted -= InteractableObserver_OnInteracted;
+        InteractableObserver.OnInteractedDiaryPrompt -= InteractableObserver_OnInteractedDiaryPrompt;
+        InteractableObserver.OnInteractedCheckDiaryPrompt -= InteractableObserver_OnInteractedCheckDiaryPrompt;
     }
 
     private void InteractableObserver_OnInteracted(int i)
@@ -41,4 +48,29 @@ public class InteractableSubject : MonoBehaviour
         yield return new WaitForSeconds(duration);
         coverArr[i].gameObject.SetActive(false);
     }
+
+    private void InteractableObserver_OnInteractedDiaryPrompt(int a)
+    {
+        
+        DisableCoverLayerForDiaryPrompt(a);
+    }
+
+    void DisableCoverLayerForDiaryPrompt(int i)
+    {
+        coverArr[i].gameObject.SetActive(false);
+    }
+
+    private void InteractableObserver_OnInteractedCheckDiaryPrompt()
+    {
+        for (int i = 6; i < coverArr.Length; i++)
+        {
+            string entryName = "DiaryPrompt " + i.ToString();
+            if (SaveSystem.GetBool(entryName))
+            {
+                coverArr[i].gameObject.SetActive(false);
+            }
+        }
+    }
+
+
 }

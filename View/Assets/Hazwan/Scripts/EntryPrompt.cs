@@ -12,37 +12,63 @@ public class EntryPrompt : MonoBehaviour
 
     public GameObject panel;
 
-    public GameObject notifyPanel;
+    //public GameObject notifyPanel;
+
+    bool isTriggered = false;
 
     Vector3 originScale;
 
     public void Awake()
     {
-        originScale = new Vector3(0.2565746f, 0.1344579f, 0.2565746f);
         Instance = this;
-        //panel.transform.localScale = Vector3.zero;
     }
-    public void PromptActivation(int coverLayerNum) // <- Call this func
+
+    private void Start()
     {
+        originScale = new Vector3(0.2565746f, 0.1344579f, 0.2565746f);
+        //notifyPanel.SetActive(false);
         observer = gameObject.AddComponent<InteractableObserver>();
-        observer.Init(coverLayerNum);
-        StartCoroutine(DelaySetActiveFalse());
+        observer.TriggerCheckDiaryPrompt();
+    }
+
+    public void PromptActivation(int coverLayerNum)
+    {
+        string entryName = "DiaryPrompt " + coverLayerNum.ToString();
         
-        observer.Trigger();
+        CheckSavedData(coverLayerNum, entryName);
     }
 
     IEnumerator DelaySetActiveFalse()
     {
         print("Play_1");
         yield return new WaitForSeconds(1.5f);
-        notifyPanel.SetActive(true);
+        //notifyPanel.SetActive(true);
         print("Play_2");
-        //LeanTween.scale(panel, originScale, 3f);
         DiaryManager.PromptEntry.transform.GetChild(0).gameObject.SetActive(true);
         yield return new WaitForSeconds(3f);
         print("Play_3");
-        //LeanTween.scale(panel, Vector3.zero, 3f);
         DiaryManager.PromptEntry.transform.GetChild(0).gameObject.SetActive(false);
+    }
+
+    void CheckSavedData(int index, string entryName)
+    {
+        if (SaveSystem.GetBool(entryName))
+        {
+            print("SAVED");
+        }
+        else
+        {
+            print("NONE");
+            
+            observer.Init(index);
+            StartCoroutine(DelaySetActiveFalse());
+
+            observer.TriggerDiaryPrompt();
+            SaveSystem.SetBool(entryName, false);
+            isTriggered = true;
+            SaveSystem.SetBool(entryName, true);
+            
+        }
     }
 
 }

@@ -28,7 +28,7 @@ public class TileGame : MonoBehaviour
     }
     private void Start()
     {
-        EntryPrompt.Instance.PromptActivation(8);
+        //EntryPrompt.Instance.PromptActivation(8);
     }
 
     public static void TileComparison()
