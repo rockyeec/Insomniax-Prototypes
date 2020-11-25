@@ -7,6 +7,8 @@ public class ClickableObject : MonoBehaviour
     TextCoverScript textCoverScript;
     Camera cam = null;
 
+    public static int totalofInteracted = 0;
+
     public void Init(TextCoverScript tcs)
     {
         textCoverScript = tcs;
@@ -29,7 +31,13 @@ public class ClickableObject : MonoBehaviour
             InteractPrompt.UndoThing();
             textCoverScript.DisableTextCover();
             enabled = false;
+            totalofInteracted++;
+            print(totalofInteracted);
+        }
 
+        if(totalofInteracted == 5)
+        {
+            EntryPrompt.Instance.PromptActivation(9);
         }
     }
 }

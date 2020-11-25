@@ -84,8 +84,11 @@ public class CameraFollowTileGame : MonoBehaviour
             changeCameraView = false;
             changeCameraView2 = true;
             yield return new WaitForSeconds(3f);
+            TriggerDialoguePuzzleLevel3.instance.RemoveFog();
+            yield return new WaitForSeconds(3f);
             changeCameraView2 = false;
             PlayerInput.IsEnableCamera = true;
+            isCorrect = false;
         }
         else
         {

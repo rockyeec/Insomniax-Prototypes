@@ -9,6 +9,9 @@ public class DontDestroyOnLoadInstantiator : MonoBehaviour
         if (AudioManager.instance == null)
         {
             Instantiate(audioManagerPrefab);
+        }
+        if(DontDestroyScript.Instance == null)
+        {
             Instantiate(diaryPrefab);
         }
         Destroy(gameObject);

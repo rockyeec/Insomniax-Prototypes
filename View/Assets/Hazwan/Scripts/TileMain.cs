@@ -14,7 +14,7 @@ public class TileMain : MonoBehaviour
 
     [SerializeField] Color yellow;
 
-    bool isInteracted = false;
+    public bool isInteracted = false;
 
     public static List<GameObject> TileList = new List<GameObject>();
 
@@ -22,14 +22,25 @@ public class TileMain : MonoBehaviour
     {
         messageBox.SetActive(false);
         SetTileIndex();
+        TileGame.OnReset += TileGame_OnReset;
+    }
+
+    private void OnDestroy()
+    {
+        TileGame.OnReset -= TileGame_OnReset;
+    }
+
+    private void TileGame_OnReset()
+    {
+        isInteracted = false;
     }
     
+
     private void OnTriggerEnter(Collider collision)
     {
         if(collision.gameObject.CompareTag("GroundCheck") && !isInteracted)
         {
             isInteracted = true;
-            //SetMemories();
             LeanTween.color(gameObject, yellow, 2f);
             TileGame.tileData.Add(indexRef);
             TileGame.totalInteractedTile++;
@@ -55,25 +66,4 @@ public class TileMain : MonoBehaviour
         }
     }
 
-    void SetMemories()
-    {
-        if (indexRef == 1)
-        {
-            print("Text changed.");
-            messageBox.SetActive(true);
-            textDialogue.text = "Working 1";
-        }
-        else if (indexRef == 2)
-        {
-            print("Text changed.");
-            messageBox.SetActive(true);
-            textDialogue.text = "Working 2";
-        }
-        else
-        {
-            print("Text changed.");
-            messageBox.SetActive(true);
-            textDialogue.text = "Empty";
-        }
-    }
 }

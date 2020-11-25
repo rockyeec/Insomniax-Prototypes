@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class EndingPanel : MonoBehaviour
 {
@@ -29,9 +30,15 @@ public class EndingPanel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //if(debug == true) { PanelOnOfF(true); }
-        //else { PanelOnOfF(false); }
         PanelOnOfF(false);
+        //if (debug == true) { PanelOnOfF(true); }
+        //else { PanelOnOfF(false); }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
     }
 
     public void PanelOnOfF(bool o)
@@ -45,6 +52,7 @@ public class EndingPanel : MonoBehaviour
             buttonsParents.SetActive(true);
             TMP_UI.gameObject.SetActive(true);
             TMP_UI.text = Text_Here;
+            Destroy(FindObjectOfType<DontDestroyScript>().gameObject);
         }
         else
         {
@@ -65,7 +73,9 @@ public class EndingPanel : MonoBehaviour
         //change to scene 1
         //LevelManager.changescene(1);
         DebugFunction("Change to main menu");
+        LevelManager.LoadNextLevel();
     }
+
 
     private void DebugFunction(string d)
     {

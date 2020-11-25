@@ -49,8 +49,8 @@ public class TextCoverScript : MonoBehaviour
     public void DisableTextCover()
     {
         Diary.Instance.currentPage = diaryPage;
-        Diary.Instance.ButtonsVisibility(diaryPage, Diary.diaryList);
-        Diary.Instance.HiddenContent(diaryPage, Diary.diaryList);
+        Diary.Instance.ButtonsVisibility(diaryPage, Diary.DiaryList);
+        Diary.Instance.HiddenContent(diaryPage, Diary.DiaryList);
         Diary.Instance.OpenButton.SetActive(false);
         Diary.Instance.DiaryEntry.SetActive(true);
         callTempMeshRend.materials = matArrayNormal;

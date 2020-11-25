@@ -22,7 +22,9 @@ public class Diary : DiaryManager
     }
     #endregion
 
-    static public List<GameObject> diaryList = new List<GameObject>();
+    public static List<GameObject> DiaryList { get { return Instance.diaryList; } }
+
+    public List<GameObject> diaryList = new List<GameObject>();
 
     public int currentPage = 0;
 
@@ -71,6 +73,8 @@ public class Diary : DiaryManager
     public void OpenDiary()
     {
         AudioManager.instance.Play("OpenBook", "SFX");
+        PromptEntry.transform.gameObject.SetActive(false);
+        DiaryPromptNotify.transform.gameObject.SetActive(false);
         OpenButton.SetActive(false);
         DiaryContainer.SetActive(true);
         diaryList[0].SetActive(true);

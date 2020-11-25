@@ -8,6 +8,10 @@ public class InteractableObserver : MonoBehaviour
 
     public static event System.Action<int> OnInteracted = delegate { };
 
+    public static event System.Action<int> OnInteractedDiaryPrompt = delegate { };
+
+    public static event System.Action OnInteractedCheckDiaryPrompt = delegate { };
+
     public void Init(int i)
     {
         index = i;
@@ -17,4 +21,15 @@ public class InteractableObserver : MonoBehaviour
     {
         OnInteracted(index);
     }
+
+    public void TriggerDiaryPrompt()
+    {
+        OnInteractedDiaryPrompt(index);
+    }
+
+    public void TriggerCheckDiaryPrompt()
+    {
+        OnInteractedCheckDiaryPrompt();
+    }
+
 }
