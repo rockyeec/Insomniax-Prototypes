@@ -11,9 +11,9 @@ public class TileGame : MonoBehaviour
 
     public static List<int> tileData = new List<int>();
 
-    [SerializeField] Color redColor;
-    [SerializeField] Color greenColor;
-    [SerializeField] Color origin;
+    public Color redColor;
+    public Color greenColor;
+    public Color origin;
 
     public static event Action OnReset = delegate { };
 

@@ -14,7 +14,7 @@ public class EntryPrompt : MonoBehaviour
 
     //bool isTriggered = false;
 
-    Vector3 originScale;
+    //Vector3 originScale;
 
     public void Awake()
     {
@@ -23,7 +23,7 @@ public class EntryPrompt : MonoBehaviour
 
     private void Start()
     {
-        originScale = new Vector3(0.2565746f, 0.1344579f, 0.2565746f);
+        //originScale = new Vector3(0.2565746f, 0.1344579f, 0.2565746f);
         DiaryManager.PromptEntry.transform.gameObject.SetActive(false);
         //panel.SetActive(false);
         //notifyPanel.SetActive(false);
@@ -40,14 +40,16 @@ public class EntryPrompt : MonoBehaviour
 
     IEnumerator DelaySetActiveFalse()
     {
+        InvokerForMonologue.Do("DisableMenu");
         //print("Play_1");
         yield return new WaitForSeconds(1.5f);
-        DiaryManager.DiaryPromptNotify.transform.gameObject.SetActive(true);
+        DiaryManager.DiaryPromptNotify.gameObject.SetActive(true);
         //print("Play_2");
-        DiaryManager.PromptEntry.transform.gameObject.SetActive(true);
+        DiaryManager.PromptEntry.gameObject.SetActive(true);
         yield return new WaitForSeconds(3f);
         //print("Play_3");
-        DiaryManager.PromptEntry.transform.gameObject.SetActive(false);
+        DiaryManager.PromptEntry.gameObject.SetActive(false);
+        InvokerForMonologue.Do("EnableMenu");
     }
 
     void CheckSavedData(int index, string entryName)
@@ -64,11 +66,10 @@ public class EntryPrompt : MonoBehaviour
             StartCoroutine(DelaySetActiveFalse());
 
             observer.TriggerDiaryPrompt();
-            SaveSystem.SetBool(entryName, false);
+            //SaveSystem.SetBool(entryName, false);
             //isTriggered = true;
             SaveSystem.SetBool(entryName, true);
             
         }
     }
-
 }

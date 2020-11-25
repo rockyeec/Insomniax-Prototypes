@@ -62,7 +62,7 @@ public class TextCoverScript : MonoBehaviour
 
     public void Outline()
     {
-        callTempMeshRend = GetComponent<MeshRenderer>();
+        callTempMeshRend = GetComponentInChildren<MeshRenderer>();
         matArrayNormal = callTempMeshRend.materials;
         List<Material> listMaterial = new List<Material>();
         listMaterial.AddRange(matArrayNormal);

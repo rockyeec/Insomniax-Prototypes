@@ -8,11 +8,11 @@ public class CameraGlassesEffectHandler : MonoBehaviour
 
 
     float targetFov;
-    Vector3 targetPos;
+    //Vector3 targetPos;
     float elapsed = float.MaxValue;
     float duration;
     float startFov;
-    Vector3 startPos;
+    //Vector3 startPos;
 
 
 
@@ -31,14 +31,14 @@ public class CameraGlassesEffectHandler : MonoBehaviour
     {
         FillUpVarIfNull();
 
-        StartLerp(60.0f, Vector3.zero);
+        StartLerp(60.0f/*, Vector3.zero*/);
     }
 
     private void GameScript_OnGlassesOn()
     {
         FillUpVarIfNull();
 
-        StartLerp(80.0f, Vector3.forward * 1.0f);
+        StartLerp(69.0f/*, Vector3.forward * 1.0f*/);
     }
 
     private void FillUpVarIfNull()
@@ -54,7 +54,7 @@ public class CameraGlassesEffectHandler : MonoBehaviour
         duration = CurveManager.AnimationDuration;
         enabled = false;
     }
-    private void StartLerp(in float targetFov, Vector3 targetPos)
+    private void StartLerp(in float targetFov/*, Vector3 targetPos*/)
     {
         FillUpVarIfNull();
         enabled = true;
@@ -63,17 +63,17 @@ public class CameraGlassesEffectHandler : MonoBehaviour
         duration = CurveManager.AnimationDuration;
 
         startFov = cam.fieldOfView; 
-        startPos = camParent.localPosition;
+        //startPos = camParent.localPosition;
 
         this.targetFov = targetFov;
-        this.targetPos = targetPos;
+        //this.targetPos = targetPos;
     }
     private void EndLerp()
     {
         FillUpVarIfNull();
         enabled = false;
 
-        camParent.localPosition = targetPos;
+        //camParent.localPosition = targetPos;
         cam.fieldOfView = targetFov;
     }
     private void Update()
@@ -85,7 +85,7 @@ public class CameraGlassesEffectHandler : MonoBehaviour
 
             float t = CurveManager.FadeCurve.Evaluate(elapsed / duration);
 
-            camParent.localPosition = Vector3.LerpUnclamped(startPos, targetPos, t);
+            //camParent.localPosition = Vector3.LerpUnclamped(startPos, targetPos, t);
             cam.fieldOfView = Mathf.LerpUnclamped(startFov, targetFov, t);
         }
         else

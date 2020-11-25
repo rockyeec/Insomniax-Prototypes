@@ -2656,80 +2656,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 240825409}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &242709377
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 461544375}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: e12ad0ce9d4c871448117eb2d453ad0d,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: e12ad0ce9d4c871448117eb2d453ad0d,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: e12ad0ce9d4c871448117eb2d453ad0d,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -16.343
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: e12ad0ce9d4c871448117eb2d453ad0d,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: e12ad0ce9d4c871448117eb2d453ad0d,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: e12ad0ce9d4c871448117eb2d453ad0d,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: e12ad0ce9d4c871448117eb2d453ad0d,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: e12ad0ce9d4c871448117eb2d453ad0d,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: e12ad0ce9d4c871448117eb2d453ad0d,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: e12ad0ce9d4c871448117eb2d453ad0d,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: e12ad0ce9d4c871448117eb2d453ad0d,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: e12ad0ce9d4c871448117eb2d453ad0d,
-        type: 3}
-      propertyPath: m_Name
-      value: TREE_2 (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: e12ad0ce9d4c871448117eb2d453ad0d,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: e12ad0ce9d4c871448117eb2d453ad0d, type: 3}
 --- !u!1001 &250103211
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9375,7 +9301,7 @@ PrefabInstance:
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
@@ -10794,7 +10720,7 @@ PrefabInstance:
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.size
-      value: 27
+      value: 29
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
@@ -10894,32 +10820,32 @@ PrefabInstance:
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[17]
-      value: Hold
+      value: DisableDiary
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[18]
-      value: TurnOffHighlight
+      value: Hold
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[19]
-      value: DisableGlasses
+      value: EnableDiary
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[20]
-      value: "Sure Alex let\u2019s wear the glasses that appeared out of nowhere."
+      value: TurnOffHighlight
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[21]
-      value: "I can see\u2026? "
+      value: DisableGlasses
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[22]
-      value: 'The environment is distorting?  '
+      value: "Sure Alex let\u2019s wear the glasses that appeared out of nowhere."
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
@@ -10934,28 +10860,28 @@ PrefabInstance:
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[23]
-      value: EnableMoveControl
+      value: "I can see\u2026? "
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[24]
+      value: 'The environment is distorting?  '
+      objectReference: {fileID: 0}
+    - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
+        type: 3}
+      propertyPath: monologue.Array.data[25]
+      value: EnableMoveControl
+      objectReference: {fileID: 0}
+    - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
+        type: 3}
+      propertyPath: monologue.Array.data[26]
       value: " I can\u2019t seem to take the glasses off, looks like it's staying
         on.  "
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
-      propertyPath: monologue.Array.data[25]
-      value: ' this is definitely not ideal  '
-      objectReference: {fileID: 0}
-    - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
-        type: 3}
-      propertyPath: monologue.Array.data[26]
-      value: NormalMove
-      objectReference: {fileID: 0}
-    - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
-        type: 3}
       propertyPath: monologue.Array.data[27]
-      value: NormalMove
+      value: ' this is definitely not ideal  '
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
@@ -13894,7 +13820,7 @@ PrefabInstance:
     - target: {fileID: 1145499610413280560, guid: 31338f6d870329f4ab16fc8e3bed6d22,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.27
+      value: -4.76
       objectReference: {fileID: 0}
     - target: {fileID: 1145499610413280560, guid: 31338f6d870329f4ab16fc8e3bed6d22,
         type: 3}
@@ -13904,7 +13830,7 @@ PrefabInstance:
     - target: {fileID: 1145499610413280560, guid: 31338f6d870329f4ab16fc8e3bed6d22,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -16.342281
+      value: -15.37
       objectReference: {fileID: 0}
     - target: {fileID: 1145499610413280560, guid: 31338f6d870329f4ab16fc8e3bed6d22,
         type: 3}
@@ -15027,7 +14953,7 @@ PrefabInstance:
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.size
-      value: 32
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
@@ -15082,7 +15008,7 @@ PrefabInstance:
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[8]
-      value: WaitFor 6.9
+      value: WaitFor 4.2
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
@@ -15092,102 +15018,102 @@ PrefabInstance:
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[10]
-      value: Where the heck, where am I? I swear I was just on my bed.
-      objectReference: {fileID: 0}
-    - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
-        type: 3}
-      propertyPath: monologue.Array.data[11]
       value: Where is this neighbourhood? Did I sleep walk again?
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
-      propertyPath: monologue.Array.data[12]
+      propertyPath: monologue.Array.data[11]
       value: My diary. I need it.
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
-      propertyPath: monologue.Array.data[13]
+      propertyPath: monologue.Array.data[12]
       value: Maybe there's a clue in there, I usually write everything down.
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
-      propertyPath: monologue.Array.data[14]
+      propertyPath: monologue.Array.data[13]
       value: EnableDiary
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
-      propertyPath: monologue.Array.data[15]
+      propertyPath: monologue.Array.data[14]
       value: HighlightDiary
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
-      propertyPath: monologue.Array.data[16]
+      propertyPath: monologue.Array.data[15]
       value: Hold
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
-      propertyPath: monologue.Array.data[17]
+      propertyPath: monologue.Array.data[16]
       value: TurnOffHighlight
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
-      propertyPath: monologue.Array.data[18]
+      propertyPath: monologue.Array.data[17]
       value: Hold
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
-      propertyPath: monologue.Array.data[19]
+      propertyPath: monologue.Array.data[18]
       value: I need to start moving and figure out how to get home.
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
-      propertyPath: monologue.Array.data[20]
+      propertyPath: monologue.Array.data[19]
       value: EnableMoveControl
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
-      propertyPath: monologue.Array.data[21]
+      propertyPath: monologue.Array.data[20]
       value: SlowMove
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
-      propertyPath: monologue.Array.data[22]
+      propertyPath: monologue.Array.data[21]
       value: WaitFor 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
-      propertyPath: monologue.Array.data[23]
+      propertyPath: monologue.Array.data[22]
       value: HighlightMove
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
-      propertyPath: monologue.Array.data[24]
+      propertyPath: monologue.Array.data[23]
       value: WaitFor 3.2
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
-      propertyPath: monologue.Array.data[25]
+      propertyPath: monologue.Array.data[24]
       value: EnableJump
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
-      propertyPath: monologue.Array.data[26]
+      propertyPath: monologue.Array.data[25]
       value: WaitFor 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
-      propertyPath: monologue.Array.data[27]
+      propertyPath: monologue.Array.data[26]
       value: HighlightJump
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
-      propertyPath: monologue.Array.data[28]
+      propertyPath: monologue.Array.data[27]
       value: WaitFor 3.2
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
+      propertyPath: monologue.Array.data[28]
+      value: "It\u2019s familiar, it's so familiar."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
+        type: 3}
       propertyPath: isSave
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
@@ -15197,12 +15123,12 @@ PrefabInstance:
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[29]
-      value: "It\u2019s familiar, it's so familiar."
+      value: TurnOffHighlight
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[30]
-      value: TurnOffHighlight
+      value: NormalMove
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
@@ -18100,7 +18026,7 @@ PrefabInstance:
     - target: {fileID: 2431080078457285975, guid: b4af69fb575982342835a034c2e8032d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.75
+      value: 11.89
       objectReference: {fileID: 0}
     - target: {fileID: 2431080078457285975, guid: b4af69fb575982342835a034c2e8032d,
         type: 3}
@@ -18110,7 +18036,7 @@ PrefabInstance:
     - target: {fileID: 2431080078457285975, guid: b4af69fb575982342835a034c2e8032d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.96772
+      value: 0.56
       objectReference: {fileID: 0}
     - target: {fileID: 2431080078457285975, guid: b4af69fb575982342835a034c2e8032d,
         type: 3}

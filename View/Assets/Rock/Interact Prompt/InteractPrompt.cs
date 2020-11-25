@@ -9,6 +9,8 @@ public class InteractPrompt : MonoBehaviour
     Image picture = null;
     [SerializeField]
     Vector3 offset = Vector3.up;
+    [SerializeField]
+    Image img = null;
 
     Camera cam;
     Transform target;
@@ -18,6 +20,24 @@ public class InteractPrompt : MonoBehaviour
     {
         instance = this;
         gameObject.SetActive(false);
+
+        GameScript.OnPause += GameScript_OnPause; 
+        GameScript.OnPlay += GameScript_OnPlay;
+    }
+    private void OnDestroy()
+    {
+        GameScript.OnPause -= GameScript_OnPause;
+        GameScript.OnPlay -= GameScript_OnPlay;
+    }
+
+    private void GameScript_OnPlay()
+    {
+        img.enabled = true;
+    }
+
+    private void GameScript_OnPause()
+    {
+        img.enabled = false;
     }
 
     public static void DoThing(Transform t)

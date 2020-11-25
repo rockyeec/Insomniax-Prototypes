@@ -12,7 +12,7 @@ public class TileMain : MonoBehaviour
 
     public string monologue = string.Empty;
 
-    [SerializeField] Color yellow;
+    public Color yellow;
 
     public bool isInteracted = false;
 

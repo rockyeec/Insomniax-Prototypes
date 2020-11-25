@@ -61,6 +61,8 @@ public class InvokerForMonologue : MonoBehaviour
 
         Add("SetGlassesOn");
         Add("SetGlassesOff");
+
+        Add("UnlockEntry");
     }
 
     private void Add(in string command)
@@ -203,6 +205,14 @@ public class InvokerForMonologue : MonoBehaviour
     {
         SaveSystem.SetBool("is glasses", false);
         glassesController.LoadState();
+    }
+
+    void UnlockEntry()
+    {
+        int curEntry = 6 + SaveSystem.GetInt("invoker entry");
+        SaveSystem.SetInt("invoker entry", curEntry - 5); // increment entry
+
+        EntryPrompt.Instance.PromptActivation(curEntry);
     }
 
     /*private void Update()

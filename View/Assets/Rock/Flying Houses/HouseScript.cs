@@ -17,8 +17,8 @@ public class HouseScript : MonoBehaviour
         Instantiate(HouseFlyManager.HousePrefabs.GetRandom(), rightHouse).transform.localPosition = Vector3.zero;
 
         a = Vector3.one;
-        b = (Vector3.one * 1.8f).With(x: 1.0f);
-        duration = Random.Range(1.2f, 4.5f);
+        b = (Vector3.one * 1.55f).With(x: 1.0f);
+        duration = Random.Range(2.5f, 6.5f);
 
         if (Random.Range(0, 2) == 1)
         {
