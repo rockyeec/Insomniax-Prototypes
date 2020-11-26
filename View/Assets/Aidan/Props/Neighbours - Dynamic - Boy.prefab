@@ -11,8 +11,6 @@ GameObject:
   - component: {fileID: 157976089020687186}
   - component: {fileID: 2794384847564914059}
   - component: {fileID: 7873506087293292379}
-  - component: {fileID: 568225670001853484}
-  - component: {fileID: 3068330894952732855}
   m_Layer: 20
   m_Name: Neighbours - Dynamic - Boy
   m_TagString: Untagged
@@ -62,30 +60,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isBackToOriginal: 1
   isStop: 0
---- !u!114 &568225670001853484
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 157976089020687191}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0492fce5d819d12429c46e35f230482a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3068330894952732855
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 157976089020687191}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4c4c082d9bf4f043a362b3701e4942a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &9128234428686559514
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -153,6 +127,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7913338690531834004, guid: dfb4e64d4609708429d9d03c7400701e,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 4026568602c4fd04f91be7473f61b09a, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfb4e64d4609708429d9d03c7400701e, type: 3}
 --- !u!4 &5017009509049469940 stripped
