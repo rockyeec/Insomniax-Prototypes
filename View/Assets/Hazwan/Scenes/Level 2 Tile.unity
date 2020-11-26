@@ -404,7 +404,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 160105549}
   m_LocalRotation: {x: 0.20259179, y: -0, z: -0, w: 0.9792633}
-  m_LocalPosition: {x: 9.36, y: 34.21, z: -45.4}
+  m_LocalPosition: {x: 9.36, y: 14.67, z: -12.53}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2108,6 +2108,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69dad6d28eaa7f941adcecf6137d99f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  innerAlex: {fileID: 1273395976}
+  fog: {fileID: 1348606532}
   startDialogue: {fileID: 11400000, guid: 206750ef891bfad4480e4037b9e7eeba, type: 2}
   wall: {fileID: 842724419}
 --- !u!1 &1202967154 stripped
@@ -2138,6 +2140,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: InnerAlex
+      objectReference: {fileID: 0}
+    - target: {fileID: 6237811157109701162, guid: 248d86d38f6cf2d4abc0dc0c52562183,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6762991148640084112, guid: 248d86d38f6cf2d4abc0dc0c52562183,
         type: 3}
@@ -2207,6 +2214,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4834901216101704759, guid: 5c7a2e51d97eb9c4d9051ba36e244a40,
     type: 3}
   m_PrefabInstance: {fileID: 38278640}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1273395976 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6237811157109701162, guid: 248d86d38f6cf2d4abc0dc0c52562183,
+    type: 3}
+  m_PrefabInstance: {fileID: 1227398385}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1331012597
 PrefabInstance:
@@ -2297,6 +2310,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de3ea6bba3c748841b27ca9dee941cb2, type: 3}
+--- !u!1 &1348606532 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2861897139738461955, guid: a976e1c4a75ce9743b402504285b2c47,
+    type: 3}
+  m_PrefabInstance: {fileID: 1393668870}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1369186804
 GameObject:
   m_ObjectHideFlags: 0
@@ -2458,20 +2477,25 @@ PrefabInstance:
       propertyPath: InitialModule.startColor.maxColor.b
       value: 0.8490566
       objectReference: {fileID: 0}
+    - target: {fileID: 2861897139738461957, guid: a976e1c4a75ce9743b402504285b2c47,
+        type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 2861897139738461958, guid: a976e1c4a75ce9743b402504285b2c47,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.86
+      value: -1.8
       objectReference: {fileID: 0}
     - target: {fileID: 2861897139738461958, guid: a976e1c4a75ce9743b402504285b2c47,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.41
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: 2861897139738461958, guid: a976e1c4a75ce9743b402504285b2c47,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 57.79
+      value: 51.3
       objectReference: {fileID: 0}
     - target: {fileID: 2861897139738461958, guid: a976e1c4a75ce9743b402504285b2c47,
         type: 3}
@@ -2512,6 +2536,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 104.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 2861897139738461958, guid: a976e1c4a75ce9743b402504285b2c47,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.4002866
+      objectReference: {fileID: 0}
+    - target: {fileID: 2861897139738461958, guid: a976e1c4a75ce9743b402504285b2c47,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.54739064
+      objectReference: {fileID: 0}
+    - target: {fileID: 2861897139738461958, guid: a976e1c4a75ce9743b402504285b2c47,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.43059194
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a976e1c4a75ce9743b402504285b2c47, type: 3}
