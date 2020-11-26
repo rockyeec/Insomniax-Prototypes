@@ -28,7 +28,7 @@ public class TileGame : MonoBehaviour
     }
     private void Start()
     {
-        //EntryPrompt.Instance.PromptActivation(8);
+        InvokerForMonologue.Do("DisableGlasses");
     }
 
     public static void TileComparison()
@@ -81,7 +81,7 @@ public class TileGame : MonoBehaviour
     private IEnumerator CorrectSequence()
     {
         //rock-----------------------------------------------------------------------
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.7f);
         MonologueScript.TriggerText("That seemed to have done something, but what?");
         Destroy(towardsFogMonologue);
         //---------------------------------------------------------------------------

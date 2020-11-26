@@ -11,6 +11,9 @@ public class TriggerDialoguePuzzleLevel3 : MonoBehaviour
 
     bool isAbleToRun = true;
 
+    [SerializeField] GameObject innerAlex = null;
+    [SerializeField] GameObject fog = null;
+
     public Dialogue startDialogue;
 
     [SerializeField] GameObject wall = null;
@@ -24,7 +27,6 @@ public class TriggerDialoguePuzzleLevel3 : MonoBehaviour
 
     void Start()
     {
-        InvokerForMonologue.Do("DisableGlasses");
         OnRestart += TriggerDialoguePuzzleLevel3_OnRestart;
     }
 
@@ -39,7 +41,7 @@ public class TriggerDialoguePuzzleLevel3 : MonoBehaviour
             DialoguePuzzleResult();
     }
 
-    private void OnTriggerEnter(Collider col)
+    private void OnTriggerStay(Collider col)
     {
         if (col.gameObject.CompareTag("TriggerCheck") && !isTriggered)
         {
@@ -80,7 +82,6 @@ public class TriggerDialoguePuzzleLevel3 : MonoBehaviour
 
     IEnumerator DelayFog()
     {
-        //LeanTween.alpha(wall, 0, 1.5f);
         yield return new WaitForSeconds(2f);
         wall.SetActive(false);
     }
@@ -92,17 +93,22 @@ public class TriggerDialoguePuzzleLevel3 : MonoBehaviour
             yield return new WaitForSeconds(2f);
             GameFeatures(true);
             EntryPrompt.Instance.PromptActivation(11);
+            innerAlex.SetActive(false);
+            gameObject.SetActive(false);
+            fog.SetActive(false);
         }
         else
         {
             yield return new WaitForSeconds(2f);
-            TileGame.instance.Restart();
+            MonologueScript.TriggerText(new string[2] {
+                "Something is not right?",
+                "Let's try again." });
             yield return new WaitForSeconds(4f);
-            GameFeatures(true);
-            yield return new WaitForSeconds(2f);
+            //GameFeatures(true);
             isTriggered = false;
+            yield return new WaitForSeconds(2f);
             isAbleToRun = true;
-            wall.SetActive(true);
+            //wall.SetActive(true);
         }
     }
 
