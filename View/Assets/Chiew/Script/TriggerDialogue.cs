@@ -10,23 +10,42 @@ public class TriggerDialogue : MonoBehaviour
 
     private bool doneOn = false;
 
+    private bool trigger = false;
+
     // Start is called before the first frame update
     void Start()
     {
-        if(startDialogue != null)
-        {
-            DialogueManager.instance.StartDialogue(startDialogue);
-        }
+        
     }
 
     private void Update()
     {
-        if(DialogueManager.instance.isDoneMCQL3 == true)
+        if (startDialogue != null)
         {
-            if (letterObj != null && doneOn == false)
+            if(trigger == false)
             {
-                letterObj.PanelOnOfF(true);
-                doneOn = true;
+                DialogueManager.instance.StartDialogue(startDialogue);
+                trigger = true;
+            }
+
+        }
+
+        if (DialogueManager.instance.isDoneMCQL3 == true)
+        {
+            if(DialogueManager.instance.L3IsLose == true)
+            {
+                    //Show ending Game Over
+            }
+            else if(DialogueManager.instance.L3IsPass == true)
+            {
+                //Do let player interact
+
+                //temp debuging only
+             /*   if (letterObj != null && doneOn == false)
+                {
+                    letterObj.PanelOnOfF(true);
+                    doneOn = true;
+                }*/
             }
         }
     }
