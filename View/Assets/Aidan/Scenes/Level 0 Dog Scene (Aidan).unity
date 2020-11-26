@@ -10720,7 +10720,7 @@ PrefabInstance:
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.size
-      value: 29
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
@@ -10780,72 +10780,72 @@ PrefabInstance:
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[9]
-      value: "I can\u2019t move?"
+      value: DisableJump
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[10]
-      value: ShakeScreen
+      value: "I can\u2019t move?"
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[11]
-      value: WaitFor 0.5
+      value: ShakeScreen
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[12]
-      value: My eyesight-
+      value: WaitFor 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[13]
-      value: 'Glasses? '
+      value: My eyesight-
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[14]
-      value: EnableGlasses
+      value: 'Glasses? '
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[15]
-      value: WaitFor 0.81
+      value: EnableGlasses
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[16]
-      value: HighlightGlasses
+      value: WaitFor 0.81
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[17]
-      value: DisableDiary
+      value: HighlightGlasses
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[18]
-      value: Hold
+      value: DisableDiary
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[19]
-      value: EnableDiary
+      value: Hold
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[20]
-      value: TurnOffHighlight
+      value: EnableDiary
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[21]
-      value: DisableGlasses
+      value: TurnOffHighlight
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[22]
-      value: "Sure Alex let\u2019s wear the glasses that appeared out of nowhere."
+      value: DisableGlasses
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
@@ -10860,32 +10860,42 @@ PrefabInstance:
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[23]
-      value: "I can see\u2026? "
+      value: "Sure Alex let\u2019s wear the glasses that appeared out of nowhere."
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[24]
-      value: 'The environment is distorting?  '
+      value: "I can see\u2026? "
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[25]
-      value: EnableMoveControl
+      value: 'The environment is distorting?  '
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[26]
+      value: EnableMoveControl
+      objectReference: {fileID: 0}
+    - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
+        type: 3}
+      propertyPath: monologue.Array.data[27]
+      value: EnableJump
+      objectReference: {fileID: 0}
+    - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
+        type: 3}
+      propertyPath: monologue.Array.data[28]
       value: " I can\u2019t seem to take the glasses off, looks like it's staying
         on.  "
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
-      propertyPath: monologue.Array.data[27]
+      propertyPath: monologue.Array.data[29]
       value: ' this is definitely not ideal  '
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
-      propertyPath: monologue.Array.data[28]
+      propertyPath: monologue.Array.data[30]
       value: NormalMove
       objectReference: {fileID: 0}
     - target: {fileID: 8267381906275170538, guid: 7f697d8f15228f243bae8ca9f2a48a06,

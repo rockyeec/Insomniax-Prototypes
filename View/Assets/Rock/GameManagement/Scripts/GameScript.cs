@@ -21,6 +21,21 @@ public class GameScript : MonoBehaviour
 #endif
 
         instance = this;
+
+        OnGlassesOn += GameScript_OnGlassesOn; 
+        OnGlassesOff += GameScript_OnGlassesOff;
+
+        AudioManager.instance?.Play("Main Music Normal", "BGM");
+    }
+
+    private void GameScript_OnGlassesOff()
+    {
+        AudioManager.instance.Play("Main Music Normal", "BGM");
+    }
+
+    private void GameScript_OnGlassesOn()
+    {
+        AudioManager.instance.Play("Main Music Glasses", "BGM");
     }
 
     public static void Pause()
