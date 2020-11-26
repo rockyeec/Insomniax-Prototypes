@@ -2,7 +2,7 @@
 
 // Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
 
-Shader "Unlit/Outline Shader"
+Shader "Rock/Outline Shader"
 {
 	Properties{
 		_OutlineColor("Outline Color", Color) = (0,0,0,1)
@@ -40,7 +40,7 @@ Shader "Unlit/Outline Shader"
 	ENDCG
 
 		SubShader{
-			Tags { "Queue" = "Transparent" }
+			Tags { "RenderPipeline" = "UniversalPipeline" }
 
 			Pass {
 				Name "BASE"

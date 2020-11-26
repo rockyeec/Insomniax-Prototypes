@@ -8,7 +8,7 @@
     }
         SubShader
         {
-            Tags { "RenderType" = "Transparent" }
+            Tags { "RenderType" = "Transparent" "RenderPipeline" = "UniversalRenderPipeline" "IgnoreProjector" = "True"}
             LOD 200
 
             CGPROGRAM

@@ -18,7 +18,7 @@ public class HouseScript : MonoBehaviour
 
         a = Vector3.one;
         b = (Vector3.one * 1.55f).With(x: 1.0f);
-        duration = Random.Range(2.5f, 6.5f);
+        duration = Random.Range(1.6f, 3.3f);
 
         if (Random.Range(0, 2) == 1)
         {
