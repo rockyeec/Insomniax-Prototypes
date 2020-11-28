@@ -12,32 +12,94 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d716d7da002bf7146a67300f7c972544, type: 3}
   m_Name: P1
   m_EditorClassIdentifier: 
+  nxtDialogue: 0
+  dialogueobj: {fileID: 0}
   dialogueInfo:
   - isBubble: 0
     TextColor: {r: 0, g: 0, b: 0, a: 1}
     characImage: {fileID: 0}
-    nameText: Inner Alex
-    DialogueText: You know you dont...right?
+    nameText: Alex
+    DialogueText: '*rubs eyes*'
     isEndedSentence: 0
     isPlayed: 0
     isQuestion: 0
     newMCQ: []
     isEndMCQ: 0
-  - isBubble: 0
-    TextColor: {r: 0, g: 0, b: 0, a: 1}
-    characImage: {fileID: 0}
-    nameText: Inner Alex
-    DialogueText: 'After all, what do you have? '
-    isEndedSentence: 0
-    isPlayed: 0
-    isQuestion: 0
-    newMCQ: []
-    isEndMCQ: 0
+    isLose: 0
+    isWin: 0
   - isBubble: 0
     TextColor: {r: 0, g: 0, b: 0, a: 1}
     characImage: {fileID: 0}
     nameText: Alex
-    DialogueText: I ... I have
+    DialogueText: "Glasses are meant to make my vision clearer but there\u2019s another
+      me?"
+    isEndedSentence: 0
+    isPlayed: 0
+    isQuestion: 0
+    newMCQ: []
+    isEndMCQ: 0
+    isLose: 0
+    isWin: 0
+  - isBubble: 0
+    TextColor: {r: 0, g: 0, b: 0, a: 1}
+    characImage: {fileID: 0}
+    nameText: Inner Alex
+    DialogueText: "I\u2019ve been waiting. Took you awfully long to get here"
+    isEndedSentence: 0
+    isPlayed: 0
+    isQuestion: 0
+    newMCQ:
+    - answerString: 
+      nxtDialogue: {fileID: 0}
+    - answerString: 
+      nxtDialogue: {fileID: 0}
+    - answerString: 
+      nxtDialogue: {fileID: 0}
+    isEndMCQ: 0
+    isLose: 0
+    isWin: 0
+  - isBubble: 0
+    TextColor: {r: 0, g: 0, b: 0, a: 1}
+    characImage: {fileID: 0}
+    nameText: Alex
+    DialogueText: "I think you\u2019re mistaking me with someone else. Will you let
+      me pass?"
+    isEndedSentence: 0
+    isPlayed: 0
+    isQuestion: 0
+    newMCQ: []
+    isEndMCQ: 0
+    isLose: 0
+    isWin: 0
+  - isBubble: 0
+    TextColor: {r: 0, g: 0, b: 0, a: 1}
+    characImage: {fileID: 0}
+    nameText: Inner Alex
+    DialogueText: "You\u2019re not ready, I don\u2019t know if you\u2019ll ever be. "
+    isEndedSentence: 0
+    isPlayed: 0
+    isQuestion: 0
+    newMCQ: []
+    isEndMCQ: 0
+    isLose: 0
+    isWin: 0
+  - isBubble: 0
+    TextColor: {r: 0, g: 0, b: 0, a: 1}
+    characImage: {fileID: 0}
+    nameText: Inner Alex
+    DialogueText: What do you suppose you have that would make you ready?
+    isEndedSentence: 0
+    isPlayed: 0
+    isQuestion: 0
+    newMCQ: []
+    isEndMCQ: 0
+    isLose: 0
+    isWin: 0
+  - isBubble: 0
+    TextColor: {r: 0, g: 0, b: 0, a: 1}
+    characImage: {fileID: 0}
+    nameText: Alex
+    DialogueText: ' I...I have'
     isEndedSentence: 0
     isPlayed: 0
     isQuestion: 1
@@ -49,3 +111,5 @@ MonoBehaviour:
     - answerString: 
       nxtDialogue: {fileID: 0}
     isEndMCQ: 0
+    isLose: 0
+    isWin: 0
