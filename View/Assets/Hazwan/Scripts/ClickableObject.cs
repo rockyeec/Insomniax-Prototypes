@@ -40,7 +40,7 @@ public class ClickableObject : MonoBehaviour
 
         if(totalofInteracted == 5)
         {
-            EntryPrompt.Instance.PromptActivation(9);
+            EntryPrompt.Instance.PromptActivation(8);
         }
     }
 }

@@ -93,7 +93,7 @@ public class TileGame : MonoBehaviour
         InvokerForMonologue.Do("EnableDiary");
         InvokerForMonologue.Do("EnableMoveControl");
         yield return new WaitForSeconds(2f);
-        EntryPrompt.Instance.PromptActivation(10);
+        EntryPrompt.Instance.PromptActivation(9);
     }
 
     private IEnumerator IncorrectSequence()
