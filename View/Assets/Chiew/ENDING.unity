@@ -240,16 +240,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1359446015343232183, guid: ed4cc37084df15a4989f061cd6630cb7,
-        type: 3}
-      propertyPath: m_PixelPerfect
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1359446015343232183, guid: ed4cc37084df15a4989f061cd6630cb7,
-        type: 3}
-      propertyPath: m_OverridePixelPerfect
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5236260053347607359, guid: ed4cc37084df15a4989f061cd6630cb7,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -629,7 +619,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1872611762
 MonoBehaviour:
   m_ObjectHideFlags: 0
