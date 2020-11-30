@@ -10,10 +10,15 @@ public class BgPropLeftRight : MonoBehaviour
 
     void Start()
     {
+        things = GetComponentsInChildren<Transform>();
+        List<Transform> list = new List<Transform>();
+        list.AddRange(things);
+        list.Remove(transform);
+        things = list.ToArray();
         for (int i = 0; i < things.Length; i++)
         {
             axes.Add(new Vector3(Random.Range(-1, 1), Random.Range(-1, 1), Random.Range(-1, 1)).normalized);
-            speeds.Add(Random.Range(5, 50));
+            speeds.Add(Random.Range(13.37f, 26.9f));
         }
     }
 

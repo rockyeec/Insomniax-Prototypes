@@ -93,9 +93,10 @@ public class TriggerDialoguePuzzleLevel3 : MonoBehaviour
             yield return new WaitForSeconds(2f);
             GameFeatures(true);
             EntryPrompt.Instance.PromptActivation(11);
-            innerAlex.SetActive(false);
-            gameObject.SetActive(false);
-            fog.SetActive(false);
+            //innerAlex.SetActive(false);
+            //gameObject.SetActive(false);
+            //fog.SetActive(false);
+            BgPropAlign.Trigger();
         }
         else
         {

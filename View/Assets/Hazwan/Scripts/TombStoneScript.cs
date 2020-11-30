@@ -8,7 +8,7 @@ public class TombStoneScript : MonoBehaviour
 
     public static bool doneDialoguePuzzle = false;
 
-    MeshRenderer callTempMeshRend;
+    MeshRenderer meshRend;
 
     Material[] matArrayOutline;
     Material[] matArrayNormal;
@@ -20,7 +20,7 @@ public class TombStoneScript : MonoBehaviour
     void Start()
     {
         Outline();
-        callTempMeshRend.materials = matArrayOutline;
+        meshRend.materials = matArrayOutline;
     }
 
     void OnTriggerEnter(Collider col)
@@ -34,8 +34,8 @@ public class TombStoneScript : MonoBehaviour
 
     public void Outline()
     {
-        callTempMeshRend = GetComponent<MeshRenderer>();
-        matArrayNormal = callTempMeshRend.materials;
+        meshRend = GetComponent<MeshRenderer>();
+        matArrayNormal = meshRend.materials;
         List<Material> listMaterial = new List<Material>();
         listMaterial.AddRange(matArrayNormal);
         listMaterial.Add(MaterialManager.OutLineMaterial);

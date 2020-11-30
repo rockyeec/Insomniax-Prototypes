@@ -28,7 +28,7 @@ public class LocomotionBehavior : Behavior
 
         // rotation
         bool isMoving = outputs.vertical != 0.0f;
-        if (isMoving)
+        if (isMoving && moveDir != Vector3.zero)
         {
             Quaternion rot = Quaternion.LookRotation(moveDir);
             transform.rotation = Quaternion.Slerp(transform.rotation, rot, delta * slerpRate);

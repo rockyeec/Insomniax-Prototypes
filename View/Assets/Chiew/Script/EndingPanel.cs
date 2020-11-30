@@ -22,23 +22,11 @@ public class EndingPanel : MonoBehaviour
     [Header("What text you wanted to show on it")]
     public string Text_Here;
  
-    //Variable as below
-    //private
-
-    //public
-
-    // Start is called before the first frame update
     void Start()
     {
         PanelOnOfF(false);
         //if (debug == true) { PanelOnOfF(true); }
         //else { PanelOnOfF(false); }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void PanelOnOfF(bool o)

@@ -4,7 +4,7 @@ using UnityEngine;
 public class CameraGlassesEffectHandler : MonoBehaviour
 {
     Camera cam = null;
-    [SerializeField] Transform camParent = null;
+    //[SerializeField] Transform camParent = null;
 
 
     float targetFov;

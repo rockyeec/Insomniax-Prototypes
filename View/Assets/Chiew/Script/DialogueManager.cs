@@ -61,12 +61,10 @@ public class DialogueManager : MonoBehaviour
         DialogueElement.SetActive(false);
     }
 
-    private void Update()
-    {
-    }
-
     public void StartDialogue(Dialogue d) //Call start dialogue
     {
+        InvokerForMonologue.Do("DisableMenu");
+
         DialogueElement.SetActive(true);
         if (Controls != null)
         {
@@ -221,6 +219,8 @@ public class DialogueManager : MonoBehaviour
 
     public void EndDialogue() //End Dialogues
     {
+        InvokerForMonologue.Do("EnableMenu");
+
         for (int i = 0; i < MCQTemp.Length; i++)
         {
             MCQTemp[i] = null;

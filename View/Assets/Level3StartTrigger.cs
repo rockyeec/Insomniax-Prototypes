@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class Level3StartTrigger : MonoBehaviour
 {
-    private void Start()
+    bool isGlassesOn = false;
+    private void Update()
     {
+        if (isGlassesOn)
+            return;
+
+        isGlassesOn = true;
+
         //EntryPrompt.Instance.PromptActivation(8);
         InvokerForMonologue.Do("SetGlassesOn");
     }
