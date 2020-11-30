@@ -1708,6 +1708,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2926782711014231956, guid: 5c7a2e51d97eb9c4d9051ba36e244a40,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3008590354654931127, guid: 5c7a2e51d97eb9c4d9051ba36e244a40,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -1726,7 +1731,7 @@ PrefabInstance:
     - target: {fileID: 3575680120727948109, guid: 5c7a2e51d97eb9c4d9051ba36e244a40,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3761455923566777301, guid: 5c7a2e51d97eb9c4d9051ba36e244a40,
         type: 3}
@@ -2328,32 +2333,32 @@ PrefabInstance:
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.size
-      value: 23
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[5]
-      value: WaitFor 1
+      value: BlurScreen
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[6]
-      value: '* Glasses appear'
+      value: WaitFor 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[7]
-      value: These were from the dream,
+      value: ClearScreen
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[8]
-      value: ah screw it, I'll wear it then think about it later.
+      value: These were from the dream,
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[9]
-      value: 'Here goes everything.  '
+      value: ah screw it, I'll wear it then think about it later.
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
@@ -2378,7 +2383,7 @@ PrefabInstance:
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[4]
-      value: ShakeScreen
+      value: '* Glasses appear'
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
@@ -2388,22 +2393,22 @@ PrefabInstance:
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[10]
-      value: EnableGlasses
+      value: 'Here goes everything.  '
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[11]
-      value: WaitFor 0.81
+      value: EnableGlasses
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[12]
-      value: HighlightGlasses
+      value: WaitFor 0.81
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[13]
-      value: Hold
+      value: HighlightGlasses
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
@@ -2413,47 +2418,57 @@ PrefabInstance:
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[14]
-      value: TurnOffHighlight
+      value: Hold
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[15]
-      value: '*sigh* These glasses, I have way too many questions for you but first,'
+      value: TurnOffHighlight
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[16]
-      value: "I don\u2019t recall my hallway looking like this.  "
+      value: '*sigh* These glasses, I have way too many questions for you but first,'
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[17]
-      value: " It\u2019s the same as the neighbourhood, everything is distorting."
+      value: "I don\u2019t recall my hallway looking like this.  "
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[18]
-      value: Are my emotions affecting the surroundings?
+      value: " It\u2019s the same as the neighbourhood, everything is distorting."
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[19]
+      value: Are my emotions affecting the surroundings?
+      objectReference: {fileID: 0}
+    - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
+        type: 3}
+      propertyPath: monologue.Array.data[20]
       value: " I know I haven\u2019t been in the best mental state with everything
         that happened"
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
-      propertyPath: monologue.Array.data[20]
+      propertyPath: monologue.Array.data[21]
       value: 'but I''m awfully calm when wearing the glasses.  '
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
-      propertyPath: monologue.Array.data[21]
+      propertyPath: monologue.Array.data[22]
       value: EnableMoveControl
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
-      propertyPath: monologue.Array.data[22]
+      propertyPath: monologue.Array.data[23]
+      value: EnableJump
+      objectReference: {fileID: 0}
+    - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
+        type: 3}
+      propertyPath: monologue.Array.data[24]
       value: EnableJump
       objectReference: {fileID: 0}
     - target: {fileID: 8267381906275170538, guid: 7f697d8f15228f243bae8ca9f2a48a06,
@@ -3247,6 +3262,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: dragon bol
       objectReference: {fileID: 0}
+    - target: {fileID: 167737403371811289, guid: e296ded84a0a29d4da819db1093c2149,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 167737403371811294, guid: e296ded84a0a29d4da819db1093c2149,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3469,6 +3489,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: temp picture frame
       objectReference: {fileID: 0}
+    - target: {fileID: 1266406307935455186, guid: e0b35368dc154cd4083bf27d5151c7c4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1266406307935455187, guid: e0b35368dc154cd4083bf27d5151c7c4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3537,6 +3562,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: temp picture frame
+      objectReference: {fileID: 0}
+    - target: {fileID: 1284489148245957860, guid: 6f7f5bcfa2cfff741895a377f6db9a6d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1284489148245957861, guid: 6f7f5bcfa2cfff741895a377f6db9a6d,
         type: 3}
@@ -4286,6 +4316,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: temp picture frame
       objectReference: {fileID: 0}
+    - target: {fileID: 4957158277497407676, guid: 79d00bcd7b7cb324ea9dc411ae3ceafb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79d00bcd7b7cb324ea9dc411ae3ceafb, type: 3}
 --- !u!1 &5221686238333478801
@@ -4362,10 +4397,10 @@ BoxCollider:
   m_GameObject: {fileID: 5377927190565876484}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.74, y: 1.44, z: 0.58}
-  m_Center: {x: 2.16, y: 0.66, z: -0.18}
+  m_Size: {x: 0.63880014, y: 1.44, z: 0.98554033}
+  m_Center: {x: 2.2106001, y: 0.66, z: -0.23776743}
 --- !u!65 &5377927190565876487
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4421,6 +4456,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: corgi avengers
+      objectReference: {fileID: 0}
+    - target: {fileID: 6121319798349693510, guid: 6a526785bb9920544bc9d12e94a6a8d8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6121319798349693511, guid: 6a526785bb9920544bc9d12e94a6a8d8,
         type: 3}

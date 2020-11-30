@@ -26,13 +26,16 @@ public class ClickableObject : MonoBehaviour
 
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         //Debug.DrawRay(ray.origin, ray.direction * 100);
-        if (Physics.Raycast(ray, 100.0f, 1 << 10))
+        if (Physics.Raycast(ray, out RaycastHit hit, 100.0f, 1 << 10))
         {
-            InteractPrompt.UndoThing();
-            textCoverScript.DisableTextCover();
-            enabled = false;
-            totalofInteracted++;
-            print(totalofInteracted);
+            if (hit.collider.gameObject == gameObject)
+            {
+                InteractPrompt.UndoThing();
+                textCoverScript.DisableTextCover();
+                enabled = false;
+                totalofInteracted++;
+                print(totalofInteracted);
+            }
         }
 
         if(totalofInteracted == 5)

@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 8923598306079376418}
   - component: {fileID: 1836919646}
   - component: {fileID: 1836919643}
-  - component: {fileID: 1836919647}
   m_Layer: 0
   m_Name: Tombstone - Dummy
   m_TagString: Untagged
@@ -111,15 +110,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   letterObj: {fileID: 8153302003039939068, guid: 0e92a11e5e9b04d45971059bc0d35eae,
     type: 3}
---- !u!114 &1836919647
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6977765846903694839}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b2b0f4ddda2be947a9959ea187dbcd6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

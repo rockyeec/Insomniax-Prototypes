@@ -12,7 +12,7 @@ public class TriggerDialoguePuzzleLevel3 : MonoBehaviour
     bool isAbleToRun = true;
 
     [SerializeField] GameObject innerAlex = null;
-    [SerializeField] GameObject fog = null;
+    [SerializeField] ParticleSystem fog = null;
 
     public Dialogue startDialogue;
 
@@ -93,10 +93,15 @@ public class TriggerDialoguePuzzleLevel3 : MonoBehaviour
             yield return new WaitForSeconds(2f);
             GameFeatures(true);
             EntryPrompt.Instance.PromptActivation(11);
-            //innerAlex.SetActive(false);
-            //gameObject.SetActive(false);
-            //fog.SetActive(false);
+
+            InvokerForMonologue.Do("BlurScreen");
+            yield return new WaitForSeconds(0.4f);
+            innerAlex.SetActive(false);
+            InvokerForMonologue.Do("ClearScreen");
+            
+            fog.Stop();
             BgPropAlign.Trigger();
+            gameObject.SetActive(false);
         }
         else
         {

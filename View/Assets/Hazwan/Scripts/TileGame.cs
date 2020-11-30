@@ -26,10 +26,6 @@ public class TileGame : MonoBehaviour
     {
         instance = this;
     }
-    private void Start()
-    {
-        InvokerForMonologue.Do("DisableGlasses");
-    }
 
     public static void TileComparison()
     {

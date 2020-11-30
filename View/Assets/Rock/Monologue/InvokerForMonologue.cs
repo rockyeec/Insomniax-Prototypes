@@ -58,6 +58,8 @@ public class InvokerForMonologue : MonoBehaviour
         Add("SnapOutGlasses");
         Add("SnapOutJump");
         Add("ShakeScreen");
+        Add("BlurScreen");
+        Add("ClearScreen");
 
         Add("SetGlassesOn");
         Add("SetGlassesOff");
@@ -195,6 +197,14 @@ public class InvokerForMonologue : MonoBehaviour
     void ShakeScreen()
     {
         cam.Vibrate();
+    }
+    void BlurScreen()
+    {
+        CameraBlurer.Blur();
+    }
+    void ClearScreen()
+    {
+        CameraBlurer.Clear();
     }
     void SetGlassesOn()
     {

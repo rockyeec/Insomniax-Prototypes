@@ -110,8 +110,8 @@ public class MonologueScript : MonoBehaviour
                 {
                     if (isSkip)
                     {
-                        text.text = stringCur;
-                        isSkip = false;
+                        //text.text = stringCur;
+                        //isSkip = false;
                         break;
                     }
                     yield return null;

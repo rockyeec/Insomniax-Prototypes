@@ -48,6 +48,17 @@ public class PlayerInput : InputParent
 
     protected override void Tick(in float delta)
     {
+#if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            CameraBlurer.Blur();
+        }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            CameraBlurer.Clear();
+        }
+#endif
+
         if (!IsCanMove)
         {
             Controller.inputs.SmoothMoveInput(Vector3.zero, delta);
