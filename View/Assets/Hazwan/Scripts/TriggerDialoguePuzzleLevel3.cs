@@ -92,7 +92,7 @@ public class TriggerDialoguePuzzleLevel3 : MonoBehaviour
         {
             yield return new WaitForSeconds(2f);
             GameFeatures(true);
-            EntryPrompt.Instance.PromptActivation(11);
+            EntryPrompt.Instance.PromptActivation(10);
 
             InvokerForMonologue.Do("BlurScreen");
             yield return new WaitForSeconds(0.4f);
