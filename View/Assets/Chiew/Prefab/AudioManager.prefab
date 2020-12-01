@@ -87,12 +87,6 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: Footstep
-    clip: {fileID: 8300000, guid: 7769dd453927d2e4791f85f13b666636, type: 3}
-    volume: 0.5
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
   - name: Glasses
     clip: {fileID: 8300000, guid: 531f386a3da7db2438b924279bf8cc49, type: 3}
     volume: 0.5
@@ -125,6 +119,48 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Whoosh
     clip: {fileID: 8300000, guid: c7451d6f844c6fc46aef3deb1b7579db, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: tileWrong
+    clip: {fileID: 8300000, guid: 240b231bd128f614ba9f1b6ec6bb3b15, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: tileCorrect
+    clip: {fileID: 8300000, guid: 7a7b5016f8dc13f43bf5b135ea81ccda, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: stepTile
+    clip: {fileID: 8300000, guid: 05d2d3df066c9754dae5336f80784a4e, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: footsteps
+    clip: {fileID: 8300000, guid: 010114df8386c78479a4aa479ca6fd03, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: diaryTrigger
+    clip: {fileID: 8300000, guid: ef7365e67b412e043a7084f29ba55d67, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: hmm
+    clip: {fileID: 8300000, guid: 3d325830d089b3e48a8a77ea465de70f, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: hmm2
+    clip: {fileID: 8300000, guid: 7028a96f1f717d245973a91b5b688a55, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0

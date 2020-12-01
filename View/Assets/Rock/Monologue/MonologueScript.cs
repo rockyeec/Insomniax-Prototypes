@@ -75,6 +75,7 @@ public class MonologueScript : MonoBehaviour
 
     IEnumerator PrintOut(Queue<string> monologue)
     {
+        AudioManager.instance.Play(Random.Range(0, 2) == 0 ? "hmm2" : "hmm", "SFX");
         while (monologue.Count != 0)
         {
             text.text = string.Empty;

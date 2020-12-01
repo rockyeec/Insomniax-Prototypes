@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1658748543988839432}
   - component: {fileID: 1048478939814707557}
   - component: {fileID: 2176390440363684012}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plane011
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 4985385364895481504}
   - component: {fileID: 3347226563227157449}
   - component: {fileID: 741243124298106371}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plane014
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,7 +173,7 @@ GameObject:
   - component: {fileID: 710950432227771559}
   - component: {fileID: 4971423418578613388}
   - component: {fileID: 7755108061570131861}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plane012
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -252,7 +252,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1763029675442119310}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: tree art
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -267,7 +267,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2202536993118247743}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 6.9, y: 0, z: 12.150001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1658748543988839432}
@@ -294,7 +294,7 @@ GameObject:
   - component: {fileID: 952592453057246126}
   - component: {fileID: 3591111217123062374}
   - component: {fileID: 6941545955607379288}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plane019
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -373,7 +373,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2431080078457285975}
-  m_Layer: 0
+  - component: {fileID: 5704626758422389410}
+  - component: {fileID: 1643337090339238413}
+  m_Layer: 10
   m_Name: Tree - Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -395,6 +397,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5704626758422389410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3096012400269850605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72fad91453a3db646b739085df909119, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coverIndex: 1
+  diaryPage: 3
+--- !u!65 &1643337090339238413
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3096012400269850605}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 5.336005, z: 1}
+  m_Center: {x: 0, y: 2.6680026, z: 0}
 --- !u!1 &3655257295285221917
 GameObject:
   m_ObjectHideFlags: 0
@@ -406,7 +435,7 @@ GameObject:
   - component: {fileID: 2119401902458898475}
   - component: {fileID: 8747699668509172870}
   - component: {fileID: 1435943280554679002}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plane013
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -487,8 +516,6 @@ GameObject:
   - component: {fileID: 4913879522056705976}
   - component: {fileID: 3745357748641583920}
   - component: {fileID: 5143174149874911000}
-  - component: {fileID: 4443977913685529716}
-  - component: {fileID: 4443977913685529717}
   m_Layer: 10
   m_Name: tree004
   m_TagString: Untagged
@@ -559,33 +586,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &4443977913685529716
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4443977913685529718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72fad91453a3db646b739085df909119, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coverIndex: 1
-  diaryPage: 3
---- !u!65 &4443977913685529717
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4443977913685529718}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.148932, y: 0.76221704, z: 4.602597}
-  m_Center: {x: 0.15856719, y: 0.015715808, z: 2.3012986}
 --- !u!1 &4668769142431165984
 GameObject:
   m_ObjectHideFlags: 0
@@ -597,7 +597,7 @@ GameObject:
   - component: {fileID: 8470560482635800703}
   - component: {fileID: 1071060133902968130}
   - component: {fileID: 9005467873609211263}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plane015
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -678,7 +678,7 @@ GameObject:
   - component: {fileID: 3235843211822952840}
   - component: {fileID: 5996328998555427046}
   - component: {fileID: 5479515168916611254}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plane017
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -759,7 +759,7 @@ GameObject:
   - component: {fileID: 8398442806733860063}
   - component: {fileID: 3036148634641112428}
   - component: {fileID: 7211445639713898119}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plane018
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -840,7 +840,7 @@ GameObject:
   - component: {fileID: 810475791541224190}
   - component: {fileID: 7894822089596630076}
   - component: {fileID: 210566662506532935}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plane016
   m_TagString: Untagged
   m_Icon: {fileID: 0}

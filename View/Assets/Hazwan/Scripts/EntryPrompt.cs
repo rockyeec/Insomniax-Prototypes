@@ -30,10 +30,11 @@ public class EntryPrompt : MonoBehaviour
     IEnumerator DelaySetActiveFalse()
     {
         InvokerForMonologue.Do("DisableMenu");
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.5f);
+        AudioManager.instance.Play("diaryTrigger", "SFX");
         DiaryManager.DiaryPromptNotify.gameObject.SetActive(true);
         DiaryManager.PromptEntry.gameObject.SetActive(true);
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2.5f);
         DiaryManager.PromptEntry.gameObject.SetActive(false);
         InvokerForMonologue.Do("EnableMenu");
     }

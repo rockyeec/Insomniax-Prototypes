@@ -47,6 +47,8 @@ public class TileMain : MonoBehaviour
             TileGame.TileComparison();
 
             MonologueScript.TriggerText(monologue);
+
+            AudioManager.instance.Play("stepTile", "SFX");
         }
     }
 

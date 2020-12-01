@@ -86,6 +86,7 @@ public class TileGame : MonoBehaviour
         yield return new WaitForSeconds(2f);
         CameraFollowTileGame.Instance.changeCameraView = true;
         yield return new WaitForSeconds(2f);
+        AudioManager.instance.Play("tileCorrect", "SFX");
         SetTileColor(instance.greenColor);
         yield return new WaitForSeconds(8.2f);
         InvokerForMonologue.Do("EnableCameraControl");
@@ -103,6 +104,7 @@ public class TileGame : MonoBehaviour
         yield return new WaitForSeconds(3f);
         CameraFollowTileGame.Instance.changeCameraView = true;
         yield return new WaitForSeconds(2f);
+        AudioManager.instance.Play("tileWrong", "SFX");
         SetTileColor(instance.redColor);
         
         //rock-----------------------------------------------------------------------

@@ -11,19 +11,18 @@ public class TextCoverScript : MonoBehaviour
     private ClickableObject clickable = null;
     private InteractableObserver observer = null;
 
-    MeshRenderer callTempMeshRend;
+    List<HologramHandler> hologrammables = new List<HologramHandler>();
 
-    Material[] matArrayOutline;
-    Material[] matArrayNormal;
 
     void Start()
     {
-        Outline();
+        InitHolo();
+
         CheckSavedData();
         clickable = gameObject.AddComponent<ClickableObject>();
         clickable.Init(this);
         observer = gameObject.AddComponent<InteractableObserver>();
-        observer.Init(coverIndex);
+        observer.Init(coverIndex);        
     }
 
     void OnTriggerEnter(Collider col)
@@ -48,26 +47,20 @@ public class TextCoverScript : MonoBehaviour
 
     public void DisableTextCover()
     {
+        AudioManager.instance.Play("diaryTrigger", "SFX");
+
         Diary.Instance.currentPage = diaryPage;
         Diary.Instance.ButtonsVisibility(diaryPage, Diary.DiaryList);
         Diary.Instance.HiddenContent(diaryPage, Diary.DiaryList);
         Diary.Instance.OpenButton.SetActive(false);
         Diary.Instance.DiaryEntry.SetActive(true);
-        callTempMeshRend.materials = matArrayNormal;
+
+        MakeSolid();
+
         DiaryManager.StaticDiaryContainer.transform.GetChild(0).gameObject.SetActive(true);
         DiaryManager.ChildContent.transform.GetChild(diaryPage).gameObject.SetActive(true);
         isTriggered = true;
         observer.Trigger();
-    }
-
-    public void Outline()
-    {
-        callTempMeshRend = GetComponentInChildren<MeshRenderer>();
-        matArrayNormal = callTempMeshRend.materials;
-        List<Material> listMaterial = new List<Material>();
-        listMaterial.AddRange(matArrayNormal);
-        listMaterial.Add(MaterialManager.OutLineMaterial);
-        matArrayOutline = listMaterial.ToArray();
     }
 
     void CheckSavedData()
@@ -75,12 +68,37 @@ public class TextCoverScript : MonoBehaviour
         string entryName = "Entry " + coverIndex.ToString();
         if (SaveSystem.GetBool(entryName))
         {
-            callTempMeshRend.materials = matArrayNormal;
+            MakeSolid();
             isTriggered = true;
         }
         else
         {
-            callTempMeshRend.materials = matArrayOutline;
+            MakeHolo();
+        }
+    }
+
+
+    void InitHolo()
+    {
+        Renderer[] renderersArr = GetComponentsInChildren<Renderer>();
+        foreach (var item in renderersArr)
+        {
+            HologramHandler holoHand = item.gameObject.AddComponent<HologramHandler>();
+            hologrammables.Add(holoHand);
+        }
+    }
+    void MakeSolid()
+    {
+        foreach (var item in hologrammables)
+        {
+            item.MakeSolid();
+        }
+    }
+    void MakeHolo()
+    {
+        foreach (var item in hologrammables)
+        {
+            item.MakeHolo();
         }
     }
 }
