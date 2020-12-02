@@ -33,19 +33,19 @@ public class GraphicSetting : MonoBehaviour
         {
             case 0: //! low
                 urp.shadowCascadeOption = ShadowCascadesOption.NoCascades;
-                urp.shadowDistance = 5;
+                urp.shadowDistance = 5.0f;
                 break;
 
 
             case 1: //! medium
                 urp.shadowCascadeOption = ShadowCascadesOption.TwoCascades;
-                urp.shadowDistance = 10;
+                urp.shadowDistance = 10.0f;
                 break;
 
 
             case 2: //! high
                 urp.shadowCascadeOption = ShadowCascadesOption.FourCascades;
-                urp.shadowDistance = 15;
+                urp.shadowDistance = 25.0f;
                 break;
         }
     }

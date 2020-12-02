@@ -63,6 +63,10 @@ public class TriggerDialoguePuzzleLevel3 : MonoBehaviour
             StartCoroutine(DoneDialoguePuzzle(true));
             isAbleToRun = false;
             TombStoneScript.doneDialoguePuzzle = true;
+
+            // rock------------------------------------
+            Destroy(DialogueManager.instance.gameObject);
+            //----------------------------------------
         }
         else if (DialogueManager.instance.L3IsLose && DialogueManager.instance.isDoneMCQL3)
         {

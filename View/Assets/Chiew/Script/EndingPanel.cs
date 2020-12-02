@@ -52,6 +52,7 @@ public class EndingPanel : MonoBehaviour
     //for buttons usage
     public void closeGame()
     {
+        SaveSystem.SetInt("level", 0);
         Application.Quit();
         DebugFunction("Quit");
     }
