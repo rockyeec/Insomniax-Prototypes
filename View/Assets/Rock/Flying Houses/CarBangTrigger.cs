@@ -9,7 +9,7 @@ public class CarBangTrigger : MonoBehaviour
         if (other.gameObject.layer == 20)
         {
             if (other.gameObject.name == "Player")
-                AudioManager.instance.Play("CarAccident", "SFX");
+                AudioManager.instance.PlaySfx("CarAccident");
         }
     }
 }

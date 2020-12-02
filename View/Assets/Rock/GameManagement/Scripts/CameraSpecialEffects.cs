@@ -49,7 +49,7 @@ public class CameraSpecialEffects : MonoBehaviour
         StopAllCoroutines();
         StartCoroutine(CameraGoUpNZoomOut());
 
-        AudioManager.instance.Play("Whoosh", "SFX");
+        AudioManager.instance.PlaySfx("Whoosh");
     }
 
     void ZoomIn()
@@ -57,7 +57,7 @@ public class CameraSpecialEffects : MonoBehaviour
         StopAllCoroutines();
         StartCoroutine(CameraGoDownNZoomIn());
 
-        AudioManager.instance.Play("Whoosh", "SFX");
+        AudioManager.instance.PlaySfx("Whoosh");
     }
 
     private IEnumerator CameraGoUpNZoomOut()

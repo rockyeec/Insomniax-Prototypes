@@ -13,28 +13,8 @@ public class DogNpcInput : InputParent
 
         Controller.AddFixedTickBehavior(new CheckGroundWithNoMovingPlatformBehavior());
         Controller.AddFixedTickBehavior(new LocomotionBehavior());
-        Controller.AddFixedTickBehavior(new JumpBehavior());
-
         time = Time.time;
 
-        GameScript.OnGlassesOn += GameScript_OnGlassesOn; 
-        GameScript.OnGlassesOff += GameScript_OnGlassesOff;
-        gameObject.SetActive(false);
-    }
-    private void OnDestroy()
-    {
-        GameScript.OnGlassesOn -= GameScript_OnGlassesOn;
-        GameScript.OnGlassesOff -= GameScript_OnGlassesOff;
-    }
-
-    private void GameScript_OnGlassesOff()
-    {
-        gameObject.SetActive(false);
-    }
-
-    private void GameScript_OnGlassesOn()
-    {
-        gameObject.SetActive(true);
     }
     int barkInterval = 0;
     protected override void Tick(in float delta)
@@ -51,7 +31,7 @@ public class DogNpcInput : InputParent
             if (barkInterval > 6)
             {
                 barkInterval = 0;
-                AudioManager.instance.Play("Bark", "SFX");
+                AudioManager.instance.PlaySfx("Bark");
             }
             else
             {

@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System;
-using UnityEngine.Audio;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
@@ -47,49 +45,131 @@ public class AudioManager : MonoBehaviour
 
             s.source.loop = s.loop;
         }
+        PlayBgm("Main Music Normal"); //Play BGM
     }
 
-    private void Start()
-    {
-        //AdjustAllVolume(0.5f); //Adjust all to 0.5f;
-        Play("Main Music Normal","BGM"); //Play BGM
-    }
-
-    public Sound FindSound(string name, string type) //function to find sound
+    /*public Sound FindSound(string name, string type) //function to find sound
     {
         Sound s = null;
         if (type == "BGM"){s = Array.Find(BGM, sound => sound.name == name);
-            foreach (Sound so in BGM)
-            {
-                if(s != null)
-                {
-                    if(so.name != s.name)
-                    { so.source.Stop(); }
-                }
-            }
+            //foreach (Sound so in BGM)
+            //{
+            //    if(s != null)
+            //    {
+            //        if(so.name != s.name)
+            //        { so.source.Stop(); }
+            //    }
+            //}
         }
         else if(type == "SFX"){s = Array.Find(SFX, sound => sound.name == name); }
-        if (s == null) //Warning Debug
-        {
-            Debug.LogWarning("Sounds: " + name + " not found!");
-            return null;
-        }
+        //if (s == null) //Warning Debug
+        //{
+        //    Debug.LogWarning("Sounds: " + name + " not found!");
+        //    return null;
+        //}
         return s;
+    }*/
+    
+    Sound FindBgm(string name)
+    {
+        return Array.Find(BGM, sound => sound.name == name);
+    }
+    Sound FindSfx(string name)
+    {
+        return Array.Find(SFX, sound => sound.name == name);
     }
 
-    public bool FindIsPlaying(string name, string type) //a bool determine is playing or not
+    /*public bool FindIsPlaying(string name, string type) //a bool determine is playing or not
     {
         Sound temp = FindSound(name, type);
         return temp.source.isPlaying;
-    }
+    }*/
 
-    public void Play(string name,string type) //Play Sound source
+    string currentBgm = string.Empty;
+    public void PlaySfx(string name) //Play Sound source
     {
-        Sound temp = FindSound(name,type);
-        if(temp != null) { temp.source.Play();/*Debug.Log("Playing");*/ } else { return; }
+        Sound temp = FindSfx(name);
+        if(temp != null) 
+        { 
+            temp.source.Play();/*Debug.Log("Playing");*/ 
+        }
+        else
+        {
+            Debug.LogError("No Sfx");
+        }
+    }
+    public void PlayBgm(string name)
+    {
+        if (currentBgm == name)
+        {
+            return;
+        }
+        else
+        {
+            Sound sound1 = FindBgm(currentBgm);
+            if (sound1 != null)
+            {
+                StartCoroutine(FadeOutBgm(sound1.source, sound1.source.Stop));
+            }
+
+            currentBgm = name;
+        }
+
+        Sound sound2 = FindBgm(name);
+        if (sound2 != null)
+        {
+            StartCoroutine(KeepTrackOfBgm(sound2.source));
+        }
+        else
+        {
+            Debug.LogError("No Bgm");
+        }
     }
 
-    public void Pause(string name, string type) //Pause Sound source
+    IEnumerator KeepTrackOfBgm(AudioSource source)
+    {
+        source.Play();
+        float fadeDuration = 3.0f;
+        float length = source.clip.length;
+        float time = Time.unscaledTime + length - fadeDuration;
+        while (true)
+        {
+            while (Time.unscaledTime < time)
+            {
+                if (!source.isPlaying)
+                    yield break;
+
+                yield return null;
+            }
+            if (!source.isPlaying)
+                yield break;
+            time = Time.unscaledTime + length;
+            StartCoroutine(FadeOutBgm(source, delegate { }, fadeDuration));
+        }
+    }
+
+    IEnumerator FadeOutBgm(AudioSource source, Action action, float duration = 3.0f)
+    {
+        float elapsed = 0.0f;
+
+        float a = source.volume;
+        float b = 0.0f;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.unscaledDeltaTime;
+
+            float t = elapsed / duration;
+
+            source.volume = Mathf.Lerp(a, b, t);
+
+            yield return null;
+        }
+        action();
+        source.volume = PlayerPrefs.GetFloat("bgmVolume");
+    }
+
+    /*public void Pause(string name, string type) //Pause Sound source
     {
         Sound temp = FindSound(name, type);
         if (temp != null) { temp.source.Pause(); } else { return; }
@@ -111,7 +191,7 @@ public class AudioManager : MonoBehaviour
         }
         if (amount >= 1) {amount = 1;}
         temp.volume = amount;temp.source.volume = temp.volume;
-    }
+    }*/
 
     public void AdjustTypeVolume(float amount,string type)
     {

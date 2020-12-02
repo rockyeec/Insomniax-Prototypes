@@ -9,6 +9,7 @@ public class FallReset : MonoBehaviour
 
     private void Start()
     {
+        AudioManager.instance.PlayBgm("Main Music Normal");
         GameScript.OnGlassesOn += GameScript_OnGlassesOn;
     }
     private void OnDestroy()
@@ -32,6 +33,7 @@ public class FallReset : MonoBehaviour
         {
             if (!isPuttingOnGlasses)
             {
+                AudioManager.instance.PlaySfx("scream");
                 isPuttingOnGlasses = true;
                 playerInput.PressGlassesButton();
             }

@@ -26,6 +26,6 @@ public class TheMainMenu : MonoBehaviour
 
     void PlaySound()
     {
-        AudioManager.instance.Play("FlipBook", "SFX");
+        AudioManager.instance.PlaySfx("FlipBook");
     }
 }

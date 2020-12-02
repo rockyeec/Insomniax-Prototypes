@@ -14,6 +14,7 @@ public class TreadmillScript : MonoBehaviour
         GameScript.OnGlassesOn += GameScript_OnGlassesOn;
         GameScript.OnGlassesOff += GameScript_OnGlassesOff;
         enabled = false;
+        StartCoroutine(ScriptEnabler());
     }
 
     private void OnDestroy()

@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 157976089020687186}
   - component: {fileID: 7286585591094095292}
   - component: {fileID: 2794384847564914059}
-  - component: {fileID: 3107747853324174951}
   m_Layer: 20
   m_Name: Dog
   m_TagString: Untagged
@@ -46,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9338660378b2a6648bb9eb18ce4e680f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isBackToOriginal: 0
   xLimits: 3
   player: {fileID: 0}
 --- !u!135 &2794384847564914059
@@ -61,18 +61,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.01
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &3107747853324174951
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 157976089020687191}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0492fce5d819d12429c46e35f230482a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!95 &7831271114448690734
 Animator:
   serializedVersion: 3

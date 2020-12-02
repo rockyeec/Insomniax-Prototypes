@@ -47,7 +47,7 @@ public class TextCoverScript : MonoBehaviour
 
     public void DisableTextCover()
     {
-        AudioManager.instance.Play("diaryTrigger", "SFX");
+        AudioManager.instance.PlaySfx("diaryTrigger");
 
         Diary.Instance.currentPage = diaryPage;
         Diary.Instance.ButtonsVisibility(diaryPage, Diary.DiaryList);

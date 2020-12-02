@@ -14,7 +14,10 @@ public class LoseColliderScript : MonoBehaviour
             collision.collider.transform.position += (Vector3.down * (transform.position.y - 4.2f));
 
         else if (collision.collider.name == "Player")
+        {
+            AudioManager.instance.PlaySfx("scream");
             LevelManager.ResetLevel();
+        }
     }
 
         /*StartCoroutine(ResetToNormal());

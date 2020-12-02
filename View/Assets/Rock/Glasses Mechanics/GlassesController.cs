@@ -80,7 +80,7 @@ public class GlassesController : MonoBehaviour
         glasses.transform.localPosition = Vector3.zero;
         glasses.transform.localRotation = Quaternion.identity;
 
-        AudioManager.instance.Play("Glasses", "SFX");
+        AudioManager.instance.PlaySfx("Glasses");
     }
     public void OnTakeOff()
     {
@@ -88,7 +88,7 @@ public class GlassesController : MonoBehaviour
         glasses.transform.localPosition = handPositionOffset;
         glasses.transform.localRotation = Quaternion.Euler(handEulerOffset);
 
-        AudioManager.instance.Play("Glasses", "SFX");
+        AudioManager.instance.PlaySfx("Glasses");
     }
 
     public void FromPocketOn()

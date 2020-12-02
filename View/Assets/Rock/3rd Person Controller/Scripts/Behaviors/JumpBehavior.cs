@@ -43,6 +43,6 @@ public class JumpBehavior : Behavior
         rb.AddForce(Vector3.up * 6.9f, ForceMode.Impulse);
         
         controller.outputs.animateJump = true;
-        AudioManager.instance.Play("Jump", "SFX");
+        AudioManager.instance.PlaySfx("Jump");
     }
 }

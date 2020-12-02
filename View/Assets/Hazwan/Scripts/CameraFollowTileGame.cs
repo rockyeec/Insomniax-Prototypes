@@ -77,7 +77,7 @@ public class CameraFollowTileGame : MonoBehaviour
 
     IEnumerator SwitchCameraView()
     {
-        AudioManager.instance.Play("Whoosh", "SFX");
+        AudioManager.instance.PlaySfx("Whoosh");
         yield return new WaitForSeconds(3f);
 
         
@@ -86,12 +86,12 @@ public class CameraFollowTileGame : MonoBehaviour
         {
             changeCameraView = false;
             changeCameraView2 = true;
-            AudioManager.instance.Play("Whoosh", "SFX");
+            AudioManager.instance.PlaySfx("Whoosh");
             yield return new WaitForSeconds(3f);
             TriggerDialoguePuzzleLevel3.instance.RemoveFog();
             yield return new WaitForSeconds(3f);
             changeCameraView2 = false;
-            AudioManager.instance.Play("Whoosh", "SFX");
+            AudioManager.instance.PlaySfx("Whoosh");
             PlayerInput.IsEnableCamera = true;
             isCorrect = false;
         }
@@ -99,7 +99,7 @@ public class CameraFollowTileGame : MonoBehaviour
         {
             changeCameraView2 = false;
             changeCameraView = false;
-            AudioManager.instance.Play("Whoosh", "SFX");
+            AudioManager.instance.PlaySfx("Whoosh");
             PlayerInput.IsEnableCamera = true;
             yield return new WaitForSeconds(2f);
             //LevelManager.ResetLevel();

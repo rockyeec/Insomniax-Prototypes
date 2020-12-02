@@ -19,6 +19,8 @@ public class HouseFlyManager : MonoBehaviour
 
     private void Start()
     {
+        InvokerForMonologue.Do("DisableGlasses");
+        AudioManager.instance.PlayBgm("Main Music Glasses");
         float lengthBetween = fullLength / (amount - 1);
         float start = fullLength / 2.0f;
         for (int i = 0; i < amount; i++)

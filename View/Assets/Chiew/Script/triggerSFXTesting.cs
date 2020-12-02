@@ -9,7 +9,7 @@ public class triggerSFXTesting : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.W))
         {
-            AudioManager.instance.Play("Shoot", "SFX");
+            AudioManager.instance.PlaySfx("Shoot");
         }
     }
 }

@@ -31,7 +31,7 @@ public class EntryPrompt : MonoBehaviour
     {
         InvokerForMonologue.Do("DisableMenu");
         yield return new WaitForSeconds(0.5f);
-        AudioManager.instance.Play("diaryTrigger", "SFX");
+        AudioManager.instance.PlaySfx("diaryTrigger");
         DiaryManager.DiaryPromptNotify.gameObject.SetActive(true);
         DiaryManager.PromptEntry.gameObject.SetActive(true);
         yield return new WaitForSeconds(2.5f);

@@ -33,7 +33,7 @@ public class MenuManager : MonoBehaviour
             {
                 page.self.SetActive(true);
                 BackButton.SetActive(false);
-                AudioManager.instance.Play("MainMenuBGM", "BGM");
+                AudioManager.instance.PlaySfx("MainMenuBGM");
             }
             else
             {
@@ -62,7 +62,7 @@ public class MenuManager : MonoBehaviour
                 }
                 if ((int)page.type == 1)
                 {
-                    AudioManager.instance.Play("OptionBGM", "BGM");
+                    AudioManager.instance.PlayBgm("OptionBGM");
                 }
             }
         }

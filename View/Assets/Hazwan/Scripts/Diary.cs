@@ -56,7 +56,7 @@ public class Diary : DiaryManager
 
     public void NextPage()
     {
-        AudioManager.instance.Play("FlipBook", "SFX");
+        AudioManager.instance.PlaySfx("FlipBook");
         currentPage++;
         ButtonsVisibility(currentPage, diaryList);
         HiddenContent(currentPage,diaryList);
@@ -64,7 +64,7 @@ public class Diary : DiaryManager
 
     public void PreviousPage()
     {
-        AudioManager.instance.Play("FlipBook", "SFX");
+        AudioManager.instance.PlaySfx("FlipBook");
         currentPage--;
         ButtonsVisibility(currentPage, diaryList);
         HiddenContent(currentPage, diaryList);
@@ -72,7 +72,7 @@ public class Diary : DiaryManager
 
     public void OpenDiary()
     {
-        AudioManager.instance.Play("OpenBook", "SFX");
+        AudioManager.instance.PlaySfx("OpenBook");
         PromptEntry.transform.gameObject.SetActive(false);
         DiaryPromptNotify.transform.gameObject.SetActive(false);
         OpenButton.SetActive(false);

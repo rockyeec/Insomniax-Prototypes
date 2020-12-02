@@ -24,18 +24,16 @@ public class GameScript : MonoBehaviour
 
         OnGlassesOn += GameScript_OnGlassesOn; 
         OnGlassesOff += GameScript_OnGlassesOff;
-
-        AudioManager.instance?.Play("Main Music Normal", "BGM");
     }
 
     private void GameScript_OnGlassesOff()
     {
-        AudioManager.instance.Play("Main Music Normal", "BGM");
+        AudioManager.instance.PlayBgm("Main Music Normal");
     }
 
     private void GameScript_OnGlassesOn()
     {
-        AudioManager.instance.Play("Main Music Glasses", "BGM");
+        AudioManager.instance.PlayBgm("Main Music Glasses");
     }
 
     public static void Pause()

@@ -200,12 +200,12 @@ public class InvokerForMonologue : MonoBehaviour
     }
     void BlurScreen()
     {
-        AudioManager.instance.Play("Whoosh", "SFX");
+        AudioManager.instance.PlaySfx("Whoosh");
         CameraBlurer.Blur();
     }
     void ClearScreen()
     {
-        AudioManager.instance.Play("Whoosh", "SFX");
+        AudioManager.instance.PlaySfx("Whoosh");
         CameraBlurer.Clear();
     }
     void SetGlassesOn()
