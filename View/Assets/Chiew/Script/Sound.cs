@@ -18,4 +18,7 @@ public class Sound
 
     [HideInInspector]
     public AudioSource source;
+
+    [HideInInspector]
+    public Coroutine fading;
 }

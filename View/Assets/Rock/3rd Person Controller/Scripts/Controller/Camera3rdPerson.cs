@@ -61,7 +61,7 @@ public class Camera3rdPerson : MonoBehaviour
     }
     IEnumerator HandleVibration()
     {
-        float magnitude = 0.420f;
+        float magnitude = 0.1337f;
         float elapsed = 0.0f;
         float duration = 0.69f;
         while (elapsed < duration)

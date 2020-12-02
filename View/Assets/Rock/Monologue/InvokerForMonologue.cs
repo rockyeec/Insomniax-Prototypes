@@ -57,6 +57,7 @@ public class InvokerForMonologue : MonoBehaviour
         Add("SnapOutMove");
         Add("SnapOutGlasses");
         Add("SnapOutJump");
+
         Add("ShakeScreen");
         Add("BlurScreen");
         Add("ClearScreen");
@@ -200,12 +201,12 @@ public class InvokerForMonologue : MonoBehaviour
     }
     void BlurScreen()
     {
-        AudioManager.instance.PlaySfx("Whoosh");
+        AudioManager.instance.PlaySfx("glassesOnSFX");
         CameraBlurer.Blur();
     }
     void ClearScreen()
     {
-        AudioManager.instance.PlaySfx("Whoosh");
+        AudioManager.instance.PlaySfx("glassesOnSFX");
         CameraBlurer.Clear();
     }
     void SetGlassesOn()

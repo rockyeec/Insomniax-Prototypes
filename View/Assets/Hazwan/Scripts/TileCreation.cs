@@ -26,6 +26,7 @@ public class TileCreation : MonoBehaviour
     void Start()
     {
         tilePrefab.transform.Rotate(-90.0f, 0.0f, 0.0f, Space.Self);
+        TileMain.TileList.Clear();
 
         for (int x = 0; x < totalTile; x++)
         {

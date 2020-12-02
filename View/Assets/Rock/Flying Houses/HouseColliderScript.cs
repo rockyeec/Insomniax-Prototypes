@@ -16,6 +16,7 @@ public class HouseColliderScript : MonoBehaviour
         PlayerInput player = other.GetComponent<PlayerInput>();
         if (player != null)
         {
+            AudioManager.instance.PlaySfx("hyah");
             InvokerForMonologue.Do("ShakeScreen");
             player.GetComponentInChildren<Animator>().CrossFade("Hurt", 0.15f);
             if (PlayerInput.MoveSpeed > 0.0f)

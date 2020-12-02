@@ -69,6 +69,26 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.01
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &7560145887766944382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7488078393057280470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbed519f22093ca41a3e3f097acfacf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 4197640622178861334}
+  clipnames:
+  - footstep0
+  - footstep1
+  - footstep2
+  - footstep3
+  - footstep4
+  maxInterval: 0.08
 --- !u!114 &8358558980920456599
 MonoBehaviour:
   m_ObjectHideFlags: 0

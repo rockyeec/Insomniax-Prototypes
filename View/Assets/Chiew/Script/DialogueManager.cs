@@ -64,6 +64,7 @@ public class DialogueManager : MonoBehaviour
     public void StartDialogue(Dialogue d) //Call start dialogue
     {
         InvokerForMonologue.Do("DisableMenu");
+        AudioManager.instance.PlayBgm("Dialogue Puzzle Sequence");
 
         DialogueElement.SetActive(true);
         if (Controls != null)
@@ -198,6 +199,7 @@ public class DialogueManager : MonoBehaviour
                 foreach (char letter in sentence.ToCharArray())
                 {
                     dialogueText.text += letter;
+                    AudioManager.instance.PlaySfx("typeText");
                     yield return null;
                 }
             }
@@ -211,6 +213,7 @@ public class DialogueManager : MonoBehaviour
                 foreach (char letter in sentence.ToCharArray())
                 {
                     dialogueTextWorld.text += letter;
+                    AudioManager.instance.PlaySfx("typeText");
                     yield return null;
                 }
             }

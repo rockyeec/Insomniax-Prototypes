@@ -101,6 +101,7 @@ public class TriggerDialoguePuzzleLevel3 : MonoBehaviour
             
             fog.Stop();
             BgPropAlign.Trigger();
+            PlayerInput.MoveSpeed = 0.69f;
             gameObject.SetActive(false);
         }
         else

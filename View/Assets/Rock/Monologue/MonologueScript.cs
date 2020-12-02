@@ -117,6 +117,7 @@ public class MonologueScript : MonoBehaviour
                     }
                     yield return null;
                     text.text += item;
+                    AudioManager.instance.PlaySfx("typeText");
                 }
 
                 float duration = 2.5f;

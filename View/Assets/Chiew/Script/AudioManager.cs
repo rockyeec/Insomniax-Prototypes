@@ -45,7 +45,7 @@ public class AudioManager : MonoBehaviour
 
             s.source.loop = s.loop;
         }
-        PlayBgm("Main Music Normal"); //Play BGM
+        //PlayBgm("Main Music Normal"); //Play BGM
     }
 
     /*public Sound FindSound(string name, string type) //function to find sound
@@ -106,19 +106,24 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            Sound sound1 = FindBgm(currentBgm);
-            if (sound1 != null)
+            Sound prevSound = FindBgm(currentBgm);
+            if (prevSound != null)
             {
-                StartCoroutine(FadeOutBgm(sound1.source, sound1.source.Stop));
+                prevSound.fading = StartCoroutine(FadeOutBgm(prevSound.source));
             }
 
             currentBgm = name;
         }
 
-        Sound sound2 = FindBgm(name);
-        if (sound2 != null)
+        Sound currSound = FindBgm(name);
+        if (currSound != null)
         {
-            StartCoroutine(KeepTrackOfBgm(sound2.source));
+            if (currSound.fading != null)
+            {
+                StopCoroutine(currSound.fading);
+                currSound.source.volume = PlayerPrefs.GetFloat("bgmVolume");
+            }
+            currSound.source.Play();
         }
         else
         {
@@ -126,29 +131,7 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    IEnumerator KeepTrackOfBgm(AudioSource source)
-    {
-        source.Play();
-        float fadeDuration = 3.0f;
-        float length = source.clip.length;
-        float time = Time.unscaledTime + length - fadeDuration;
-        while (true)
-        {
-            while (Time.unscaledTime < time)
-            {
-                if (!source.isPlaying)
-                    yield break;
-
-                yield return null;
-            }
-            if (!source.isPlaying)
-                yield break;
-            time = Time.unscaledTime + length;
-            StartCoroutine(FadeOutBgm(source, delegate { }, fadeDuration));
-        }
-    }
-
-    IEnumerator FadeOutBgm(AudioSource source, Action action, float duration = 3.0f)
+    IEnumerator FadeOutBgm(AudioSource source, float duration = 3.0f)
     {
         float elapsed = 0.0f;
 
@@ -165,7 +148,7 @@ public class AudioManager : MonoBehaviour
 
             yield return null;
         }
-        action();
+        source.Stop();
         source.volume = PlayerPrefs.GetFloat("bgmVolume");
     }
 

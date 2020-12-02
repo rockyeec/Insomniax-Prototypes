@@ -25,10 +25,12 @@ public class TileGame : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        totalInteractedTile = 0;
     }
 
     public static void TileComparison()
     {
+        print(totalInteractedTile);
         if (totalInteractedTile != 5)
             return;
 

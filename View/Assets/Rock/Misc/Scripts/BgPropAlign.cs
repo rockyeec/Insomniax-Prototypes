@@ -56,6 +56,11 @@ public class BgPropAlign : MonoBehaviour
             platforms[i].position = b[i];
             platforms[i].rotation = Quaternion.identity;
         }
+        AudioManager.instance.PlaySfx("boom");
+        InvokerForMonologue.Do("ShakeScreen");
+
+
+        AudioManager.instance.PlayBgm("Final Walkway");
     }
 
     private void Update()
