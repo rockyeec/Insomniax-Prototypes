@@ -48,6 +48,7 @@ public class TombStoneScript : MonoBehaviour
         InvokerForMonologue.Do("DisableCameraControl");
         InvokerForMonologue.Do("DisableJump");
         InvokerForMonologue.Do("DisableDiary");
+        InvokerForMonologue.Do("DisableMenu");
         InvokerForMonologue.Do("DisableMoveControl");
         yield return new WaitForSeconds(2f);
         Letter();

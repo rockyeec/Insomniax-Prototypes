@@ -45,7 +45,7 @@ public class GraphicSetting : MonoBehaviour
 
             case 2: //! high
                 urp.shadowCascadeOption = ShadowCascadesOption.FourCascades;
-                urp.shadowDistance = 30;
+                urp.shadowDistance = 15;
                 break;
         }
     }
