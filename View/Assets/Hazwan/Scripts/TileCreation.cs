@@ -44,7 +44,7 @@ public class TileCreation : MonoBehaviour
         for (int i = 0; i < totalTile; i++)
         {
             additionalObject[i].transform.position = GetTilePos(i) + Vector3.up * 0.05f;
-            additionalObject[i].transform.SetParent(tileList[i].transform);
+            //additionalObject[i].transform.SetParent(tileList[i].transform);
 
             TileMain.TileList.Add(tileList[i]);
         }

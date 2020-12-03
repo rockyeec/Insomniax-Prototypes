@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Linq;
 
 public class TileGame : MonoBehaviour
 {
@@ -9,7 +10,8 @@ public class TileGame : MonoBehaviour
 
     static int[] correctSequence = { 0, 1, 2, 3, 4 };
 
-    public static List<int> tileData = new List<int>();
+    List<int> tileData = new List<int>();
+    public static List<int> TileData{ get { return instance.tileData; } }
 
     public Color redColor;
     public Color greenColor;
@@ -34,9 +36,9 @@ public class TileGame : MonoBehaviour
         if (totalInteractedTile != 5)
             return;
 
-        for (int i = 0; i < TileMain.TileList.Count; i++)
+        /*for (int i = 0; i < TileMain.TileList.Count; i++)
         {
-            if(correctSequence[i] == tileData[i])
+            if(correctSequence[i] == TileData[i])
             {
                 if(i == TileMain.TileList.Count - 1)
                 {
@@ -48,7 +50,8 @@ public class TileGame : MonoBehaviour
                 instance.CheckSequence(false);
                 return;
             }
-        }
+        }*/
+        instance.CheckSequence(correctSequence.SequenceEqual(TileData));
     }
 
     public static void SetTileColor(Color c)
@@ -102,7 +105,7 @@ public class TileGame : MonoBehaviour
     private IEnumerator IncorrectSequence()
     {
         totalInteractedTile = 0;
-        tileData.Clear();
+        TileData.Clear();
         yield return new WaitForSeconds(3f);
         CameraFollowTileGame.Instance.changeCameraView = true;
         yield return new WaitForSeconds(2f);
@@ -131,7 +134,7 @@ public class TileGame : MonoBehaviour
     private IEnumerator RestartLevel()
     {
         totalInteractedTile = 0;
-        tileData.Clear();
+        TileData.Clear();
         SetTileColor(instance.origin);
         yield return new WaitForSeconds(2f);
         GameScript.TakeOffGlasses();

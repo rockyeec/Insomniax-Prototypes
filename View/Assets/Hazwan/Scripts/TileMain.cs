@@ -16,7 +16,14 @@ public class TileMain : MonoBehaviour
 
     public bool isInteracted = false;
 
-    public static List<GameObject> TileList = new List<GameObject>();
+    static TileMain instance;
+    private void Awake()
+    {
+        instance = this;
+    }
+    List<GameObject> tileList = new List<GameObject>();
+
+    public static List<GameObject> TileList { get { return instance.tileList; } }
 
     void Start()
     {
@@ -42,7 +49,7 @@ public class TileMain : MonoBehaviour
         {
             isInteracted = true;
             LeanTween.color(gameObject, yellow, 2f);
-            TileGame.tileData.Add(indexRef);
+            TileGame.TileData.Add(indexRef);
             TileGame.totalInteractedTile++;
             TileGame.TileComparison();
 

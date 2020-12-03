@@ -58,6 +58,7 @@ public class TombStoneScript : MonoBehaviour
     {
         if (letterObj != null && !doneOn)
         {
+            AudioManager.instance.PlaySfx("FlipBook");
             letterObj.PanelOnOfF(true);
             doneOn = true;
         }

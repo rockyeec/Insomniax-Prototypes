@@ -96,7 +96,6 @@ public class TriggerDialoguePuzzleLevel3 : MonoBehaviour
         {
             yield return new WaitForSeconds(2f);
             GameFeatures(true);
-            EntryPrompt.Instance.PromptActivation(10);
 
             InvokerForMonologue.Do("BlurScreen");
             yield return new WaitForSeconds(0.4f);
@@ -106,6 +105,10 @@ public class TriggerDialoguePuzzleLevel3 : MonoBehaviour
             fog.Stop();
             BgPropAlign.Trigger();
             PlayerInput.MoveSpeed = 0.69f;
+
+            yield return new WaitForSeconds(4.0f);
+            EntryPrompt.Instance.PromptActivation(10);
+
             gameObject.SetActive(false);
         }
         else
