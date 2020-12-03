@@ -73,6 +73,9 @@ public class IKHandler : MonoBehaviour
 
     private bool CanPerformIK()
     {
-        return Mathf.Abs( animator.GetFloat("vertical")) < 0.03f;
+        return 
+            Mathf.Abs( animator.GetFloat("vertical")) < 0.03f
+            &&
+            !animator.GetBool("ledge");
     }
 }
