@@ -6,7 +6,8 @@ using System.Linq;
 
 public class TileGame : MonoBehaviour
 {
-    public static int totalInteractedTile = 0;
+    int totalInteractedTile = 0;
+    public static int TotalInteractedTile { get { return instance.totalInteractedTile; } set { instance.totalInteractedTile = value; } }
 
     static int[] correctSequence = { 0, 1, 2, 3, 4 };
 
@@ -18,6 +19,7 @@ public class TileGame : MonoBehaviour
     public Color origin;
 
     public static event Action OnReset = delegate { };
+    public static event Action<Color> OnSetColor = delegate { };
 
     //rock----------------------------------------------------
     [SerializeField] GameObject towardsFogMonologue = null;
@@ -27,13 +29,13 @@ public class TileGame : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        totalInteractedTile = 0;
+        TotalInteractedTile = 0;
     }
 
     public static void TileComparison()
     {
-        print(totalInteractedTile);
-        if (totalInteractedTile != 5)
+        print(TotalInteractedTile);
+        if (TotalInteractedTile != 5)
             return;
 
         /*for (int i = 0; i < TileMain.TileList.Count; i++)
@@ -52,14 +54,6 @@ public class TileGame : MonoBehaviour
             }
         }*/
         instance.CheckSequence(correctSequence.SequenceEqual(TileData));
-    }
-
-    public static void SetTileColor(Color c)
-    {
-        for (int i = 0; i < TileMain.TileList.Count; i++)
-        {
-            TileMain.TileList[i].GetComponent<MeshRenderer>().material.color = c;
-        }
     }
 
     public void CheckSequence(bool isCorrect)
@@ -82,7 +76,7 @@ public class TileGame : MonoBehaviour
     private IEnumerator CorrectSequence()
     {
         //rock-----------------------------------------------------------------------
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(3.0f);
         MonologueScript.TriggerText("That seemed to have done something, but what?");
         Destroy(towardsFogMonologue);
         //---------------------------------------------------------------------------
@@ -92,7 +86,7 @@ public class TileGame : MonoBehaviour
         CameraFollowTileGame.Instance.changeCameraView = true;
         yield return new WaitForSeconds(2f);
         AudioManager.instance.PlaySfx("tileCorrect");
-        SetTileColor(instance.greenColor);
+        OnSetColor(instance.greenColor);
         yield return new WaitForSeconds(8.2f);
         InvokerForMonologue.Do("EnableCameraControl");
         InvokerForMonologue.Do("EnableJump");
@@ -104,13 +98,13 @@ public class TileGame : MonoBehaviour
 
     private IEnumerator IncorrectSequence()
     {
-        totalInteractedTile = 0;
+        TotalInteractedTile = 0;
         TileData.Clear();
         yield return new WaitForSeconds(3f);
         CameraFollowTileGame.Instance.changeCameraView = true;
         yield return new WaitForSeconds(2f);
         AudioManager.instance.PlaySfx("tileWrong");
-        SetTileColor(instance.redColor);
+        OnSetColor(instance.redColor);
         
         //rock-----------------------------------------------------------------------
         yield return new WaitForSeconds(1.5f);
@@ -119,7 +113,7 @@ public class TileGame : MonoBehaviour
                 "Looks like I have to start again." });
         //---------------------------------------------------------------------------
         yield return new WaitForSeconds(3f);
-        SetTileColor(instance.origin);
+        OnSetColor(instance.origin);
         GameScript.TakeOffGlasses();
         GameScript.PutOnGlasses();
 
@@ -133,9 +127,9 @@ public class TileGame : MonoBehaviour
 
     private IEnumerator RestartLevel()
     {
-        totalInteractedTile = 0;
+        TotalInteractedTile = 0;
         TileData.Clear();
-        SetTileColor(instance.origin);
+        OnSetColor(instance.origin);
         yield return new WaitForSeconds(2f);
         GameScript.TakeOffGlasses();
         GameScript.PutOnGlasses();

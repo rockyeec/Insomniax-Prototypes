@@ -5,12 +5,11 @@ using TMPro;
 
 public class TileMain : MonoBehaviour
 {
-    public GameObject messageBox;
     public TextMeshProUGUI textDialogue;
 
     public int indexRef;
 
-    public string monologue = string.Empty;
+    [SerializeField] string monologue = string.Empty;
 
     public Color yellow;
 
@@ -23,18 +22,29 @@ public class TileMain : MonoBehaviour
     }
     List<GameObject> tileList = new List<GameObject>();
 
+    Renderer rend = null;
+
     public static List<GameObject> TileList { get { return instance.tileList; } }
 
     void Start()
     {
-        messageBox.SetActive(false);
         SetTileIndex();
+        TileGame.OnSetColor += TileGame_OnSetColor;
         TileGame.OnReset += TileGame_OnReset;
     }
-
     private void OnDestroy()
     {
+        TileGame.OnSetColor -= TileGame_OnSetColor;
         TileGame.OnReset -= TileGame_OnReset;
+    }
+
+
+    private void TileGame_OnSetColor(Color c)
+    {
+        if (rend == null)
+            rend = GetComponent<Renderer>();
+
+        rend.material.color = c;
     }
 
     private void TileGame_OnReset()
@@ -50,18 +60,13 @@ public class TileMain : MonoBehaviour
             isInteracted = true;
             LeanTween.color(gameObject, yellow, 2f);
             TileGame.TileData.Add(indexRef);
-            TileGame.totalInteractedTile++;
+            TileGame.TotalInteractedTile++;
             TileGame.TileComparison();
 
             MonologueScript.TriggerText(monologue);
 
             AudioManager.instance.PlaySfx("stepTile");
         }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        messageBox.SetActive(false);
     }
 
     void SetTileIndex()
