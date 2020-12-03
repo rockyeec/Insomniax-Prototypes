@@ -12,16 +12,4 @@ public class DontDestroyScript : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
     }
-    void Start()
-    {
-
-    }
-
-    void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            Destroy(gameObject);
-        }
-    }
 }
