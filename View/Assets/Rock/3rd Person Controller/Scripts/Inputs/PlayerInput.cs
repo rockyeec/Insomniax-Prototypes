@@ -91,6 +91,18 @@ public class PlayerInput : InputParent
         {
             Controller.inputs.jumpRelease = true;
         }
+
+#if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Controller.inputs.jump = true;
+        }
+
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            Controller.inputs.jumpRelease = true;
+        }
+#endif
     }
 
     protected override void FixedTick(in float delta)
