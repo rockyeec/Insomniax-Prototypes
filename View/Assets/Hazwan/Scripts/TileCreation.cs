@@ -9,6 +9,7 @@ public class TileCreation : MonoBehaviour
     
     void Start()
     {
+        AudioManager.instance.PlayBgm("Main Music Glasses");
         TileMain.TileList.Clear();
         TileMain.TileList.AddRange(tileList);
     }
