@@ -2312,7 +2312,7 @@ PrefabInstance:
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.size
-      value: 26
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
@@ -2352,12 +2352,13 @@ PrefabInstance:
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[2]
-      value: "My head it\u2019s- ugh it\u2019s similar to the nightmare."
+      value: I don't feel so good about thi-
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[3]
-      value: "My memories they\u2019re coming back. Shi- I don't want to remember. "
+      value: "My head it\u2019s- ugh it\u2019s similar to the nightmare. My head
+        hurts, I don\u2019t want to remember you stupid brain. "
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
@@ -2417,38 +2418,40 @@ PrefabInstance:
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[18]
-      value: '*sigh* These glasses, I have way too many questions for you but first,'
+      value: "*sigh* These glasses, I have way too many questions for you. But first,
+        that\u2019s Matthew\u2019s room. Looks like it's leading me there. "
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[19]
-      value: "I don\u2019t recall my hallway looking like this.  "
+      value: 'This has been a terrible start to my birthday. '
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[20]
-      value: " It\u2019s the same as the neighbourhood, everything is distorting."
+      value: "It\u2019s the same as the neighbourhood, everything is distorting.
+        My emotions affecting the surroundings? "
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[21]
-      value: Are my emotions affecting the surroundings?
+      value: "I know I haven\u2019t been in the best mental state with everything
+        that happened but I feel different with the glasses. "
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[22]
-      value: " I know I haven\u2019t been in the best mental state with everything
-        that happened"
+      value: EnableMoveControl
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[23]
-      value: 'but I''m awfully calm when wearing the glasses.  '
+      value: EnableJump
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[24]
-      value: EnableMoveControl
+      value: EnableJump
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
@@ -2931,8 +2934,7 @@ PrefabInstance:
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
       propertyPath: monologue.Array.data[9]
-      value: " *sigh* Matthew why\u2019d you have to leave, I know you had your reasons.
-        . "
+      value: "*sigh* Matthew you didn\u2019t have to leave, I know you had your reasons."
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
@@ -2973,7 +2975,7 @@ PrefabInstance:
         type: 3}
       propertyPath: monologue.Array.data[11]
       value: ' I need a walk. A walk always manages to clear my mind, or further
-        make me over think. '
+        make me over think. Let''s hope it''s the former.'
       objectReference: {fileID: 0}
     - target: {fileID: 4379942669830624584, guid: 7f697d8f15228f243bae8ca9f2a48a06,
         type: 3}
